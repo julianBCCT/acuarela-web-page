@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "templates",
+  "info": {
+    "name": "template",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "content": {
+      "type": "json"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "templates"
+    }
+  }
+}

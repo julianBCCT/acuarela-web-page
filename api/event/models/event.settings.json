@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "name": "event",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "date": {
+      "type": "datetime"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "reminder": {
+      "type": "datetime"
+    },
+    "guest": {
+      "type": "json"
+    },
+    "templates": {
+      "collection": "template"
+    },
+    "checklists": {
+      "collection": "checklist"
+    },
+    "forms": {
+      "collection": "form"
+    },
+    "blogs": {
+      "collection": "blog"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "events"
+    }
+  }
+}

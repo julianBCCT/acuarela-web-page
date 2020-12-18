@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "daycares",
+  "info": {
+    "name": "daycare"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "daycare_id": {
+      "type": "string"
+    },
+    "review": {
+      "type": "json"
+    },
+    "acuarela_users": {
+      "via": "daycare",
+      "collection": "acuarela-user"
+    },
+    "events": {
+      "via": "daycare",
+      "collection": "event"
+    },
+    "forms": {
+      "via": "daycare",
+      "collection": "form"
+    },
+    "templates": {
+      "via": "daycare",
+      "collection": "template"
+    },
+    "checklists": {
+      "via": "daycare",
+      "collection": "checklist"
+    },
+    "blogs": {
+      "via": "daycare",
+      "collection": "blog"
+    },
+    "support_tickets": {
+      "via": "daycare",
+      "collection": "support-ticket"
+    },
+    "acquired_complements": {
+      "via": "daycare",
+      "collection": "acquired-complement"
+    }
+  }
+}

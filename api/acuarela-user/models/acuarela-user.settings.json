@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acuarela_users",
+  "info": {
+    "name": "acuarela_user",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "mail": {
+      "type": "email"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "address": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "acuarela_users"
+    },
+    "support_tickets": {
+      "via": "acuarela_user_admin",
+      "collection": "support-ticket"
+    },
+    "chats": {
+      "via": "acuarela_user_2",
+      "collection": "chat"
+    },
+    "user_rols": {
+      "via": "acuarela_user",
+      "collection": "user-rol"
+    }
+  }
+}

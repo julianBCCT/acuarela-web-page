@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acquired_complements",
+  "info": {
+    "name": "acquired_complement",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "purchase_date": {
+      "type": "datetime"
+    },
+    "expiration_date": {
+      "type": "datetime"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "add_on": {
+      "model": "add-on",
+      "via": "acquired_complements"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "acquired_complements"
+    }
+  }
+}

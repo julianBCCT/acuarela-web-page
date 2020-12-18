@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chats",
+  "info": {
+    "name": "chat",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "message": {
+      "type": "json"
+    },
+    "last_access": {
+      "type": "datetime"
+    },
+    "acuarela_user_1": {
+      "model": "acuarela-user",
+      "via": "chats"
+    },
+    "acuarela_user_2": {
+      "model": "acuarela-user",
+      "via": "chats"
+    }
+  }
+}

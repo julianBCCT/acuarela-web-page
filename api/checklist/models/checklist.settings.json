@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "checklists",
+  "info": {
+    "name": "checklist",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "num_items": {
+      "type": "integer"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "expiration_date": {
+      "type": "datetime"
+    },
+    "finish": {
+      "type": "boolean"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "checklists"
+    },
+    "checklist_items": {
+      "via": "checklist",
+      "collection": "checklist-item"
+    }
+  }
+}

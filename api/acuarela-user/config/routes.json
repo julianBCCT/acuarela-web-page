@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/acuarela-users",
+      "handler": "acuarela-user.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acuarela-users/count",
+      "handler": "acuarela-user.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acuarela-users/:id",
+      "handler": "acuarela-user.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarela-users",
+      "handler": "acuarela-user.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/acuarela-users/:id",
+      "handler": "acuarela-user.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/acuarela-users/:id",
+      "handler": "acuarela-user.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

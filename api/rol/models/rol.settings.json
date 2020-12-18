@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rols",
+  "info": {
+    "name": "rol"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "rol": {
+      "type": "string"
+    },
+    "user_rols": {
+      "via": "rol",
+      "collection": "user-rol"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "checklist_items",
+  "info": {
+    "name": "checklist_item",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "note": {
+      "type": "text"
+    },
+    "expiration_date": {
+      "type": "datetime"
+    },
+    "reminder": {
+      "type": "datetime"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "guest": {
+      "type": "json"
+    },
+    "finish": {
+      "type": "boolean"
+    },
+    "checklist": {
+      "model": "checklist",
+      "via": "checklist_items"
+    },
+    "template": {
+      "model": "template"
+    },
+    "form": {
+      "model": "form"
+    },
+    "event": {
+      "model": "event"
+    }
+  }
+}

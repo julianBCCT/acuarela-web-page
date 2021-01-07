@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/acquiredcomplements",
+      "handler": "acquiredcomplement.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acquiredcomplements/count",
+      "handler": "acquiredcomplement.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acquiredcomplements/:id",
+      "handler": "acquiredcomplement.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acquiredcomplements",
+      "handler": "acquiredcomplement.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/acquiredcomplements/:id",
+      "handler": "acquiredcomplement.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/acquiredcomplements/:id",
+      "handler": "acquiredcomplement.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

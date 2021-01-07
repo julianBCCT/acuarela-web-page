@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supporttickets",
+  "info": {
+    "name": "supportticket",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "application_status": {
+      "type": "string"
+    },
+    "creation_date": {
+      "type": "datetime"
+    },
+    "solved_date": {
+      "type": "datetime"
+    },
+    "message": {
+      "type": "json"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "supporttickets"
+    },
+    "acuarelauser_daycare": {
+      "model": "acuarelauser",
+      "via": "supporttickets"
+    },
+    "acuarelauser_admin": {
+      "model": "acuarelauser",
+      "via": "supporttickets"
+    }
+  }
+}

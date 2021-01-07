@@ -33,9 +33,9 @@
       "model": "daycare",
       "via": "checklists"
     },
-    "checklist_items": {
+    "checklistitems": {
       "via": "checklist",
-      "collection": "checklist-item"
+      "collection": "checklistitem"
     }
   }
 }

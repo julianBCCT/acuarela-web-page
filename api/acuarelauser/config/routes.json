@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/acuarelausers",
+      "handler": "acuarelauser.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acuarelausers/count",
+      "handler": "acuarelauser.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/acuarelausers/:id",
+      "handler": "acuarelauser.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers",
+      "handler": "acuarelauser.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/acuarelausers/:id",
+      "handler": "acuarelauser.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/acuarelausers/:id",
+      "handler": "acuarelauser.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/login/:mail&:pass",
+      "handler": "acuarelauser.login",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/register/",
+      "handler": "acuarelauser.register",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

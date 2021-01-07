@@ -45,10 +45,6 @@
     "review": {
       "type": "json"
     },
-    "acuarela_users": {
-      "via": "daycare",
-      "collection": "acuarela-user"
-    },
     "events": {
       "via": "daycare",
       "collection": "event"
@@ -69,13 +65,17 @@
       "via": "daycare",
       "collection": "blog"
     },
-    "support_tickets": {
+    "acuarelausers": {
       "via": "daycare",
-      "collection": "support-ticket"
+      "collection": "acuarelauser"
     },
-    "acquired_complements": {
+    "acquiredcomplements": {
       "via": "daycare",
-      "collection": "acquired-complement"
+      "collection": "acquiredcomplement"
+    },
+    "supporttickets": {
+      "via": "daycare",
+      "collection": "supportticket"
     }
   }
 }

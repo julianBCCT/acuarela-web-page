@@ -17,12 +17,12 @@
     "last_access": {
       "type": "datetime"
     },
-    "acuarela_user_1": {
-      "model": "acuarela-user",
+    "acuarelauser_1": {
+      "model": "acuarelauser",
       "via": "chats"
     },
-    "acuarela_user_2": {
-      "model": "acuarela-user",
+    "acuarelauser_2": {
+      "model": "acuarelauser",
       "via": "chats"
     }
   }

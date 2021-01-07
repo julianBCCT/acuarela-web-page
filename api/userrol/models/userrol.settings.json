@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "rols",
+  "collectionName": "userrols",
   "info": {
-    "name": "rol"
+    "name": "userrol"
   },
   "options": {
     "increments": true,
@@ -11,11 +11,12 @@
   },
   "attributes": {
     "rol": {
-      "type": "string"
+      "model": "rol",
+      "via": "userrols"
     },
-    "userrols": {
-      "via": "rol",
-      "collection": "userrol"
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "userrols"
     }
   }
 }

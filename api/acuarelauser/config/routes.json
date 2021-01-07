@@ -71,6 +71,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/invitation/register/",
+      "handler": "acuarelauser.invitationregister",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

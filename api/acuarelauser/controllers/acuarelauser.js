@@ -19,6 +19,7 @@ module.exports = {
         const token = jwt.sign({id: entity._id}, process.env.SECRET, {
             expiresIn: 259200 // tres dias
         });
+        ctx.body = {mail:entity.mail, id:entity._id};
         ctx.send({token});
     } else {
         ctx.status = 400;
@@ -26,7 +27,7 @@ module.exports = {
     }
   },
   async invitation(ctx) {
-    const { mail, pass, token } = ctx.request.body;
+    const { mail, token } = ctx.request.body;
 
     const { message, result, status} = await verification.verifyJwt(token);
 
@@ -39,15 +40,9 @@ module.exports = {
             ctx.status = 400;
             ctx.body = {status:"User Already Exists"};
         }
-        if (!entity) {
-            const hashedPassword = await bcrypt.hash(pass, 10);
-
-            entity = await strapi.services.acuarelauser.create( {mail:mail, password:hashedPassword });
-            const token = jwt.sign({id: entity._id}, process.env.SECRET, {
-                expiresIn: 259200 // tres dias
-            });
-            ctx.send({token});
-            ctx.body = {status: "User Created"};
+        else {
+            entity = await strapi.services.acuarelauser.create({mail:mail});
+            ctx.body = {status: "Invitation Created"};
         }
     }
   },
@@ -67,7 +62,34 @@ module.exports = {
             expiresIn: 259200 // tres dias
         });
         ctx.send({token});
-        ctx.body = {status: "User Created"};
+        ctx.body = {status: "User Created", mail:entity.mail, id:entity._id};
+    }
+  },
+  async invitationregister(ctx) {
+    const { mail, pass, token } = ctx.request.body;
+
+    const { message, result, status} = await verification.verifyJwt(token);
+
+    if (!result) {
+        ctx.status = status;
+        ctx.body = {status: message};
+    } else {
+        let entity = await strapi.services.acuarelauser.findOne({ mail });
+        if (!entity) {
+            ctx.status = 400;
+            ctx.body = {status:"Invalid Invitation"};
+        }
+        if (entity) {
+            const hashedPassword = await bcrypt.hash(pass, 10);
+            entity.password = hashedPassword;
+            let entity_id = entity._id;
+            entity = await strapi.services.acuarelauser.update( { _id:entity_id }, entity);
+            const token = jwt.sign({id: entity._id}, process.env.SECRET, {
+                expiresIn: 259200 // tres dias
+            });
+            ctx.send({token});
+            ctx.body = {status: "User Created", mail:entity.mail, id:entity_id};
+        }
     }
   },
 };

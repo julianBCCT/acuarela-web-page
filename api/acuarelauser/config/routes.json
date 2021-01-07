@@ -50,8 +50,16 @@
     },
     {
       "method": "POST",
-      "path": "/acuarelausers/login/:mail&:pass",
+      "path": "/acuarelausers/login/",
       "handler": "acuarelauser.login",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/invitation/",
+      "handler": "acuarelauser.invitation",
       "config": {
         "policies": []
       }

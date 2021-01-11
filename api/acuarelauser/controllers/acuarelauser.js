@@ -114,17 +114,15 @@ module.exports = {
     
     if (entity) {
       let code = await Math.round(Math.random() * (9999 - 1000) + 1000);
-      let newcode = "c" + code;
-      let hashedcode = await bcrypt.hash(newcode, 10);
+      let hashedcode = await bcrypt.hash("c" + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
       if (mail != "-1") resultado = email.send_email(phone, code);
       else resultado = sms.send_sms(mail, code, 'Verification Code');
 
-      if (resultado.ok) resultado.code_token = code_token.token;
+      if (resultado.ok) resultado.code_token = code_token;
 
       resultado.sendcode = code;
-      resultado.sendhashedcode = hashedcode;
 
       ctx.send(resultado);
 

@@ -1,13 +1,12 @@
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 async function verify_code(token, code) {
     if (!token) return { ok: false, status: 403, code:3, msg: "No token provided." };
 
     try {
         const { hashedcode } = await jwt.verify(token, process.env.SECRET);
-        let newcode = "c" + code;
-        let result = await bcrypt.compare(newcode, hashedcode);
-        if (result) return { ok: true, status: 200, code: 0, msg: "Correct code." };
+        if (await bcrypt.compare("c" + code, hashedcode)) return { ok: true, status: 200, code: 0, msg: "Correct code." };
         else return {ok: false, status: 400, code: 4, msg: "Wrong code."};
     } catch (error) {
         return { ok: false, status: 401, code: 3, msg: "Invalid Token!" };

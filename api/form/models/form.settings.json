@@ -30,8 +30,8 @@
       "type": "boolean"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "forms"
+      "via": "forms",
+      "model": "daycare"
     }
   }
 }

@@ -27,16 +27,16 @@
       "type": "json"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "supporttickets"
+      "via": "supporttickets",
+      "model": "daycare"
     },
     "acuarelauser_daycare": {
       "model": "acuarelauser",
       "via": "supporttickets"
     },
     "acuarelauser_admin": {
-      "model": "acuarelauser",
-      "via": "supporttickets"
+      "via": "supporttickets",
+      "model": "acuarelauser"
     }
   }
 }

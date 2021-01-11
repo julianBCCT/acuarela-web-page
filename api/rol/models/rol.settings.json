@@ -13,9 +13,9 @@
     "rol": {
       "type": "string"
     },
-    "userrols": {
-      "via": "rol",
-      "collection": "userrol"
+    "acuarelausers": {
+      "via": "rols",
+      "collection": "acuarelauser"
     }
   }
 }

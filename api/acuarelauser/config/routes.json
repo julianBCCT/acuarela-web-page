@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/acuarelausers/login/",
+      "path": "/acuarelausers/login",
       "handler": "acuarelauser.login",
       "config": {
         "policies": []
@@ -58,7 +58,7 @@
     },
     {
       "method": "POST",
-      "path": "/acuarelausers/invitation/",
+      "path": "/acuarelausers/invitation",
       "handler": "acuarelauser.invitation",
       "config": {
         "policies": []
@@ -66,16 +66,48 @@
     },
     {
       "method": "POST",
-      "path": "/acuarelausers/register/",
+      "path": "/acuarelausers/register",
       "handler": "acuarelauser.register",
       "config": {
         "policies": []
       }
     },
     {
+      "method": "PUT",
+      "path": "/acuarelausers/invitation/register",
+      "handler": "acuarelauser.invitation_register",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
-      "path": "/acuarelausers/invitation/register/",
-      "handler": "acuarelauser.invitationregister",
+      "path": "/acuarelausers/recover/password",
+      "handler": "acuarelauser.recover_pass",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/acuarelausers/change/password",
+      "handler": "acuarelauser.change_pass",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/check-code",
+      "handler": "acuarelauser.check_code",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/acuarelausers/get/invitation",
+      "handler": "acuarelauser.get_invitation",
       "config": {
         "policies": []
       }

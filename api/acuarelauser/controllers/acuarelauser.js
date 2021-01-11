@@ -4,6 +4,8 @@ const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verification = require("../../../middlewares/authJwt");
+const email = require("../../../helpers/email_provider");
+const sms = require("../../../helpers/sms_provider");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -12,45 +14,149 @@ const verification = require("../../../middlewares/authJwt");
 
 module.exports = {
   async login(ctx) {
-    const { mail, pass } = ctx.request.body;
-    let entity = await strapi.services.acuarelauser.findOne({ mail });
+    const { mail, pass, phone } = ctx.request.body;
+    let entity;
+    if (mail != "-1") entity = await strapi.services.acuarelauser.findOne({ mail });
+    else entity = await strapi.services.acuarelauser.findOne({ phone });
+
     if (entity) {
       let result = await bcrypt.compare(pass, entity.password);
-      if (result) {
-        const token = jwt.sign({ id: entity._id }, process.env.SECRET, {
-          expiresIn: 259200, // tres dias
-        });
-        const user = { mail: entity.mail, id: entity._id };
-        ctx.send({
-          token,
-          msg: "user logged",
-          user,
-          ok: true,
-        });
+      if (result) ctx.send(await verification.generate_token(entity));
+      else {
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") msg = "Invalid Email.", code = "e-1";
+        ctx.send({ ok: false, status: 400, code, msg });
       }
     } else {
-      ctx.status = 400;
-      ctx.body = { status: "Credenciales Erróneas.", ok: false };
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") msg = "Invalid Email.", code = "e-1";
+      ctx.send({ ok: false, status: 400, code, msg });
     }
   },
   async invitation(ctx) {
-    const { mail, token } = ctx.request.body;
+    const { mail, phone, roles, organization, token } = ctx.request.body;
 
-    const { message, result, status } = await verification.verifyJwt(token);
+    let respuesta = await verification.renew(token);
 
-    if (!result) {
-      ctx.status = status;
-      ctx.body = { status: message };
-    } else {
-      let entity = await strapi.services.acuarelauser.findOne({ mail });
-      if (entity) {
-        ctx.status = 400;
-        ctx.body = { status: "User Already Exists" };
+    if (respuesta.ok) {
+      let entity;
+      if (mail != "-1") entity = await strapi.services.acuarelauser.findOne({ mail });
+      else entity = await strapi.services.acuarelauser.findOne({ phone });
+      
+      if (!entity) {
+        let rols;
+        if (roles) {
+          //const foundRoles = await strapi.services.rols.find({ _id: { $in: roles } });
+          rols = roles;
+        }
+        else {
+          //const role = await strapi.services.rols.findOne({ _id: "5ff790215d6f2e272cfd7396" });
+          rols = ["5ff790215d6f2e272cfd7396"];
+        }
+
+        let daycare;
+        if (organization) {
+          const foundDaycare = await strapi.services.daycare.findOne({ name: organization });
+          daycare = foundDaycare._id;
+        }
+        else {
+          const foundDaycare = await strapi.services.daycare.findOne({ _id: "Bilingual" });
+          daycare = [foundDaycare._id];
+        }
+
+        entity = await strapi.services.acuarelauser.create({ mail, phone, rols, daycare });
+
+        let redirect_token = await verification.new_token({ mail, phone });
+        let link = "/get/invitation/" + redirect_token.token;
+        let resultado;
+        if (mail != "-1") resultado = await sms.send_sms(phone, link);
+        else resultado = await email.send_email(mail, link, 'Acuarela Invitation');
+
+        resultado.senduri = redirect_token.token;
+        ctx.send(resultado);
+
       } else {
-        entity = await strapi.services.acuarelauser.create({ mail: mail });
-        ctx.body = { status: "Invitation Created" };
+        let msg = "User with this number already exits.";
+        let code = "p-2";
+        if (mail != "-1") msg = "User with this email already exits.", code = "e-2";
+        ctx.send({ ok: false, status: 400, code, msg });
       }
+    } else {
+      ctx.send({ respuesta });
     }
+  },
+  async invitation_register(ctx) {
+    const { mail, pass, phone, name, token } = ctx.request.body;
+
+    const { ok, status, code, user } = await verification.get_data(token);
+
+    if (!ok || (mail != user.mail && phone != user.phone)) {
+      ctx.send({ ok, status, code, msg: "Invalid Invitation" });
+    } else {
+      const hashedPassword = await bcrypt.hash(pass, 10);
+      let entity = await strapi.services.acuarelauser.findOne({ _id: user.id });
+      entity.name = name;
+      entity.password = hashedPassword;
+      entity = await strapi.services.acuarelauser.update({ _id: entity.id }, entity);
+      let respuesta = await verification.generate_token(entity);
+      if (respuesta.ok) respuesta.status = 201, respuesta.msg = "User Created.";
+
+      ctx.send(respuesta);
+    }
+  },
+  async recover_pass(ctx) {
+    const { mail, phone } = ctx.request.body;
+    let entity;
+    if (mail != "-1") entity = await strapi.services.acuarelauser.findOne({ mail });
+    else entity = await strapi.services.acuarelauser.findOne({ phone });
+    
+    if (entity) {
+      let code = await Math.round(Math.random() * (9999 - 1000) + 1000);
+      let newcode = "c" + code;
+      let hashedcode = await bcrypt.hash(newcode, 10);
+      let code_token = await verification.new_token({ hashedcode });
+      let resultado;
+      if (mail != "-1") resultado = email.send_email(phone, code);
+      else resultado = sms.send_sms(mail, code, 'Verification Code');
+
+      if (resultado.ok) resultado.code_token = code_token.token;
+
+      resultado.sendcode = code;
+      resultado.sendhashedcode = hashedcode;
+
+      ctx.send(resultado);
+
+    } else {
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") msg = "Invalid Email.", code = "e-1";
+      ctx.send({ ok: false, status: 400, code, msg });
+    }
+  },
+  async change_pass(ctx) {
+    const { mail, pass, phone } = ctx.request.body;
+    let entity;
+    if (mail != "-1") entity = await strapi.services.acuarelauser.findOne({ mail });
+    else entity = await strapi.services.acuarelauser.findOne({ phone });
+
+    if (entity) {
+      const hashedPassword = await bcrypt.hash(pass, 10);
+      entity.password = hashedPassword;
+      entity = await strapi.services.acuarelauser.update( { _id: entity._id }, entity );
+      ctx.send({ ok: true, status: 200, code: 0, msg: "Password changed successfully." });
+    } else {
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") msg = "Invalid Email.", code = "e-1";
+      ctx.send({ ok: false, status: 400, code, msg });
+    }
+  },
+  async check_code(ctx) {
+    const { token, code } = ctx.request.body;
+    let result = await verification.verify_code(token, code);
+    ctx.send(result);
   },
   async register(ctx) {
     const { mail, pass } = ctx.request.body;
@@ -77,37 +183,9 @@ module.exports = {
       });
     }
   },
-  async invitationregister(ctx) {
-    const { mail, pass, token } = ctx.request.body;
-
-    const { message, result, status } = await verification.verifyJwt(token);
-
-    if (!result) {
-      ctx.status = status;
-      ctx.body = { status: message };
-    } else {
-      let entity = await strapi.services.acuarelauser.findOne({ mail });
-      if (!entity) {
-        ctx.status = 400;
-        ctx.body = { status: "Invalid Invitation" };
-      }
-      if (entity) {
-        const hashedPassword = await bcrypt.hash(pass, 10);
-        entity.password = hashedPassword;
-        let entity_id = entity._id;
-        entity = await strapi.services.acuarelauser.update(
-          { _id: entity_id },
-          entity
-        );
-        const token = jwt.sign({ id: entity._id }, process.env.SECRET, {
-          expiresIn: 259200, // tres dias
-        });
-        ctx.send({
-          token,
-          status: "User Created",
-          user: { mail: entity.mail, id: entity_id },
-        });
-      }
-    }
+  async get_invitation(ctx) {
+    const { token } = ctx.request.body;
+    let respuesta = await verification.get_data(token);
+    ctx.send(respuesta);
   },
 };

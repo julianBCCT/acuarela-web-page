@@ -42,8 +42,8 @@
       "collection": "blog"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "events"
+      "via": "events",
+      "model": "daycare"
     }
   }
 }

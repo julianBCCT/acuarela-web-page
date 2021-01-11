@@ -27,8 +27,8 @@
       "type": "json"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "templates"
+      "via": "templates",
+      "model": "daycare"
     }
   }
 }

@@ -53,20 +53,24 @@
       "type": "string"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "acuarelausers"
+      "via": "acuarelausers",
+      "model": "daycare"
     },
     "chats": {
-      "via": "acuarelauser_2",
-      "collection": "chat"
-    },
-    "userrols": {
-      "via": "acuarelauser",
-      "collection": "userrol"
+      "collection": "chat",
+      "via": "acuarelauser_2"
     },
     "supporttickets": {
-      "via": "acuarelauser_admin",
-      "collection": "supportticket"
+      "collection": "supportticket",
+      "via": "acuarelauser_admin"
+    },
+    "phone": {
+      "type": "json"
+    },
+    "rols": {
+      "collection": "rol",
+      "via": "acuarelausers",
+      "dominant": true
     }
   }
 }

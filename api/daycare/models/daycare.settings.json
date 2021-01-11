@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "daycares",
   "info": {
-    "name": "daycare"
+    "name": "daycare",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -39,43 +40,43 @@
       "plugin": "upload",
       "required": false
     },
-    "daycare_id": {
-      "type": "string"
-    },
     "review": {
       "type": "json"
     },
     "events": {
-      "via": "daycare",
-      "collection": "event"
+      "collection": "event",
+      "via": "daycare"
     },
     "forms": {
-      "via": "daycare",
-      "collection": "form"
+      "collection": "form",
+      "via": "daycare"
     },
     "templates": {
-      "via": "daycare",
-      "collection": "template"
+      "collection": "template",
+      "via": "daycare"
     },
     "checklists": {
-      "via": "daycare",
-      "collection": "checklist"
+      "collection": "checklist",
+      "via": "daycare"
     },
     "blogs": {
-      "via": "daycare",
-      "collection": "blog"
+      "collection": "blog",
+      "via": "daycare"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acquiredcomplements": {
-      "via": "daycare",
-      "collection": "acquiredcomplement"
+      "collection": "acquiredcomplement",
+      "via": "daycare"
     },
     "supporttickets": {
-      "via": "daycare",
-      "collection": "supportticket"
+      "collection": "supportticket",
+      "via": "daycare"
+    },
+    "daycare_id": {
+      "type": "string"
     }
   }
 }

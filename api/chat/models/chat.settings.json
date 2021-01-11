@@ -22,8 +22,8 @@
       "via": "chats"
     },
     "acuarelauser_2": {
-      "model": "acuarelauser",
-      "via": "chats"
+      "via": "chats",
+      "model": "acuarelauser"
     }
   }
 }

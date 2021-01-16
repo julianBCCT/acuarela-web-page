@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "chats": {
       "collection": "chat",
@@ -71,6 +71,10 @@
       "collection": "rol",
       "via": "acuarelausers",
       "dominant": true
+    },
+    "events_invitation": {
+      "via": "acuarelausers_invited",
+      "collection": "event"
     }
   }
 }

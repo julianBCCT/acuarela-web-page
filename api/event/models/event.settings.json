@@ -11,23 +11,17 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "date": {
-      "type": "datetime"
-    },
     "title": {
       "type": "string"
     },
-    "description": {
+    "notes": {
       "type": "text"
     },
-    "creation_date": {
+    "start": {
       "type": "datetime"
     },
     "reminder": {
       "type": "datetime"
-    },
-    "guest": {
-      "type": "json"
     },
     "templates": {
       "collection": "template"
@@ -38,12 +32,22 @@
     "forms": {
       "collection": "form"
     },
-    "blogs": {
-      "collection": "blog"
-    },
     "daycare": {
-      "via": "events",
       "model": "daycare"
+    },
+    "end": {
+      "type": "datetime"
+    },
+    "acuarelausers_invited": {
+      "collection": "acuarelauser",
+      "via": "events_invitation",
+      "dominant": true
+    },
+    "acuarelauser": {
+      "model": "acuarelauser"
+    },
+    "priority": {
+      "type": "integer"
     }
   }
 }

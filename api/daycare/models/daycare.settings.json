@@ -43,10 +43,6 @@
     "review": {
       "type": "json"
     },
-    "events": {
-      "collection": "event",
-      "via": "daycare"
-    },
     "forms": {
       "collection": "form",
       "via": "daycare"
@@ -64,8 +60,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "acuarelauser"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",

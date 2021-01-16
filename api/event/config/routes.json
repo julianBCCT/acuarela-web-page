@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/events/filter/:start&:end&:daycare&:priority",
+      "handler": "event.findFilter",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

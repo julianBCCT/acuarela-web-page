@@ -1,12 +1,12 @@
 require('events').EventEmitter.defaultMaxListeners = 20;
 
 module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
+  host: env('HOST', 'localhost'),
   port: env.int('PORT', 1337),
-  url: 'http://198.211.114.51/api',
+  url: 'http://localhost:1337/',
   admin: {
     auth: {
-      url: 'http://198.211.114.51/dashboard',
+      url: 'http://localhost:1337/dashboard',
       secret: env('ADMIN_JWT_SECRET', '06b77711f7a956f6477095a04d7034de'),
     },
   },

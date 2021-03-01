@@ -1,0 +1,124 @@
+{
+  "kind": "collectionType",
+  "collectionName": "children",
+  "info": {
+    "name": "children",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "birthdate": {
+      "type": "date"
+    },
+    "inscription_date": {
+      "type": "datetime"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "rh": {
+      "type": "string"
+    },
+    "live_with": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "group": {
+      "model": "group",
+      "via": "children"
+    },
+    "attitudes": {
+      "collection": "attitude",
+      "via": "children",
+      "dominant": true
+    },
+    "likings": {
+      "collection": "liking",
+      "via": "children",
+      "dominant": true
+    },
+    "others": {
+      "collection": "other",
+      "via": "children",
+      "dominant": true
+    },
+    "for_workings": {
+      "collection": "for-working",
+      "via": "children",
+      "dominant": true
+    },
+    "notes": {
+      "collection": "note",
+      "via": "children",
+      "dominant": true
+    },
+    "bags": {
+      "via": "children",
+      "collection": "bag",
+      "dominant": true
+    },
+    "records": {
+      "collection": "records",
+      "via": "children",
+      "dominant": true
+    },
+    "relationships": {
+      "collection": "relationship",
+      "via": "child"
+    },
+    "activities": {
+      "collection": "activities",
+      "via": "children"
+    },
+    "healthinfo": {
+      "model": "healthinfo",
+      "via": "child"
+    },
+    "bag_item": {
+      "type": "json"
+    },
+    "checkins": {
+      "via": "children",
+      "collection": "checkin"
+    },
+    "checkouts": {
+      "via": "children",
+      "collection": "checkout"
+    }
+  }
+}

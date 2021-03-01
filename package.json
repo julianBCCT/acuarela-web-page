@@ -10,6 +10,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -24,6 +25,7 @@
     "strapi-plugin-email": "3.4.0",
     "strapi-plugin-upload": "3.4.0",
     "strapi-plugin-users-permissions": "3.4.0",
+    "strapi-provider-email-sendgrid": "^3.5.0",
     "strapi-utils": "3.4.0"
   },
   "author": {
@@ -38,10 +40,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.17.0",
-    "eslint-config-prettier": "^7.1.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "prettier": "2.2.1"
+    "prettier": "^2.2.1"
   }
 }

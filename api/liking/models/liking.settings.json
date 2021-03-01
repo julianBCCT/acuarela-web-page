@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "likings",
+  "info": {
+    "name": "liking",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "children": {
+      "via": "likings",
+      "collection": "children"
+    }
+  }
+}

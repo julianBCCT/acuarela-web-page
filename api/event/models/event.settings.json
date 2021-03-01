@@ -39,8 +39,8 @@
       "type": "datetime"
     },
     "acuarelausers_invited": {
-      "collection": "acuarelauser",
       "via": "events_invitation",
+      "collection": "acuarelauser",
       "dominant": true
     },
     "acuarelauser": {

@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "checkins",
+  "info": {
+    "name": "checkin"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "datetime": {
+      "type": "datetime"
+    },
+    "children": {
+      "collection": "children",
+      "via": "checkins",
+      "dominant": true
+    },
+    "childminder": {
+      "collection": "acuarelauser",
+      "via": "childminderinuser",
+      "dominant": true
+    },
+    "guardian": {
+      "collection": "acuarelauser",
+      "via": "guardianinuser",
+      "dominant": true
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "groups",
+  "info": {
+    "name": "group",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "age_range": {
+      "type": "string"
+    },
+    "shift": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "via": "group",
+      "model": "acuarelauser"
+    },
+    "children": {
+      "via": "group",
+      "collection": "children"
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "activities": {
+      "via": "groups",
+      "collection": "activities"
+    }
+  }
+}

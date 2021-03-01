@@ -13,13 +13,18 @@ const sms = require('../../../helpers/sms_provider');
  */
 
 module.exports = {
+  // Valida el login de la aplicación.
   async login(ctx) {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
+
+    // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
     if (mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
+    // Valida la existencia de la entidad por email o por número.
     if (entity) {
+      // Valida que el usuario y la constraseña sean validos para el email o el número.
       let result = await bcrypt.compare(pass, entity.password);
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
@@ -35,27 +40,28 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+  // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
     const { mail, phone, roles, organization, token } = ctx.request.body;
 
     let respuesta = await verification.renew(token);
 
+    // Verifica que el Token sea valido.
     if (respuesta.ok) {
+
+      // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
       let entity;
       if (mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail });
       else entity = await strapi.services.acuarelauser.findOne({ phone });
-      
-      if (!entity) {
-        let rols;
-        if (roles) {
-          //const foundRoles = await strapi.services.rols.find({ _id: { $in: roles } });
-          rols = roles;
-        }
-        else {
-          //const role = await strapi.services.rols.findOne({ _id: "5ff790215d6f2e272cfd7396" });
-          rols = ['5ff790215d6f2e272cfd7396'];
-        }
 
+      // Si no existe un usuario con el email/número ingresado, procede a realizar el registro, si existe, notifica la existencia de la entidad.
+      if (!entity) {
+        // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
+        let rols;
+        if (roles) rols = roles;
+        else rols = ['5ff790215d6f2e272cfd7396'];
+
+        // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
         if (organization) {
           const foundDaycare = await strapi.services.daycare.findOne({ name: organization });
@@ -63,29 +69,32 @@ module.exports = {
         }
         else {
           const foundDaycare = await strapi.services.daycare.findOne({ _id: 'Bilingual' });
-          daycare = [foundDaycare._id];
+          daycare = foundDaycare._id;
         }
 
-        entity = await strapi.services.acuarelauser.create({ mail, phone, rols, daycare });
+        // Hace la creación del usuario ya sea por el email o por el número de telefono.
+        if (mail == '-1') entity = await strapi.services.acuarelauser.create({ phone, rols, daycare, status: false });
+        else entity = await strapi.services.acuarelauser.create({ mail, rols, daycare, status: false });
 
+        // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
         let redirect_token = await verification.new_token({ mail, phone });
         let link = '/get/invitation/' + redirect_token.token;
         let resultado;
-        if (mail != '-1') resultado = await sms.send_sms(phone, link);
-        else resultado = await email.send_email(mail, link, 'Acuarela Invitation');
+
+        // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
+        let phone_number = phone.id + '' + phone.number;
+        if (mail == '-1') resultado = await sms.send_sms(link, phone_number); //message, to, sender_id, callback_url
+        else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', link, 'Acuarela Invitation');
 
         resultado.senduri = redirect_token.token;
         return ctx.send(resultado);
-
       } else {
         let msg = 'User with this number already exits.';
         let code = 'p-2';
         if (mail != '-1') msg = 'User with this email already exits.', code = 'e-2';
         return ctx.send({ ok: false, status: 400, code, msg });
       }
-    } else {
-      return ctx.send({ respuesta });
-    }
+    } else { return ctx.send({ respuesta }); }
   },
   async invitation_register(ctx) {
     const { mail, pass, phone, name, token } = ctx.request.body;
@@ -111,14 +120,15 @@ module.exports = {
     let entity;
     if (mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
-    
+
     if (entity) {
       let code = await Math.round(Math.random() * (9999 - 1000) + 1000);
       let hashedcode = await bcrypt.hash('c' + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
-      if (mail != '-1') resultado = email.send_email(phone, code);
-      else resultado = sms.send_sms(mail, code, 'Verification Code');
+      let phone_number = phone.id + '' + phone.number;
+      if (mail == '-1') resultado = sms.send_sms(code, phone_number);
+      else resultado = email.send_email(mail, code, 'Verification Code');
 
       if (resultado.ok) resultado.code_token = code_token;
 
@@ -142,7 +152,7 @@ module.exports = {
     if (entity) {
       const hashedPassword = await bcrypt.hash(pass, 10);
       entity.password = hashedPassword;
-      entity = await strapi.services.acuarelauser.update( { _id: entity._id }, entity );
+      entity = await strapi.services.acuarelauser.update({ _id: entity._id }, entity);
       return ctx.send({ ok: true, status: 200, code: 0, msg: 'Password changed successfully.' });
     } else {
       let msg = 'Invalid Number.';
@@ -173,7 +183,7 @@ module.exports = {
       const token = await jwt.sign({ id: entity._id }, process.env.SECRET, {
         expiresIn: 259200, // tres dias
       });
-      return ctx.send({token, status: 'User Created', user: { mail: entity.mail, id: entity._id }, ok: true, });
+      return ctx.send({ status: 'User Created', user: { mail: entity.mail, id: entity._id }, ok: true });
     }
   },
   async get_invitation(ctx) {

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/for-workings",
+      "handler": "for-working.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/for-workings/count",
+      "handler": "for-working.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/for-workings/:id",
+      "handler": "for-working.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/for-workings",
+      "handler": "for-working.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/for-workings/:id",
+      "handler": "for-working.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/for-workings/:id",
+      "handler": "for-working.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

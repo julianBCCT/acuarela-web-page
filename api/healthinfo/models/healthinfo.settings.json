@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "healthinfos",
+  "info": {
+    "name": "Healthinfo",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "entity": {
+      "type": "string"
+    },
+    "pediatrician": {
+      "type": "string"
+    },
+    "pediatrician_number": {
+      "type": "biginteger"
+    },
+    "background": {
+      "type": "text"
+    },
+    "emergency_contact": {
+      "type": "string"
+    },
+    "emergency_number": {
+      "type": "biginteger"
+    },
+    "emergency_relationship": {
+      "type": "string"
+    },
+    "vacination": {
+      "type": "json"
+    },
+    "accidents": {
+      "type": "json"
+    },
+    "physical_health": {
+      "type": "json"
+    },
+    "emotional_health": {
+      "type": "json"
+    },
+    "suspected_abuse": {
+      "type": "json"
+    },
+    "child": {
+      "via": "healthinfo",
+      "model": "children"
+    }
+  }
+}

@@ -70,9 +70,6 @@
     "supporttickets": {
       "collection": "supportticket",
       "via": "daycare"
-    },
-    "daycare_id": {
-      "type": "string"
     }
   }
 }

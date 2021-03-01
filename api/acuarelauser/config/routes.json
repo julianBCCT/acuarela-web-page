@@ -25,14 +25,6 @@
       }
     },
     {
-      "method": "POST",
-      "path": "/acuarelausers",
-      "handler": "acuarelauser.create",
-      "config": {
-        "policies": []
-      }
-    },
-    {
       "method": "PUT",
       "path": "/acuarelausers/:id",
       "handler": "acuarelauser.update",

@@ -73,8 +73,44 @@
       "dominant": true
     },
     "events_invitation": {
-      "via": "acuarelausers_invited",
-      "collection": "event"
+      "collection": "event",
+      "via": "acuarelausers_invited"
+    },
+    "group": {
+      "model": "group",
+      "via": "acuarelauser"
+    },
+    "relationships": {
+      "collection": "relationship",
+      "via": "acuarelauser"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "experience": {
+      "type": "json"
+    },
+    "study": {
+      "type": "string"
+    },
+    "hability": {
+      "type": "string"
+    },
+    "childminderinuser": {
+      "via": "childminder",
+      "collection": "checkin"
+    },
+    "guardianinuser": {
+      "via": "guardian",
+      "collection": "checkin"
+    },
+    "childminderoutuser": {
+      "via": "childminder",
+      "collection": "checkout"
+    },
+    "guardianoutuser": {
+      "via": "guardian",
+      "collection": "checkout"
     }
   }
 }

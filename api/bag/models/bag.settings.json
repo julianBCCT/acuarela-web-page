@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bags",
+  "info": {
+    "name": "bag",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "children": {
+      "collection": "children",
+      "via": "bags"
+    }
+  }
+}

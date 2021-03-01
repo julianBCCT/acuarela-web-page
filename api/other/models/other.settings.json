@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "others",
+  "info": {
+    "name": "other",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "children": {
+      "via": "others",
+      "collection": "children"
+    }
+  }
+}

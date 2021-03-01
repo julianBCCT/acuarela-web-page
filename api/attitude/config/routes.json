@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/attitudes",
+      "handler": "attitude.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/attitudes/count",
+      "handler": "attitude.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/attitudes/:id",
+      "handler": "attitude.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/attitudes",
+      "handler": "attitude.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/attitudes/:id",
+      "handler": "attitude.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/attitudes/:id",
+      "handler": "attitude.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

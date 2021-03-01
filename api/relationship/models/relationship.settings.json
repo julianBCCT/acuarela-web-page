@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "relationships",
+  "info": {
+    "name": "relationship",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "relation": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "via": "relationships",
+      "model": "acuarelauser"
+    },
+    "child": {
+      "via": "relationships",
+      "model": "children"
+    }
+  }
+}

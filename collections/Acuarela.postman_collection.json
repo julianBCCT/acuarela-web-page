@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "d8178fb6-1309-412f-a55c-7db85cccdc97",
+		"name": "Acuarela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mail\": \"kelvin@mail.com\",\r\n    \"pass\": \"s123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/acuarelausers/login",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"acuarelausers",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Children",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1337/children",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Children",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1337/children/601d51416a684e0efc49bf1c",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"601d51416a684e0efc49bf1c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Children",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyMjk2OTQ4LCJleHAiOjE2MTI1NTYxNDh9.x-fi3nnOser-KxqdoBxpaAe73cP9MpGJGVFiqOymktI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"birthdate\": \"2020-01-16\",\r\n    \"name\": \"Pepe\",\r\n    \"lastname\": \"Perez\",\r\n    \"address\": \"cll falsa 123\",\r\n    \"city\": \"Bogota\",\r\n    \"country\": \"colombia\",\r\n    \"weight\": 20.0,\r\n    \"height\": 130.0,\r\n    \"rh\":\"O+\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Children",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyMjk2OTQ4LCJleHAiOjE2MTI1NTYxNDh9.x-fi3nnOser-KxqdoBxpaAe73cP9MpGJGVFiqOymktI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"live_with\":\"Ambos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/6019c44aa07fcc2d84ff5bfd",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Groups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Group",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"acuarelauser\":\"601d76e11a1dbb30eca480d8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups/6019d3925ff34c45280e9e7a",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups",
+						"6019d3925ff34c45280e9e7a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxMzY2ODI0MiwiZXhwIjoxNjEzOTI3NDQyfQ.a7SKjgTrNhgK4XROwsBiDyZd0JtJ2vQICnNhEAsb79w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Acuarela\",\r\n    \"age_range\":\"5-8\",\r\n    \"shift\":\"8am-2pm\",\r\n    \"acuarelauser\":\"6019b2e40bb170257c6b7f7c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Groups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyMjk2OTQ4LCJleHAiOjE2MTI1NTYxNDh9.x-fi3nnOser-KxqdoBxpaAe73cP9MpGJGVFiqOymktI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Guarderia\",\r\n    \"age_range\":\"5-8\",\r\n    \"shift\":\"8am-12m\",\r\n    \"acuarelauser\":\"6019b2e40bb170257c6b7f7c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Activity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"almuerzo\",\r\n    \"rate\":2,\r\n    \"groups\":[\"6019d3925ff34c45280e9e7a\"],\r\n    \"children\":[\"6019c44aa07fcc2d84ff5bfd\",\"601d51416a684e0efc49bf1c\"]   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups/activity",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Add Guardian",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mail\":\"kelvin.estupinan97@gmail.com\",\r\n    \"roles\":[\"5ff7900c5d6f2e272cfd7395\"],\r\n    \"organization\":\"5fe360ebe8701a6428622b0f\",\r\n    \"relation\":\"Acudiente\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/invitation/6019c44aa07fcc2d84ff5bfd",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"invitation",
+						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Child Parents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1337/children/parents/6019c44aa07fcc2d84ff5bfd",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"parents",
+						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Other Child",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyODg3MTUwLCJleHAiOjE2MTMxNDYzNTB9.Uz6WpL4zDi5ZlbJokat12-PDwFRk-0_vAQUr28rwtHc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"others\":[\"6019c7155796d543bcf3de77\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/other/601d51416a684e0efc49bf1c",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"other",
+						"601d51416a684e0efc49bf1c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Attitud Child",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attitudes\":[\"6019cdfb125f98222c70609d\",\"6019c6fa5796d543bcf3de76\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/attitude/601d51416a684e0efc49bf1c",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"attitude",
+						"601d51416a684e0efc49bf1c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups/601bf403673e84285cb12d7a",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups",
+						"601bf403673e84285cb12d7a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Guardian Group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups-guardian",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups-guardian"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Children Group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/groups-child",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"groups-child"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Heath Child",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"entity\":\"Mi EPS\",\r\n    \"pediatrician\":\"Pedro\",\r\n    \"pediatrician_number\":123456,\r\n    \"background\":\"Un background del niño.\",\r\n    \"vacination\":{},\r\n    \"accidents\":{}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/health/6019c44aa07fcc2d84ff5bfd",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"health",
+						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Bag Child",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bag_item\": [\r\n        {\r\n            \"id\": \"6034e7cbdc399a122c9f5dfe\",\r\n            \"quantity\": \"5\",\r\n            \"minimum:\": \"2\",\r\n            \"active\": \"true\"\r\n        },\r\n        {\r\n            \"id\": \"6034e7dfdc399a122c9f5dff\",\r\n            \"quantity\": \"7\",\r\n            \"minimum:\": \"3\",\r\n            \"active\": \"true\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/children/bag/6019c44aa07fcc2d84ff5bfd",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"children",
+						"bag",
+						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

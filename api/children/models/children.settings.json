@@ -88,13 +88,13 @@
       "dominant": true
     },
     "bags": {
-      "via": "children",
       "collection": "bag",
+      "via": "children",
       "dominant": true
     },
     "records": {
-      "collection": "records",
       "via": "children",
+      "collection": "records",
       "dominant": true
     },
     "relationships": {
@@ -113,12 +113,19 @@
       "type": "json"
     },
     "checkins": {
-      "via": "children",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "children"
     },
     "checkouts": {
-      "via": "children",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "children"
+    },
+    "indaycare": {
+      "type": "boolean"
+    },
+    "movements": {
+      "via": "child",
+      "collection": "movement"
     }
   }
 }

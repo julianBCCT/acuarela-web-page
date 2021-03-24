@@ -42,7 +42,7 @@ module.exports = {
   },
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
-    const { mail, phone, roles, organization, token } = ctx.request.body;
+    const { mail, phone, roles, organization, token } = ctx.request.body;     // El token debería ir en el header.
 
     let respuesta = await verification.renew(token);
 
@@ -78,7 +78,7 @@ module.exports = {
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
         let redirect_token = await verification.new_token({ mail, phone });
-        let link = '/get/invitation/' + redirect_token.token;
+        let link = 'example.com/get/invitation/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
@@ -96,18 +96,23 @@ module.exports = {
       }
     } else { return ctx.send({ respuesta }); }
   },
+  // Se valida la invitacion y se completa el registro del usuario.
   async invitation_register(ctx) {
     const { mail, pass, phone, name, token } = ctx.request.body;
 
     const { ok, status, code, user } = await verification.get_data(token);
 
-    if (!ok || (mail != user.mail && phone != user.phone)) {
-      return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
-    } else {
+    if (!ok || (mail != user.mail && phone != user.phone)) return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+    else {
       const hashedPassword = await bcrypt.hash(pass, 10);
       let entity = await strapi.services.acuarelauser.findOne({ _id: user.id });
+
+      if (!entity) return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+
       entity.name = name;
       entity.password = hashedPassword;
+      entity.status = true;
+      // El registro del usuario es marcado como activo y se agrega la contraseña y el nombre.
       entity = await strapi.services.acuarelauser.update({ _id: entity.id }, entity);
       let respuesta = await verification.generate_token(entity);
       if (respuesta.ok) respuesta.status = 201, respuesta.msg = 'User Created.';
@@ -115,6 +120,7 @@ module.exports = {
       return ctx.send(respuesta);
     }
   },
+  // Se genera un código que es enviado como correo o como SMS al usuario para que pueda recuperar su contraseña.
   async recover_pass(ctx) {
     const { mail, phone } = ctx.request.body;
     let entity;
@@ -122,7 +128,9 @@ module.exports = {
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
     if (entity) {
+      // genera un código de cuatro digitos.
       let code = await Math.round(Math.random() * (9999 - 1000) + 1000);
+      // Se le agrega al codigo internamente una 'c' para cumplir con el formato de bcrypt.
       let hashedcode = await bcrypt.hash('c' + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
@@ -130,9 +138,11 @@ module.exports = {
       if (mail == '-1') resultado = sms.send_sms(code, phone_number);
       else resultado = email.send_email(mail, code, 'Verification Code');
 
+      // Si el código se envio exitosamente al usuario, se envia al front el código cifrado en el token.
       if (resultado.ok) resultado.code_token = code_token;
 
-      resultado.sendcode = code;
+      // Se envia el código al front
+      // resultado.sendcode = code;
 
       return ctx.send(resultado);
 
@@ -143,6 +153,7 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+  // Se realiza el cambio de contraseña del usuario.
   async change_pass(ctx) {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
@@ -150,6 +161,7 @@ module.exports = {
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
     if (entity) {
+      // Se cifra la contraseña del usuario para ser almacenada en la base de datos.
       const hashedPassword = await bcrypt.hash(pass, 10);
       entity.password = hashedPassword;
       entity = await strapi.services.acuarelauser.update({ _id: entity._id }, entity);
@@ -161,11 +173,14 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+  // Compara el código generado que se almacena en el token con el código ingresado por el usuario.
   async check_code(ctx) {
     const { token, code } = ctx.request.body;
     let result = await verification.verify_code(token, code);
     return ctx.send(result);
   },
+
+  // Registro de pruebas, será eliminado posteriormente.
   async register(ctx) {
     const { mail, pass } = ctx.request.body;
     let entity = await strapi.services.acuarelauser.findOne({ mail });
@@ -186,6 +201,7 @@ module.exports = {
       return ctx.send({ status: 'User Created', user: { mail: entity.mail, id: entity._id }, ok: true });
     }
   },
+  // Revisa que el token de la invitación sea valido.
   async get_invitation(ctx) {
     const { token } = ctx.request.body;
     let respuesta = await verification.get_data(token);

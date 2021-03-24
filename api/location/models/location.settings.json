@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "bags",
+  "collectionName": "locations",
   "info": {
-    "name": "bag",
-    "description": ""
+    "name": "location"
   },
   "options": {
     "increments": true,
@@ -11,12 +10,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
+    "country": {
       "type": "string"
     },
-    "children": {
-      "via": "bags",
-      "collection": "children"
+    "city": {
+      "type": "json"
     }
   }
 }

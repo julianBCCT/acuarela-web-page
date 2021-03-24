@@ -14,18 +14,18 @@
       "type": "datetime"
     },
     "children": {
-      "collection": "children",
       "via": "checkins",
+      "collection": "children",
       "dominant": true
     },
     "childminder": {
-      "collection": "acuarelauser",
       "via": "childminderinuser",
+      "collection": "acuarelauser",
       "dominant": true
     },
     "guardian": {
-      "collection": "acuarelauser",
       "via": "guardianinuser",
+      "collection": "acuarelauser",
       "dominant": true
     }
   }

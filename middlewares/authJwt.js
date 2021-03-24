@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+// Revisa si un código introducido por el usuario corresponde al cifrado dentro del token.
 async function verify_code(token, code) {
   if (!token) return { ok: false, status: 403, code:3, msg: 'No token provided.' };
 
   try {
     const { hashedcode } = await jwt.verify(token, process.env.SECRET);
+    // Por restricción de Bcrypt del codigo debe tener almenos una letra ('c') y numeros ('code').
     if (await bcrypt.compare('c' + code, hashedcode)) return { ok: true, status: 200, code: 0, msg: 'Correct code.' };
     else return {ok: false, status: 400, code: 4, msg: 'Wrong code.'};
   } catch (error) {
@@ -13,6 +15,7 @@ async function verify_code(token, code) {
   }
 }
 
+// Al realizarse una petición REST se verifica eñ token enviado y de ser correcto se renueva
 async function renew(token) {
   if (!token) return {ok: false, status: 403, code: 3, msg: 'No token provided.'};
 
@@ -26,10 +29,11 @@ async function renew(token) {
     respuesta.msg = 'Valid Token.';
     return respuesta;
   } catch (error) {
-    return {ok: false, status: 401, code: 3, msg: 'Invalid Token!' };
+    return { ok: false, status: 401, code: 3, msg: 'Invalid Token!' };
   }
 }
 
+// Se encarga de generar un token con el número de telefono o con el correo con una expiración de dos días.
 async function generate_token(entity) {
   let phone = '-1';
   if (entity.phone) phone = entity.phone;
@@ -49,6 +53,7 @@ async function generate_token(entity) {
   return { ok: true, status: 200, code: 0, msg: 'User Logged.', user };
 }
 
+// Se encarga de generar un token con la información contenida en some con una expiración de una hora.
 async function new_token(some) {
   let err, token = await jwt.sign(
     some,
@@ -61,6 +66,7 @@ async function new_token(some) {
   return { ok: true, status: 200, code: 0, msg: 'User Logged.', token };
 }
 
+// Obtiene y valida la información del token.
 async function get_data(token) {
   if (!token) return {ok: false, status: 403, code: 3, msg: 'No token provided.'};
 
@@ -77,7 +83,7 @@ async function get_data(token) {
     let user = { id, mail, phone };
     return { ok: true, status: 200, code: 0, msg: 'Succesfully.', user };
   } catch (error) {
-    return {ok: false, status: 401, code: 3, msg: 'Invalid Token!' };
+    return { ok: false, status: 401, code: 3, msg: 'Invalid Token!' };
   }
 }
 

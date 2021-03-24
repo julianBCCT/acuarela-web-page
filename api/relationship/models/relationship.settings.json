@@ -15,12 +15,15 @@
       "type": "string"
     },
     "acuarelauser": {
-      "via": "relationships",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "relationships"
     },
     "child": {
       "via": "relationships",
       "model": "children"
+    },
+    "relationship": {
+      "type": "string"
     }
   }
 }

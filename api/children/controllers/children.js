@@ -13,6 +13,7 @@ const sms = require('../../../helpers/sms_provider');
  */
 
 module.exports = {
+  // Retorna todos los niños activos del daycare
   async find(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);
@@ -20,7 +21,7 @@ module.exports = {
     if (validToken.ok) {
       let query = { status: true };
 
-      let entity = await strapi.query('children').model.find(query);
+      let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate']);
 
       if (!entity)
         return ctx.send({
@@ -106,7 +107,7 @@ module.exports = {
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
         let redirect_token = await verification.new_token({ mail, phone });
-        let link = '/get/invitation/' + redirect_token.token;
+        let link = 'example.com/get/invitation/' + redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
@@ -140,6 +141,7 @@ module.exports = {
       return ctx.send({ respuesta });
     }
   },
+  // Datos la información relacionada de un niño en específico.
   async findOne(ctx) {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
@@ -150,7 +152,22 @@ module.exports = {
       let query = { status: true };
       query._id = { $eq: id };
 
-      let entity = await strapi.query('children').find(query);
+      // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
+      let entity = await strapi.query('children')
+        .model.find(query)
+        .populate({path: 'relationships', populate: {path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo']}})
+        .populate({path: 'group', populate: {path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo']}})
+        .populate('attitudes', ['name', 'icon'])
+        .populate('likings', ['name', 'icon'])
+        .populate('others', ['name', 'icon'])
+        .populate('for_workings', ['name', 'icon', 'date'])
+        .populate('notes', ['name', 'description'])
+        .populate('bags', ['name'])
+        .populate('records', ['name', 'icon', 'file'])
+        .populate('healthinfo')
+        .populate('movements');
+        //.populate('activities');
+      
       if (!entity)
         return ctx.send({
           ok: false,
@@ -165,6 +182,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Retorna los familiares de un niño en especifico.
   async find_parents(ctx) {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
@@ -178,7 +196,7 @@ module.exports = {
       let entity = await strapi
         .query('relationship')
         .model.find(query)
-        .populate('acuarelauser', 'name' /*, 'photo'*/);
+        .populate('acuarelauser', ['name', 'photo']);
       if (!entity)
         return ctx.send({
           ok: false,
@@ -193,12 +211,15 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Crea un nuevo niño.
   async create(ctx) {
     const { token } = ctx.request.header;
     const child = ctx.request.body;
 
+    // Revisa que el token sea valido
     let validToken = await verification.renew(token);
 
+    // Valida los campos ingresados.
     if (validToken.ok) {
       if (!child.name)
         return ctx.send({
@@ -235,6 +256,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Actualiza un niño.
   async update(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -252,6 +274,7 @@ module.exports = {
           msg: 'Child not found.',
         });
 
+      /*
       if ('5ff78feb5d6f2e272cfd7393' != validToken.user.id.toString())
         return ctx.send({
           ok: false,
@@ -259,6 +282,7 @@ module.exports = {
           code: 5,
           msg: 'You do not have privileges to perform this action.',
         });
+        */
       else {
         await strapi.services.children.update({ _id: id }, child);
         return ctx.send({
@@ -272,6 +296,7 @@ module.exports = {
 
     } else return ctx.send(validToken);
   },
+  // Elimina un niño -> cambia su estado a inactivo.
   async delete(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -287,7 +312,8 @@ module.exports = {
           code: 5,
           msg: 'Child not found.',
         });
-
+      
+      /*
       if ('5ff78feb5d6f2e272cfd7393' != validToken.user.id.toString())
         return ctx.send({
           ok: false,
@@ -295,6 +321,7 @@ module.exports = {
           code: 5,
           msg: 'You do not have privileges to perform this action.',
         });
+        */
       else {
         entity.status = false;
         await strapi.services.children.update({ _id: id }, entity);

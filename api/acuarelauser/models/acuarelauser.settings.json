@@ -81,8 +81,8 @@
       "via": "acuarelauser"
     },
     "relationships": {
-      "collection": "relationship",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "collection": "relationship"
     },
     "birthdate": {
       "type": "date"
@@ -97,20 +97,39 @@
       "type": "string"
     },
     "childminderinuser": {
-      "via": "childminder",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "childminder"
     },
     "guardianinuser": {
-      "via": "guardian",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "guardian"
     },
     "childminderoutuser": {
-      "via": "childminder",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "childminder"
     },
     "guardianoutuser": {
-      "via": "guardian",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "guardian"
+    },
+    "certificate": {
+      "type": "json"
+    },
+    "addressee": {
+      "via": "sender",
+      "collection": "addressee"
+    },
+    "addressees": {
+      "via": "acuarelausers",
+      "collection": "addressee"
+    },
+    "movements": {
+      "via": "acuarelauser",
+      "collection": "movement"
+    },
+    "posts": {
+      "via": "acuarelauser",
+      "collection": "post"
     }
   }
 }

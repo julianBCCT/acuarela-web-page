@@ -71,9 +71,9 @@ module.exports = {
       query._id = { $eq: id };
 
       let entity = await strapi.query('group').model.find(query)
-        .populate('children', 'name')
+        .populate('children', ['name', 'lastname', 'photo'])
         .populate('activities')
-        .populate('acuarelauser', 'name');
+        .populate('acuarelauser', ['name', 'lastname', 'photo']);
       if (!entity) return ctx.send({ ok: false, status: 404, code: 5, msg: 'Group not found.' });
       else {
         validToken.msg = 'Query completed successfully!';

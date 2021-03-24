@@ -8,13 +8,16 @@ const verification = require('../../../middlewares/authJwt');
  */
 
 module.exports = {
+  // Crea un nuevo registro de checkin.
   async create(ctx) {
     const { token } = ctx.request.header;
     const checkin = ctx.request.body;
     
+    // Valida el token.
     let validToken = await verification.renew(token);
     
     if (validToken.ok) {
+      // Valida que los datos hayan sido ingresados.
       if (!checkin.children)
         return ctx.send({
           ok: false,
@@ -44,7 +47,13 @@ module.exports = {
           msg: 'The check-in datetime is required.',
         });
       else {
+        // Si todos los datos son correctos se crea el registro de ingreso.
         await strapi.services.checkin.create(checkin);
+
+        //En el registro del niño se marca el atributo indaycare como true.
+        const indaycare = true;
+        await strapi.services.children.update({ _id: checkin.children }, indaycare);
+
         return ctx.send({
           ok: true,
           status: 200,
@@ -55,6 +64,8 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+
+  // Retorna todos los checkin realizados el día actual.
   async find_today(ctx) {
     const { token } = ctx.request.header;
 
@@ -66,11 +77,13 @@ module.exports = {
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var yyyy = today.getFullYear();
 
+      // Obtiene la fecha actual.
       today = yyyy + '-' + mm + '-' + dd;
 
       let query = {};
       query.datetime = { $gte: today };
 
+      // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('checkin')
         .model.find(query)

@@ -1,5 +1,6 @@
 const moment = require('moment');
 
+// Valida si el campo tiene el formatado de una fecha valida.
 const isDate = (value) => {
   if (!value) return false;
 

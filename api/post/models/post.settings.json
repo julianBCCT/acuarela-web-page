@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "post"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "posts"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "reactions": {
+      "type": "json"
+    },
+    "comments": {
+      "type": "json"
+    }
+  }
+}

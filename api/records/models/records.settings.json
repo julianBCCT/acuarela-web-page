@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "records",
   "info": {
-    "name": "records"
+    "name": "records",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -31,8 +32,19 @@
       "type": "date"
     },
     "children": {
-      "via": "records",
-      "collection": "children"
+      "collection": "children",
+      "via": "records"
+    },
+    "file": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

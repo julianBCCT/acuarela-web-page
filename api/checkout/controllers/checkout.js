@@ -8,13 +8,16 @@ const verification = require('../../../middlewares/authJwt');
  */
 
 module.exports = {
+  // Crea un nuevo registro de checkout.
   async create(ctx) {
     const { token } = ctx.request.header;
     const checkout = ctx.request.body;
     
+    // Valida el token.
     let validToken = await verification.renew(token);
     
     if (validToken.ok) {
+      // Valida que los datos hayan sido ingresados.
       if (!checkout.children)
         return ctx.send({
           ok: false,
@@ -49,12 +52,14 @@ module.exports = {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
+        // Obtiene la fecha actual.
         today = yyyy + '-' + mm + '-' + dd;
 
         let query = {};
         query.datetime = { $gte: today };
         query.children = { $eq: checkout.children };
 
+        // Revisa que en el día actual exista un checkin para el niño.
         let entity = await strapi
           .query('checkin')
           .model.find(query);
@@ -67,7 +72,13 @@ module.exports = {
             msg: 'Something wrong with the check-in.',
           });
         else {
+          // Si todos los datos son correctos se crea el registro de salida.
           await strapi.services.checkout.create(checkout);
+
+          //En el registro del niño se marca el atributo indaycare como false.
+          const indaycare = false;
+          await strapi.services.children.update({ _id: checkout.children }, indaycare);
+
           return ctx.send({
             ok: true,
             status: 200,
@@ -79,6 +90,8 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+
+  // Retorna todos los checkin realizados el día actual.
   async find_today(ctx) {
     const { token } = ctx.request.header;
 
@@ -90,11 +103,13 @@ module.exports = {
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var yyyy = today.getFullYear();
 
+      // Obtiene la fecha actual.
       today = yyyy + '-' + mm + '-' + dd;
 
       let query = {};
       query.datetime = { $gte: today };
 
+      // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('checkout')
         .model.find(query)

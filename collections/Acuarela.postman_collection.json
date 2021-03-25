@@ -40,7 +40,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNTEzNjIxNiwiZXhwIjoxNjE1Mzk1NDE2fQ.O83QnVioCB_hPzdJVizObkmt9_CedWzgemtppXg7Y9o",
 						"type": "text"
 					}
 				],
@@ -64,19 +64,19 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNTEzNjIxNiwiZXhwIjoxNjE1Mzk1NDE2fQ.O83QnVioCB_hPzdJVizObkmt9_CedWzgemtppXg7Y9o",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:1337/children/601d51416a684e0efc49bf1c",
+					"raw": "localhost:1337/children/6019c44aa07fcc2d84ff5bfd",
 					"host": [
 						"localhost"
 					],
 					"port": "1337",
 					"path": [
 						"children",
-						"601d51416a684e0efc49bf1c"
+						"6019c44aa07fcc2d84ff5bfd"
 					]
 				}
 			},
@@ -122,7 +122,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyMjk2OTQ4LCJleHAiOjE2MTI1NTYxNDh9.x-fi3nnOser-KxqdoBxpaAe73cP9MpGJGVFiqOymktI",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNTEzNjIxNiwiZXhwIjoxNjE1Mzk1NDE2fQ.O83QnVioCB_hPzdJVizObkmt9_CedWzgemtppXg7Y9o",
 						"type": "text"
 					}
 				],
@@ -159,7 +159,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -253,42 +253,6 @@
 			"response": []
 		},
 		{
-			"name": "Get All Groups",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEyMjk2OTQ4LCJleHAiOjE2MTI1NTYxNDh9.x-fi3nnOser-KxqdoBxpaAe73cP9MpGJGVFiqOymktI",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Guarderia\",\r\n    \"age_range\":\"5-8\",\r\n    \"shift\":\"8am-12m\",\r\n    \"acuarelauser\":\"6019b2e40bb170257c6b7f7c\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:1337/groups",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"groups"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Post Activity",
 			"request": {
 				"method": "POST",
@@ -301,7 +265,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"almuerzo\",\r\n    \"rate\":2,\r\n    \"groups\":[\"6019d3925ff34c45280e9e7a\"],\r\n    \"children\":[\"6019c44aa07fcc2d84ff5bfd\",\"601d51416a684e0efc49bf1c\"]   \r\n}",
+					"raw": "{\r\n    \"name\": \"almuerzo\",\r\n    \"rate\":2,\r\n    \"groups\":[\"6019d3925ff34c45280e9e7a\"],\r\n    \"children\":[\"6019c44aa07fcc2d84ff5bfd\",\"601d51416a684e0efc49bf1c\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -329,13 +293,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU3ODI3NCwiZXhwIjoxNjE0ODM3NDc0fQ.wHzXJt95v5y81_TSzC78-vNOq-MwANqdx8ZKvou859c",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mail\":\"kelvin.estupinan97@gmail.com\",\r\n    \"roles\":[\"5ff7900c5d6f2e272cfd7395\"],\r\n    \"organization\":\"5fe360ebe8701a6428622b0f\",\r\n    \"relation\":\"Acudiente\"\r\n\r\n}",
+					"raw": "{\r\n    \"phone\": { \"id\":\"+57\", \"number\":\"3136126744\"},\r\n    \"mail\": \"-1\",\r\n    \"roles\":[\"5ff7900c5d6f2e272cfd7395\"],\r\n    \"organization\":\"5fe360ebe8701a6428622b0f\",\r\n    \"relation\":\"Acudiente\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -364,7 +328,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -463,7 +427,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -477,14 +441,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:1337/groups/601bf403673e84285cb12d7a",
+					"raw": "localhost:1337/groups/6019d3925ff34c45280e9e7a",
 					"host": [
 						"localhost"
 					],
 					"port": "1337",
 					"path": [
 						"groups",
-						"601bf403673e84285cb12d7a"
+						"6019d3925ff34c45280e9e7a"
 					]
 				}
 			},
@@ -500,7 +464,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -536,7 +500,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -569,7 +533,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
 						"type": "text"
 					}
 				],
@@ -627,6 +591,124 @@
 						"children",
 						"bag",
 						"6019c44aa07fcc2d84ff5bfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Today Checkin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1337/today/checkins/",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"today",
+						"checkins",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Checkin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"children\": [\"601d51416a684e0efc49bf1c\"],\r\n    \"acudiente\":[\"5ffd9131c1fae2c5112002b3\"],\r\n    \"datetime\":\"2021-03-01T18:00:00.000+00:00\",\r\n    \"token\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/checkins",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"checkins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Today Checkout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1337/today/checkouts/",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"today",
+						"checkouts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Checkout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"children\": [\"601d51416a684e0efc49bf1c\"],\r\n    \"acudiente\":[\"5ffd9131c1fae2c5112002b3\"],\r\n    \"datetime\":\"2021-03-01T18:00:00.000+00:00\",\r\n    \"token\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/checkouts",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"checkouts"
 					]
 				}
 			},

@@ -15,6 +15,7 @@ module.exports = {
     
     // Valida el token.
     let validToken = await verification.renew(token);
+    //let bodyToken = await verification.get_data(checkin.token);
     
     if (validToken.ok) {
       // Valida que los datos hayan sido ingresados.
@@ -25,14 +26,14 @@ module.exports = {
           code: 5,
           msg: 'The childs id is required.',
         });
-      if (!checkin.childminder)
+      if (!checkin.asistente)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
           msg: 'The assistant is required.',
         });
-      if (!checkin.guardian)
+      if (!checkin.acudiente)
         return ctx.send({
           ok: false,
           status: 400,

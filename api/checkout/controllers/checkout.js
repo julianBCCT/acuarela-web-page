@@ -25,14 +25,14 @@ module.exports = {
           code: 5,
           msg: 'The childs id is required.',
         });
-      if (!checkout.childminder)
+      if (!checkout.asistente)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
           msg: 'The assistant is required.',
         });
-      if (!checkout.guardian)
+      if (!checkout.acudiente)
         return ctx.send({
           ok: false,
           status: 400,

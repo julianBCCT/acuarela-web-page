@@ -77,8 +77,8 @@
       "via": "acuarelausers_invited"
     },
     "group": {
-      "model": "group",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "model": "group"
     },
     "relationships": {
       "via": "acuarelauser",

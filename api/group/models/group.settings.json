@@ -21,19 +21,22 @@
       "type": "string"
     },
     "acuarelauser": {
-      "via": "group",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "group"
     },
     "children": {
-      "via": "group",
-      "collection": "children"
+      "collection": "children",
+      "via": "group"
     },
     "status": {
       "type": "boolean"
     },
     "activities": {
-      "via": "groups",
-      "collection": "activities"
+      "collection": "activities",
+      "via": "groups"
+    },
+    "maxmembers": {
+      "type": "integer"
     }
   }
 }

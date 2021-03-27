@@ -37,8 +37,8 @@
       "dominant": true
     },
     "groups": {
-      "collection": "group",
       "via": "activities",
+      "collection": "group",
       "dominant": true
     }
   }

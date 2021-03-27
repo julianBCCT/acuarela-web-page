@@ -19,7 +19,8 @@ module.exports = {
     if (validToken.ok) {
 
       let entity = await strapi.query('group').model.find()
-        .populate('activities');
+        .populate('activities')
+        .populate('acuarelauser', ['name', 'lastname', 'photo']);
 
       if (!entity) return ctx.send({ ok: true, status: 200, code: 0, msg: 'Groups not found.' });
       else {
@@ -34,7 +35,8 @@ module.exports = {
     let validToken = await verification.renew(token);
     if (validToken.ok) {
       let entity = await strapi.query('group').model.find()
-        .populate('children', 'name');
+        .populate('children', ['name', 'lastname', 'photo'])
+        .populate('acuarelauser', ['name', 'lastname', 'photo']);
 
       if (!entity) return ctx.send({ ok: true, status: 200, code: 0, msg: 'Groups not found.' });
       else {
@@ -50,7 +52,7 @@ module.exports = {
     if (validToken.ok) {
       //let entity = await strapi.query('acuarelauser').model.find();
       let entity = await strapi.query('group').model.find()//{}, ['acuarelauser', 'acuarelauser.name']);
-        .populate('acuarelauser', 'name');
+        .populate('acuarelauser', ['name', 'lastname', 'photo']);
 
       if (!entity) return ctx.send({ ok: true, status: 200, code: 0, msg: 'Groups not found.' });
       else {

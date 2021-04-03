@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/assistant/:id",
+      "handler": "acuarelauser.findAssistant",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/acuarelausers/:id",
       "handler": "acuarelauser.update",

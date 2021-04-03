@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "checkins",
   "info": {
-    "name": "checkin"
+    "name": "checkin",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,18 +15,18 @@
       "type": "datetime"
     },
     "children": {
-      "via": "checkins",
       "collection": "children",
+      "via": "checkins",
       "dominant": true
     },
-    "childminder": {
+    "asistente": {
+      "collection": "acuarelauser",
       "via": "childminderinuser",
-      "collection": "acuarelauser",
       "dominant": true
     },
-    "guardian": {
-      "via": "guardianinuser",
+    "acudiente": {
       "collection": "acuarelauser",
+      "via": "guardianinuser",
       "dominant": true
     }
   }

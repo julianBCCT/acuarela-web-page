@@ -60,8 +60,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
@@ -70,6 +70,27 @@
     "supporttickets": {
       "collection": "supportticket",
       "via": "daycare"
+    },
+    "foundationdate": {
+      "type": "date"
+    },
+    "activationdate": {
+      "type": "date"
+    },
+    "phone": {
+      "type": "integer"
+    },
+    "mail": {
+      "type": "email"
+    },
+    "hability": {
+      "type": "string"
+    },
+    "motto": {
+      "type": "string"
+    },
+    "socialmedia": {
+      "type": "string"
     }
   }
 }

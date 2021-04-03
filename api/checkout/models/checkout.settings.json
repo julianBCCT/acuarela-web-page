@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "checkouts",
   "info": {
-    "name": "checkout"
+    "name": "checkout",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,18 +15,18 @@
       "type": "datetime"
     },
     "children": {
-      "via": "checkouts",
       "collection": "children",
+      "via": "checkouts",
       "dominant": true
     },
-    "childminder": {
+    "asistente": {
+      "collection": "acuarelauser",
       "via": "childminderoutuser",
-      "collection": "acuarelauser",
       "dominant": true
     },
-    "guardian": {
-      "via": "guardianoutuser",
+    "acudiente": {
       "collection": "acuarelauser",
+      "via": "guardianoutuser",
       "dominant": true
     }
   }

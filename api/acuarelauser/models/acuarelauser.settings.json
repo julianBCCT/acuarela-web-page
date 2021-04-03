@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "acuarelausers"
+      "via": "acuarelausers",
+      "model": "daycare"
     },
     "chats": {
       "collection": "chat",
@@ -96,22 +96,6 @@
     "hability": {
       "type": "string"
     },
-    "childminderinuser": {
-      "collection": "checkin",
-      "via": "childminder"
-    },
-    "guardianinuser": {
-      "collection": "checkin",
-      "via": "guardian"
-    },
-    "childminderoutuser": {
-      "collection": "checkout",
-      "via": "childminder"
-    },
-    "guardianoutuser": {
-      "collection": "checkout",
-      "via": "guardian"
-    },
     "certificate": {
       "type": "json"
     },
@@ -130,6 +114,22 @@
     "posts": {
       "via": "acuarelauser",
       "collection": "post"
+    },
+    "childminderinuser": {
+      "via": "asistente",
+      "collection": "checkin"
+    },
+    "guardianinuser": {
+      "via": "acudiente",
+      "collection": "checkin"
+    },
+    "childminderoutuser": {
+      "via": "asistente",
+      "collection": "checkout"
+    },
+    "guardianoutuser": {
+      "via": "acudiente",
+      "collection": "checkout"
     }
   }
 }

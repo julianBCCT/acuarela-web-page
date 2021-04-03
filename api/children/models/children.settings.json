@@ -113,12 +113,12 @@
       "type": "json"
     },
     "checkins": {
-      "collection": "checkin",
-      "via": "children"
+      "via": "children",
+      "collection": "checkin"
     },
     "checkouts": {
-      "collection": "checkout",
-      "via": "children"
+      "via": "children",
+      "collection": "checkout"
     },
     "indaycare": {
       "type": "boolean"

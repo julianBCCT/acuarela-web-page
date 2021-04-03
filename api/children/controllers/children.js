@@ -21,7 +21,14 @@ module.exports = {
     if (validToken.ok) {
       let query = { status: true };
 
-      let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate']);
+      let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate'])
+        .populate({
+          path: 'relationships',
+          populate: {
+            path: 'acuarelauser',
+            select: ['name', 'lastname', 'mail', 'phone', 'photo'],
+          },
+        });
 
       if (!entity)
         return ctx.send({
@@ -155,8 +162,8 @@ module.exports = {
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi.query('children')
         .model.find(query)
-        .populate({path: 'relationships', populate: {path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo']}})
-        .populate({path: 'group', populate: {path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo']}})
+        .populate({ path: 'relationships', populate: { path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo'] } })
+        .populate({ path: 'group', populate: { path: 'acuarelauser', select: ['name', 'lastname', 'mail', 'phone', 'photo'] } })
         .populate('attitudes', ['name', 'icon'])
         .populate('likings', ['name', 'icon'])
         .populate('others', ['name', 'icon'])
@@ -165,8 +172,8 @@ module.exports = {
         .populate('bags', ['name'])
         .populate('records', ['name', 'icon', 'file'])
         .populate('healthinfo')
-        .populate('movements');
-        //.populate('activities');
+        .populate('movements')
+        .populate('activities');
       
       if (!entity)
         return ctx.send({

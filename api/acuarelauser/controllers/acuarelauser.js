@@ -207,4 +207,27 @@ module.exports = {
     let respuesta = await verification.get_data(token);
     return ctx.send(respuesta);
   },
+
+  async findAssistant(ctx) {
+    const { id } = ctx.params;
+    const { token } = ctx.request.header;
+
+    let validToken = await verification.renew(token);
+
+    if (validToken.ok) {
+      let query = {};
+      query._id = { $eq: id };
+
+      let entity = await strapi.query('acuarelauser')
+        .model.find(query)
+        .populate('group', ['name', 'shift']);
+
+      if (!entity) return ctx.send({ ok: false, status: 404, code: 5, msg: 'User not found.' });
+      else {
+        validToken.msg = 'Query completed successfully!';
+        validToken.response = entity;
+        return ctx.send(validToken);
+      }
+    } else return ctx.send(validToken);
+  },
 };

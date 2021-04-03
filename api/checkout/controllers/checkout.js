@@ -15,8 +15,9 @@ module.exports = {
     
     // Valida el token.
     let validToken = await verification.renew(token);
+    let bodyToken = await verification.get_data(checkout.token);
     
-    if (validToken.ok) {
+    if (validToken.ok && bodyToken.ok) {
       // Valida que los datos hayan sido ingresados.
       if (!checkout.children)
         return ctx.send({
@@ -32,7 +33,7 @@ module.exports = {
           code: 5,
           msg: 'The assistant is required.',
         });
-      if (!checkout.acudiente)
+      if (!bodyToken.user.id)
         return ctx.send({
           ok: false,
           status: 400,
@@ -73,6 +74,7 @@ module.exports = {
           });
         else {
           // Si todos los datos son correctos se crea el registro de salida.
+          checkout.acudiente = bodyToken.user.id;
           await strapi.services.checkout.create(checkout);
 
           //En el registro del niño se marca el atributo indaycare como false.

@@ -99,13 +99,13 @@ module.exports = {
   // Retorna todos los checkin realizados el día actual.
   async get_feed(ctx) {
     const { token } = ctx.request.header;
+    const { skip, limit } = ctx.params;
 
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
-      let guantity = 10;
-
-      let query = { $sort: {date: 1}, $limit: 5};
+      let pageNo = skip > 0 ? ( ( skip - 1 ) * limit) : 0;
+      let query = { $sort: { date: 1 }, $skip: { pageNo }, $limit: { limit } };
 
       // Realiza la consulta y pobla los datos.
       let entity = await strapi

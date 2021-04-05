@@ -118,8 +118,7 @@ module.exports = {
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        let phone_number = phone.id + '' + phone.number;
-        if (mail == '-1') resultado = await sms.send_sms(link, phone_number); //message, to, sender_id, callback_url
+        if (mail == '-1') resultado = await sms.send_sms(link, phone); //message, to, sender_id, callback_url
         else
           resultado = await email.send_email(
             'kelvin@bilingualchildcaretraining.com',

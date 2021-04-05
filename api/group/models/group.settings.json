@@ -21,8 +21,8 @@
       "type": "string"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "group"
+      "via": "group",
+      "model": "acuarelauser"
     },
     "children": {
       "collection": "children",

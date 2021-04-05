@@ -20,13 +20,13 @@
       "dominant": true
     },
     "asistente": {
-      "collection": "acuarelauser",
       "via": "childminderoutuser",
+      "collection": "acuarelauser",
       "dominant": true
     },
     "acudiente": {
-      "collection": "acuarelauser",
       "via": "guardianoutuser",
+      "collection": "acuarelauser",
       "dominant": true
     }
   }

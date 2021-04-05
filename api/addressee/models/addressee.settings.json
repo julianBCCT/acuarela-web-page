@@ -14,12 +14,12 @@
       "type": "string"
     },
     "sender": {
-      "model": "acuarelauser",
-      "via": "addressee"
+      "via": "addressee",
+      "model": "acuarelauser"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
       "via": "addressees",
+      "collection": "acuarelauser",
       "dominant": true
     }
   }

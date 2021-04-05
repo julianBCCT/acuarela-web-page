@@ -15,8 +15,8 @@
       "type": "string"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "relationships"
+      "via": "relationships",
+      "model": "acuarelauser"
     },
     "child": {
       "via": "relationships",

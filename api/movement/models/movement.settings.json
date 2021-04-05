@@ -30,8 +30,8 @@
       "via": "movements"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "movements"
+      "via": "movements",
+      "model": "acuarelauser"
     }
   }
 }

@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "chats": {
       "collection": "chat",
@@ -63,9 +63,6 @@
     "supporttickets": {
       "collection": "supportticket",
       "via": "acuarelauser_admin"
-    },
-    "phone": {
-      "type": "json"
     },
     "rols": {
       "collection": "rol",
@@ -77,12 +74,12 @@
       "via": "acuarelausers_invited"
     },
     "group": {
-      "via": "acuarelauser",
-      "model": "group"
+      "model": "group",
+      "via": "acuarelauser"
     },
     "relationships": {
-      "via": "acuarelauser",
-      "collection": "relationship"
+      "collection": "relationship",
+      "via": "acuarelauser"
     },
     "birthdate": {
       "type": "date"
@@ -100,36 +97,39 @@
       "type": "json"
     },
     "addressee": {
-      "via": "sender",
-      "collection": "addressee"
+      "collection": "addressee",
+      "via": "sender"
     },
     "addressees": {
-      "via": "acuarelausers",
-      "collection": "addressee"
+      "collection": "addressee",
+      "via": "acuarelausers"
     },
     "movements": {
-      "via": "acuarelauser",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "acuarelauser"
     },
     "posts": {
-      "via": "acuarelauser",
-      "collection": "post"
+      "collection": "post",
+      "via": "acuarelauser"
     },
     "childminderinuser": {
-      "via": "asistente",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "asistente"
     },
     "guardianinuser": {
-      "via": "acudiente",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "acudiente"
     },
     "childminderoutuser": {
-      "via": "asistente",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "asistente"
     },
     "guardianoutuser": {
-      "via": "acudiente",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "acudiente"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }

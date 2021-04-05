@@ -82,8 +82,7 @@ module.exports = {
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        let phone_number = phone.id + '' + phone.number;
-        if (mail == '-1') resultado = await sms.send_sms(link, phone_number); //message, to, sender_id, callback_url
+        if (mail == '-1') resultado = await sms.send_sms(link, phone); //message, to, sender_id, callback_url
         else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', link, 'Acuarela Invitation');
 
         resultado.senduri = redirect_token.token;
@@ -134,8 +133,7 @@ module.exports = {
       let hashedcode = await bcrypt.hash('c' + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
-      let phone_number = phone.id + '' + phone.number;
-      if (mail == '-1') resultado = sms.send_sms(code, phone_number);
+      if (mail == '-1') resultado = sms.send_sms(code, phone);
       else resultado = email.send_email(mail, code, 'Verification Code');
 
       // Si el código se envio exitosamente al usuario, se envia al front el código cifrado en el token.

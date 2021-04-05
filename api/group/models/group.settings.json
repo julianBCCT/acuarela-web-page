@@ -32,8 +32,8 @@
       "type": "boolean"
     },
     "activities": {
-      "collection": "activities",
-      "via": "groups"
+      "via": "groups",
+      "collection": "activities"
     },
     "maxmembers": {
       "type": "integer"

@@ -102,8 +102,8 @@
       "via": "child"
     },
     "activities": {
-      "collection": "activities",
-      "via": "children"
+      "via": "children",
+      "collection": "activities"
     },
     "healthinfo": {
       "model": "healthinfo",

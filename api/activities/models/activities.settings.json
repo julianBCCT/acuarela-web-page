@@ -32,14 +32,17 @@
       "type": "integer"
     },
     "children": {
-      "via": "activities",
       "collection": "children",
+      "via": "activities",
       "dominant": true
     },
     "groups": {
-      "via": "activities",
       "collection": "group",
+      "via": "activities",
       "dominant": true
+    },
+    "infoadicional": {
+      "type": "json"
     }
   }
 }

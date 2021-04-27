@@ -128,7 +128,7 @@ module.exports = {
             'Acuarela Invitation'
           );
 
-        //resultado.senduri = redirect_token.token;
+        resultado.senduri = redirect_token.token;
         return ctx.send(resultado);
       } else {
         await strapi.services.relationship.create({
@@ -172,7 +172,7 @@ module.exports = {
         .populate('records', ['name', 'icon', 'file'])
         .populate('healthinfo')
         .populate('movements')
-        .populate('activities');
+        .populate({ path: 'childrenactivities', populate: { path: 'activity', select: ['name', 'date', 'rate'] } });
       
       if (!entity)
         return ctx.send({

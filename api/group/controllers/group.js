@@ -145,9 +145,18 @@ module.exports = {
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
-      if (!activity.name) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The names name is required.' });
+      if (!activity.name) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The activity name is required.' });
+      if (!activity.rate) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The activity rate is required.' });
+      if (!activity.type) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The activity type is required.' });
+      if (!activity.groups) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The group is required.' });
+      if (!activity.children) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The children are required.' });
+      if (!activity.date) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The activity date is required.' });
       else {
-        let entity = await strapi.services.activities.create(activity);
+        let act = { name: activity.name, date: activity.date, rate: activity.rate, groups: activity.groups, classactivity: activity.type };
+        let entity = await strapi.services.activities.create(act);
+        for (let i in activity.children) {
+          await strapi.services.childrenactivity.create({ rate: activity.children[i].rate, child: [activity.children[i].id], activity: [entity.id] });
+        }
         return ctx.send({ ok: true, status: 200, code: 0, msg: 'Activity Added.', user: validToken.user });
       }
     } else return ctx.send(validToken);

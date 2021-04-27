@@ -78,14 +78,15 @@ module.exports = {
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
         let redirect_token = await verification.new_token({ mail, phone });
-        let link = 'example.com/get/invitation/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
+        let linkmail = 'http://localhost:3000/auth/register/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
+        let linkphone = 'http://localhost:3000/auth/register-phone/' + redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        if (mail == '-1') resultado = await sms.send_sms(link, phone); //message, to, sender_id, callback_url
-        else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', link, 'Acuarela Invitation');
+        if (mail == '-1') resultado = await sms.send_sms(linkphone, phone); //message, to, sender_id, callback_url
+        else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', linkmail, 'Acuarela Invitation');
 
-        resultado.senduri = redirect_token.token;
+        resultado.senduri = linkmail;
         return ctx.send(resultado);
       } else {
         let msg = 'User with this number already exits.';
@@ -97,7 +98,8 @@ module.exports = {
   },
   // Se valida la invitacion y se completa el registro del usuario.
   async invitation_register(ctx) {
-    const { mail, pass, phone, name, token } = ctx.request.body;
+    const { mail, pass, phone, name } = JSON.parse(ctx.request.body);
+    const { token } = ctx.params;
 
     const { ok, status, code, user } = await verification.get_data(token);
 
@@ -201,7 +203,7 @@ module.exports = {
   },
   // Revisa que el token de la invitación sea valido.
   async get_invitation(ctx) {
-    const { token } = ctx.request.body;
+    const { token } = ctx.params;
     let respuesta = await verification.get_data(token);
     return ctx.send(respuesta);
   },

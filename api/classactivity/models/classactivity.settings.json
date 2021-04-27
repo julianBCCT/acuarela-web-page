@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "classactivities",
+  "info": {
+    "name": "classactivity",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "activities": {
+      "collection": "activities",
+      "via": "classactivity"
+    },
+    "icon": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

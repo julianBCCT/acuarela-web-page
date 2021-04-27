@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "childrenactivities",
+  "info": {
+    "name": "childrenactivity"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "rate": {
+      "type": "decimal"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "child": {
+      "model": "children",
+      "via": "childrenactivities"
+    },
+    "activity": {
+      "via": "childrenactivities",
+      "model": "activities"
+    }
+  }
+}

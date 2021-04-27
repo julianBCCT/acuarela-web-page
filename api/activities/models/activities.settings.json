@@ -31,11 +31,6 @@
     "rate": {
       "type": "integer"
     },
-    "children": {
-      "collection": "children",
-      "via": "activities",
-      "dominant": true
-    },
     "groups": {
       "collection": "group",
       "via": "activities",
@@ -43,6 +38,14 @@
     },
     "infoadicional": {
       "type": "json"
+    },
+    "childrenactivities": {
+      "collection": "childrenactivity",
+      "via": "activity"
+    },
+    "classactivity": {
+      "via": "activities",
+      "model": "classactivity"
     }
   }
 }

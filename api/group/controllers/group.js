@@ -195,6 +195,7 @@ module.exports = {
         for (let i in activity.children) {
           await strapi.services.childrenactivity.create({ rate: activity.children[i].rate, child: [activity.children[i].id], activity: [entity.id] });
         }
+        
         let query = {};
         query._id = { $eq: String(activity.groups[0]) };
 
@@ -204,8 +205,7 @@ module.exports = {
           if (group.rates[i].type == activity.type) {
             group.rates[i].rate = ((group.rates[i].rate*group.rates[i].quantity) + activity.rate)/(group.rates[i].quantity + 1);
             group.rates[i].quantity = group.rates[i].quantity + 1;
-            console.log('Entra al if');
-            await strapi.services.group.update({ _id: group.id }, [group]);
+            await strapi.services.group.update({ _id: group.id }, {rates: group.rates});
             break;
           }
         }

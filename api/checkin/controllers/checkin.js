@@ -54,7 +54,7 @@ module.exports = {
 
         //En el registro del niño se marca el atributo indaycare como true.
         const indaycare = true;
-        await strapi.services.children.update({ _id: checkin.children }, indaycare);
+        await strapi.services.children.update({ _id: checkin.children }, {indaycare});
         
         return ctx.send({
           ok: true,

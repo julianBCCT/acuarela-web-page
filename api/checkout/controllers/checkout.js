@@ -74,7 +74,7 @@ module.exports = {
           });
         else {
           // Si todos los datos son correctos se crea el registro de salida.
-          checkout.acudiente = bodyToken.user.id;
+          checkout.acudiente = [bodyToken.user.id];
           await strapi.services.checkout.create(checkout);
 
           //En el registro del niño se marca el atributo indaycare como false.

@@ -16,7 +16,7 @@ module.exports = {
     // Valida el token.
     let validToken = await verification.renew(token);
     let bodyToken = await verification.get_data(checkin.token);
-    
+
     if (validToken.ok && bodyToken.ok) {
       // Valida que los datos hayan sido ingresados.
       if (!checkin.children)
@@ -49,13 +49,13 @@ module.exports = {
         });
       else {
         // Si todos los datos son correctos se crea el registro de ingreso.
-        checkin.acudiente = bodyToken.user.id;
+        checkin.acudiente = [bodyToken.user.id];
         await strapi.services.checkin.create(checkin);
 
         //En el registro del niño se marca el atributo indaycare como true.
         const indaycare = true;
         await strapi.services.children.update({ _id: checkin.children }, indaycare);
-
+        
         return ctx.send({
           ok: true,
           status: 200,

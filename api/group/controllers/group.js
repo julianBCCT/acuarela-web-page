@@ -195,27 +195,21 @@ module.exports = {
         for (let i in activity.children) {
           await strapi.services.childrenactivity.create({ rate: activity.children[i].rate, child: [activity.children[i].id], activity: [entity.id] });
         }
-        
         let query = {};
         query._id = { $eq: String(activity.groups[0]) };
 
-        let group = await strapi.query('group').model.find(query);
-        console.log(group);
-      
+        let group = (await strapi.query('group').model.find(query))[0];
+        
         for (let i in group.rates) {
-          console.log('Hola Mundo');
-          console.log(group.rates[i].type);
-          console.log(activity.type);
-          console.log('Chao Mundo');
           if (group.rates[i].type == activity.type) {
             group.rates[i].rate = ((group.rates[i].rate*group.rates[i].quantity) + activity.rate)/(group.rates[i].quantity + 1);
             group.rates[i].quantity = group.rates[i].quantity + 1;
-            
-            await strapi.services.group.update({ _id: String(activity.groups[0]) }, group);
+            console.log('Entra al if');
+            await strapi.services.group.update({ _id: group.id }, [group]);
             break;
           }
         }
-        console.log('No entra men');
+        
         return ctx.send({ ok: true, status: 200, code: 0, msg: 'Activity Added.', user: validToken.user });
       }
     } else return ctx.send(validToken);

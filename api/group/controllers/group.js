@@ -97,6 +97,44 @@ module.exports = {
       if (!group.acuarelauser) return ctx.send({ ok: false, status: 400, code: 5, msg: 'The group guardian is required.' });
       else {
         group.status = true;
+        group.rates = [
+          {
+            type: '6088935af169a43504538925',
+            name: 'Alimentacion',
+            rate: 0.0,
+            quantity: 0
+          },
+          {
+            type: '60889371f169a43504538926',
+            name: 'Siesta',
+            rate: 0.0,
+            quantity: 0
+          },
+          {
+            type: '6088937ff169a43504538927',
+            name: 'Baño',
+            rate: 0.0,
+            quantity: 0
+          },
+          {
+            type: '6088938ff169a43504538928',
+            name: 'Juego',
+            rate: 0.0,
+            quantity: 0
+          },
+          {
+            type: '6088939df169a43504538929',
+            name: 'Salud',
+            rate: 0.0,
+            quantity: 0
+          },
+          {
+            type: '608893aef169a4350453892a',
+            name: 'Actividades',
+            rate: 0.0,
+            quantity: 0
+          }
+        ];
         let entity = await strapi.services.group.create(group);
         return ctx.send({ ok: true, status: 200, code: 0, msg: 'Group Created.', user: validToken.user });
       }
@@ -157,6 +195,27 @@ module.exports = {
         for (let i in activity.children) {
           await strapi.services.childrenactivity.create({ rate: activity.children[i].rate, child: [activity.children[i].id], activity: [entity.id] });
         }
+        
+        let query = {};
+        query._id = { $eq: String(activity.groups[0]) };
+
+        let group = await strapi.query('group').model.find(query);
+        console.log(group);
+      
+        for (let i in group.rates) {
+          console.log('Hola Mundo');
+          console.log(group.rates[i].type);
+          console.log(activity.type);
+          console.log('Chao Mundo');
+          if (group.rates[i].type == activity.type) {
+            group.rates[i].rate = ((group.rates[i].rate*group.rates[i].quantity) + activity.rate)/(group.rates[i].quantity + 1);
+            group.rates[i].quantity = group.rates[i].quantity + 1;
+            
+            await strapi.services.group.update({ _id: String(activity.groups[0]) }, group);
+            break;
+          }
+        }
+        console.log('No entra men');
         return ctx.send({ ok: true, status: 200, code: 0, msg: 'Activity Added.', user: validToken.user });
       }
     } else return ctx.send(validToken);

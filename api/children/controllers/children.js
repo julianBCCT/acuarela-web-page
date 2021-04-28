@@ -172,7 +172,7 @@ module.exports = {
         .populate('records', ['name', 'icon', 'file'])
         .populate('healthinfo')
         .populate('movements')
-        .populate({ path: 'childrenactivities', populate: { path: 'activity', select: ['name', 'date', 'rate'] } });
+        .populate({ path: 'childrenactivities', populate: { path: 'activity', select: ['name', 'date', 'rate', 'classactivity'] } });
       
       if (!entity)
         return ctx.send({

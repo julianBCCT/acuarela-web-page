@@ -21,8 +21,8 @@
       "type": "string"
     },
     "acuarelauser": {
-      "via": "group",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "group"
     },
     "children": {
       "collection": "children",
@@ -32,11 +32,14 @@
       "type": "boolean"
     },
     "activities": {
-      "via": "groups",
-      "collection": "activities"
+      "collection": "activities",
+      "via": "groups"
     },
     "maxmembers": {
       "type": "integer"
+    },
+    "rates": {
+      "type": "json"
     }
   }
 }

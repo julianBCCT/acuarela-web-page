@@ -32,8 +32,8 @@
       "type": "integer"
     },
     "groups": {
-      "collection": "group",
       "via": "activities",
+      "collection": "group",
       "dominant": true
     },
     "infoadicional": {

@@ -33,23 +33,23 @@
       "type": "string"
     },
     "child": {
-      "via": "healthinfo",
-      "model": "children"
+      "model": "children",
+      "via": "healthinfo"
     },
     "vacination": {
-      "type": "string"
+      "type": "text"
     },
     "accidents": {
-      "type": "string"
+      "type": "text"
     },
     "physical_health": {
-      "type": "string"
+      "type": "text"
     },
     "emotional_health": {
-      "type": "string"
+      "type": "text"
     },
     "suspected_abuse": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

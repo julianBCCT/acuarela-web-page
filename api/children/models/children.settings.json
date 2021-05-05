@@ -97,8 +97,8 @@
       "via": "child"
     },
     "healthinfo": {
-      "model": "healthinfo",
-      "via": "child"
+      "via": "child",
+      "model": "healthinfo"
     },
     "bag_item": {
       "type": "json"

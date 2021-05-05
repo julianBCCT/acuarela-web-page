@@ -37,7 +37,7 @@
       "plugin": "upload",
       "required": false
     },
-    "active": {
+    "status": {
       "type": "boolean"
     },
     "address": {
@@ -74,8 +74,8 @@
       "via": "acuarelausers_invited"
     },
     "group": {
-      "via": "acuarelauser",
-      "model": "group"
+      "model": "group",
+      "via": "acuarelauser"
     },
     "relationships": {
       "collection": "relationship",

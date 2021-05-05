@@ -14,26 +14,12 @@
     "name": {
       "type": "string"
     },
-    "icon": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
-    "path": {
-      "type": "string"
-    },
     "date": {
       "type": "date"
     },
     "children": {
-      "collection": "children",
-      "via": "records"
+      "via": "records",
+      "collection": "children"
     },
     "file": {
       "collection": "file",
@@ -45,6 +31,9 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "type": {
+      "type": "integer"
     }
   }
 }

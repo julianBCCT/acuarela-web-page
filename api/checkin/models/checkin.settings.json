@@ -15,8 +15,8 @@
       "type": "datetime"
     },
     "children": {
-      "collection": "children",
       "via": "checkins",
+      "collection": "children",
       "dominant": true
     },
     "asistente": {

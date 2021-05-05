@@ -19,10 +19,6 @@
     },
     "status": {
       "type": "boolean"
-    },
-    "children": {
-      "via": "notes",
-      "collection": "children"
     }
   }
 }

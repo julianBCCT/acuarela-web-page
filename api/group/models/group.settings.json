@@ -21,12 +21,12 @@
       "type": "string"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "group"
+      "via": "group",
+      "model": "acuarelauser"
     },
     "children": {
-      "collection": "children",
-      "via": "group"
+      "via": "group",
+      "collection": "children"
     },
     "status": {
       "type": "boolean"

@@ -47,31 +47,31 @@ module.exports = {
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
     let { id } = ctx.params;
-    let { mail, phone, roles, organization, relation } = ctx.request.body;
+    let user = ctx.request.body;
+    let relation = user.relation;
     let { token } = ctx.request.header;
 
     let respuesta = await verification.renew(token);
-
     // Verifica que el Token sea valido.
     if (respuesta.ok) {
       // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
       let entity;
-      if (mail != '-1')
-        entity = await strapi.services.acuarelauser.findOne({ mail });
-      else entity = await strapi.services.acuarelauser.findOne({ phone });
+      if (user.mail != '-1')
+        entity = await strapi.services.acuarelauser.findOne({ mail: user.mail });
+      else entity = await strapi.services.acuarelauser.findOne({ phone: user.phone });
 
       // Si no existe un usuario con el email/número ingresado, procede a realizar el registro, si existe, notifica la existencia de la entidad.
       if (!entity) {
         // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
         let rols;
-        if (roles) rols = roles;
+        if (user.roles) rols = user.roles;
         else rols = ['5ff7900c5d6f2e272cfd7395'];
 
         // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
-        if (organization) {
+        if (user.organization) {
           let foundDaycare = await strapi.services.daycare.findOne({
-            _id: organization,
+            _id: user.organization,
           });
 
           if (!foundDaycare)
@@ -91,20 +91,16 @@ module.exports = {
         }
 
         // Hace la creación del usuario ya sea por el email o por el número de telefono.
-        if (mail == '-1')
-          entity = await strapi.services.acuarelauser.create({
-            phone,
-            rols,
-            daycare,
-            status: false,
-          });
-        else
-          entity = await strapi.services.acuarelauser.create({
-            mail,
-            rols,
-            daycare,
-            status: false,
-          });
+        user.daycare = daycare;
+        user.rols = rols;
+        delete user.organization;
+        delete user.roles;
+        delete user.relation;
+        user.status = false;
+        if (user.mail == '-1') delete user.mail;
+        else if(!user.phone || user.phone == '-1') delete user.phone;
+
+        entity = await strapi.services.acuarelauser.create(user);
 
         await strapi.services.relationship.create({
           relation,
@@ -113,29 +109,44 @@ module.exports = {
         });
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
-        let redirect_token = await verification.new_token({ mail, phone });
-        let link = 'example.com/get/invitation/' + redirect_token.token;
+        let redirect_token = await verification.new_token({ mail: user.mail, phone: user.phone });
+        let linkmail = 'http://localhost:3000/auth/register/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
+        let linkphone = 'http://localhost:3000/auth/register-phone/' + redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        if (mail == '-1') resultado = await sms.send_sms(link, phone); //message, to, sender_id, callback_url
+        if (entity.mail == '-1' || !entity.mail) resultado = await sms.send_sms(linkphone, user.phone); //message, to, sender_id, callback_url
         else
           resultado = await email.send_email(
             'kelvin@bilingualchildcaretraining.com',
-            mail,
+            user.mail,
             'kelvin@bilingualchildcaretraining.com',
-            link,
+            linkmail,
             'Acuarela Invitation'
           );
 
         resultado.senduri = redirect_token.token;
         return ctx.send(resultado);
       } else {
-        await strapi.services.relationship.create({
-          relation,
-          acuarelauser: [entity._id],
-          child: [id],
-        });
+        
+        let query = {};
+        query.acuarelauser = { $eq: entity._id };
+        query.child = { $eq: id };
+
+        // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
+        let relacion = await strapi.query('relationship').model.find(query);
+
+        if (!relacion || relacion != []) {
+          await strapi.services.relationship.create({
+            relation,
+            acuarelauser: [entity._id],
+            child: [id],
+          });
+        } else {
+          await strapi.services.relationship.update(query, {
+            relation
+          });
+        }
         return ctx.send({
           ok: true,
           status: 200,
@@ -167,7 +178,7 @@ module.exports = {
         .populate('likings', ['name', 'icon'])
         .populate('others', ['name', 'icon'])
         .populate('for_workings', ['name', 'icon', 'date'])
-        .populate('notes', ['name', 'description'])
+        //.populate('notes', ['name', 'description'])
         .populate('bags', ['name'])
         .populate('records', ['name', 'icon', 'file'])
         .populate('healthinfo')

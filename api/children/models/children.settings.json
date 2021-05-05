@@ -59,8 +59,8 @@
       "type": "boolean"
     },
     "group": {
-      "via": "children",
-      "model": "group"
+      "model": "group",
+      "via": "children"
     },
     "attitudes": {
       "collection": "attitude",
@@ -82,19 +82,14 @@
       "via": "children",
       "dominant": true
     },
-    "notes": {
-      "collection": "note",
-      "via": "children",
-      "dominant": true
-    },
     "bags": {
       "collection": "bag",
       "via": "children",
       "dominant": true
     },
     "records": {
-      "via": "children",
       "collection": "records",
+      "via": "children",
       "dominant": true
     },
     "relationships": {
@@ -109,23 +104,29 @@
       "type": "json"
     },
     "checkins": {
-      "via": "children",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "children"
     },
     "checkouts": {
-      "via": "children",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "children"
     },
     "indaycare": {
       "type": "boolean"
     },
     "movements": {
-      "via": "child",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "child"
     },
     "childrenactivities": {
-      "via": "child",
-      "collection": "childrenactivity"
+      "collection": "childrenactivity",
+      "via": "child"
+    },
+    "bag_obervations": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
     }
   }
 }

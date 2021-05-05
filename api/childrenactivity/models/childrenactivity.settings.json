@@ -17,8 +17,8 @@
       "type": "string"
     },
     "child": {
-      "model": "children",
-      "via": "childrenactivities"
+      "via": "childrenactivities",
+      "model": "children"
     },
     "activity": {
       "via": "childrenactivities",

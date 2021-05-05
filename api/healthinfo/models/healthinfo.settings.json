@@ -32,24 +32,24 @@
     "emergency_relationship": {
       "type": "string"
     },
-    "vacination": {
-      "type": "json"
-    },
-    "accidents": {
-      "type": "json"
-    },
-    "physical_health": {
-      "type": "json"
-    },
-    "emotional_health": {
-      "type": "json"
-    },
-    "suspected_abuse": {
-      "type": "json"
-    },
     "child": {
       "via": "healthinfo",
       "model": "children"
+    },
+    "vacination": {
+      "type": "string"
+    },
+    "accidents": {
+      "type": "string"
+    },
+    "physical_health": {
+      "type": "string"
+    },
+    "emotional_health": {
+      "type": "string"
+    },
+    "suspected_abuse": {
+      "type": "string"
     }
   }
 }

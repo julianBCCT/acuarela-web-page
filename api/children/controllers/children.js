@@ -541,7 +541,8 @@ module.exports = {
           msg: 'Child not found.',
         });
       else {
-        await strapi.services.children.update({ _id: id }, bag_item);
+        entity.bag_item = bag_item;
+        await strapi.services.children.update({ _id: id }, { bag_item: entity.bag_item });
         return ctx.send({
           ok: true,
           status: 200,

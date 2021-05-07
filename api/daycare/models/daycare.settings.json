@@ -60,8 +60,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
@@ -91,6 +91,27 @@
     },
     "socialmedia": {
       "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "capacity": {
+      "type": "biginteger"
+    },
+    "zip_code": {
+      "type": "integer"
+    },
+    "onside_provider": {
+      "type": "string"
+    },
+    "program": {
+      "type": "text"
+    },
+    "website": {
+      "type": "string"
+    },
+    "price": {
+      "type": "json"
     }
   }
 }

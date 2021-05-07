@@ -290,16 +290,6 @@ module.exports = {
           code: 5,
           msg: 'Child not found.',
         });
-
-      /*
-      if ('5ff78feb5d6f2e272cfd7393' != validToken.user.id.toString())
-        return ctx.send({
-          ok: false,
-          status: 401,
-          code: 5,
-          msg: 'You do not have privileges to perform this action.',
-        });
-        */
       else {
         await strapi.services.children.update({ _id: id }, child);
         return ctx.send({

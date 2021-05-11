@@ -100,9 +100,6 @@
       "repeatable": true,
       "component": "socialmedia.social-media"
     },
-    "lastname": {
-      "type": "string"
-    },
     "license_expiration_date": {
       "type": "date"
     },
@@ -133,6 +130,12 @@
       "type": "component",
       "repeatable": false,
       "component": "address.address"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "owner_lastname": {
+      "type": "string"
     }
   }
 }

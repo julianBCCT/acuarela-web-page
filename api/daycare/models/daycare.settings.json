@@ -14,9 +14,6 @@
     "name": {
       "type": "string"
     },
-    "address": {
-      "type": "string"
-    },
     "country": {
       "type": "string"
     },
@@ -39,9 +36,6 @@
       ],
       "plugin": "upload",
       "required": false
-    },
-    "review": {
-      "type": "json"
     },
     "forms": {
       "collection": "form",
@@ -77,9 +71,6 @@
     "activationdate": {
       "type": "date"
     },
-    "phone": {
-      "type": "integer"
-    },
     "mail": {
       "type": "email"
     },
@@ -95,23 +86,53 @@
     "license": {
       "type": "string"
     },
-    "capacity": {
-      "type": "biginteger"
-    },
     "zip_code": {
       "type": "integer"
-    },
-    "onside_provider": {
-      "type": "string"
-    },
-    "program": {
-      "type": "text"
     },
     "website": {
       "type": "string"
     },
     "price": {
       "type": "json"
+    },
+    "networks_social_media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "socialmedia.social-media"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "license_expiration_date": {
+      "type": "date"
+    },
+    "license_capacity": {
+      "type": "integer"
+    },
+    "onside_provider_name": {
+      "type": "string"
+    },
+    "onside_provider_lastname": {
+      "type": "string"
+    },
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "schedule.schedule"
+    },
+    "description": {
+      "type": "text"
+    },
+    "actual_capacity": {
+      "type": "integer"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "address.address"
     }
   }
 }

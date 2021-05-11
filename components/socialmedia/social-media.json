@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_socialmedia_social_medias",
+  "info": {
+    "name": "social_media",
+    "icon": "audio-description",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

@@ -50,7 +50,7 @@ module.exports = {
       query._id = { $eq: id };
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-      let entity = await strapi.query('daycare');
+      let entity = await strapi.query('daycare').model.find(query);
       //.populate('activities');
       
       if (!entity)

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_schedule_schedules",
+  "info": {
+    "name": "schedule",
+    "icon": "calendar-alt"
+  },
+  "options": {},
+  "attributes": {
+    "week_day": {
+      "type": "string"
+    },
+    "opening_hour": {
+      "type": "string"
+    },
+    "closing_hour": {
+      "type": "string"
+    }
+  }
+}

@@ -10,12 +10,12 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "mailchimp_transactional": "npm:@mailchimp/mailchimp_transactional@^1.0.26",
     "bad-words": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
+    "mailchimp_transactional": "npm:@mailchimp/mailchimp_transactional@^1.0.26",
     "moment": "^2.29.1",
     "mongoose": "^5.11.9",
     "paypal-rest-sdk": "^1.8.1",

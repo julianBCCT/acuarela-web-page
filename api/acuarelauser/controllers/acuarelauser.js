@@ -64,7 +64,10 @@ module.exports = {
         // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
         if (user.organization) {
-          let foundDaycare = await strapi.services.daycare.findOne({ _id: user.organization });
+          let query = {};
+          query._id = { $eq: user.organization };
+          let foundDaycare = await strapi.query('daycare').model.findOne(query);
+          //let foundDaycare = await strapi.services.daycare.findOne({ _id: user.organization });
 
           if (!foundDaycare)
             return ctx.send({

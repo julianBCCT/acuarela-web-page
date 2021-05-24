@@ -116,7 +116,7 @@ module.exports = {
       } else {
         let msg = 'User with this number already exits.';
         let code = 'p-2';
-        if (mail != '-1') msg = 'User with this email already exits.', code = 'e-2';
+        if (user.mail != '-1') msg = 'User with this email already exits.', code = 'e-2';
         return ctx.send({ ok: false, status: 400, code, msg });
       }
     } else { return ctx.send({ respuesta }); }

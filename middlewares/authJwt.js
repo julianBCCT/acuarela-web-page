@@ -71,15 +71,17 @@ async function get_data(token) {
   if (!token) return {ok: false, status: 403, code: 3, msg: 'No token provided.'};
 
   try {
-    const {mail, phone} = jwt.verify(token, process.env.SECRET);
+    const {mail, phone} = await jwt.verify(token, process.env.SECRET);
+    let query = {};
 
-    let entity;
-    if (mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail });
-    else entity = await strapi.services.acuarelauser.findOne({ phone });
-        
+    if (mail != '-1' && mail) {query.mail = { $eq: mail };}
+    else {query.phone = { $eq: phone };}
+
+    const entity = await strapi.query('acuarelauser').model.findOne(query);
+    
     if (!entity) return {ok: false, status: 404, code: 3, msg: 'No user found.'};
-        
-    let id = entity._id;
+
+    let id = entity.id;
     let user = { id, mail, phone };
     return { ok: true, status: 200, code: 0, msg: 'Succesfully.', user };
   } catch (error) {

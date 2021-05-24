@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cleanings",
+  "info": {
+    "name": "cleaning"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "annotations": {
+      "type": "text"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "cleanings"
+    }
+  }
+}

@@ -75,7 +75,7 @@
     {
       "method": "PUT",
       "path": "/acuarelausers/invitation/register/:token",
-      "handler": "acuarelauser.invitation_register",
+      "handler": "acuarelauser.invitationregister",
       "config": {
         "policies": []
       }

@@ -42,51 +42,76 @@ module.exports = {
   },
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
-    const { mail, phone, roles, organization, token } = ctx.request.body;     // El token debería ir en el header.
+    let user = ctx.request.body;  // El token debería ir en el header.
 
-    let respuesta = await verification.renew(token);
+    let respuesta = await verification.renew(user.token);
 
     // Verifica que el Token sea valido.
     if (respuesta.ok) {
 
       // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
       let entity;
-      if (mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail });
-      else entity = await strapi.services.acuarelauser.findOne({ phone });
+      if (user.mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail: user.mail });
+      else entity = await strapi.services.acuarelauser.findOne({ phone: user.phone });
 
       // Si no existe un usuario con el email/número ingresado, procede a realizar el registro, si existe, notifica la existencia de la entidad.
-      if (!entity) {
+      if (!entity || entity == []) {
         // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
         let rols;
-        if (roles) rols = roles;
+        if (user.roles) rols = user.roles;
         else rols = ['5ff790215d6f2e272cfd7396'];
 
         // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
-        if (organization) {
-          const foundDaycare = await strapi.services.daycare.findOne({ name: organization });
+        if (user.organization) {
+          let foundDaycare = await strapi.services.daycare.findOne({ _id: user.organization });
+
+          if (!foundDaycare)
+            return ctx.send({
+              ok: false,
+              status: 404,
+              code: 5,
+              msg: 'Daycare not found.',
+            });
+
           daycare = foundDaycare._id;
         }
         else {
-          const foundDaycare = await strapi.services.daycare.findOne({ _id: 'Bilingual' });
+          let foundDaycare = await strapi.services.daycare.findOne({ name: 'Bilingual' });
           daycare = foundDaycare._id;
         }
 
-        // Hace la creación del usuario ya sea por el email o por el número de telefono.
-        if (mail == '-1') entity = await strapi.services.acuarelauser.create({ phone, rols, daycare, status: false });
-        else entity = await strapi.services.acuarelauser.create({ mail, rols, daycare, status: false });
+        user.daycare = daycare;
+        user.rols = rols;
+        delete user.organization;
+        delete user.roles;
+        delete user.relation;
+        delete user.token;
+        user.status = false;
+        if (user.mail == '-1') delete user.mail;
+        else if(!user.phone || user.phone == '-1') delete user.phone;
+
+        // Hace la creación del usuario
+        entity = await strapi.services.acuarelauser.create(user);
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
-        let redirect_token = await verification.new_token({ mail, phone });
+        let redirect_token = await verification.new_token({ mail: user.mail, phone: user.phone });
         let linkmail = 'http://localhost:3000/auth/register/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
         let linkphone = 'http://localhost:3000/auth/register-phone/' + redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        if (mail == '-1') resultado = await sms.send_sms(linkphone, phone); //message, to, sender_id, callback_url
-        else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', linkmail, 'Acuarela Invitation');
+        if (entity.mail == '-1' || !entity.mail) resultado = await sms.send_sms(linkphone, user.phone); //message, to, sender_id, callback_url
+        else
+          resultado = await email.send_email(
+            entity.mail,
+            'kelvin@bilingualchildcaretraining.com',
+            'kelvin@bilingualchildcaretraining.com',
+            linkmail,
+            'Acuarela Invitation'
+          );
 
-        resultado.senduri = linkmail;
+        resultado.senduri = redirect_token.token;
         return ctx.send(resultado);
       } else {
         let msg = 'User with this number already exits.';
@@ -97,24 +122,26 @@ module.exports = {
     } else { return ctx.send({ respuesta }); }
   },
   // Se valida la invitacion y se completa el registro del usuario.
-  async invitation_register(ctx) {
-    const { mail, pass, phone, name } = JSON.parse(ctx.request.body);
+  async invitationregister(ctx) {
+    const { mail, pass, phone } = ctx.request.body;
     const { token } = ctx.params;
-
     const { ok, status, code, user } = await verification.get_data(token);
 
-    if (!ok || (mail != user.mail && phone != user.phone)) return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+    if (!ok || (mail != user.mail && phone != user.phone)) {
+      return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+    }
     else {
       const hashedPassword = await bcrypt.hash(pass, 10);
-      let entity = await strapi.services.acuarelauser.findOne({ _id: user.id });
-
-      if (!entity) return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
-
-      entity.name = name;
+      let query = {};
+      query._id = { $eq: user.id };
+      let entity = await strapi.query('acuarelauser').model.findOne(query);
+      if (!entity || entity == []) return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+      
       entity.password = hashedPassword;
       entity.status = true;
+      console.log(entity);
       // El registro del usuario es marcado como activo y se agrega la contraseña y el nombre.
-      entity = await strapi.services.acuarelauser.update({ _id: entity.id }, entity);
+      entity = await strapi.query('acuarelauser').update({ _id: entity._id }, entity);
       let respuesta = await verification.generate_token(entity);
       if (respuesta.ok) respuesta.status = 201, respuesta.msg = 'User Created.';
 
@@ -135,9 +162,9 @@ module.exports = {
       let hashedcode = await bcrypt.hash('c' + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
-      if (mail == '-1') resultado = sms.send_sms(code, phone);
-      else resultado = email.send_email(mail, code, 'Verification Code');
-
+      if (mail == '-1') resultado = await sms.send_sms(code, phone);
+      else resultado = await email.send_email('kelvin@bilingualchildcaretraining.com', mail, 'kelvin@bilingualchildcaretraining.com', code, 'Verification Code');
+      console.log(resultado);
       // Si el código se envio exitosamente al usuario, se envia al front el código cifrado en el token.
       if (resultado.ok) resultado.code_token = code_token;
 

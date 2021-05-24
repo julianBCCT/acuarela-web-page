@@ -21,12 +21,12 @@
       "type": "string"
     },
     "acuarelauser": {
-      "via": "group",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "group"
     },
     "children": {
-      "via": "group",
-      "collection": "children"
+      "collection": "children",
+      "via": "group"
     },
     "status": {
       "type": "boolean"
@@ -40,6 +40,10 @@
     },
     "rates": {
       "type": "json"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "groups"
     }
   }
 }

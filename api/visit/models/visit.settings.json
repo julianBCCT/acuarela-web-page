@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visits",
+  "info": {
+    "name": "visit",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "motive": {
+      "type": "string"
+    },
+    "visitors_lastname": {
+      "type": "string"
+    },
+    "extra_info": {
+      "type": "text"
+    },
+    "checkin_time": {
+      "type": "datetime"
+    },
+    "checkout_time": {
+      "type": "datetime"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "visits"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "visits"
+    },
+    "visitors_name": {
+      "type": "string"
+    },
+    "visitors_id": {
+      "type": "integer"
+    },
+    "visitors_phone": {
+      "type": "integer"
+    }
+  }
+}

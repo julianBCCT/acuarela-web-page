@@ -20,6 +20,7 @@ module.exports = {
 
     if (validToken.ok) {
       let query = { status: true };
+      query.daycare = { $eq: validToken.user.organization };
 
       let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate'])
         .populate({
@@ -61,7 +62,7 @@ module.exports = {
       else entity = await strapi.services.acuarelauser.findOne({ phone: user.phone });
 
       // Si no existe un usuario con el email/número ingresado, procede a realizar el registro, si existe, notifica la existencia de la entidad.
-      if (!entity) {
+      if (!entity || entity == []) {
         // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
         let rols;
         if (user.roles) rols = user.roles;
@@ -118,8 +119,8 @@ module.exports = {
         if (entity.mail == '-1' || !entity.mail) resultado = await sms.send_sms(linkphone, user.phone); //message, to, sender_id, callback_url
         else
           resultado = await email.send_email(
-            'kelvin@bilingualchildcaretraining.com',
             user.mail,
+            'kelvin@bilingualchildcaretraining.com',
             'kelvin@bilingualchildcaretraining.com',
             linkmail,
             'Acuarela Invitation'
@@ -135,8 +136,8 @@ module.exports = {
 
         // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
         let relacion = await strapi.query('relationship').model.find(query);
-
-        if (!relacion || relacion != []) {
+        console.log(relacion);
+        if (!relacion || relacion == []) {
           await strapi.services.relationship.create({
             relation,
             acuarelauser: [entity._id],
@@ -168,6 +169,7 @@ module.exports = {
     if (validToken.ok) {
       let query = { status: true };
       query._id = { $eq: id };
+      query.daycare = { $eq: validToken.user.organization };
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi.query('children')
@@ -261,6 +263,7 @@ module.exports = {
         });
       else {
         child.status = true;
+        child.daycare = validToken.user.organization;
         child.attitudes = [];
         await strapi.services.children.create(child);
         return ctx.send({
@@ -320,15 +323,19 @@ module.exports = {
           msg: 'Child not found.',
         });
       
-      /*
-      if ('5ff78feb5d6f2e272cfd7393' != validToken.user.id.toString())
+      let esPropietario = false;
+
+      for (let i in validToken.user.rols)
+        if (rols.rols[i].id == '5ff78feb5d6f2e272cfd7393')
+          esPropietario = true;
+
+      if (!esPropietario)
         return ctx.send({
           ok: false,
           status: 401,
           code: 5,
           msg: 'You do not have privileges to perform this action.',
         });
-        */
       else {
         entity.status = false;
         await strapi.services.children.update({ _id: id }, entity);

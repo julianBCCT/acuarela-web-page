@@ -59,8 +59,8 @@
       "type": "boolean"
     },
     "group": {
-      "model": "group",
-      "via": "children"
+      "via": "children",
+      "model": "group"
     },
     "attitudes": {
       "collection": "attitude",
@@ -97,8 +97,8 @@
       "via": "child"
     },
     "healthinfo": {
-      "via": "child",
-      "model": "healthinfo"
+      "model": "healthinfo",
+      "via": "child"
     },
     "bag_item": {
       "type": "json"
@@ -127,6 +127,10 @@
     },
     "notes": {
       "type": "text"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "children"
     }
   }
 }

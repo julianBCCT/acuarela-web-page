@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "name": "payment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "daycare": {
+      "model": "daycare",
+      "via": "payments"
+    },
+    "response": {
+      "type": "json"
+    }
+  }
+}

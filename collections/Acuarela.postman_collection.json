@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mail\": \"padre@mail.co\",\r\n    \"pass\": \"hola1234\"\r\n}",
+					"raw": "{\r\n    \"mail\": \"kelvin@bilingualchildcaretraining.com\",\r\n    \"pass\": \"hola1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -246,7 +246,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
@@ -316,13 +316,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"acuarelauser\":\"601d76e11a1dbb30eca480d8\"\r\n}",
+					"raw": "{\r\n    \"acuarelauser\": \"601d76e11a1dbb30eca480d8\",\r\n    \"rates\": [\r\n        {\r\n            \"type\": \"6088935af169a43504538925\",\r\n            \"name\": \"Alimentacion\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        },\r\n        {\r\n            \"type\": \"60889371f169a43504538926\",\r\n            \"name\": \"Siesta\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        },\r\n        {\r\n            \"type\": \"6088937ff169a43504538927\",\r\n            \"name\": \"Baño\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        },\r\n        {\r\n            \"type\": \"6088938ff169a43504538928\",\r\n            \"name\": \"Juego\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        },\r\n        {\r\n            \"type\": \"6088939df169a43504538929\",\r\n            \"name\": \"Salud\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        },\r\n        {\r\n            \"type\": \"608893aef169a4350453892a\",\r\n            \"name\": \"Actividades\",\r\n            \"rate\": 0.0,\r\n            \"quantity\": 0\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -386,13 +386,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU3ODI3NCwiZXhwIjoxNjE0ODM3NDc0fQ.wHzXJt95v5y81_TSzC78-vNOq-MwANqdx8ZKvou859c",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"phone\": { \"id\":\"+57\", \"number\":\"3136126744\"},\r\n    \"mail\": \"-1\",\r\n    \"roles\":[\"5ff7900c5d6f2e272cfd7395\"],\r\n    \"organization\":\"5fe360ebe8701a6428622b0f\",\r\n    \"relation\":\"Acudiente\"\r\n}",
+					"raw": "{\r\n    \"mail\": \"kelvin@bilingualchildcaretraining.com\",\r\n    \"roles\":[\"5ff7900c5d6f2e272cfd7395\"],\r\n    \"organization\":\"5fe360ebe8701a6428622b0f\",\r\n    \"relation\":\"Padre\",\r\n    \"address\": \"calle 54321\",\r\n    \"city\": \"otra ciudad\",\r\n    \"name\": \"Pedro\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -400,7 +400,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:1337/children/invitation/6019c44aa07fcc2d84ff5bfd",
+					"raw": "localhost:1337/children/invitation/6088af629f1735a11135d762",
 					"host": [
 						"localhost"
 					],
@@ -408,7 +408,7 @@
 					"path": [
 						"children",
 						"invitation",
-						"6019c44aa07fcc2d84ff5bfd"
+						"6088af629f1735a11135d762"
 					]
 				}
 			},
@@ -463,7 +463,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"cena\",\r\n    \"rate\": 3,\r\n    \"date\": \"2021-05-05T14:00:00.000+00:00\",\r\n    \"type\": [\r\n        \"6088935af169a43504538925\"\r\n    ],\r\n    \"groups\": [\r\n        \"6019d3925ff34c45280e9e7a\"\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \"id\": \"6019c44aa07fcc2d84ff5bfd\",\r\n            \"rate\": 3\r\n        },\r\n        {\r\n            \"id\": \"601d51416a684e0efc49bf1c\",\r\n            \"rate\": 3\r\n        }\r\n    ]\r\n}\r\n",
+					"raw": "{\r\n    \"name\": \"almuerzo\",\r\n    \"rate\": 3,\r\n    \"date\": \"2021-05-05T14:00:00.000+00:00\",\r\n    \"type\": [\r\n        \"6088935af169a43504538925\"\r\n    ],\r\n    \"groups\": [\r\n        \"6019d3925ff34c45280e9e7a\"\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \"id\": \"6019c44aa07fcc2d84ff5bfd\",\r\n            \"rate\": 3\r\n        },\r\n        {\r\n            \"id\": \"601d51416a684e0efc49bf1c\",\r\n            \"rate\": 3\r\n        }\r\n    ]\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -526,7 +526,7 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJwaG9uZSI6Ii0xIiwiaWF0IjoxNjEzNDc3NDMyLCJleHAiOjE2MTM3MzY2MzJ9.4wg2tmR-artsSvAeGSr-i98pWgpNbmY10DKAn0m-mxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
@@ -540,7 +540,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:1337/children/attitude/601d51416a684e0efc49bf1c",
+					"raw": "localhost:1337/children/attitude/6019c44aa07fcc2d84ff5bfd",
 					"host": [
 						"localhost"
 					],
@@ -548,7 +548,7 @@
 					"path": [
 						"children",
 						"attitude",
-						"601d51416a684e0efc49bf1c"
+						"6019c44aa07fcc2d84ff5bfd"
 					]
 				}
 			},
@@ -561,13 +561,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDYwNTI4NSwiZXhwIjoxNjE0ODY0NDg1fQ.JTR6t1KZCONyEcNyDVmxLO2uivKO9nfwllUY-VUNGLs",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"entity\":\"Mi EPS\",\r\n    \"pediatrician\":\"Pedro\",\r\n    \"pediatrician_number\":123456,\r\n    \"background\":\"Un background del niño.\",\r\n    \"vacination\":{},\r\n    \"accidents\":{}\r\n}",
+					"raw": "{\r\n  \"accidents\": \"Información de accidentes\",\r\n  \"background\": \"Un background del niño.\",\r\n  \"emotional_health\": \"Informacion salud emocional\",\r\n  \"entity\": \"Mi EPS\",\r\n  \"pediatrician\": \"Juan\",\r\n  \"physical_health\": \"Información salud física\",\r\n  \"vacination\": \"Información de vacunación\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -575,7 +575,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:1337/children/health/6019c44aa07fcc2d84ff5bfd",
+					"raw": "localhost:1337/children/health/6019c44aa07fcc2d84ff5bfd/",
 					"host": [
 						"localhost"
 					],
@@ -583,7 +583,8 @@
 					"path": [
 						"children",
 						"health",
-						"6019c44aa07fcc2d84ff5bfd"
+						"6019c44aa07fcc2d84ff5bfd",
+						""
 					]
 				}
 			},
@@ -596,13 +597,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDAxNjEwMCwiZXhwIjoxNjE0Mjc1MzAwfQ.ov7YIvPb5RAg3GASElM_5wZtLxPejGRL4bFsu31EVOY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"bag_item\": [\r\n        {\r\n            \"id\": \"6034e7cbdc399a122c9f5dfe\",\r\n            \"quantity\": \"5\",\r\n            \"minimum:\": \"2\",\r\n            \"active\": \"true\"\r\n        },\r\n        {\r\n            \"id\": \"6034e7dfdc399a122c9f5dff\",\r\n            \"quantity\": \"7\",\r\n            \"minimum:\": \"3\",\r\n            \"active\": \"true\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"bag_item\": [\r\n        {\r\n            \"id\": \"6034e7cbdc399a122c9f5dfe\",\r\n            \"quantity\": \"9\",\r\n            \"minimum:\": \"2\",\r\n            \"active\": \"true\"\r\n        },\r\n        {\r\n            \"id\": \"6034e7dfdc399a122c9f5dff\",\r\n            \"quantity\": \"5\",\r\n            \"minimum:\": \"3\",\r\n            \"active\": \"true\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -631,13 +632,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"children\": [\"601d51416a684e0efc49bf1c\"],\r\n    \"acudiente\":[\"5ffd9131c1fae2c5112002b3\"],\r\n    \"datetime\":\"2021-03-01T18:00:00.000+00:00\",\r\n    \"token\":\"\"\r\n}",
+					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"datetime\":\"2021-04-28T08:00:00.000+00:00\",\r\n    \"children\": [\"6019c44aa07fcc2d84ff5bfd\"],\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -690,13 +691,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoia2VsdmluQG1haWwuY29tIiwiaWQiOiI2MDE5YjJlNDBiYjE3MDI1N2M2YjdmN2MiLCJuYW1lIjoiS2VsdmluIiwicGhvbmUiOiItMSIsImlhdCI6MTYxNDU1NTIyNywiZXhwIjoxNjE0ODE0NDI3fQ.-z-keFSeMYltjTsLzGjT2CmqjJL78AOHa1ZJQzFp-XU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"children\": [\"601d51416a684e0efc49bf1c\"],\r\n    \"acudiente\":[\"5ffd9131c1fae2c5112002b3\"],\r\n    \"datetime\":\"2021-03-01T18:00:00.000+00:00\",\r\n    \"token\": \"\"\r\n}",
+					"raw": "{\r\n    \"asistente\":[\"60028d01e59101a01fb7f617\"],\r\n    \"children\": [\"6019c44aa07fcc2d84ff5bfd\"],\r\n    \"acudiente\":[\"5ffd9131c1fae2c5112002b3\"],\r\n    \"datetime\":\"2021-04-28T18:00:00.000+00:00\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicGFkcmVAbWFpbC5jbyIsImlkIjoiNjA4NzU1NDQxNjMwOTQzYTRjY2ZiZmM2IiwibmFtZSI6IlBhZHJlcyIsInBob25lIjoiLTEiLCJpYXQiOjE2MTk1NTU0NzMsImV4cCI6MTcxNDIyODI3M30.Q9nkH6Q7IJLMqBXJKK_uATCu2LB5B1C1mldM8L2jqP0\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -737,6 +738,34 @@
 						"today",
 						"checkouts",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Add Acuarealuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Calle 2332\",\r\n    \"study\": \"Profesional\",\r\n    \"city\": \"NY\",\r\n    \"mail\": \"dasd@ad.com\",\r\n    \"hability\": \"Arte\",\r\n    \"lastname\": \"Perez\",\r\n    \"name\": \"Juan\",\r\n    \"phone\": \"+57320293784\",\r\n    \"roles\": [\r\n        \"5ff7900c5d6f2e272cfd7395\"\r\n    ],\r\n    \"organization\": \"5fe360ebe8701a6428622b0f\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoiaW5mb0BiaWxpbmd1YWxjaGlsZGNhcmV0cmFpbmluZy5jb20iLCJpZCI6IjYwNjg5NjE3YTRhODA2MjEzNDk5ZGVlMCIsIm5hbWUiOiJKdWxsaWUiLCJwaG9uZSI6Iis1NzMyMDM3MTI4MjQiLCJpYXQiOjE2MjE4ODE0NDUsImV4cCI6MTYyMjE0MDY0NX0.1OJy-HSq8L4S7yWtcivrrTQW5qdsThmu8PTIz4Pe6p8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1337/acuarelausers/invitation",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"acuarelausers",
+						"invitation"
 					]
 				}
 			},

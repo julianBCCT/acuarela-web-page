@@ -10,6 +10,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "mailchimp_transactional": "npm:@mailchimp/mailchimp_transactional@^1.0.26",
     "bad-words": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -17,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^5.11.9",
+    "paypal-rest-sdk": "^1.8.1",
     "strapi": "3.4.0",
     "strapi-admin": "3.4.0",
     "strapi-connector-mongoose": "3.4.0",
@@ -25,7 +27,7 @@
     "strapi-plugin-email": "3.4.0",
     "strapi-plugin-upload": "3.4.0",
     "strapi-plugin-users-permissions": "3.4.0",
-    "strapi-provider-email-sendgrid": "^3.5.0",
+    "strapi-provider-email-mcmandrill": "^1.1.4",
     "strapi-utils": "3.4.0"
   },
   "author": {

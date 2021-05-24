@@ -136,6 +136,26 @@
     },
     "owner_lastname": {
       "type": "string"
+    },
+    "children": {
+      "via": "daycare",
+      "collection": "children"
+    },
+    "groups": {
+      "via": "daycare",
+      "collection": "group"
+    },
+    "visits": {
+      "via": "daycare",
+      "collection": "visit"
+    },
+    "cleanings": {
+      "via": "daycare",
+      "collection": "cleaning"
+    },
+    "payments": {
+      "via": "daycare",
+      "collection": "payment"
     }
   }
 }

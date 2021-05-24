@@ -1,28 +1,31 @@
 const Filter = require('bad-words');
 const filter = new Filter();
+const mailchimp = require('mailchimp_transactional')(
+  process.env.MAILCHIMP_KEY
+);
 
-function send_email(to, from, replyTo, msg, subject) {
-  // send token { email, code }
-  // return { ok: true, status: 200, code: 0, msg: 'Mail Send Succesfully.' };
-
-  // check if the comment content contains a bad word
+async function send_email(to, from, replyTo, msg, subject) {
+  
+  const message = {
+    from_email: from,
+    subject: subject,
+    text: `Enlace de invitacion ${msg}`,
+    to: [
+      {
+        email: to,
+        type: 'to'
+      }
+    ]
+  };
   /*
-    if (msg !== filter.clean(msg)) {
-      // send an email by using the email plugin
-      await strapi.plugins['email'].services.email.send({
-        to,
-        from,
-        subject,
-        text: `
-          The comment #${5} contain a bad words.
-
-          Comment:
-          ${msg}
-        `,
-      });
-    }
-  */
-  return { ok: true, status: 200, code: 0, msg: 'Mail Send Succesfully.' };
+  const response = await mailchimp.messages.send({ message });
+  console.log(response);
+  if (response[0].status === 'sent')*/
+  return { ok: true, status: 200, code: 0, msg: 'Email Send Succesfully.' };/*
+  else {
+    return { ok: false, status: 500, code: 1, msg: `Something wrong with the email:\n ${response[0].reject_reason}` };
+  }
+*/
 }
 
 module.exports = {

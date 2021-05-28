@@ -27,13 +27,27 @@
       "model": "children",
       "via": "movements"
     },
-    "acuarelauser": {
+    "payer": {
       "model": "acuarelauser",
       "via": "movements"
     },
     "category": {
       "model": "category",
       "via": "movements"
+    },
+    "type": {
+      "type": "integer"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "movements"
+    },
+    "extra_info": {
+      "type": "string"
+    },
+    "payroll": {
+      "model": "acuarelauser",
+      "via": "employee_payroll"
     }
   }
 }

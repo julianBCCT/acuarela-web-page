@@ -104,10 +104,6 @@
       "collection": "addressee",
       "via": "acuarelausers"
     },
-    "movements": {
-      "via": "acuarelauser",
-      "collection": "movement"
-    },
     "posts": {
       "via": "acuarelauser",
       "collection": "post"
@@ -142,6 +138,14 @@
     "reactions": {
       "via": "acuarelauser",
       "collection": "reaction"
+    },
+    "movements": {
+      "via": "payer",
+      "collection": "movement"
+    },
+    "employee_payroll": {
+      "via": "payroll",
+      "collection": "movement"
     }
   }
 }

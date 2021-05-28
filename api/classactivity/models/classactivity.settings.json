@@ -28,6 +28,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "posts": {
+      "via": "classactivity",
+      "collection": "post"
     }
   }
 }

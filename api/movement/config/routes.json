@@ -5,7 +5,7 @@
       "path": "/movements",
       "handler": "movement.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {

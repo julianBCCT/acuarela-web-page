@@ -43,9 +43,9 @@
     "privacity": {
       "type": "integer"
     },
-    "activity": {
-      "model": "activities",
-      "via": "post"
+    "classactivity": {
+      "model": "classactivity",
+      "via": "posts"
     }
   }
 }

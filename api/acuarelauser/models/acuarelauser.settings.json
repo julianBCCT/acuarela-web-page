@@ -105,12 +105,12 @@
       "via": "acuarelausers"
     },
     "movements": {
-      "collection": "movement",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "collection": "movement"
     },
     "posts": {
-      "collection": "post",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "collection": "post"
     },
     "childminderinuser": {
       "collection": "checkin",
@@ -134,6 +134,14 @@
     "visits": {
       "via": "acuarelauser",
       "collection": "visit"
+    },
+    "comments": {
+      "via": "acuarelauser",
+      "collection": "comment"
+    },
+    "reactions": {
+      "via": "acuarelauser",
+      "collection": "reaction"
     }
   }
 }

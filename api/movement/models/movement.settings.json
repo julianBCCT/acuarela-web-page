@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "movements",
   "info": {
-    "name": "movement"
+    "name": "movement",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -12,9 +13,6 @@
   "attributes": {
     "amount": {
       "type": "decimal"
-    },
-    "category": {
-      "type": "string"
     },
     "date": {
       "type": "datetime"
@@ -26,12 +24,16 @@
       "type": "boolean"
     },
     "child": {
-      "via": "movements",
-      "model": "children"
+      "model": "children",
+      "via": "movements"
     },
     "acuarelauser": {
-      "via": "movements",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "movements"
+    },
+    "category": {
+      "model": "category",
+      "via": "movements"
     }
   }
 }

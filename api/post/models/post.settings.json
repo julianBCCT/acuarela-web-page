@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "posts",
   "info": {
-    "name": "post"
+    "name": "post",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -25,17 +26,26 @@
       "required": false
     },
     "acuarelauser": {
-      "via": "posts",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "posts"
     },
     "date": {
       "type": "datetime"
     },
-    "reactions": {
-      "type": "json"
-    },
     "comments": {
-      "type": "json"
+      "collection": "comment",
+      "via": "post"
+    },
+    "reactions": {
+      "collection": "reaction",
+      "via": "post"
+    },
+    "privacity": {
+      "type": "integer"
+    },
+    "activity": {
+      "model": "activities",
+      "via": "post"
     }
   }
 }

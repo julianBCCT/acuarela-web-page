@@ -66,12 +66,8 @@ module.exports = {
         if (user.organization) {
           let query = {};
           query._id = { $eq: user.organization };
-          console.log(query);
-          console.log(user.organization);
-          let foundDaycare = await strapi.query('daycare').model.findOne(query);
           
-          console.log(foundDaycare);
-          //let foundDaycare = await strapi.services.daycare.findOne({ _id: user.organization });
+          let foundDaycare = await strapi.query('daycare').model.findOne(query);
 
           if (!foundDaycare)
             return ctx.send({

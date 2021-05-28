@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "comments"
+    },
+    "post": {
+      "via": "comments",
+      "model": "post"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "reactions": {
+      "via": "comment",
+      "collection": "reaction"
+    }
+  }
+}

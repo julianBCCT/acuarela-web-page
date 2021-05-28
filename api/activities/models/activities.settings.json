@@ -46,6 +46,10 @@
     "classactivity": {
       "via": "activities",
       "model": "classactivity"
+    },
+    "post": {
+      "via": "activity",
+      "model": "post"
     }
   }
 }

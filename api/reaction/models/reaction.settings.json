@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reactions",
+  "info": {
+    "name": "reaction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "post": {
+      "via": "reactions",
+      "model": "post"
+    },
+    "type": {
+      "type": "integer"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "reactions"
+    },
+    "comment": {
+      "model": "comment",
+      "via": "reactions"
+    }
+  }
+}

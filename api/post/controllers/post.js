@@ -111,7 +111,10 @@ module.exports = {
       let entity = await strapi
         .query('post')
         .model.find(query)
-        .populate('acuarelauser', ['name', 'id', 'photo']);
+        .populate('acuarelauser', ['name', 'id', 'photo'])
+        .populate('comments')
+        .populate('reactions')
+        .populate('activity');
     
       validToken.msg = 'Query completed successfully!';
       validToken.response = entity;

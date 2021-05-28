@@ -115,8 +115,8 @@
       "type": "boolean"
     },
     "movements": {
-      "collection": "movement",
-      "via": "child"
+      "via": "child",
+      "collection": "movement"
     },
     "childrenactivities": {
       "collection": "childrenactivity",

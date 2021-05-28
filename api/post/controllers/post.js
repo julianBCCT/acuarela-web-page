@@ -100,13 +100,11 @@ module.exports = {
   async get_feed(ctx) {
     const { token } = ctx.request.header;
     const { skip, limit } = ctx.params;
-    console.log(`Skip: ${skip} and Limit: ${limit}`);
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
       let pageNo = skip > 0 ? ( ( skip - 1 ) * limit) : 0;
       let query = { _sort: 'date:desc' };
-      console.log(pageNo);
       // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('post')
@@ -115,7 +113,13 @@ module.exports = {
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))
         .populate('acuarelauser', ['name', 'id', 'photo'])
-        .populate('comments')
+        .populate({
+          path: 'comments',
+          populate: {
+            path: 'acuarelauser',
+            select: ['name', 'lastname', 'mail', 'phone', 'photo', '_id'],
+          },
+        })
         .populate('reactions')
         .populate('classactivity');
     

@@ -8,7 +8,7 @@
 module.exports = {
   async find(ctx) {
     const response = ctx.response;
-    ctx.send(response);
+    return ctx.send('Holaaaa');
     /*
     let validToken = await verification.renew(token);
 

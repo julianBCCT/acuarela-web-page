@@ -5,7 +5,7 @@
       "path": "/likings",
       "handler": "liking.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/likings/count",
       "handler": "liking.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/likings/:id",
       "handler": "liking.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/likings",
       "handler": "liking.create",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/likings/:id",
       "handler": "liking.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/likings/:id",
       "handler": "liking.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     }
   ]

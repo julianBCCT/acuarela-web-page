@@ -8,7 +8,7 @@ const verification = require('../../../middlewares/authJwt');
  */
 
 module.exports = {
-  // Crea un nuevo registro de checkout.
+  // Crea un nuevo post.
   async create(ctx) {
     const { token } = ctx.request.header;
     const post = ctx.request.body;
@@ -53,6 +53,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Actualiza un post
   async update(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -96,7 +97,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
-  // Retorna todos los checkin realizados el día actual.
+  // Permite traer los post junto con sus comentarios y reacciones usando paginación
   async get_feed(ctx) {
     const { token } = ctx.request.header;
     const { skip, limit } = ctx.params;

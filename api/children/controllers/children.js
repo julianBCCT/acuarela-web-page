@@ -111,8 +111,8 @@ module.exports = {
 
         // Genera un Token para asociarlo a una URI que se le enviará al usuario para completar el registro.
         let redirect_token = await verification.new_token({ mail: user.mail, phone: user.phone });
-        let linkmail = 'http://localhost:3000/auth/register/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
-        let linkphone = 'http://localhost:3000/auth/register-phone/' + redirect_token.token;
+        let linkmail = 'https://acuarela.app/auth/register/' + redirect_token.token;    // URL a la que el usuario debera ingresar para completar su registro.
+        let linkphone = 'https://acuarela.app/auth/register-phone/' + redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.

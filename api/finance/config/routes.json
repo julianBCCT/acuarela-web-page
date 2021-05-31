@@ -5,7 +5,7 @@
       "path": "/finances",
       "handler": "finance.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/finances/count",
       "handler": "finance.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/finances/:id",
       "handler": "finance.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/finances",
       "handler": "finance.create",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/finances/:id",
       "handler": "finance.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/finances/:id",
       "handler": "finance.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     }
   ]

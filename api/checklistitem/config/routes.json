@@ -5,7 +5,7 @@
       "path": "/checklistitems",
       "handler": "checklistitem.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/checklistitems/count",
       "handler": "checklistitem.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/checklistitems/:id",
       "handler": "checklistitem.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/checklistitems",
       "handler": "checklistitem.create",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/checklistitems/:id",
       "handler": "checklistitem.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/checklistitems/:id",
       "handler": "checklistitem.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     }
   ]

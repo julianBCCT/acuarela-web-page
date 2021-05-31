@@ -13,7 +13,7 @@
       "path": "/categories/count",
       "handler": "category.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/categories/:id",
       "handler": "category.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/categories",
       "handler": "category.create",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/categories/:id",
       "handler": "category.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/categories/:id",
       "handler": "category.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     }
   ]

@@ -11,6 +11,7 @@ const verifyDate = require('../../../helpers/is_date');
  */
 
 module.exports = {
+  // Se encarga de buscar todos los eventos creados por el usuario o a los que este fue invitado
   async find(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);
@@ -31,6 +32,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Retorna la información de un evneto
   async findOne(ctx) {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
@@ -50,6 +52,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Crea un evento, por debajo se genera la osociación para los usuarios que fueron invitados
   async create(ctx) {
     const { token } = ctx.request.header;
     const evento = ctx.request.body;
@@ -66,6 +69,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Actualiza un evento
   async update(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -86,6 +90,7 @@ module.exports = {
 
     } else return ctx.send(validToken);
   },
+  // Alimina un evento
   async delete(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -104,6 +109,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Permite realizar busquedas por filtros como prioridad del evento, fecha de inicio y de fin 
   async findFilter(ctx) {
     const { token } = ctx.request.header;
     const { start, end, priority, daycare } = ctx.params;

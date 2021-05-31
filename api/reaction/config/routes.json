@@ -5,7 +5,7 @@
       "path": "/reactions",
       "handler": "reaction.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/reactions/count",
       "handler": "reaction.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/reactions/:id",
       "handler": "reaction.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/reactions",
       "handler": "reaction.create",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/reactions/:id",
       "handler": "reaction.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/reactions/:id",
       "handler": "reaction.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     }
   ]

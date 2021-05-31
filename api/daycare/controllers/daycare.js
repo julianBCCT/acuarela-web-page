@@ -10,6 +10,7 @@ const verification = require('../../../middlewares/authJwt');
  */
 
 module.exports = {
+  // Lista los daycares y el usuario asociado a ellos
   async find(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);

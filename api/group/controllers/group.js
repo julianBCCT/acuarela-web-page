@@ -11,7 +11,7 @@ const verifyDate = require('../../../helpers/is_date');
  */
 
 module.exports = {
-
+  // Trae todos los grupos asi como el asistente encargado y las actividades del grupo
   async find(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);
@@ -30,6 +30,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Trae todos los grupos, el usuario asociado a ellos y los niños del grupo
   async find_child_group(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);
@@ -46,6 +47,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Trae todos los grupos y el usuario encargado
   async find_guardian_group(ctx) {
     const { token } = ctx.request.header;
     let validToken = await verification.renew(token);
@@ -62,6 +64,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Trae un grupo en especificio, los niños asociados a el, la activivdades realizadas y el encargador del grupo
   async findOne(ctx) {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
@@ -84,6 +87,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Permite realizar la creación del grupo
   async create(ctx) {
     const { token } = ctx.request.header;
     const group = ctx.request.body;
@@ -140,6 +144,7 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Permite actualizar el grupo
   async update(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -158,6 +163,7 @@ module.exports = {
 
     } else return ctx.send(validToken);
   },
+  // Elimina el grupo
   async delete(ctx) {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
@@ -176,6 +182,7 @@ module.exports = {
 
     } else return ctx.send(validToken);
   },
+  // Crea una nueva actividad, la asocia al grupo en el que fue realizada y a los niños que participaron y las califciaciones que estos recibieron
   async create_activity(ctx) {
     const { token } = ctx.request.header;
     const activity = ctx.request.body;

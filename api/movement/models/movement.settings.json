@@ -48,6 +48,9 @@
     "payroll": {
       "model": "acuarelauser",
       "via": "employee_payroll"
+    },
+    "paypal": {
+      "type": "json"
     }
   }
 }

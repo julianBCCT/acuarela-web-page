@@ -153,10 +153,6 @@
       "via": "daycare",
       "collection": "cleaning"
     },
-    "payments": {
-      "via": "daycare",
-      "collection": "payment"
-    },
     "movements": {
       "via": "daycare",
       "collection": "movement"

@@ -5,7 +5,7 @@
       "path": "/acuarelausers",
       "handler": "acuarelauser.find",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/acuarelausers/count",
       "handler": "acuarelauser.count",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/acuarelausers/:id",
       "handler": "acuarelauser.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/assistant/:id",
       "handler": "acuarelauser.findAssistant",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/acuarelausers/:id",
       "handler": "acuarelauser.update",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/acuarelausers/:id",
       "handler": "acuarelauser.delete",
       "config": {
-        "policies": []
+        "policies": ["global::is-authenticated"]
       }
     },
     {

@@ -23,7 +23,7 @@ module.exports = {
         status: 200,
         code: 0,
         msg: 'Reaction Added.',
-        user: validToken.user,
+        user: response.user,
       });
     }
     else {
@@ -33,7 +33,7 @@ module.exports = {
         status: 200,
         code: 0,
         msg: 'Reaction Updated.',
-        user: validToken.user,
+        user: response.user,
       });
     }
   },

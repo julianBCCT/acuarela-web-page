@@ -110,6 +110,7 @@ module.exports = {
       let entity = await strapi
         .query('post')
         .model.find()
+        .sort({ date: 1 })
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))
         .populate('acuarelauser', ['name', 'id', 'photo'])

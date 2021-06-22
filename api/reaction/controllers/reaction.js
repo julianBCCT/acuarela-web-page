@@ -16,7 +16,7 @@ module.exports = {
     let entity = await strapi.query('reaction').model.findOne(query);
     console.log(entity);
     if (!entity) {
-      await strapi.services.children.create({post, type, acuarelauser});
+      await strapi.services.reaction.create({post, type, acuarelauser});
       return ctx.send({
         ok: true,
         status: 200,
@@ -25,7 +25,7 @@ module.exports = {
       });
     }
     else {
-      await strapi.services.children.update({ id: entity.id }, { type });
+      await strapi.services.reaction.update({ id: entity.id }, { type });
       return ctx.send({
         ok: true,
         status: 200,

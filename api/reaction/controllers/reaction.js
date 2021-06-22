@@ -25,7 +25,7 @@ module.exports = {
       });
     }
     else {
-      await strapi.services.children.update({ _id: entity.id }, { type });
+      await strapi.services.children.update({ id: entity.id }, { type });
       return ctx.send({
         ok: true,
         status: 200,

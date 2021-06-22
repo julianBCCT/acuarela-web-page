@@ -10,12 +10,11 @@ module.exports = {
   async create(ctx) {
     const { response, post, type, acuarelauser } = ctx.request.body;
     //return ctx.send(response);
-    console.log(response);
     let query = {};
     query.post = { $eq: post };
     query.acuarelauser = { $eq: acuarelauser };
     let entity = await strapi.query('reaction').model.findOne(query);
-
+    console.log(entity);
     if (!entity) {
       await strapi.services.children.create({post, type, acuarelauser});
       return ctx.send({
@@ -23,7 +22,6 @@ module.exports = {
         status: 200,
         code: 0,
         msg: 'Reaction Added.',
-        user: response.user,
       });
     }
     else {
@@ -33,7 +31,6 @@ module.exports = {
         status: 200,
         code: 0,
         msg: 'Reaction Updated.',
-        user: response.user,
       });
     }
   },

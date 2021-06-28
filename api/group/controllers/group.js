@@ -176,8 +176,8 @@ module.exports = {
 
       else {
         entity.status = false;
-        await strapi.services.group.update({ _id: id }, entity);
-        return ctx.send({ ok: true, status: 200, code: 0, msg: 'Group Updated.', user: validToken.user });
+        await strapi.services.group.delete({ _id: id }, entity);
+        return ctx.send({ ok: true, status: 200, code: 0, msg: 'Group Deleted.', user: validToken.user });
       }
 
     } else return ctx.send(validToken);

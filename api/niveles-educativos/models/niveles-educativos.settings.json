@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "niveles_educativos",
+  "info": {
+    "name": "Niveles Educativos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name_level": {
+      "type": "string"
+    }
+  }
+}

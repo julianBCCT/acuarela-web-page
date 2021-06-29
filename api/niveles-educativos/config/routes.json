@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/niveles-educativos",
+      "handler": "niveles-educativos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/niveles-educativos/count",
+      "handler": "niveles-educativos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/niveles-educativos/:id",
+      "handler": "niveles-educativos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/niveles-educativos",
+      "handler": "niveles-educativos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/niveles-educativos/:id",
+      "handler": "niveles-educativos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/niveles-educativos/:id",
+      "handler": "niveles-educativos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

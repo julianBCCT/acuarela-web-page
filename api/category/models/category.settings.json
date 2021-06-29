@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "categories",
   "info": {
-    "name": "category"
+    "name": "category",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -17,8 +18,15 @@
       "type": "text"
     },
     "movements": {
-      "via": "category",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "category"
+    },
+    "type_category": {
+      "type": "enumeration",
+      "enum": [
+        "ingreso",
+        "gasto"
+      ]
     }
   }
 }

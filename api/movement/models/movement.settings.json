@@ -32,8 +32,8 @@
       "via": "movements"
     },
     "category": {
-      "model": "category",
-      "via": "movements"
+      "via": "movements",
+      "model": "category"
     },
     "type": {
       "type": "integer"

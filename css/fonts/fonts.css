@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "ProximaNova";
+    font-weight: 900;
+    src: local("ProximaNova_Black"), url(./proximanova/ProximaNova_Black.eot),
+        url(./proximanova/ProximaNova_Black.woff) format("woff"),
+        url(./proximanova/ProximaNova_Black.ttf) format("truetype"),
+        url(./proximanova/ProximaNova_Black.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNova";
+    font-weight: 700;
+    src: local("ProximaNova_Bold.woff"), url(./proximanova/ProximaNova_Bold.eot),
+        url(./proximanova/ProximaNova_Bold.woff) format("woff"),
+        url(./proximanova/ProximaNova_Bold.ttf) format("truetype"),
+        url(./proximanova/ProximaNova_Bold.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNova";
+    font-weight: 800;
+    src: local("ProximaNova_Extrabold.woff"), url(./proximanova/ProximaNova_Extrabold.eot),
+        url(./proximanova/ProximaNova_Extrabold.woff) format("woff"),
+        url(./proximanova/ProximaNova_Extrabold.ttf) format("truetype"),
+        url(./proximanova/ProximaNova_Extrabold.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNova";
+    font-weight: 400;
+    src: local("ProximaNova_Regular"), url(./proximanova/ProximaNova_Regular.eot),
+        url(./proximanova/ProximaNova_Regular.woff) format("woff"),
+        url(./proximanova/ProximaNova_Regular.ttf) format("truetype"),
+        url(./proximanova/ProximaNova_Regular.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNova";
+    font-weight: 100;
+    src: local("ProximaNova_Thin.woff"), url(./proximanova/ProximaNova_Thin.eot),
+        url(./proximanova/ProximaNova_Thin.woff) format("woff"),
+        url(./proximanova/ProximaNova_Thin.ttf) format("truetype"),
+        url(./proximanova/ProximaNova_Thin.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNovaAlt";
+    font-weight: 700;
+    src: local("ProximaNovaAlt_Bold.woff"), url(./proximanova/ProximaNovaAlt_Bold.eot),
+        url(./proximanova/ProximaNovaAlt_Bold.woff) format("woff"),
+        url(./proximanova/ProximaNovaAlt_Bold.ttf) format("truetype"),
+        url(./proximanova/ProximaNovaAlt_Bold.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNovaAlt";
+    font-weight: 300;
+    src: local("ProximaNovaAlt_Light"), url(./proximanova/ProximaNovaAlt_Light.eot),
+        url(./proximanova/ProximaNovaAlt_Light.woff) format("woff"),
+        url(./proximanova/ProximaNovaAlt_Light.ttf) format("truetype"),
+        url(./proximanova/ProximaNovaAlt_Light.svg) format("svg");
+}
+@font-face {
+    font-family: "ProximaNovaAlt";
+    font-weight: 100;
+    src: local("ProximaNovaAlt_Thin.woff"), url(./proximanova/ProximaNovaAlt_Thin.eot),
+        url(./proximanova/ProximaNovaAlt_Thin.woff) format("woff"),
+        url(./proximanova/ProximaNovaAlt_Thin.ttf) format("truetype"),
+        url(./proximanova/ProximaNovaAlt_Thin.svg) format("svg");
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/estados-y-ciudades",
+      "handler": "estados-y-ciudades.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/estados-y-ciudades",
+      "handler": "estados-y-ciudades.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/estados-y-ciudades",
+      "handler": "estados-y-ciudades.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

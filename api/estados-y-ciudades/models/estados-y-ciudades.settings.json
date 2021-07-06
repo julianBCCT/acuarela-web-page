@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "estados_y_ciudades",
+  "info": {
+    "name": "Estados y ciudades"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "all_states": {
+      "type": "json"
+    }
+  }
+}

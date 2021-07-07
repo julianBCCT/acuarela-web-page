@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_guardians_guardians",
+  "info": {
+    "name": "guardians",
+    "icon": "universal-access"
+  },
+  "options": {},
+  "attributes": {
+    "guardian_name": {
+      "type": "string"
+    },
+    "guardian_relationship": {
+      "type": "string"
+    },
+    "guardian_phone": {
+      "type": "string"
+    },
+    "guardian_email": {
+      "type": "email"
+    },
+    "guardian_pickup": {
+      "type": "boolean"
+    },
+    "guardian_emergency": {
+      "type": "boolean"
+    }
+  }
+}

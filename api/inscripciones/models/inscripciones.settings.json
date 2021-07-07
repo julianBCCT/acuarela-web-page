@@ -1,0 +1,140 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inscripciones",
+  "info": {
+    "name": "inscripciones",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Masculino",
+        "Femenino"
+      ]
+    },
+    "address": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "name_doctor": {
+      "type": "string"
+    },
+    "phone_doctor": {
+      "type": "string"
+    },
+    "hispano": {
+      "type": "boolean"
+    },
+    "language": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "time"
+    },
+    "end_time": {
+      "type": "time"
+    },
+    "days": {
+      "type": "json"
+    },
+    "meals": {
+      "type": "json"
+    },
+    "week_care": {
+      "type": "boolean"
+    },
+    "week_care_start_time": {
+      "type": "time"
+    },
+    "week_care_end_time": {
+      "type": "time"
+    },
+    "mom_name": {
+      "type": "string"
+    },
+    "mom_phone": {
+      "type": "string"
+    },
+    "mom_email": {
+      "type": "email"
+    },
+    "mom_is_principal": {
+      "type": "boolean"
+    },
+    "dad_name": {
+      "type": "string"
+    },
+    "dad_phone": {
+      "type": "string"
+    },
+    "dad_email": {
+      "type": "email"
+    },
+    "dad_is_principal": {
+      "type": "boolean"
+    },
+    "guardians": {
+      "type": "component",
+      "repeatable": true,
+      "component": "guardians.guardians"
+    },
+    "file_sleeping": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "file_health": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Borrador",
+        "Finalizado"
+      ]
+    },
+    "percentaje": {
+      "type": "integer"
+    }
+  }
+}

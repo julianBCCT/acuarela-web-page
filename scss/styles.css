@@ -461,6 +461,45 @@ main section:last-child {
   margin-bottom: 1.09091rem;
 }
 
+.testimonials-cont {
+  margin-top: 2.72727rem;
+  padding-top: 2.72727rem;
+  border-top: solid 1px #c4c4c4;
+}
+
+.testimonials-cont__testimonial {
+  padding: 0 1.81818rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.testimonials-cont__avatar {
+  width: 3.45455rem;
+  border-radius: 50%;
+  border: solid 1px #0cb5c3;
+  margin-right: 3.45455rem;
+}
+
+.testimonials-cont__texts {
+  margin-top: 1.45455rem;
+}
+
+.testimonials-cont__name {
+  color: #140a4c;
+  font-weight: 700;
+  margin-bottom: 0.72727rem;
+}
+
+.testimonials-cont__role {
+  color: #98a2b7;
+  margin-bottom: 1.45455rem;
+}
+
 .footer {
   background-color: #0cb5c3;
   background-image: url(/img/footer_bg.png);
@@ -596,7 +635,9 @@ main section:last-child {
           justify-content: space-between;
 }
 
-/* ------------------------- */
+/* ======================== */
+/* ======================== */
+/* ======================== */
 @media (min-width: 1800px) {
   html,
   body {
@@ -667,6 +708,12 @@ main section:last-child {
     background-size: auto;
     background-repeat: repeat-y;
   }
+  main section {
+    padding-bottom: 5.45455rem;
+  }
+  main section:last-child {
+    padding-bottom: 10.90909rem;
+  }
   .banner {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -692,11 +739,14 @@ main section:last-child {
   .features .feature {
     margin-bottom: 5.45455rem;
   }
+  .features .feature__img {
+    height: 7.27273rem;
+  }
   .add-on {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
   }
   .add-on__texts {
     margin: 0;
@@ -705,11 +755,20 @@ main section:last-child {
     width: 100%;
     margin: 2.72727rem 0;
   }
+  .add-on--left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
   .add-on--left .add-on__img {
     width: 100%;
   }
   .add-on--left .add-on__texts {
     margin-left: 0;
+  }
+  .testimonials-cont__texts {
+    margin-top: 0.72727rem;
   }
   .footer__over {
     display: none;

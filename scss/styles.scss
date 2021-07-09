@@ -346,10 +346,50 @@ main {
     }
 
     &--end {
-        align-items:flex-end;
+        align-items: flex-end;
 
         .add-on__texts {
             margin-bottom: rem(12px);
+        }
+    }
+}
+
+.testimonials {
+    &-cont {
+        margin-top: rem(30px);
+        padding-top: rem(30px);
+        border-top: solid 1px $color-image-border;
+
+        &__testimonial {
+            padding: 0 rem(20px);
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        &__avatar {
+            width: rem(38px);
+            border-radius: 50%;
+            border: solid 1px $color-primary;
+            margin-right: rem(38px);
+        }
+
+        &__texts {
+            margin-top: rem(16px);
+        }
+
+        &__name {
+            color: $color-text-dark;
+            font-weight: 700;
+            margin-bottom: rem(8px);
+        }
+
+        &__role {
+            color: $color-gray-dark;
+            margin-bottom: rem(16px);
+        }
+
+        &__message {
         }
     }
 }
@@ -468,7 +508,9 @@ main {
     }
 }
 
-/* ------------------------- */
+/* ======================== */
+/* ======================== */
+/* ======================== */
 
 @media (min-width: 1800px) {
     html,
@@ -553,6 +595,14 @@ main {
         padding-right: rem(30px);
         background-size: auto;
         background-repeat: repeat-y;
+
+        section {
+            padding-bottom: rem(60px);
+
+            &:last-child {
+                padding-bottom: rem(120px);
+            }
+        }
     }
 
     .banner {
@@ -574,11 +624,15 @@ main {
 
         .feature {
             margin-bottom: rem(60px);
+
+            &__img {
+                height: rem(80px);
+            }
         }
     }
 
     .add-on {
-        flex-direction: column;
+        flex-direction: column-reverse;
 
         &__texts {
             margin: 0;
@@ -590,11 +644,21 @@ main {
         }
 
         &--left {
+            flex-direction: column;
+
             .add-on__img {
                 width: 100%;
             }
             .add-on__texts {
                 margin-left: 0;
+            }
+        }
+    }
+
+    .testimonials {
+        &-cont {
+            &__texts {
+                margin-top: rem(8px);
             }
         }
     }

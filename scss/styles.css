@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @font-face {
   font-family: "icomoon";
-  src: url("fonts/icomoon.eot?h6n1ul");
-  src: url("fonts/icomoon.eot?h6n1ul#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?h6n1ul") format("truetype"), url("fonts/icomoon.woff?h6n1ul") format("woff"), url("fonts/icomoon.svg?h6n1ul#icomoon") format("svg");
+  src: url("fonts/icomoon.eot?5wtu7i");
+  src: url("fonts/icomoon.eot?5wtu7i#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?5wtu7i") format("truetype"), url("fonts/icomoon.woff?5wtu7i") format("woff"), url("fonts/icomoon.svg?5wtu7i#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,10 @@ i {
   content: "";
 }
 
+.icon-arrow-up:before {
+  content: "";
+}
+
 .icon-assistant:before {
   content: "";
 }
@@ -42,16 +46,36 @@ i {
   content: "";
 }
 
+.icon-first:before {
+  content: "";
+}
+
 .icon-kid:before {
   content: "";
+}
+
+.icon-last:before {
+  content: "";
 }
 
 .icon-message:before {
   content: "";
 }
 
+.icon-next:before {
+  content: "";
+}
+
 .icon-phone:before {
   content: "";
+}
+
+.icon-prev:before {
+  content: "";
+}
+
+.icon-search:before {
+  content: "";
 }
 
 .icon-star:before {
@@ -114,10 +138,24 @@ h4 {
   margin: 0;
 }
 
+h5 {
+  font-size: 1.09rem;
+  line-height: 1.25;
+  margin: 0;
+}
+
 p {
   font-size: 1rem;
   line-height: 1.45;
   margin: 0;
+}
+
+input {
+  color: #140a4c;
+}
+
+input:active, input:focus {
+  outline: none;
 }
 
 .btn {
@@ -126,6 +164,9 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1.09091rem;
   border-radius: 8px;
   background: #000000;
@@ -146,6 +187,11 @@ p {
   font-size: 1.09rem;
 }
 
+.btn__icon {
+  color: #ffffff;
+  margin-right: 0.90909rem;
+}
+
 .btn--primary {
   background-color: #0cb5c3;
 }
@@ -160,8 +206,17 @@ p {
 
 .btn--transparent {
   background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn--transparent-border {
   -webkit-box-shadow: inset 0 0 0 2px #e1e4e9;
           box-shadow: inset 0 0 0 2px #e1e4e9;
+}
+
+.btn--transparent .btn__icon {
+  color: #0cb5c3;
 }
 
 .btn--transparent .btn__text {
@@ -361,6 +416,10 @@ main section {
 
 main section:last-child {
   padding-bottom: 21.81818rem;
+}
+
+main.no-bg {
+  background-image: none;
 }
 
 .banner {
@@ -579,7 +638,7 @@ main section:last-child {
 }
 
 .faq-item {
-  margin-left: 1.45455rem;
+  margin-left: 2.90909rem;
   border-bottom: solid 1px #e1e4e9;
   margin-bottom: 1.45455rem;
   width: 60%;
@@ -595,27 +654,499 @@ main section:last-child {
 }
 
 .faq-item__title:before {
-  content: ">";
+  font-family: "icomoon";
+  content: "\e907";
   color: #0cb5c3;
   position: absolute;
-  left: -1.45455rem;
+  left: -2.90909rem;
   top: 0;
   display: block;
 }
 
 .faq-item__content {
   display: none;
-  -webkit-transition: all ease 0.3s;
-  transition: all ease 0.3s;
   margin-bottom: 1.45455rem;
 }
 
 .faq-item.active .faq-item__title:before {
-  content: "<";
+  content: "\e90b";
 }
 
-.faq-item.active .faq-item__content {
+.daycares {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(0, 1fr))[2];
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  -webkit-column-gap: 1.81818rem;
+          column-gap: 1.81818rem;
+  row-gap: 3.63636rem;
+      grid-template-areas: "a b" "c d";
+}
+
+.daycares--without-map {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.daycares--without-map .daycares-search h1,
+.daycares--without-map .daycares-search .search-box {
+  width: 50%;
+}
+
+.daycares--without-map .daycares-search__cont {
+  -ms-grid-columns: (minmax(0, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.daycares--without-map .daycares-pagination {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.daycares-search {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: a;
+}
+
+.daycares-search__cont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(0, 1fr))[2];
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  -webkit-column-gap: 1.81818rem;
+          column-gap: 1.81818rem;
+  row-gap: 1.81818rem;
+}
+
+.daycares-search__cont .card {
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.90909rem;
+  cursor: pointer;
+}
+
+.daycares-search__cont .card__img {
+  width: 100%;
+  padding-bottom: 74.33%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0.90909rem 0.90909rem 0 0;
+}
+
+.daycares-search__cont .card__body {
+  padding: 1.27273rem 1.45455rem 1.45455rem;
+  background: #f0feff;
+  border-radius: 0 0 0.90909rem 0.90909rem;
+}
+
+.daycares-search__cont .card__title {
   display: block;
+  color: #140a4c;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 0.72727rem;
+}
+
+.daycares-search__cont .card__address {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 1.45455rem;
+}
+
+.daycares-search__cont .card .card-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.daycares-search__cont .card .card-info__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.daycares-search__cont .card .card-info__item:not(:last-child) {
+  margin-right: 1.45455rem;
+}
+
+.daycares-search__cont .card .card-info__item:last-child {
+  margin-left: auto;
+}
+
+.daycares-search__cont .card .card-info__icon {
+  font-size: 1.5rem;
+  margin-right: 0.45455rem;
+}
+
+.daycares-search__cont .card .card-info__icon.red {
+  color: #eb5d5e;
+}
+
+.daycares-search__cont .card .card-info__icon.purple {
+  color: #8773ae;
+}
+
+.daycares-search__cont .card .card-info__icon.yellow {
+  color: #f5aa16;
+}
+
+.daycares-search__cont .card .card-info__number {
+  color: #000000;
+  font-weight: 700;
+}
+
+.daycares-map {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+}
+
+.daycares-map img {
+  width: 100%;
+}
+
+.daycares-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pagination .disabled {
+  display: none;
+}
+
+.pagination > * {
+  padding: 0 0.72727rem;
+}
+
+.pagination__word {
+  padding-right: 0;
+  font-weight: 700;
+  color: #0cb5c3;
+}
+
+.pagination__page {
+  font-weight: 400;
+}
+
+.pagination__page.active {
+  color: #0cb5c3;
+  font-weight: 700;
+}
+
+.pagination__icon {
+  font-size: 0.7rem;
+}
+
+.search-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  margin: 3.63636rem 0;
+}
+
+.search-box__input {
+  background: transparent;
+  border: none;
+  border-bottom: solid 1px #e1e4e9;
+  padding: 0.54545rem 1.45455rem;
+  width: 100%;
+}
+
+.search-box__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.54545rem;
+  border-radius: 0 0.72727rem 0.72727rem 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.search-box__btn i {
+  font-size: 1rem;
+}
+
+.daycare {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: "a b" "c d";
+  -webkit-column-gap: 1.81818rem;
+          column-gap: 1.81818rem;
+  row-gap: 3.63636rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.daycare__top {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: a;
+      grid-template-columns: repeat(2, auto);
+      grid-template-areas: "a b" "a c";
+  -webkit-column-gap: 1.81818rem;
+          column-gap: 1.81818rem;
+}
+
+.daycare__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.daycare__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.daycare__item:not(:last-child) {
+  margin-right: 1.45455rem;
+}
+
+.daycare__icon {
+  font-size: 1.5rem;
+  margin-right: 0.45455rem;
+}
+
+.daycare__icon.red {
+  color: #eb5d5e;
+}
+
+.daycare__icon.purple {
+  color: #8773ae;
+}
+
+.daycare__icon.yellow {
+  color: #f5aa16;
+}
+
+.daycare__number {
+  color: #000000;
+  font-weight: 700;
+}
+
+.daycare__logo {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: a;
+  width: 15.45455rem;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.72727rem;
+}
+
+.daycare__body {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: c;
+}
+
+.daycare__map {
+  padding-bottom: 3.63636rem;
+  border-bottom: solid 1px #e1e4e9;
+}
+
+.daycare__map img {
+  width: 100%;
+}
+
+.daycare__reviews {
+  margin-top: 1.81818rem;
+}
+
+.daycare__reviews-resume {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+  height: 100%;
+}
+
+.daycare .reviews-resume__stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.daycare .reviews-resume__stars i {
+  font-size: 2.18rem;
+  color: #f5aa16;
+  margin-right: 0.36364rem;
+}
+
+.daycare .reviews-resume__stars h2 {
+  color: #55637e;
+  font-weight: 700;
+}
+
+.daycare .reviews-resume__qt {
+  color: #140a4c;
+}
+
+.daycare__contact {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: d;
+  padding: 1.81818rem;
+  background: #d7f6f9;
+  border-radius: 0.90909rem;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.daycare .contact__name {
+  margin-bottom: 0.72727rem;
+  display: block;
+}
+
+.daycare .contact__address {
+  margin-bottom: 1.45455rem;
+}
+
+.daycare .contact button:first-child {
+  margin-bottom: 0.72727rem;
+}
+
+.reviews__review {
+  width: 100%;
+  background: #f0feff;
+  padding: 0.90909rem;
+  border-radius: 0.90909rem;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.81818rem;
+}
+
+.reviews__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1.81818rem;
+}
+
+.reviews__reviewer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reviews__avatar {
+  width: 3.45455rem;
+  border-radius: 50%;
+  border: solid 1px #0cb5c3;
+  margin-right: 1.81818rem;
+}
+
+.reviews__name {
+  color: #140a4c;
+}
+
+.reviews__info {
+  text-align: right;
+}
+
+.reviews__score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reviews__number {
+  font-weight: 700;
+  color: #140a4c;
+  margin-right: 0.36364rem;
+}
+
+.reviews__stars i {
+  margin-left: 0.36364rem;
+  color: #0cb5c3;
+}
+
+.reviews__stars i.full {
+  color: #f5aa16;
+}
+
+.reviews__text {
+  padding-left: 5.27273rem;
 }
 
 .footer {
@@ -783,7 +1314,7 @@ main section:last-child {
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   html,
   body {
     font-size: 16px;
@@ -903,6 +1434,78 @@ main section:last-child {
   }
   .faq-item {
     width: calc(100% - 16px);
+  }
+  .daycares {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .daycares .daycares-search {
+    width: 100%;
+  }
+  .daycares .daycares-search h1,
+  .daycares .daycares-search .search-box {
+    width: 100%;
+  }
+  .daycares .daycares-search__cont {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .daycare {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .daycare__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .daycare__logo {
+    margin-bottom: 1.45455rem;
+  }
+  .daycare__reviews-resume {
+    width: 100%;
+  }
+  .reviews__review {
+    padding: 1.45455rem;
+  }
+  .reviews__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 100%;
+  }
+  .reviews__info {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  .reviews__text {
+    padding: 0;
   }
   .footer__over {
     display: none;

@@ -48,16 +48,32 @@ h4 {
     margin: 0;
 }
 
+h5 {
+    font-size: $h5;
+    line-height: 1.25;
+    margin: 0;
+}
+
 p {
     font-size: 1rem;
     line-height: 1.45;
     margin: 0;
 }
 
+input {
+    color: $color-text-dark;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
 .btn {
     outline: none;
     -webkit-appearance: none !important;
     display: flex;
+    justify-content: center;
     padding: rem(12px);
     border-radius: $border-radius-default;
     background: #000000;
@@ -73,6 +89,12 @@ p {
         font-weight: 700;
         font-size: $font-size-btn;
     }
+
+    &__icon {
+        color: #ffffff;
+        margin-right: rem(10px);
+    }
+
     // MODIFIERS
 
     &--primary {
@@ -89,7 +111,15 @@ p {
 
     &--transparent {
         background-color: transparent;
-        box-shadow: inset 0 0 0 2px $color-gray;
+        box-shadow: none;
+
+        &-border {
+            box-shadow: inset 0 0 0 2px $color-gray;
+        }
+
+        .btn__icon {
+            color: $color-primary;
+        }
 
         .btn__text {
             color: $color-primary;
@@ -249,6 +279,10 @@ main {
         &:last-child {
             padding-bottom: rem(240px);
         }
+    }
+
+    &.no-bg {
+        background-image: none;
     }
 }
 
@@ -448,7 +482,7 @@ main {
 
 .faq {
     &-item {
-        margin-left: rem(16px);
+        margin-left: rem(32px);
         border-bottom: solid 1px $color-gray;
         margin-bottom: rem(16px);
         width: 60%;
@@ -462,10 +496,11 @@ main {
             cursor: pointer;
 
             &:before {
-                content: ">";
+                font-family: "icomoon";
+                content: "\e907";
                 color: $color-primary;
                 position: absolute;
-                left: rem(-16px);
+                left: rem(-32px);
                 top: 0;
                 display: block;
             }
@@ -473,21 +508,402 @@ main {
 
         &__content {
             display: none;
-            transition: all ease 0.3s;
             margin-bottom: rem(16px);
         }
 
         &.active {
             .faq-item__title {
                 &:before {
-                    content: "<";
+                    content: "\e90b";
                 }
             }
+        }
+    }
+}
 
-            .faq-item__content {
-                display: block;
+.daycares {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: rem(20px);
+    row-gap: rem(40px);
+    grid-template-areas:
+        "a b"
+        "c d";
+
+    &--without-map {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .daycares-search {
+            h1,
+            .search-box {
+                width: 50%;
+            }
+
+            &__cont {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
             }
         }
+
+        .daycares-pagination {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    &-search {
+        grid-area: a;
+
+        &__cont {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: rem(20px);
+            row-gap: rem(20px);
+
+            .card {
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                border-radius: rem(10px);
+                cursor: pointer;
+
+                &__img {
+                    width: 100%;
+                    padding-bottom: 74.33%;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    border-radius: rem(10px) rem(10px) 0 0;
+                }
+
+                &__body {
+                    padding: rem(14px) rem(16px) rem(16px);
+                    background: $color-blue-background;
+                    border-radius: 0 0 rem(10px) rem(10px);
+                }
+
+                &__title {
+                    display: block;
+                    color: $color-text-dark;
+                    font-weight: 700;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-bottom: rem(8px);
+                }
+
+                &__address {
+                    display: block;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-bottom: rem(16px);
+                }
+
+                .card-info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    &__item {
+                        display: flex;
+                        align-items: center;
+
+                        &:not(:last-child) {
+                            margin-right: rem(16px);
+                        }
+
+                        &:last-child {
+                            margin-left: auto;
+                        }
+                    }
+
+                    &__icon {
+                        font-size: 1.5rem;
+                        margin-right: rem(5px);
+
+                        &.red {
+                            color: $color-red;
+                        }
+                        &.purple {
+                            color: $color-purple;
+                        }
+                        &.yellow {
+                            color: $color-yellow;
+                        }
+                    }
+
+                    &__number {
+                        color: #000000;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+
+    &-map {
+        grid-area: b;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.pagination {
+    .disabled {
+        display: none;
+    }
+
+    & > * {
+        padding: 0 rem(8px);
+    }
+
+    &__word {
+        padding-right: 0;
+        font-weight: 700;
+        color: $color-primary;
+    }
+
+    &__page {
+        font-weight: 400;
+        &.active {
+            color: $color-primary;
+            font-weight: 700;
+        }
+    }
+
+    &__icon {
+        font-size: 0.7rem;
+    }
+}
+
+.search-box {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin: rem(40px) 0;
+
+    &__input {
+        background: transparent;
+        border: none;
+        border-bottom: solid 1px $color-gray;
+        padding: rem(6px) rem(16px);
+        width: 100%;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        padding: rem(6px);
+        border-radius: 0 rem(8px) rem(8px) 0;
+        box-shadow: none;
+
+        i {
+            font-size: 1rem;
+        }
+    }
+}
+
+.daycare {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "a b"
+        "c d";
+    column-gap: rem(20px);
+    row-gap: rem(40px);
+    align-items: flex-start;
+
+    &__top {
+        display: grid;
+        grid-area: a;
+        grid-template-columns: repeat(2, auto);
+        grid-template-areas:
+            "a b"
+            "a c";
+        column-gap: rem(20px);
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: rem(16px);
+        }
+    }
+
+    &__icon {
+        font-size: 1.5rem;
+        margin-right: rem(5px);
+
+        &.red {
+            color: $color-red;
+        }
+        &.purple {
+            color: $color-purple;
+        }
+        &.yellow {
+            color: $color-yellow;
+        }
+    }
+
+    &__number {
+        color: #000000;
+        font-weight: 700;
+    }
+
+    &__logo {
+        grid-area: a;
+        width: rem(170px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        border-radius: rem(8px);
+    }
+
+    &__body {
+        grid-area: c;
+    }
+
+    &__map {
+        padding-bottom: rem(40px);
+        border-bottom: solid 1px $color-gray;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__reviews {
+        margin-top: rem(20px);
+    }
+
+    &__reviews-resume {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        grid-area: b;
+        height: 100%;
+    }
+
+    .reviews-resume {
+        &__stars {
+            display: flex;
+            align-items: center;
+            i {
+                font-size: $h2;
+                color: $color-yellow;
+                margin-right: rem(4px);
+            }
+
+            h2 {
+                color: $color-text;
+                font-weight: 700;
+            }
+        }
+
+        &__qt {
+            color: $color-text-dark;
+        }
+    }
+
+    &__contact {
+        grid-area: d;
+        padding: rem(20px);
+        background: $color-blue-background-darker;
+        border-radius: rem(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact {
+        &__name {
+            margin-bottom: rem(8px);
+            display: block;
+        }
+
+        &__address {
+            margin-bottom: rem(16px);
+        }
+
+        button:first-child {
+            margin-bottom: rem(8px);
+        }
+    }
+}
+
+.reviews {
+    &__review {
+        width: 100%;
+        background: $color-blue-background;
+        padding: rem(10px);
+        border-radius: rem(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: rem(20px);
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: rem(20px);
+    }
+
+    &__reviewer {
+        display: flex;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: rem(38px);
+        border-radius: 50%;
+        border: solid 1px $color-primary;
+        margin-right: rem(20px);
+    }
+
+    &__name {
+        color: $color-text-dark;
+    }
+
+    &__info {
+        text-align: right;
+    }
+
+    &__score {
+        display: flex;
+        align-items: center;
+    }
+
+    &__number {
+        font-weight: 700;
+        color: $color-text-dark;
+        margin-right: rem(4px);
+    }
+
+    &__stars {
+        i {
+            margin-left: rem(4px);
+            color: $color-primary;
+
+            &.full {
+                color: $color-yellow;
+            }
+        }
+    }
+
+    &__text {
+        padding-left: rem(58px);
     }
 }
 
@@ -640,7 +1056,7 @@ main {
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
     html,
     body {
         font-size: 16px;
@@ -773,6 +1189,63 @@ main {
     .faq {
         &-item {
             width: calc(100% - 16px);
+        }
+    }
+
+    .daycares {
+        display: flex !important;
+        flex-direction: column !important;
+
+        .daycares-search {
+            width: 100%;
+            h1,
+            .search-box {
+                width: 100%;
+            }
+
+            &__cont {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .daycare {
+        display: flex;
+        flex-direction: column;
+
+        &__top {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__logo {
+            margin-bottom: rem(16px);
+        }
+
+        &__reviews-resume {
+            width: 100%;
+        }
+    }
+
+    .reviews {
+        &__review {
+            padding: rem(16px);
+        }
+
+        &__top {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        &__info {
+            align-self: flex-end;
+        }
+
+        &__text {
+            padding: 0;
         }
     }
 

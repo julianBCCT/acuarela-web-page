@@ -22,9 +22,9 @@
 </head>
 
 <body>
-	<header class="header">
+<header class="header">
 		<img class="header__logo" src="img/logo.svg" alt="Acuarela" />
-		<img class="header__toggle" src="img/menu.svg" alt="Acuarela" onclick="$('.mobile-menu').toggleClass('active')" />
+		<img class="header__toggle" src="img/menu.svg" alt="Acuarela" onclick="toggleTarget('mobile-menu')" />
 		<nav class="header__menu">
 			<a class="header__menu-item">Nosotros</a>
 			<a class="header__menu-item">Nuestros Daycares</a>
@@ -45,7 +45,7 @@
 					<i class="icon-arrow-down"></i>
 				</label>
 			</div>
-			<button class="btn btn--transparent btn--sm">
+			<button class="btn btn--transparent btn--transparent-border btn--sm">
 				<span class="btn__text">Inicia Sesión</span>
 			</button>
 			<button class="btn btn--primary btn--sm">
@@ -53,10 +53,10 @@
 			</button>
 		</div>
 	</header>
-	<div class="mobile-menu">
+	<div class="mobile-menu" data-toggle="mobile-menu">
 		<div class="mobile-menu__header">
 			<img class="header__logo" src="img/logo.svg" alt="Acuarela" />
-			<i class="header__toggle icon-cross" onclick="$('.mobile-menu').toggleClass('active')"></i>
+			<i class="header__toggle icon-cross" onclick="toggleTarget('mobile-menu')"></i>
 		</div>
 		<div class="mobile-menu__body">
 			<nav class="mobile-menu__menu">
@@ -79,7 +79,7 @@
 						<i class="icon-arrow-down"></i>
 					</label>
 				</div>
-				<button class="btn btn--transparent btn--sm">
+				<button class="btn btn--transparent btn--transparent-border btn--sm">
 					<span class="btn__text">Inicia Sesión</span>
 				</button>
 				<button class="btn btn--primary btn--sm">

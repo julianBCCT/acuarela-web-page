@@ -663,9 +663,31 @@ main.no-bg {
   display: block;
 }
 
-.faq-item__content {
+.faq-item .content {
   display: none;
+}
+
+.faq-item__content {
+  position: relative;
   margin-bottom: 1.45455rem;
+}
+
+.faq-item__message {
+  position: absolute;
+  top: 0;
+  right: -10.90909rem;
+  white-space: nowrap;
+  color: #0cb5c3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.faq-item__message i {
+  margin-right: 0.72727rem;
 }
 
 .faq-item.active .faq-item__title:before {
@@ -1434,6 +1456,11 @@ main.no-bg {
   }
   .faq-item {
     width: calc(100% - 16px);
+  }
+  .faq-item__message {
+    position: initial;
+    margin-top: 1.45455rem;
+    margin-bottom: 1.45455rem;
   }
   .daycares {
     display: -webkit-box !important;

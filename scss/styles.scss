@@ -270,7 +270,7 @@ main {
     padding-top: rem(140px);
     background-image: url(/img/body_bg.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     background-position: center rem(100px);
 
     section {
@@ -911,7 +911,7 @@ main {
     background-color: $color-primary;
     background-image: url(/img/footer_bg.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     background-position: center bottom;
     color: #ffffff;
     position: relative;
@@ -1250,6 +1250,8 @@ main {
     }
 
     .footer {
+        background-size: 100%;
+        background-position: center 87%;
         &__over {
             display: none;
         }

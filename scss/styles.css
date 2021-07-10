@@ -406,7 +406,7 @@ main {
   padding-top: 12.72727rem;
   background-image: url(/img/body_bg.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
   background-position: center 9.09091rem;
 }
 
@@ -1153,7 +1153,7 @@ main.no-bg {
   background-color: #0cb5c3;
   background-image: url(/img/footer_bg.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
   background-position: center bottom;
   color: #ffffff;
   position: relative;
@@ -1506,6 +1506,10 @@ main.no-bg {
   }
   .reviews__text {
     padding: 0;
+  }
+  .footer {
+    background-size: 100%;
+    background-position: center 87%;
   }
   .footer__over {
     display: none;

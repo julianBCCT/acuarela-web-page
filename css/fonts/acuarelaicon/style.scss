@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?yumb6j');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?yumb6j#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?yumb6j') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?yumb6j') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?yumb6j##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?h6n1ul');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?h6n1ul#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?h6n1ul') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?h6n1ul') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?h6n1ul##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -32,6 +32,11 @@ i {
     content: $icon-arrow-down; 
   }
 }
+.icon-assistant {
+  &:before {
+    content: $icon-assistant; 
+  }
+}
 .icon-checkmark {
   &:before {
     content: $icon-checkmark; 
@@ -47,9 +52,19 @@ i {
     content: $icon-facebook; 
   }
 }
+.icon-kid {
+  &:before {
+    content: $icon-kid; 
+  }
+}
 .icon-message {
   &:before {
     content: $icon-message; 
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone; 
   }
 }
 .icon-star {

@@ -1,8 +1,10 @@
-@charset "UTF-8";
 @font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?yumb6j");
-  src: url("fonts/icomoon.eot?yumb6j#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?yumb6j") format("truetype"), url("fonts/icomoon.woff?yumb6j") format("woff"), url("fonts/icomoon.svg?yumb6j#icomoon") format("svg");
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?h6n1ul');
+  src:  url('fonts/icomoon.eot?h6n1ul#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?h6n1ul') format('truetype'),
+    url('fonts/icomoon.woff?h6n1ul') format('woff'),
+    url('fonts/icomoon.svg?h6n1ul#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -10,47 +12,49 @@
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-arrow-down:before {
-  content: "";
+  content: "\e907";
 }
-
+.icon-assistant:before {
+  content: "\e908";
+}
 .icon-checkmark:before {
-  content: "";
+  content: "\e900";
 }
-
 .icon-cross:before {
-  content: "";
+  content: "\e901";
 }
-
 .icon-facebook:before {
-  content: "";
+  content: "\e902";
 }
-
+.icon-kid:before {
+  content: "\e909";
+}
 .icon-message:before {
-  content: "";
+  content: "\e903";
 }
-
+.icon-phone:before {
+  content: "\e90a";
+}
 .icon-star:before {
-  content: "";
+  content: "\e904";
 }
-
 .icon-twitter:before {
-  content: "";
+  content: "\e905";
 }
-
 .icon-youtube:before {
-  content: "";
+  content: "\e906";
 }
-/*# sourceMappingURL=style.css.map */

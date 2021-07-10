@@ -107,6 +107,10 @@ p {
             margin: 0 auto;
         }
     }
+
+    &--small {
+        padding: rem(6px) rem(14px);
+    }
 }
 
 .lang-selector {
@@ -277,6 +281,15 @@ main {
             border: none;
         }
     }
+    // MODIFIERS
+
+    &--center {
+        align-items: center;
+    }
+
+    &--short {
+        padding-bottom: rem(40px);
+    }
 }
 
 .features {
@@ -390,6 +403,90 @@ main {
         }
 
         &__message {
+        }
+    }
+}
+
+.pricing {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: rem(20px);
+
+    &-plan {
+        border-radius: rem(16px);
+        background: #ffffff;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+        padding: rem(50px) rem(40px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__name {
+            font-weight: 700;
+            color: $color-text-dark;
+            margin-bottom: rem(16px);
+        }
+
+        &__price {
+            margin-bottom: rem(16px);
+        }
+
+        hr {
+            margin-bottom: rem(16px);
+            width: 100%;
+            border: none;
+            border-top: solid 1px $color-text;
+        }
+
+        &__features {
+            color: #000000;
+            margin-bottom: rem(16px);
+        }
+    }
+}
+
+.faq {
+    &-item {
+        margin-left: rem(16px);
+        border-bottom: solid 1px $color-gray;
+        margin-bottom: rem(16px);
+        width: 60%;
+
+        &__title {
+            font-weight: 700;
+            color: $color-text-dark;
+            position: relative;
+            margin-bottom: rem(16px);
+            display: block;
+            cursor: pointer;
+
+            &:before {
+                content: ">";
+                color: $color-primary;
+                position: absolute;
+                left: rem(-16px);
+                top: 0;
+                display: block;
+            }
+        }
+
+        &__content {
+            display: none;
+            transition: all ease 0.3s;
+            margin-bottom: rem(16px);
+        }
+
+        &.active {
+            .faq-item__title {
+                &:before {
+                    content: "<";
+                }
+            }
+
+            .faq-item__content {
+                display: block;
+            }
         }
     }
 }
@@ -660,6 +757,22 @@ main {
             &__texts {
                 margin-top: rem(8px);
             }
+        }
+    }
+
+    .pricing {
+        display: flex;
+        flex-direction: column;
+
+        &-plan {
+            margin-bottom: rem(20px);
+            padding: rem(40px) rem(16px);
+        }
+    }
+
+    .faq {
+        &-item {
+            width: calc(100% - 16px);
         }
     }
 

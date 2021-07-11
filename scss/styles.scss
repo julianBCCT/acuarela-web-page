@@ -113,6 +113,10 @@ input {
         background-color: transparent;
         box-shadow: none;
 
+        &:hover {
+            background: rgba($color-primary, 0.2);
+        }
+
         &-border {
             box-shadow: inset 0 0 0 2px $color-gray;
         }
@@ -148,6 +152,12 @@ input {
     display: flex;
     align-items: center;
 
+    &:hover {
+        i {
+            color: $color-primary;
+        }
+    }
+
     &__flag {
         height: rem(12px);
     }
@@ -169,6 +179,7 @@ input {
         top: 0;
         right: 0;
         pointer-events: none;
+        transition: all ease 0.2s;
     }
 }
 
@@ -197,6 +208,11 @@ input {
             font-size: $font-size-menu;
             font-weight: 700;
             color: $color-text-dark;
+            transition: all ease 0.3s;
+
+            &:hover {
+                color: $color-primary;
+            }
         }
     }
 
@@ -952,6 +968,7 @@ main {
     .over {
         &__texts {
             text-align: center;
+            margin-right: rem(20px);
         }
 
         &__buttons {
@@ -972,6 +989,11 @@ main {
 
                     &:not(:last-child) {
                         margin-bottom: rem(16px);
+                    }
+
+                    transition: all ease 0.2s;
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.05);
                     }
                 }
             }
@@ -1008,9 +1030,23 @@ main {
         }
     }
 
+    &__main-web {
+        transition: all ease 0.2s;
+        &:hover {
+            color: $color-yellow;
+        }
+    }
+
     &__nav {
         display: flex;
         flex-direction: column;
+
+        a {
+            transition: all ease 0.2s;
+            &:hover {
+                color: $color-yellow;
+            }
+        }
 
         a:not(:last-child) {
             margin-bottom: rem(15px);
@@ -1024,6 +1060,11 @@ main {
             i {
                 font-size: rem(23px);
                 margin-right: rem(16px);
+                transition: all ease 0.2s;
+
+                &:hover {
+                    color: $color-yellow;
+                }
             }
         }
     }
@@ -1071,6 +1112,52 @@ main {
     main {
         padding-left: rem(80px);
         padding-right: rem(80px);
+    }
+
+    .footer {
+        &__over {
+            width: calc(100% - 160px);
+        }
+
+        &__body {
+            padding-left: rem(80px);
+            padding-right: rem(80px);
+        }
+    }
+}
+
+@media (max-width: 998px) {
+    .header {
+        padding: 0 rem(30px);
+    }
+
+    main {
+        padding-left: rem(30px);
+        padding-right: rem(30px);
+    }
+
+    .footer {
+        &__over {
+            width: calc(100% - 120px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .over {
+            &__texts {
+                margin-bottom: rem(16px);
+            }
+
+            &__buttons {
+                column-gap: rem(60px);
+            }
+        }
+
+        &__body {
+            padding-top: rem(240px);
+            padding-left: rem(80px);
+            padding-right: rem(80px);
+        }
     }
 }
 

@@ -428,6 +428,7 @@ main {
             width: 100%;
             display: flex;
             align-items: flex-start;
+            margin-bottom: rem(40px);
         }
 
         &__avatar {
@@ -437,8 +438,16 @@ main {
             margin-right: rem(38px);
         }
 
+        &__top {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: rem(16px);
+        }
+
         &__texts {
-            margin-top: rem(16px);
+            margin-top: rem(6px);
+            width: 100%;
         }
 
         &__name {
@@ -449,7 +458,10 @@ main {
 
         &__role {
             color: $color-gray-dark;
-            margin-bottom: rem(16px);
+        }
+
+        &__date {
+            color: $color-gray-dark;
         }
 
         &__message {
@@ -754,6 +766,7 @@ main {
     column-gap: rem(20px);
     row-gap: rem(40px);
     align-items: flex-start;
+    padding-right: rem(110px);
 
     &__top {
         display: grid;
@@ -856,6 +869,7 @@ main {
     &__contact {
         grid-area: d;
         padding: rem(20px);
+        padding-bottom: rem(10px);
         background: $color-blue-background-darker;
         border-radius: rem(10px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1275,8 +1289,19 @@ main {
 
     .testimonials {
         &-cont {
+            &__avatar {
+                margin-right: rem(16px);
+            }
+            &__top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
             &__texts {
-                margin-top: rem(8px);
+                margin-top: rem(4px);
+            }
+
+            &__name {
+                margin-bottom: rem(4px);
             }
         }
     }
@@ -1324,6 +1349,7 @@ main {
     .daycare {
         display: flex;
         flex-direction: column;
+        padding-right: 0;
 
         &__top {
             display: flex;
@@ -1335,6 +1361,10 @@ main {
         }
 
         &__reviews-resume {
+            width: 100%;
+        }
+
+        &__contact {
             width: 100%;
         }
     }

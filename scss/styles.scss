@@ -60,12 +60,126 @@ p {
     margin: 0;
 }
 
-input {
+input,
+select {
     color: $color-text-dark;
 
     &:active,
     &:focus {
         outline: none;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: rem(30px);
+
+    label {
+        font-weight: 700;
+        margin-bottom: rem(4px);
+
+        &.error {
+            margin-left: rem(8px);
+            margin-top: rem(4px);
+            margin-bottom: 0;
+            color: $color-red;
+            display: block;
+        }
+    }
+
+    .input-wrapper {
+        width: 100%;
+        position: relative;
+
+        label {
+            display: none;
+
+            &.error {
+                display: block;
+            }
+        }
+
+        &.error:after {
+            content: "\e901";
+            font-family: "icomoon";
+            position: absolute;
+            top: rem(6px);
+            right: rem(8px);
+            color: $color-red;
+        }
+
+        &.success:after {
+            content: "\e900";
+            font-family: "icomoon";
+            position: absolute;
+            top: rem(6px);
+            right: rem(8px);
+            color: $color-green;
+        }
+    }
+
+    input {
+        border: none;
+        border-bottom: solid 1px $color-gray-dark;
+        padding: rem(6px) rem(8px);
+        width: 100%;
+        background: transparent;
+
+        &.error {
+            color: $color-red;
+            border-color: $color-red;
+        }
+
+        &.success {
+            border-color: $color-green;
+        }
+    }
+
+    .select-wrapper {
+        position: relative;
+        width: 100%;
+        &:after {
+            pointer-events: none;
+            content: "\e907";
+            font-family: "icomoon";
+            display: block;
+            color: $color-text;
+            position: absolute;
+            top: rem(4px);
+            bottom: 0;
+            right: rem(8px);
+            margin: auto 0;
+            color: $color-gray-dark;
+        }
+
+        label {
+            display: none;
+
+            &.error {
+                display: block;
+            }
+        }
+    }
+
+    select {
+        border: none;
+        border-bottom: solid 1px $color-gray-dark;
+        padding: rem(6px) rem(8px);
+        width: 100%;
+        appearance: none;
+        background-color: transparent;
+        position: relative;
+
+        &.error {
+            color: $color-red;
+            border-color: $color-red;
+        }
+
+        &.success {
+            border-color: $color-green;
+        }
     }
 }
 
@@ -955,6 +1069,100 @@ main {
     }
 }
 
+.contact {
+    display: flex;
+    align-items: flex-start;
+
+    &__content {
+        margin-right: rem(65px);
+    }
+
+    &__title {
+        margin-bottom: rem(16px);
+    }
+
+    &__subtitle {
+        color: $color-text-dark;
+        margin-bottom: rem(40px);
+    }
+
+    &__success {
+        display: none;
+        .contact__title {
+            margin-bottom: rem(32px);
+        }
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: rem(20px);
+
+        button {
+            margin-top: rem(20px);
+            width: 70%;
+            justify-self: flex-end;
+        }
+    }
+
+    &__card {
+        margin-right: rem(44px);
+    }
+
+    .card {
+        padding: rem(40px);
+        background: #ffffff;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+        border-radius: rem(16px);
+
+        &__title,
+        &__subtitle {
+            color: $color-text-dark;
+            margin-bottom: rem(20px);
+        }
+
+        &__address {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: rem(20px);
+        }
+
+        &__email {
+            font-weight: 400;
+            text-decoration: underline;
+            margin-bottom: rem(30px);
+            display: block;
+        }
+
+        &__img {
+            min-width: rem(350px);
+            width: 100%;
+            padding-bottom: rem(30px);
+            margin-bottom: rem(16px);
+            border-bottom: solid 1px $color-gray;
+        }
+
+        &__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__social {
+            i {
+                font-size: 2rem;
+                margin-left: rem(8px);
+                color: $color-gray-dark;
+                transition: all ease 0.3s;
+
+                &:hover {
+                    color: $color-text;
+                }
+            }
+        }
+    }
+}
+
 .footer {
     background-color: $color-primary;
     background-image: url(/img/footer_bg.png);
@@ -1387,6 +1595,44 @@ main {
 
         &__text {
             padding: 0;
+        }
+    }
+
+    .contact {
+        flex-direction: column;
+
+        &__content {
+            margin-right: 0;
+        }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: rem(60px);
+
+            .form-group {
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .card {
+            padding: rem(16px);
+            margin: 0;
+            border-radius: rem(10px);
+
+            &__img {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            &__bottom {
+                flex-direction: column;
+            }
         }
     }
 

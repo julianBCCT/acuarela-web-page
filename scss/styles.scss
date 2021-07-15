@@ -137,6 +137,23 @@ select {
         }
     }
 
+    textarea {
+        border: none;
+        border-bottom: solid 1px $color-gray-dark;
+        padding: rem(6px) rem(8px);
+        width: 100%;
+        background: transparent;
+
+        &.error {
+            color: $color-red;
+            border-color: $color-red;
+        }
+
+        &.success {
+            border-color: $color-green;
+        }
+    }
+
     .select-wrapper {
         position: relative;
         width: 100%;
@@ -214,8 +231,13 @@ select {
     &--primary {
         background-color: $color-primary;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: $color-primary-dark;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: $color-primary-disabled;
         }
     }
 
@@ -586,7 +608,7 @@ main {
 .pricing {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: rem(20px);
+    column-gap: rem(40px);
 
     &-plan {
         border-radius: rem(16px);
@@ -617,7 +639,8 @@ main {
 
         &__features {
             color: #000000;
-            margin-bottom: rem(16px);
+            margin: 0 rem(16px);
+            margin-bottom: rem(30px);
         }
     }
 }
@@ -633,9 +656,13 @@ main {
             font-weight: 700;
             color: $color-text-dark;
             position: relative;
-            margin-bottom: rem(16px);
+            padding-bottom: rem(16px);
             display: block;
             cursor: pointer;
+
+            &:hover {
+                color: $color-primary;
+            }
 
             &:before {
                 font-family: "icomoon";
@@ -665,6 +692,10 @@ main {
             color: $color-primary;
             display: flex;
             align-items: center;
+
+            &:hover {
+                text-decoration: underline;
+            }
 
             i {
                 margin-right: rem(8px);
@@ -987,9 +1018,13 @@ main {
         background: $color-blue-background-darker;
         border-radius: rem(10px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .contact {
+    .daycare-contact {
+        align-items: stretch;
         &__name {
             margin-bottom: rem(8px);
             display: block;
@@ -1070,15 +1105,16 @@ main {
 }
 
 .contact {
-    display: flex;
-    align-items: flex-start;
-
-    &__content {
-        margin-right: rem(65px);
-    }
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: rem(65px);
 
     &__title {
         margin-bottom: rem(16px);
+
+        &--faq {
+            margin-bottom: rem(32px);
+        }
     }
 
     &__subtitle {
@@ -1103,10 +1139,33 @@ main {
             width: 70%;
             justify-self: flex-end;
         }
+
+        &--faq {
+            .form-group-textarea {
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+
+            button {
+                grid-column-start: 2;
+            }
+        }
     }
 
     &__card {
         margin-right: rem(44px);
+    }
+
+    .question {
+        &__title {
+            color: $color-text;
+            margin-bottom: rem(40px);
+        }
+
+        &__text {
+            color: $color-gray-dark;
+            margin-bottom: rem(46px);
+        }
     }
 
     .card {
@@ -1299,6 +1358,12 @@ main {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
@@ -1526,7 +1591,7 @@ main {
 
     .faq {
         &-item {
-            width: calc(100% - 16px);
+            width: calc(100% - 44px);
 
             &__message {
                 position: initial;
@@ -1599,6 +1664,7 @@ main {
     }
 
     .contact {
+        display: flex;
         flex-direction: column;
 
         &__content {
@@ -1640,7 +1706,25 @@ main {
         background-size: 100%;
         background-position: center 87%;
         &__over {
-            display: none;
+            position: initial;
+            width: 100%;
+            .over__buttons {
+                display: flex;
+                flex-direction: column;
+
+                & > div {
+                    &:not(:last-child) {
+                        margin-bottom: rem(64px);
+                    }
+
+                    button {
+                        img {
+                            height: rem(24px);
+                        }
+                    }
+                }
+            }
+            // display: none;
         }
 
         &__body {

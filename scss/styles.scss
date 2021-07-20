@@ -63,6 +63,7 @@ p {
 input,
 select {
     color: $color-text-dark;
+    border-radius: 0;
 
     &:active,
     &:focus {
@@ -142,6 +143,7 @@ select {
         border-bottom: solid 1px $color-gray-dark;
         padding: rem(6px) rem(8px);
         width: 100%;
+        max-width: 100%;
         background: transparent;
 
         &.error {
@@ -393,7 +395,7 @@ select {
     &__body {
         display: flex;
         flex-direction: column;
-        margin-top: rem(60px);
+        margin-top: rem(30px);
     }
 
     &__menu {
@@ -408,12 +410,16 @@ select {
     }
 
     &__actions {
-        margin-top: rem(30px);
+        margin-top: rem(20px);
         display: flex;
         flex-direction: column;
 
         & > * {
             margin-top: rem(16px);
+        }
+
+        .lang-selector {
+            width: 100%;
         }
     }
 }
@@ -734,7 +740,7 @@ main {
             }
 
             &__cont {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
 
@@ -750,8 +756,8 @@ main {
         &__cont {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: rem(20px);
-            row-gap: rem(20px);
+            column-gap: rem(40px);
+            row-gap: rem(30px);
 
             .card {
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1506,8 +1512,12 @@ main {
             padding-bottom: rem(60px);
 
             &:last-child {
-                padding-bottom: rem(120px);
+                padding-bottom: rem(60px);
             }
+        }
+
+        &.main-short {
+            padding-top: rem(100px);
         }
     }
 
@@ -1630,6 +1640,10 @@ main {
             flex-direction: column;
         }
 
+        &__name {
+            margin-bottom: rem(10px);
+        }
+
         &__logo {
             margin-bottom: rem(16px);
         }
@@ -1699,6 +1713,25 @@ main {
 
             &__bottom {
                 flex-direction: column;
+            }
+        }
+
+        &-faq {
+            flex-direction: column-reverse !important;
+        }
+
+        .question {
+            &__title {
+                margin-bottom: rem(16px);
+            }
+
+            &__text {
+                display: none;
+            }
+
+            button {
+                margin-left: auto;
+                margin-bottom: rem(30px);
             }
         }
     }

@@ -153,6 +153,7 @@ p {
 input,
 select {
   color: #140a4c;
+  border-radius: 0;
 }
 
 input:active, input:focus,
@@ -241,6 +242,7 @@ select:focus {
   border-bottom: solid 1px #98a2b7;
   padding: 0.54545rem 0.72727rem;
   width: 100%;
+  max-width: 100%;
   background: transparent;
 }
 
@@ -531,7 +533,7 @@ select:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 5.45455rem;
+  margin-top: 2.72727rem;
 }
 
 .mobile-menu__menu {
@@ -552,7 +554,7 @@ select:focus {
 }
 
 .mobile-menu__actions {
-  margin-top: 2.72727rem;
+  margin-top: 1.81818rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -564,6 +566,10 @@ select:focus {
 
 .mobile-menu__actions > * {
   margin-top: 1.45455rem;
+}
+
+.mobile-menu__actions .lang-selector {
+  width: 100%;
 }
 
 main {
@@ -916,8 +922,8 @@ main.no-bg {
 }
 
 .daycares--without-map .daycares-search__cont {
-  -ms-grid-columns: (minmax(0, 1fr))[4];
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .daycares--without-map .daycares-pagination {
@@ -939,9 +945,9 @@ main.no-bg {
   display: grid;
   -ms-grid-columns: (minmax(0, 1fr))[2];
       grid-template-columns: repeat(2, minmax(0, 1fr));
-  -webkit-column-gap: 1.81818rem;
-          column-gap: 1.81818rem;
-  row-gap: 1.81818rem;
+  -webkit-column-gap: 3.63636rem;
+          column-gap: 3.63636rem;
+  row-gap: 2.72727rem;
 }
 
 .daycares-search__cont .card {
@@ -1798,7 +1804,10 @@ main.no-bg {
     padding-bottom: 5.45455rem;
   }
   main section:last-child {
-    padding-bottom: 10.90909rem;
+    padding-bottom: 5.45455rem;
+  }
+  main.main-short {
+    padding-top: 9.09091rem;
   }
   .banner {
     -webkit-box-orient: vertical;
@@ -1936,6 +1945,9 @@ main.no-bg {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .daycare__name {
+    margin-bottom: 0.90909rem;
+  }
   .daycare__logo {
     margin-bottom: 1.45455rem;
   }
@@ -2011,6 +2023,22 @@ main.no-bg {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .contact-faq {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
+  .contact .question__title {
+    margin-bottom: 1.45455rem;
+  }
+  .contact .question__text {
+    display: none;
+  }
+  .contact .question button {
+    margin-left: auto;
+    margin-bottom: 2.72727rem;
   }
   .footer {
     background-size: 100%;

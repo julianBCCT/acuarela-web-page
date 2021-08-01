@@ -27,7 +27,7 @@ module.exports = {
           path: 'relationships',
           populate: {
             path: 'acuarelauser',
-            select: ['name', 'lastname', 'mail', 'phone', 'photo'],
+            select: ['name', 'lastname', 'mail','group', 'phone', 'photo'],
           },
         });
 

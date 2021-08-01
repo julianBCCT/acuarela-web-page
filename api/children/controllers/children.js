@@ -22,12 +22,12 @@ module.exports = {
       let query = { status: true };
       query.daycare = { $eq: validToken.user.organization };
 
-      let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate'])
+      let entity = await strapi.query('children').model.find(query, ['name', 'lastname', 'photo', 'indaycare', 'birthdate', 'group'])
         .populate({
           path: 'relationships',
           populate: {
             path: 'acuarelauser',
-            select: ['name', 'lastname', 'mail','group', 'phone', 'photo'],
+            select: ['name', 'lastname', 'mail', 'phone', 'photo'],
           },
         });
 

@@ -12,15 +12,19 @@
   },
   "attributes": {
     "name": {
+      "required": false,
       "type": "string"
     },
     "lastname": {
+      "required": false,
       "type": "string"
     },
     "birthdate": {
+      "required": false,
       "type": "date"
     },
     "gender": {
+      "required": false,
       "type": "enumeration",
       "enum": [
         "Masculino",
@@ -28,81 +32,106 @@
       ]
     },
     "address": {
+      "required": false,
       "type": "string"
     },
     "phone": {
+      "required": false,
       "type": "string"
     },
     "state": {
+      "required": false,
       "type": "string"
     },
     "city": {
+      "required": false,
       "type": "string"
     },
     "zip_code": {
+      "required": false,
       "type": "string"
     },
     "name_doctor": {
+      "required": false,
       "type": "string"
     },
     "phone_doctor": {
+      "required": false,
       "type": "string"
     },
     "hispano": {
+      "required": false,
       "type": "boolean"
     },
     "language": {
+      "required": false,
       "type": "string"
     },
     "start_time": {
+      "required": false,
       "type": "time"
     },
     "end_time": {
+      "required": false,
       "type": "time"
     },
     "days": {
+      "required": false,
       "type": "json"
     },
     "meals": {
+      "required": false,
       "type": "json"
     },
     "week_care": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": false
     },
     "week_care_start_time": {
-      "type": "time"
+      "type": "time",
+      "required": false
     },
     "week_care_end_time": {
-      "type": "time"
+      "type": "time",
+      "required": false
     },
     "mom_name": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "mom_phone": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "mom_email": {
-      "type": "email"
+      "type": "email",
+      "required": false
     },
     "mom_is_principal": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": false
     },
     "dad_name": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "dad_phone": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "dad_email": {
-      "type": "email"
+      "type": "email",
+      "required": false
     },
     "dad_is_principal": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": false
     },
     "guardians": {
       "type": "component",
       "repeatable": true,
-      "component": "guardians.guardians"
+      "component": "guardians.guardians",
+      "required": false
     },
     "file_sleeping": {
       "model": "file",
@@ -127,6 +156,7 @@
       "required": false
     },
     "status": {
+      "required": false,
       "type": "enumeration",
       "enum": [
         "Borrador",
@@ -134,7 +164,8 @@
       ]
     },
     "percentaje": {
-      "type": "integer"
+      "type": "integer",
+      "required": false
     }
   }
 }

@@ -215,7 +215,7 @@ module.exports = {
     let user = ctx.request.body;
     const hashedPassword = await bcrypt.hash(user.pass, 10);
     user.password = hashedPassword;
-    entity = await strapi.services.acuarelauser.create(user);
+    let entity = await strapi.services.acuarelauser.create(user);
     let respuesta = {
       status: 200, msg:'User Created.',entity
     };

@@ -66,8 +66,8 @@
     },
     {
       "method": "POST",
-      "path": "/acuarelausers/register",
-      "handler": "acuarelauser.register",
+      "path": "/acuarelausers",
+      "handler": "acuarelauser.create",
       "config": {
         "policies": []
       }

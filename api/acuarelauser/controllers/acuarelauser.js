@@ -224,7 +224,7 @@ module.exports = {
       else rols = ['5ff790215d6f2e272cfd7396'];
       user.rols = rols;
       user.status = true;
-      const hashedPassword = await bcrypt.hash(pass, 10);
+      const hashedPassword = await bcrypt.hash(user.pass, 10);
       user.password = hashedPassword;
       // Hace la creación del usuario
       entity = await strapi.services.acuarelauser.create(user);

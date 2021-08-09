@@ -209,36 +209,6 @@ module.exports = {
     let result = await verification.verify_code(token, code);
     return ctx.send(result);
   },
-
-  // Registro de pruebas, será eliminado posteriormente.
-  async register(ctx) {
-    let user = ctx.request.body;
-    // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
-    let entity;
-    if (user.mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail: user.mail });
-    else entity = await strapi.services.acuarelauser.findOne({ phone: user.phone });
-    if (!entity || entity == []) {
-      // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
-      let rols;
-      if (user.roles) rols = user.roles;
-      else rols = ['5ff790215d6f2e272cfd7396'];
-      user.rols = rols;
-      user.status = true;
-      const hashedPassword = await bcrypt.hash(user.pass, 10);
-      user.password = hashedPassword;
-      // Hace la creación del usuario
-      entity = await strapi.services.acuarelauser.create(user);
-      let respuesta = {
-        status: 200, msg:'User Created.',entity
-      };
-      return ctx.send(respuesta);
-    } else {
-      let msg = 'User with this number already exits.';
-      let code = 'p-2';
-      if (user.mail != '-1') msg = 'User with this email already exits.', code = 'e-2';
-      return ctx.send({ ok: false, status: 400, code, msg });
-    }
-  },
   // Revisa que el token de la invitación sea valido.
   async get_invitation(ctx) {
     const { token } = ctx.params;

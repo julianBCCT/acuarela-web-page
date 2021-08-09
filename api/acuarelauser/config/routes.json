@@ -73,6 +73,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/acuarelausers/register",
+      "handler": "acuarelauser.register",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/acuarelausers/invitation/register/:token",
       "handler": "acuarelauser.invitationregister",

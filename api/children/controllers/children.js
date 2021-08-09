@@ -581,4 +581,28 @@ module.exports = {
 
     } else return ctx.send(validToken);
   },
+  complete_register: async (ctx) => {
+    const { token } = ctx.request.header;
+    const child = ctx.request.body;
+
+    // Revisa que el token sea valido
+    let validToken = await verification.renew(token);
+    if (validToken.ok) {
+      child.status = true;
+      child.daycare = validToken.user.organization;
+      child.attitudes = [];
+      const newchild = await strapi.services.children.create(child);
+      newchild.health.child = id;
+      await strapi.services.healthinfo.create(newchild.health);
+      const hashedPassword = await bcrypt.hash('123456', 10);
+      await strapi.services.acuarelauser.create({
+        mail: child.mom.mail,
+        password: hashedPassword,
+      });
+      const token = await jwt.sign({ id: entity._id }, process.env.SECRET, {
+        expiresIn: 259200, // tres dias
+      });
+      return ctx.send({ status: 'User Created', user: { mail: entity.mail, id: entity._id }, ok: true });
+    }
+  }
 };

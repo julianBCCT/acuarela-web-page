@@ -25,8 +25,8 @@
       "via": "group"
     },
     "children": {
-      "collection": "children",
-      "via": "group"
+      "via": "group",
+      "collection": "children"
     },
     "status": {
       "type": "boolean"

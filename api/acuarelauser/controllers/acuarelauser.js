@@ -212,23 +212,31 @@ module.exports = {
 
   // Registro de pruebas, será eliminado posteriormente.
   async register(ctx) {
-    const { mail, pass } = ctx.request.body;
-    let entity = await strapi.services.acuarelauser.findOne({ mail });
-    if (entity) {
-      ctx.status = 400;
-      ctx.body = { status: 'User Already Exists', ok: false };
-    }
-    if (!entity) {
+    let user = ctx.request.body;
+    // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
+    let entity;
+    if (user.mail != '-1') entity = await strapi.services.acuarelauser.findOne({ mail: user.mail });
+    else entity = await strapi.services.acuarelauser.findOne({ phone: user.phone });
+    if (!entity || entity == []) {
+      // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
+      let rols;
+      if (user.roles) rols = user.roles;
+      else rols = ['5ff790215d6f2e272cfd7396'];
+      user.rols = rols;
+      user.status = true;
       const hashedPassword = await bcrypt.hash(pass, 10);
-
-      entity = await strapi.services.acuarelauser.create({
-        mail: mail,
-        password: hashedPassword,
-      });
-      const token = await jwt.sign({ id: entity._id }, process.env.SECRET, {
-        expiresIn: 259200, // tres dias
-      });
-      return ctx.send({ status: 'User Created', user: { mail: entity.mail, id: entity._id }, ok: true });
+      user.password = hashedPassword;
+      // Hace la creación del usuario
+      entity = await strapi.services.acuarelauser.create(user);
+      let respuesta = {
+        status: 200, msg:'User Created.',entity
+      };
+      return ctx.send(respuesta);
+    } else {
+      let msg = 'User with this number already exits.';
+      let code = 'p-2';
+      if (user.mail != '-1') msg = 'User with this email already exits.', code = 'e-2';
+      return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
   // Revisa que el token de la invitación sea valido.

@@ -59,8 +59,8 @@
       "type": "boolean"
     },
     "group": {
-      "via": "children",
-      "model": "group"
+      "model": "group",
+      "via": "children"
     },
     "attitudes": {
       "collection": "attitude",
@@ -115,8 +115,8 @@
       "type": "boolean"
     },
     "movements": {
-      "via": "child",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "child"
     },
     "childrenactivities": {
       "collection": "childrenactivity",
@@ -131,6 +131,36 @@
     "daycare": {
       "model": "daycare",
       "via": "children"
+    },
+    "start_time": {
+      "type": "time",
+      "default": "00:00:00",
+      "required": false
+    },
+    "end_time": {
+      "type": "time",
+      "default": "00:00:00"
+    },
+    "race": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "days": {
+      "type": "json"
+    },
+    "meals": {
+      "type": "json"
+    },
+    "week_care": {
+      "type": "boolean"
+    },
+    "week_care_start_time": {
+      "type": "time"
+    },
+    "week_care_end_time": {
+      "type": "time"
     }
   }
 }

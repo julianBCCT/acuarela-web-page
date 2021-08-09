@@ -9,6 +9,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/children/new_inscription",
+      "handler": "children.complete_register",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/children/count",
       "handler": "children.count",
@@ -32,6 +40,7 @@
         "policies": []
       }
     },
+    
     {
       "method": "PUT",
       "path": "/children/:id",

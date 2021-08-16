@@ -166,6 +166,30 @@
     "percentaje": {
       "type": "integer",
       "required": false
+    },
+    "mom_lastname": {
+      "type": "string"
+    },
+    "mom_profession": {
+      "type": "string"
+    },
+    "mom_work": {
+      "type": "string"
+    },
+    "mom_workphone": {
+      "type": "string"
+    },
+    "dad_lastname": {
+      "type": "string"
+    },
+    "dad_profession": {
+      "type": "string"
+    },
+    "dad_work": {
+      "type": "string"
+    },
+    "dad_workphone": {
+      "type": "string"
     }
   }
 }

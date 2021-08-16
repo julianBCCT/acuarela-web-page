@@ -2,7 +2,8 @@
   "collectionName": "components_guardians_guardians",
   "info": {
     "name": "guardians",
-    "icon": "universal-access"
+    "icon": "universal-access",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -23,6 +24,9 @@
     },
     "guardian_emergency": {
       "type": "boolean"
+    },
+    "guardian_lastname": {
+      "type": "string"
     }
   }
 }

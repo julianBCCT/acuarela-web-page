@@ -190,6 +190,9 @@
     },
     "dad_workphone": {
       "type": "string"
+    },
+    "kid_typecare": {
+      "type": "string"
     }
   }
 }

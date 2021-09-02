@@ -1577,4 +1577,8 @@ body {
   width: 100%;
 }
 
+.politics main {
+  min-height: 100vh;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Acuarela | Contacto</title>
+        <link
+            rel="preload"
+            href="css/jquery.fancybox.min.css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+            <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+        </noscript>
+        <link
+            rel="preload"
+            href="css/jquery.mCustomScrollbar.min.css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+            <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+        </noscript>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/fonts/fonts.css" />
+        <link rel="stylesheet" href="css/fonts/acuarelaicon/style.css" />
+        <link rel="stylesheet" href="scss/styles.css" />
+    </head>
+
+    <body>
+        <header class="header">
+            <img class="header__logo" src="img/logo.svg" alt="Acuarela" />
+            <img
+                class="header__toggle"
+                src="img/menu.svg"
+                alt="Acuarela"
+                onclick="toggleTarget('mobile-menu')"
+            />
+            <nav class="header__menu">
+                <a class="header__menu-item">Nosotros</a>
+                <a class="header__menu-item">Nuestros Daycares</a>
+                <a class="header__menu-item">Planes y Precios</a>
+                <a class="header__menu-item">Preguntas Frecuentes</a>
+                <a class="header__menu-item">Obtén un DEMO</a>
+            </nav>
+            <div class="header__actions">
+                <div class="lang-selector">
+                    <label for="lang-select">
+                        <img
+                            class="lang-selector__flag"
+                            src="img/flag_es.svg"
+                        />
+                    </label>
+                    <select
+                        name="lang-select"
+                        id="lang-select"
+                        class="lang-selector__select"
+                    >
+                        <option value="ES">ES</option>
+                        <option value="EN">EN</option>
+                    </select>
+                    <label for="lang-select">
+                        <i class="icon-arrow-down"></i>
+                    </label>
+                </div>
+                <button
+                    class="btn btn--transparent btn--transparent-border btn--sm"
+                >
+                    <span class="btn__text">Inicia Sesión</span>
+                </button>
+                <button class="btn btn--primary btn--sm">
+                    <span class="btn__text">Regístrate</span>
+                </button>
+            </div>
+        </header>
+        <div class="mobile-menu" data-toggle="mobile-menu">
+            <div class="mobile-menu__header">
+                <img class="header__logo" src="img/logo.svg" alt="Acuarela" />
+                <i
+                    class="header__toggle icon-cross"
+                    onclick="toggleTarget('mobile-menu')"
+                ></i>
+            </div>
+            <div class="mobile-menu__body">
+                <nav class="mobile-menu__menu">
+                    <a class="mobile-menu__menu-item">Nosotros</a>
+                    <a class="mobile-menu__menu-item">Nuestros Daycares</a>
+                    <a class="mobile-menu__menu-item">Planes y Precios</a>
+                    <a class="mobile-menu__menu-item">Preguntas Frecuentes</a>
+                    <a class="mobile-menu__menu-item">Obtén un DEMO</a>
+                </nav>
+                <div class="mobile-menu__actions">
+                    <div class="lang-selector">
+                        <label for="lang-select">
+                            <img
+                                class="lang-selector__flag"
+                                src="img/flag_es.svg"
+                            />
+                        </label>
+                        <select
+                            name="lang-select"
+                            id="lang-select"
+                            class="lang-selector__select"
+                        >
+                            <option value="ES">ESPAÑOL</option>
+                            <option value="EN">ENGLISH</option>
+                        </select>
+                        <label for="lang-select">
+                            <i class="icon-arrow-down"></i>
+                        </label>
+                    </div>
+                    <button
+                        class="
+                            btn btn--transparent btn--transparent-border btn--sm
+                        "
+                    >
+                        <span class="btn__text">Inicia Sesión</span>
+                    </button>
+                    <button class="btn btn--primary btn--sm">
+                        <span class="btn__text">Regístrate</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <main class="no-bg main-short">
+            <!-- CONTACT -->
+            <section class="contact contact-faq">
+                <div class="contact__content">
+                    <div class="contact__texts">
+                        <h1 class="contact__title contact__title--faq">
+                            ¿Necesitas ayuda?
+                        </h1>
+                        <h3 class="contact__subtitle">Envíanos un mensaje</h3>
+                    </div>
+                    <form
+                        class="contact__form contact__form--faq"
+                        id="contact__form"
+                    >
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <div class="input-wrapper">
+                                <input
+                                    required
+                                    name="name"
+                                    id="name"
+                                    type="text"
+                                    placeholder="Nombre"
+                                />
+                                <label for="name"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-wrapper">
+                                <input
+                                    required
+                                    name="email"
+                                    id="email"
+                                    type="email"
+                                    placeholder="Email"
+                                />
+                                <label for="email"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Número telefónico</label>
+                            <div class="input-wrapper">
+                                <input
+                                    required
+                                    name="phone"
+                                    id="phone"
+                                    type="tel"
+                                    placeholder="Número telefónico"
+                                />
+                                <label for="phone"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Ciudad</label>
+                            <div class="input-wrapper">
+                                <input
+                                    required
+                                    name="city"
+                                    id="city"
+                                    type="text"
+                                    placeholder="Ciudad"
+                                />
+                                <label for="city"></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-textarea">
+                            <label for="message">Mensaje</label>
+                            <textarea
+                                placeholder="Texto"
+                                name="message"
+                                rows="6"
+                            ></textarea>
+                        </div>
+                        <button class="btn btn--primary">Enviar</button>
+                    </form>
+                </div>
+                <div class="contact__question question">
+                    <h4 class="question__title">
+                        ¿Lorem Ipsum dolor sit amet, consectetur adipiscing
+                        elit?
+                    </h4>
+                    <p class="question__text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Maecenas ut leo vehicula, fringilla ipsum et, vehicula
+                        odio. Sed tincidunt sem nec dolor interdum faucibus. Sed
+                        fermentum dictum erat. Interdum et malesuada fames ac
+                        ante ipsum primis in faucibus. Maecenas id nunc id justo
+                        faucibus porttitor non ut urna. Phasellus sem tellus,
+                        accumsan sit amet finibus sit amet, ultrices vel lorem.
+                        Proin eu vulputate quam. Nullam finibus vestibulum
+                        egestas.
+                        <br /><br />
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean ligula ligula, consectetur id ligula sed, lacinia
+                        luctus erat. In scelerisque neque quis est malesuada
+                        fermentum. Integer nec tellus ac eros dictum molestie at
+                        quis leo. Maecenas sed metus pretium, feugiat tellus id,
+                        interdum quam. Aliquam consectetur quam at rhoncus
+                        venenatis. Fusce lacinia enim eget iaculis suscipit. In
+                        at odio rhoncus, egestas sem feugiat, vehicula felis. Ut
+                        vehicula, erat eget lacinia dignissim, urna risus mollis
+                        ante, sit amet dapibus mauris metus et odio. Orci varius
+                        natoque penatibus et magnis dis parturient montes,
+                        nascetur ridiculus mus.
+                    </p>
+                    <button class="btn btn--transparent">
+                        <i class="btn__icon icon-prev"></i>
+                        <span class="btn__text"
+                            >Volver a preguntas frecuentes</span
+                        >
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__over over">
+                <div class="over__texts">
+                    <h1>¿Ya eres parte de Acuarela?</h1>
+                </div>
+                <div class="over__buttons">
+                    <div>
+                        <h4>Descarga la app para Daycare</h4>
+                        <button class="btn btn--white btn--big">
+                            <img src="img/appStore_available.svg" />
+                        </button>
+                        <button class="btn btn--white btn--big">
+                            <img src="img/playStore_available.svg" />
+                        </button>
+                    </div>
+                    <div>
+                        <h4>Descarga la app para padres</h4>
+                        <button class="btn btn--white btn--big">
+                            <img src="img/appStore_available.svg" />
+                        </button>
+                        <button class="btn btn--white btn--big">
+                            <img src="img/playStore_available.svg" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__body">
+                <div>
+                    <img
+                        class="footer__logo"
+                        src="img/logo_w.svg"
+                        alt="Acuarela"
+                    />
+                    <div class="footer__info">
+                        <h4>Bilingual Childcare Training</h4>
+                        <ul class="footer__address">
+                            <li>89-13 85th St. Woodhaven, NY 11421, USA</li>
+                            <li>info@bilingualchildcaretraining.com</li>
+                            <li>(718) 415-5207</li>
+                        </ul>
+                        <a
+                            class="footer__main-web"
+                            href="https://www.bilingualchildcaretraining.com"
+                            target="_blank"
+                        >
+                            bilingualchildcaretraining.com
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <nav class="footer__nav">
+                        <a>Acuarela</a>
+                        <a>Nosotros</a>
+                        <a>Nuestros Daycares</a>
+                        <a>Planes y Precios</a>
+                        <a>Preguntas Frecuentes</a>
+                        <a>Contacto</a>
+                    </nav>
+                    <div class="footer__social social">
+                        <h4>Síguenos en redes sociales</h4>
+                        <div class="social__logos">
+                            <a href="#">
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="#">
+                                <i class="icon-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="icon-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <a>© Bilingual Childcare Training 2021</a>
+                <a href="#">Políticas de uso de datos personales</a>
+            </div>
+        </footer>
+    </body>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.js"></script>
+    <script src="js/main.js"></script>
+</html>

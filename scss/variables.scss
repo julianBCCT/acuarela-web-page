@@ -23,31 +23,25 @@ $color-image-border: #c4c4c4;
 //
 
 $font-size-default: 11px;
-$h1: 4.36rem;
-$h2: 2.18rem;
-$h3: 1.63rem;
+$h1: 48px;
+$h2: 24px;
+$h3: 18px;
 $h4: 1.27rem;
 $h5: 1.09rem;
-$font-size-menu: 1.27rem;
-$font-size-btn: 1.09rem;
+$font-size-menu: 14px;
+$font-size-btn: 12px;
 
 $h1-sm: 3.052rem;
 $h2-sm: 1.953rem;
 $h3-sm: 1.563rem;
-$h4-sm: 1.25rem;
+$h4-sm: 14px;
 $h5-sm: 1.09rem;
-$font-size-menu: 1.25rem;
-$font-size-btn: 1.09rem;
 
 // #GENERAL VARIABLES#
 //
 
 $border-radius-default: 8px;
 
-// #MISC#
-//
-
-// Pass px to rem
-@function rem($sizepx, $font-size-map-arg: $font-size-default) {
-    @return $sizepx / $font-size-map-arg * 1rem;
+@function rem($sizepx) {
+  @return $sizepx;
 }

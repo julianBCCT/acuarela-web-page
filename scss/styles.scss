@@ -614,7 +614,7 @@ main {
 
 .pricing {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   column-gap: rem(40px);
 
   &-plan {
@@ -631,10 +631,14 @@ main {
       font-weight: 700;
       color: $color-text-dark;
       margin-bottom: rem(16px);
+      font-size: 12px;
+      line-height: 16px;
     }
 
     &__price {
       margin-bottom: rem(16px);
+      font-size: 48px;
+      line-height: 60px;
     }
 
     hr {
@@ -648,6 +652,11 @@ main {
       color: #000000;
       margin: 0 rem(16px);
       margin-bottom: rem(30px);
+      font-size: 12px;
+      line-height: 16px;
+      li {
+        margin-bottom: 5px;
+      }
     }
   }
 }
@@ -1799,4 +1808,12 @@ main {
     padding-left: rem(30px);
     padding-right: rem(30px);
   }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
 }

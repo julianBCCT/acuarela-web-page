@@ -80,7 +80,7 @@ i {
   content: "\e904";
 }
 
-.icon-instagram:before {
+.icon-twitter:before {
   content: "\e905";
 }
 
@@ -141,8 +141,9 @@ h5 {
   margin: 0;
 }
 
-p {
-  font-size: 1rem;
+p,
+li {
+  font-size: 14px;
   line-height: 1.45;
   margin: 0;
 }
@@ -167,6 +168,7 @@ select:focus {
 .form-group label {
   font-weight: 700;
   margin-bottom: 4px;
+  font-size: 14px;
 }
 .form-group label.error {
   margin-left: 8px;
@@ -207,6 +209,7 @@ select:focus {
   padding: 6px 8px;
   width: 100%;
   background: transparent;
+  font-size: 14px;
 }
 .form-group input.error {
   color: #eb5d5e;
@@ -288,7 +291,7 @@ select:focus {
 .btn__text {
   color: #ffffff;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
 }
 .btn__icon {
   color: #ffffff;
@@ -475,7 +478,6 @@ main.no-bg {
 .banner {
   display: flex;
   align-items: flex-start;
-  margin-top:48px;
 }
 .banner__texts {
   margin-right: 115px;
@@ -619,7 +621,7 @@ main.no-bg {
   font-weight: 700;
   color: #140a4c;
   margin-bottom: 16px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
 }
 .pricing-plan__price {
@@ -657,6 +659,7 @@ main.no-bg {
   padding-bottom: 16px;
   display: block;
   cursor: pointer;
+  font-size: 14px;
 }
 .faq-item__title:hover {
   color: #0cb5c3;
@@ -672,6 +675,9 @@ main.no-bg {
 }
 .faq-item .content {
   display: none;
+}
+.faq-item .content ul li {
+  margin-bottom: 5px;
 }
 .faq-item__content {
   position: relative;
@@ -1018,7 +1024,7 @@ main.no-bg {
   display: grid;
   grid-template-columns: 3fr 2fr;
   column-gap: 65px;
-  margin-top:48px;
+  padding: 70px 0 0;
 }
 .contact__title {
   margin-bottom: 16px;
@@ -1045,6 +1051,7 @@ main.no-bg {
   margin-top: 20px;
   width: 70%;
   justify-self: flex-end;
+  font-size: 14px;
 }
 .contact__form--faq .form-group-textarea {
   grid-column-start: 1;
@@ -1163,7 +1170,6 @@ main.no-bg {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom:
 }
 .footer__body > div {
   display: flex;
@@ -1182,6 +1188,7 @@ main.no-bg {
 }
 .footer__main-web {
   transition: all ease 0.2s;
+  font-size: 14px;
 }
 .footer__main-web:hover {
   color: #f5aa16;
@@ -1191,6 +1198,7 @@ main.no-bg {
   flex-direction: column;
 }
 .footer__nav a {
+  font-size: 14px;
   transition: all ease 0.2s;
 }
 .footer__nav a:hover {
@@ -1201,6 +1209,28 @@ main.no-bg {
 }
 .footer .social__logos {
   margin-top: 12px;
+  display: flex;
+  align-items: center;
+}
+.footer .social__logos a {
+  display: flex;
+}
+.footer .social__logos a > img {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+.footer .social__logos a > img.active {
+  display: block;
+}
+.footer .social__logos a > img.hover {
+  display: none;
+}
+.footer .social__logos a:hover > img.active {
+  display: none;
+}
+.footer .social__logos a:hover > img.hover {
+  display: block;
 }
 .footer .social__logos i {
   font-size: 23px;
@@ -1219,6 +1249,12 @@ main.no-bg {
   align-items: center;
   justify-content: space-between;
 }
+.footer__bottom span {
+  font-size: 14px;
+}
+.footer__bottom a {
+  font-size: 14px;
+}
 .footer__bottom a:hover {
   text-decoration: underline;
 }
@@ -1227,15 +1263,6 @@ main.no-bg {
 /* ======================== */
 /* ======================== */
 @media (min-width: 1800px) {
-  html,
-body {
-    font-size: 16px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
   .header {
     padding: 0 80px;
   }
@@ -1291,27 +1318,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  html,
-body {
-    font-size: 16px;
-  }
-
-  h1 {
-    font-size: 3.052rem;
-  }
-
-  h2 {
-    font-size: 1.953rem;
-  }
-
-  h3 {
-    font-size: 1.563rem;
-  }
-
-  h4 {
-    font-size: 14px;
-  }
-
   .header {
     padding: 0 15px;
   }
@@ -1578,11 +1584,15 @@ body {
   position: relative;
   max-width: 1200px;
   width: 100%;
-  
 }
 
 .politics main {
   min-height: 100vh;
+}
+
+.feature__text {
+  text-align: justify;
+  text-align-last: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

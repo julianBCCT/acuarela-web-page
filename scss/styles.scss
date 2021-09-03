@@ -54,8 +54,9 @@ h5 {
   margin: 0;
 }
 
-p {
-  font-size: 1rem;
+p,
+li {
+  font-size: 14px;
   line-height: 1.45;
   margin: 0;
 }
@@ -80,6 +81,7 @@ select {
   label {
     font-weight: 700;
     margin-bottom: rem(4px);
+    font-size: 14px;
 
     &.error {
       margin-left: rem(8px);
@@ -127,6 +129,7 @@ select {
     padding: rem(6px) rem(8px);
     width: 100%;
     background: transparent;
+    font-size: 14px;
 
     &.error {
       color: $color-red;
@@ -631,7 +634,7 @@ main {
       font-weight: 700;
       color: $color-text-dark;
       margin-bottom: rem(16px);
-      font-size: 12px;
+      font-size: 14px;
       line-height: 16px;
     }
 
@@ -675,6 +678,7 @@ main {
       padding-bottom: rem(16px);
       display: block;
       cursor: pointer;
+      font-size: 14px;
 
       &:hover {
         color: $color-primary;
@@ -693,6 +697,11 @@ main {
 
     .content {
       display: none;
+      ul {
+        li {
+          margin-bottom: 5px;
+        }
+      }
     }
 
     &__content {
@@ -1124,6 +1133,7 @@ main {
   display: grid;
   grid-template-columns: 3fr 2fr;
   column-gap: rem(65px);
+  padding: 70px 0 0;
 
   &__title {
     margin-bottom: rem(16px);
@@ -1154,6 +1164,7 @@ main {
       margin-top: rem(20px);
       width: 70%;
       justify-self: flex-end;
+      font-size: 14px;
     }
 
     &--faq {
@@ -1329,6 +1340,7 @@ main {
 
   &__main-web {
     transition: all ease 0.2s;
+    font-size: 14px;
     &:hover {
       color: $color-yellow;
     }
@@ -1339,6 +1351,7 @@ main {
     flex-direction: column;
 
     a {
+      font-size: 14px;
       transition: all ease 0.2s;
       &:hover {
         color: $color-yellow;
@@ -1353,6 +1366,32 @@ main {
   .social {
     &__logos {
       margin-top: rem(12px);
+      display: flex;
+      align-items: center;
+      a {
+        display: flex;
+        & > img {
+          width: 23px;
+          height: 23px;
+          object-fit: contain;
+          &.active {
+            display: block;
+          }
+          &.hover {
+            display: none;
+          }
+        }
+        &:hover {
+          & > img {
+            &.active {
+              display: none;
+            }
+            &.hover {
+              display: block;
+            }
+          }
+        }
+      }
 
       i {
         font-size: rem(23px);
@@ -1374,8 +1413,11 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    span {
+      font-size: 14px;
+    }
     a {
+      font-size: 14px;
       &:hover {
         text-decoration: underline;
       }
@@ -1388,15 +1430,6 @@ main {
 /* ======================== */
 
 @media (min-width: 1800px) {
-  html,
-  body {
-    font-size: 16px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
   .header {
     padding: 0 rem(80px);
   }
@@ -1465,27 +1498,6 @@ main {
 }
 
 @media (max-width: 768px) {
-  html,
-  body {
-    font-size: 16px;
-  }
-
-  h1 {
-    font-size: $h1-sm;
-  }
-
-  h2 {
-    font-size: $h2-sm;
-  }
-
-  h3 {
-    font-size: $h3-sm;
-  }
-
-  h4 {
-    font-size: $h4-sm;
-  }
-
   .header {
     padding: 0 rem(15px);
 
@@ -1822,4 +1834,9 @@ main {
   main {
     min-height: 100vh;
   }
+}
+
+.feature__text {
+  text-align: justify;
+  text-align-last: center;
 }

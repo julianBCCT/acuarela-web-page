@@ -80,7 +80,7 @@ i {
   content: "\e904";
 }
 
-.icon-twitter:before {
+.icon-instagram:before {
   content: "\e905";
 }
 
@@ -475,6 +475,7 @@ main.no-bg {
 .banner {
   display: flex;
   align-items: flex-start;
+  margin-top:48px;
 }
 .banner__texts {
   margin-right: 115px;
@@ -1017,6 +1018,7 @@ main.no-bg {
   display: grid;
   grid-template-columns: 3fr 2fr;
   column-gap: 65px;
+  margin-top:48px;
 }
 .contact__title {
   margin-bottom: 16px;
@@ -1161,6 +1163,7 @@ main.no-bg {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom:
 }
 .footer__body > div {
   display: flex;

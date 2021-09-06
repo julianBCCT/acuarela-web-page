@@ -1302,7 +1302,6 @@ main.no-bg {
     padding-right: 80px;
   }
 }
-
 @media (max-width: 998px) {
   .header {
     padding: 0 30px;

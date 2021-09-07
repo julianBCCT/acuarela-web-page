@@ -143,7 +143,7 @@ h5 {
 
 p,
 li {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.45;
   margin: 0;
 }
@@ -278,7 +278,7 @@ select:focus {
   -webkit-appearance: none !important;
   display: flex;
   justify-content: center;
-  padding: 12px;
+  padding: 16px;
   border-radius: 8px;
   background: #000000;
   color: #ffffff;
@@ -291,7 +291,7 @@ select:focus {
 .btn__text {
   color: #ffffff;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
 }
 .btn__icon {
   color: #ffffff;
@@ -389,7 +389,7 @@ select:focus {
 }
 .header__menu .header__menu-item {
   margin: 0 16px;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
   color: #140a4c;
   transition: all ease 0.3s;
@@ -441,7 +441,7 @@ select:focus {
 }
 .mobile-menu__menu .mobile-menu__menu-item {
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #140a4c;
 }
@@ -478,6 +478,7 @@ main.no-bg {
 .banner {
   display: flex;
   align-items: flex-start;
+  margin-top: 20px;
 }
 .banner__texts {
   margin-right: 115px;
@@ -541,9 +542,11 @@ main.no-bg {
 .add-on__description {
   width: 90%;
   line-height: 1.45;
+  
 }
 .add-on__description:last-of-type {
   margin-bottom: 30px;
+  font-size:16px;
 }
 .add-on__img {
   width: 455px;
@@ -1124,7 +1127,7 @@ main.no-bg {
   margin-bottom:3px;
 }
 .info_politics p{
-  font-size: 15px;
+  font-size: 16px;
 }
 .footer {
   background-color: #0cb5c3;
@@ -1301,6 +1304,21 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
+  .btn--small{
+    padding: 15px 30px;
+  }
+  .btn__text{
+    font-size: 18px;
+  }
+  .pricing-plan__features li{
+    font-size:17px;
+  }
+  .faq-item__title{
+    font-size: 17px;
+  }
+  .form-group label{
+    font-size: 16px;
+  }
 }
 @media (max-width: 998px) {
   .header {
@@ -1343,15 +1361,29 @@ main.no-bg {
   .header__menu {
     display: none;
   }
+  .header__menu-item{
+    margin-bottom:16px;
+  }
   .header__actions {
     display: none;
   }
-
+  .testimonials h1{
+    font-size: 38px;
+  }
   .lang-selector {
     align-self: flex-start;
   }
   .lang-selector i {
     font-size: 1rem;
+  }
+  .mobile-menu__menu{
+    margin-bottom: 16px;
+  } 
+  .btn--small{
+    padding: 13px 32px;
+  }
+  .form-group label{
+    font-size: 15px;
   }
 
   main {
@@ -1372,9 +1404,11 @@ main.no-bg {
 
   .banner {
     flex-direction: column-reverse;
+    padding-bottom: 10px;
   }
   .banner__texts {
     margin-right: 0;
+    margin-bottom: 30px;
   }
   .banner__img {
     width: 100%;
@@ -1382,6 +1416,9 @@ main.no-bg {
   }
   .pricing-plan__price{
     font-size: 38px;
+  }
+  .features{
+    padding-bottom: 10px;
   }
 
   .features .features-cont {
@@ -1446,6 +1483,9 @@ main.no-bg {
     margin-top: 16px;
     margin-bottom: 16px;
   }
+  .politics__title{
+    font-size: 38px;
+  }
 
   .daycares {
     display: flex !important;
@@ -1504,6 +1544,7 @@ main.no-bg {
   .contact {
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
   }
   .contact__content {
     margin-right: 0;
@@ -1590,7 +1631,12 @@ body {
     font-size: 38px;
   }
   .banner__subtitle{
-    font-size: 16px;
+    font-size: 17px;
+  }
+  .over__texts h1{
+    font-size:38px;
+    margin-left:24px;
+    margin-bottom: 24px;
   }
 
   main {

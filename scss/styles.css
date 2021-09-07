@@ -478,7 +478,7 @@ main.no-bg {
 .banner {
   display: flex;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 .banner__texts {
   margin-right: 115px;
@@ -519,6 +519,10 @@ main.no-bg {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
 }
+.features-cont__feature-feature{
+  padding: 0 10px;
+}
+
 .features .feature__img {
   height: 140px;
   margin-bottom: 30px;
@@ -1154,12 +1158,14 @@ main.no-bg {
 }
 .footer .over__texts {
   text-align: center;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 .footer .over__buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: 20px;
+  padding: 0 50px;
+  margin: 0 30px;
 }
 .footer .over__buttons > div {
   text-align: center;
@@ -1181,7 +1187,7 @@ main.no-bg {
   background: rgba(0, 0, 0, 0.05);
 }
 .footer__body {
-  padding: 140px 160px 30px;
+  padding: 170px 160px 30px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

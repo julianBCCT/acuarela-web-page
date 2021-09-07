@@ -520,7 +520,7 @@ main.no-bg {
   column-gap: 20px;
 }
 .features .feature__img {
-  height: 160px;
+  height: 140px;
   margin-bottom: 30px;
 }
 .features .feature__title {
@@ -1314,7 +1314,7 @@ main.no-bg {
     font-size:17px;
   }
   .faq-item__title{
-    font-size: 17px;
+    font-size: 16px;
   }
   .form-group label{
     font-size: 16px;
@@ -1384,6 +1384,12 @@ main.no-bg {
   }
   .form-group label{
     font-size: 15px;
+  }
+  .btn__text{
+    font-size:16px;
+  }
+  .btn--primary{
+    padding:14px;
   }
 
   main {

@@ -1287,10 +1287,20 @@ main.no-bg {
   .header {
     padding: 0 80px;
   }
+  
+
 
   main {
     padding-left: 80px;
     padding-right: 80px;
+  }
+}
+@media (max-width: 1800px){
+  .btn--small{
+    padding: 15px 30px;
+  }
+  .btn__text{
+    font-size: 18px;
   }
 }
 @media (max-width: 1400px) {

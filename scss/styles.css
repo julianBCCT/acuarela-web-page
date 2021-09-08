@@ -1679,6 +1679,10 @@ body {
   max-width: 1200px;
   width: 100%;
 }
+.information{
+  padding: 0 80px;
+  margin: 0 40px;
+}
 
 .politics main {
   min-height: 100vh;

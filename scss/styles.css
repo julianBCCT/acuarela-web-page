@@ -1112,13 +1112,18 @@ main.no-bg {
   justify-content: space-between;
 }
 .contact .card__social i {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-left: 8px;
+  margin-right:10px;
   color: #98a2b7;
   transition: all ease 0.3s;
 }
 .contact .card__social i:hover {
   color: #55637e;
+}
+.card__ig img:hover{
+  color: #55637e;
+  cursor: pointer;
 }
 .info_politics{
   text-align: justify;
@@ -1253,6 +1258,7 @@ main.no-bg {
 .footer .social__logos a:hover > img.hover {
   display: block;
 }
+
 .footer .social__logos i {
   font-size: 23px;
   margin-right: 16px;

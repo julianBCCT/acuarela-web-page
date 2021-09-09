@@ -1,3 +1,18 @@
-RewriteEngine On 
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+RewriteRule ^s/([^/]*)/$ set/$1.php?lang=es [L,QSA]
+RewriteRule ^g/([^/]*)/$ get/$1.php?lang=es [L,QSA]
+
+RewriteRule ^/$ index.html [L,QSA]
+RewriteRule ^nosotros$ about.html[L,QSA]
+RewriteRule ^planes-precios$ pricing.html [L,QSA]
+RewriteRule ^preguntas-frecuentes$ faq.html [L,QSA]
+RewriteRule ^demo$ contact.html [L,QSA]
+RewriteRule ^politicas$ politics.html [L,QSA]
+
+

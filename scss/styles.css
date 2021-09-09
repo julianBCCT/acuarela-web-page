@@ -1626,6 +1626,7 @@ main.no-bg {
   .footer__over .over__buttons {
     display: flex;
     flex-direction: column;
+    padding: 0;
   }
   .footer__over .over__buttons > div:not(:last-child) {
     margin-bottom: 64px;
@@ -1649,6 +1650,9 @@ main.no-bg {
     padding: 24px 30px;
     flex-direction: column;
   }
+  .contact .card__social i{
+    font-size:2.0rem;
+  }
 }
 @media (max-width: 430px) {
   html,
@@ -1663,7 +1667,7 @@ body {
   }
   .over__texts h1{
     font-size:38px;
-    margin-left:24px;
+    margin-right:10px;
     margin-bottom: 24px;
   }
 

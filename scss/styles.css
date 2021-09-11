@@ -143,7 +143,7 @@ h5 {
 
 p,
 li {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.45;
   margin: 0;
 }
@@ -264,6 +264,7 @@ select:focus {
   appearance: none;
   background-color: transparent;
   position: relative;
+  font-size: 14px;
 }
 .form-group select.error {
   color: #eb5d5e;
@@ -278,7 +279,7 @@ select:focus {
   -webkit-appearance: none !important;
   display: flex;
   justify-content: center;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   background: #000000;
   color: #ffffff;
@@ -291,7 +292,7 @@ select:focus {
 .btn__text {
   color: #ffffff;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
 }
 .btn__icon {
   color: #ffffff;
@@ -389,7 +390,7 @@ select:focus {
 }
 .header__menu .header__menu-item {
   margin: 0 16px;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 700;
   color: #140a4c;
   transition: all ease 0.3s;
@@ -441,7 +442,7 @@ select:focus {
 }
 .mobile-menu__menu .mobile-menu__menu-item {
   margin-bottom: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: #140a4c;
 }
@@ -478,7 +479,6 @@ main.no-bg {
 .banner {
   display: flex;
   align-items: flex-start;
-  margin-top: 35px;
 }
 .banner__texts {
   margin-right: 115px;
@@ -519,12 +519,8 @@ main.no-bg {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
 }
-.features-cont__feature-feature{
-  padding: 0 10px;
-}
-
 .features .feature__img {
-  height: 140px;
+  height: 160px;
   margin-bottom: 30px;
 }
 .features .feature__title {
@@ -546,11 +542,9 @@ main.no-bg {
 .add-on__description {
   width: 90%;
   line-height: 1.45;
-  
 }
 .add-on__description:last-of-type {
   margin-bottom: 30px;
-  font-size:16px;
 }
 .add-on__img {
   width: 455px;
@@ -1112,32 +1106,15 @@ main.no-bg {
   justify-content: space-between;
 }
 .contact .card__social i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-left: 8px;
-  margin-right:10px;
   color: #98a2b7;
   transition: all ease 0.3s;
 }
 .contact .card__social i:hover {
   color: #55637e;
 }
-.card__ig img:hover{
-  color: #55637e;
-  cursor: pointer;
-}
-.info_politics{
-  text-align: justify;
-  padding-bottom: 15%;
-}
-.information li{
-  margin:15px;
-}
-.information h3{
-  margin-bottom:3px;
-}
-.info_politics p{
-  font-size: 16px;
-}
+
 .footer {
   background-color: #0cb5c3;
   background-image: url(img/footer_bg.png);
@@ -1163,14 +1140,12 @@ main.no-bg {
 }
 .footer .over__texts {
   text-align: center;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 .footer .over__buttons {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
-  padding: 0 50px;
-  margin: 0 30px;
 }
 .footer .over__buttons > div {
   text-align: center;
@@ -1192,7 +1167,7 @@ main.no-bg {
   background: rgba(0, 0, 0, 0.05);
 }
 .footer__body {
-  padding: 170px 160px 30px;
+  padding: 140px 160px 30px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -1258,7 +1233,6 @@ main.no-bg {
 .footer .social__logos a:hover > img.hover {
   display: block;
 }
-
 .footer .social__logos i {
   font-size: 23px;
   margin-right: 16px;
@@ -1293,20 +1267,10 @@ main.no-bg {
   .header {
     padding: 0 80px;
   }
-  
-
 
   main {
     padding-left: 80px;
     padding-right: 80px;
-  }
-}
-@media (max-width: 1800px){
-  .btn--small{
-    padding: 15px 30px;
-  }
-  .btn__text{
-    font-size: 18px;
   }
 }
 @media (max-width: 1400px) {
@@ -1326,30 +1290,12 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
-  .btn--small{
-    padding: 15px 30px;
-  }
-  .btn__text{
-    font-size: 18px;
-  }
-  .pricing-plan__features li{
-    font-size:17px;
-  }
-  .faq-item__title{
-    font-size: 16px;
-  }
-  .form-group label{
-    font-size: 16px;
-  }
 }
 @media (max-width: 998px) {
   .header {
     padding: 0 30px;
   }
-  .pricing-plan__price{
-    font-size: 38px;
-  }
-  
+
   main {
     padding-left: 30px;
     padding-right: 30px;
@@ -1383,35 +1329,15 @@ main.no-bg {
   .header__menu {
     display: none;
   }
-  .header__menu-item{
-    margin-bottom:16px;
-  }
   .header__actions {
     display: none;
   }
-  .testimonials h1{
-    font-size: 38px;
-  }
+
   .lang-selector {
     align-self: flex-start;
   }
   .lang-selector i {
     font-size: 1rem;
-  }
-  .mobile-menu__menu{
-    margin-bottom: 16px;
-  } 
-  .btn--small{
-    padding: 13px 32px;
-  }
-  .form-group label{
-    font-size: 15px;
-  }
-  .btn__text{
-    font-size:16px;
-  }
-  .btn--primary{
-    padding:14px;
   }
 
   main {
@@ -1432,21 +1358,13 @@ main.no-bg {
 
   .banner {
     flex-direction: column-reverse;
-    padding-bottom: 10px;
   }
   .banner__texts {
     margin-right: 0;
-    margin-bottom: 30px;
   }
   .banner__img {
     width: 100%;
     margin-bottom: 30px;
-  }
-  .pricing-plan__price{
-    font-size: 38px;
-  }
-  .features{
-    padding-bottom: 10px;
   }
 
   .features .features-cont {
@@ -1511,9 +1429,6 @@ main.no-bg {
     margin-top: 16px;
     margin-bottom: 16px;
   }
-  .politics__title{
-    font-size: 38px;
-  }
 
   .daycares {
     display: flex !important;
@@ -1572,7 +1487,6 @@ main.no-bg {
   .contact {
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
   }
   .contact__content {
     margin-right: 0;
@@ -1626,7 +1540,6 @@ main.no-bg {
   .footer__over .over__buttons {
     display: flex;
     flex-direction: column;
-    padding: 0;
   }
   .footer__over .over__buttons > div:not(:last-child) {
     margin-bottom: 64px;
@@ -1650,25 +1563,15 @@ main.no-bg {
     padding: 24px 30px;
     flex-direction: column;
   }
-  .contact .card__social i{
-    font-size:2.0rem;
-  }
 }
 @media (max-width: 430px) {
   html,
 body {
     font-size: 14px;
   }
-  .banner__title{
-    font-size: 38px;
-  }
-  .banner__subtitle{
-    font-size: 17px;
-  }
-  .over__texts h1{
-    font-size:38px;
-    margin-right:10px;
-    margin-bottom: 24px;
+
+  .header {
+    padding: 0 30px;
   }
 
   main {
@@ -1678,14 +1581,10 @@ body {
 }
 .container {
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 15px;
   position: relative;
   max-width: 1200px;
   width: 100%;
-}
-.information{
-  padding: 0 80px;
-  margin: 0 40px;
 }
 
 .politics main {

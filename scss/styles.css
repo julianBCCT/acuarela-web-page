@@ -440,10 +440,11 @@ select:focus {
   flex-direction: column;
 }
 .mobile-menu__menu .mobile-menu__menu-item {
-  margin-bottom: 16px;
-  font-size: 16px;
+  margin-bottom: 25px;
+  font-size: 20px;
   font-weight: 700;
   color: #140a4c;
+  text-align:center;
 }
 .mobile-menu__actions {
   margin-top: 20px;
@@ -1041,7 +1042,7 @@ main.no-bg {
 }
 .contact__subtitle {
   color: #140a4c;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .contact__success {
   display: none;
@@ -1294,8 +1295,6 @@ main.no-bg {
     padding: 0 80px;
   }
   
-
-
   main {
     padding-left: 80px;
     padding-right: 80px;
@@ -1340,6 +1339,10 @@ main.no-bg {
   }
   .form-group label{
     font-size: 16px;
+  }
+  .info_politics{
+    padding-left: 90px;
+    padding-right: 90px;
   }
 }
 @media (max-width: 998px) {
@@ -1389,6 +1392,9 @@ main.no-bg {
   .header__actions {
     display: none;
   }
+  .banner__img--no-border{
+    display:none;
+  }
   .testimonials h1{
     font-size: 38px;
   }
@@ -1404,6 +1410,9 @@ main.no-bg {
   .btn--small{
     padding: 13px 32px;
   }
+  .contact__title, .banner__title{
+    line-height: 50px;
+  }
   .form-group label{
     font-size: 15px;
   }
@@ -1412,6 +1421,10 @@ main.no-bg {
   }
   .btn--primary{
     padding:14px;
+  }
+  .info_politics{
+    padding-left: 0px; 
+    padding-right: 0px;
   }
 
   main {
@@ -1512,8 +1525,11 @@ main.no-bg {
     margin-bottom: 16px;
   }
   .politics__title{
-    font-size: 38px;
+    font-size: 33px;
+    line-height: 38px;
+    margin-right: 40px;
   }
+
 
   .daycares {
     display: flex !important;
@@ -1589,6 +1605,7 @@ main.no-bg {
   .contact__form button {
     width: 100%;
   }
+ 
   .contact .card {
     padding: 16px;
     margin: 0;
@@ -1613,6 +1630,9 @@ main.no-bg {
   .contact .question button {
     margin-left: auto;
     margin-bottom: 30px;
+  }
+  .contact__message{
+    padding-bottom: 30px;
   }
 
   .footer {
@@ -1661,6 +1681,7 @@ body {
   }
   .banner__title{
     font-size: 38px;
+    line-height: 43px;
   }
   .banner__subtitle{
     font-size: 17px;
@@ -1684,8 +1705,12 @@ body {
   width: 100%;
 }
 .information{
-  padding: 0 80px;
-  margin: 0 40px;
+  padding-right:0px;
+  padding-inline-start: 10px;
+}
+.information h3,p{
+  font-size:16px;
+
 }
 
 .politics main {

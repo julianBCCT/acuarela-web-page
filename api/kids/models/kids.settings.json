@@ -1,0 +1,96 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kids",
+  "info": {
+    "name": "kids",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Masculino",
+        "Femenino"
+      ]
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "doctor_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "doctor.doctor-info"
+    },
+    "ancestry": {
+      "type": "string"
+    },
+    "primary_language": {
+      "type": "string"
+    },
+    "days_of_care": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.days-of-care"
+    },
+    "care_weekends": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.care-weekends"
+    },
+    "ointments": {
+      "type": "json"
+    },
+    "nap_time": {
+      "type": "json"
+    },
+    "transportation": {
+      "type": "json"
+    },
+    "files": {
+      "type": "component",
+      "repeatable": false,
+      "component": "files.files"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "parents": {
+      "collection": "parents",
+      "via": "kid"
+    }
+  }
+}

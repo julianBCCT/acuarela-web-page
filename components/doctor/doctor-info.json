@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_doctor_doctor_infos",
+  "info": {
+    "name": "doctor_info",
+    "icon": "band-aid"
+  },
+  "options": {},
+  "attributes": {
+    "full_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

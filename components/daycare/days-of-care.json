@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_daycare_days_of_care_s",
+  "info": {
+    "name": "days_of_care ",
+    "icon": "calendar-day"
+  },
+  "options": {},
+  "attributes": {
+    "type_care": {
+      "type": "string"
+    },
+    "days": {
+      "type": "json"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    }
+  }
+}

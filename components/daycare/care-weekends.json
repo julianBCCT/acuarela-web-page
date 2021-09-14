@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_daycare_care_weekends",
+  "info": {
+    "name": "care_weekends",
+    "icon": "calendar-check"
+  },
+  "options": {},
+  "attributes": {
+    "care_weekends": {
+      "type": "boolean"
+    },
+    "days": {
+      "type": "json"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    }
+  }
+}

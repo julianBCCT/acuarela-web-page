@@ -441,13 +441,8 @@ select:focus {
   flex-direction: column;
 }
 .mobile-menu__menu .mobile-menu__menu-item {
-<<<<<<< HEAD
-  margin-bottom: 25px;
-  font-size: 20px;
-=======
   margin-bottom: 16px;
   font-size: 14px;
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
   font-weight: 700;
   color: #140a4c;
   text-align:center;
@@ -1031,10 +1026,11 @@ main.no-bg {
   display: grid;
   grid-template-columns: 3fr 2fr;
   column-gap: 65px;
-  padding: 70px 0 0;
+  /*padding: 70px 0 0;*/
 }
 .contact__title {
   margin-bottom: 16px;
+ 
 }
 .contact__title--faq {
   margin-bottom: 32px;
@@ -1120,7 +1116,20 @@ main.no-bg {
 .contact .card__social i:hover {
   color: #55637e;
 }
-
+.info_politics{
+  text-align: justify;
+  margin: 0 50px;
+}
+.info_politics p{
+  font-size:16px;
+  margin-bottom:10px;
+}
+.info_politics h3{
+  margin-bottom: 10px;
+}
+.politics__title{
+  margin-bottom: 30px;
+}
 .footer {
   background-color: #0cb5c3;
   background-image: url(img/footer_bg.png);
@@ -1273,11 +1282,7 @@ main.no-bg {
   .header {
     padding: 0 80px;
   }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
   main {
     padding-left: 80px;
     padding-right: 80px;
@@ -1300,7 +1305,6 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
-<<<<<<< HEAD
   .btn--small{
     padding: 15px 30px;
   }
@@ -1317,11 +1321,14 @@ main.no-bg {
     font-size: 16px;
   }
   .info_politics{
-    padding-left: 90px;
-    padding-right: 90px;
+   margin: 0 30px;
+   padding-left: 90px;
+   padding-right: 90px;
   }
-=======
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
+  .information{
+    padding-inline-start: 0px;
+    padding-bottom:20px;
+  }
 }
 @media (max-width: 998px) {
   .header {
@@ -1340,6 +1347,11 @@ main.no-bg {
   }
   .footer .over__texts {
     margin-bottom: 16px;
+    margin-left:10px;
+    margin-right:3px;
+  }
+  .footer .over__texts h1{
+    font-size: 39px;
   }
   .footer .over__buttons {
     column-gap: 60px;
@@ -1349,7 +1361,12 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
-}
+
+ .info_politics{
+   margin: 0 30px;
+   padding-left: 0px;
+   padding-right: 0px;
+  }
 @media (max-width: 768px) {
   .header {
     padding: 0 15px;
@@ -1364,47 +1381,33 @@ main.no-bg {
   .header__actions {
     display: none;
   }
-<<<<<<< HEAD
   .banner__img--no-border{
     display:none;
+  }
+  .banner__title{
+    margin-bottom: 20px;
+    line-height: 50px;
+    font-size: 44px;
+    margin-top: 15px;
   }
   .testimonials h1{
     font-size: 38px;
   }
-=======
-
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
   .lang-selector {
     align-self: flex-start;
   }
   .lang-selector i {
     font-size: 1rem;
   }
-<<<<<<< HEAD
-  .mobile-menu__menu{
-    margin-bottom: 16px;
-  } 
-  .btn--small{
-    padding: 13px 32px;
+  .contact__title{
+    line-height: 45px;
   }
-  .contact__title, .banner__title{
-    line-height: 50px;
+  .contact{
+    padding: 20px 0 0;
   }
-  .form-group label{
-    font-size: 15px;
+  .mobile-menu__menu .mobile-menu__menu-item {
+    font-size: 19px;
   }
-  .btn__text{
-    font-size:16px;
-  }
-  .btn--primary{
-    padding:14px;
-  }
-  .info_politics{
-    padding-left: 0px; 
-    padding-right: 0px;
-  }
-=======
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
 
   main {
     padding-left: 30px;
@@ -1424,9 +1427,11 @@ main.no-bg {
 
   .banner {
     flex-direction: column-reverse;
+    padding-bottom: 0;
   }
   .banner__texts {
     margin-right: 0;
+    margin-bottom: 50px;
   }
   .banner__img {
     width: 100%;
@@ -1485,6 +1490,14 @@ main.no-bg {
   .pricing-plan {
     margin-bottom: 20px;
     padding: 40px 16px;
+    margin-top:40px;
+  }
+  .pricing-plan__price{
+    font-size:44px;
+  }
+  .politics__title{
+    font-size:40px;
+    line-height: 43px;
   }
 
   .faq-item {
@@ -1495,14 +1508,6 @@ main.no-bg {
     margin-top: 16px;
     margin-bottom: 16px;
   }
-<<<<<<< HEAD
-  .politics__title{
-    font-size: 33px;
-    line-height: 38px;
-    margin-right: 40px;
-  }
-=======
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
 
 
   .daycares {
@@ -1648,23 +1653,9 @@ main.no-bg {
 body {
     font-size: 14px;
   }
-<<<<<<< HEAD
-  .banner__title{
-    font-size: 38px;
-    line-height: 43px;
-  }
-  .banner__subtitle{
-    font-size: 17px;
-  }
-  .over__texts h1{
-    font-size:38px;
-    margin-right:10px;
-    margin-bottom: 24px;
-=======
 
   .header {
     padding: 0 30px;
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
   }
 
   main {
@@ -1679,17 +1670,6 @@ body {
   max-width: 1200px;
   width: 100%;
 }
-<<<<<<< HEAD
-.information{
-  padding-right:0px;
-  padding-inline-start: 10px;
-}
-.information h3,p{
-  font-size:16px;
-
-}
-=======
->>>>>>> 82b642317befff61a0ff008d7ba1eb6705e753e6
 
 .politics main {
   min-height: 100vh;

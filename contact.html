@@ -6,24 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="img/favicon.ico"/>
     <title>Acuarela | Contacto</title>
-    <link
-      rel="preload"
-      href="css/jquery.fancybox.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
-    </noscript>
-    <link
-      rel="preload"
-      href="css/jquery.mCustomScrollbar.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
-    </noscript>
+
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/fonts/fonts.css" />
     <link rel="stylesheet" href="css/fonts/acuarelaicon/style.css" />
@@ -144,7 +127,7 @@
               resolver tus dudas.
             </p>
           </div>
-          <form class="contact__form" id="contact__form">
+          <form class="contact__form" id="contact__form" action="/s/demo/" method="POST">
             <div class="form-group">
               <label for="name">Nombre</label>
               <div class="input-wrapper">
@@ -185,16 +168,16 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="daycare-name">Nombre de tu Daycare</label>
+              <label for="daycare_name">Nombre de tu Daycare</label>
               <div class="input-wrapper">
                 <input
                   required
-                  name="daycare-name"
-                  id="daycare-name"
+                  name="daycare_name"
+                  id="daycare_name"
                   type="text"
                   placeholder="Daycare"
                 />
-                <label for="daycare-name"></label>
+                <label for="daycare_name"></label>
               </div>
             </div>
             <div class="form-group">

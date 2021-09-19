@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_padres_parents",
+  "info": {
+    "name": "parents",
+    "icon": "user-shield"
+  },
+  "options": {},
+  "attributes": {
+    "work_phone": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "parent_type": {
+      "type": "string"
+    },
+    "work": {
+      "type": "string"
+    },
+    "is_principal": {
+      "type": "boolean"
+    },
+    "profession": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

@@ -51,82 +51,6 @@
       "required": false,
       "type": "string"
     },
-    "name_doctor": {
-      "required": false,
-      "type": "string"
-    },
-    "phone_doctor": {
-      "required": false,
-      "type": "string"
-    },
-    "hispano": {
-      "required": false,
-      "type": "boolean"
-    },
-    "language": {
-      "required": false,
-      "type": "string"
-    },
-    "start_time": {
-      "required": false,
-      "type": "time"
-    },
-    "end_time": {
-      "required": false,
-      "type": "time"
-    },
-    "days": {
-      "required": false,
-      "type": "json"
-    },
-    "meals": {
-      "required": false,
-      "type": "json"
-    },
-    "week_care": {
-      "type": "boolean",
-      "required": false
-    },
-    "week_care_start_time": {
-      "type": "time",
-      "required": false
-    },
-    "week_care_end_time": {
-      "type": "time",
-      "required": false
-    },
-    "mom_name": {
-      "type": "string",
-      "required": false
-    },
-    "mom_phone": {
-      "type": "string",
-      "required": false
-    },
-    "mom_email": {
-      "type": "email",
-      "required": false
-    },
-    "mom_is_principal": {
-      "type": "boolean",
-      "required": false
-    },
-    "dad_name": {
-      "type": "string",
-      "required": false
-    },
-    "dad_phone": {
-      "type": "string",
-      "required": false
-    },
-    "dad_email": {
-      "type": "email",
-      "required": false
-    },
-    "dad_is_principal": {
-      "type": "boolean",
-      "required": false
-    },
     "guardians": {
       "type": "component",
       "repeatable": true,
@@ -167,32 +91,49 @@
       "type": "integer",
       "required": false
     },
-    "mom_lastname": {
-      "type": "string"
-    },
-    "mom_profession": {
-      "type": "string"
-    },
-    "mom_work": {
-      "type": "string"
-    },
-    "mom_workphone": {
-      "type": "string"
-    },
-    "dad_lastname": {
-      "type": "string"
-    },
-    "dad_profession": {
-      "type": "string"
-    },
-    "dad_work": {
-      "type": "string"
-    },
-    "dad_workphone": {
-      "type": "string"
-    },
     "kid_typecare": {
       "type": "string"
+    },
+    "doctor_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "doctor.doctor-info"
+    },
+    "days_of_care": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.days-of-care"
+    },
+    "care_weekends": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.care-weekends"
+    },
+    "ancestry": {
+      "type": "string"
+    },
+    "primary_language": {
+      "type": "string"
+    },
+    "ointments": {
+      "type": "json"
+    },
+    "nap_time": {
+      "type": "json"
+    },
+    "transportation": {
+      "type": "json"
+    },
+    "files": {
+      "type": "component",
+      "repeatable": false,
+      "component": "files.files"
+    },
+    "parents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "padres.parents",
+      "max": 2
     }
   }
 }

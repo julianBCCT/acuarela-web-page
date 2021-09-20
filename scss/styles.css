@@ -143,7 +143,7 @@ h5 {
 
 p,
 li {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.45;
   margin: 0;
 }
@@ -543,6 +543,9 @@ main.no-bg {
 .add-on__description {
   width: 90%;
   line-height: 1.45;
+}
+.add-on__description p{
+  font-size: 16px;
 }
 .add-on__description:last-of-type {
   margin-bottom: 30px;
@@ -1330,6 +1333,15 @@ main.no-bg {
     padding-bottom:20px;
   }
 }
+@media (min-width: 1024px){
+  .glider-carousel{
+    display:none;
+  }
+  .features__title1{
+    display:none;
+  }
+  
+}
 @media (max-width: 998px) {
   .header {
     padding: 0 30px;
@@ -1339,7 +1351,20 @@ main.no-bg {
     padding-left: 30px;
     padding-right: 30px;
   }
-
+  
+  .features-cont{
+    position: relative;
+    padding: 10%;
+    padding-top:5%;
+  }
+  .features-cont__feature-feature{
+    text-align:center;
+    padding-bottom: 29px;
+  }
+  .features-cont__feature-feature img{
+    width: 130px;
+    height: 130px;
+  }
   .footer__over {
     width: calc(100% - 120px);
     display: flex;
@@ -1371,6 +1396,19 @@ main.no-bg {
   .header {
     padding: 0 15px;
   }
+  .features{
+    display: none;
+  }
+  .glider{
+    width: 100%;
+    display: flex;
+  
+  }
+  .glider .card{
+    padding: 10px;
+    width: 100%;
+  }
+ 
   .header__toggle {
     display: block;
     height: 16px;

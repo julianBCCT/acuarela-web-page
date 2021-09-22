@@ -431,7 +431,7 @@ select {
 main {
   padding: 0 rem(160px);
   padding-top: rem(140px);
-  background-image: url(img/body_bg.png);
+  background-image: url(../img/body_bg.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center rem(100px);
@@ -1252,7 +1252,7 @@ main {
 
 .footer {
   background-color: $color-primary;
-  background-image: url(img/footer_bg.png);
+  background-image: url(../img/footer_bg.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center bottom;

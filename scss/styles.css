@@ -1,7 +1,7 @@
 @font-face {
   font-family: "icomoon";
-  src: url("fonts/icomoon.eot?5wtu7i");
-  src: url("fonts/icomoon.eot?5wtu7i#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?5wtu7i") format("truetype"), url("fonts/icomoon.woff?5wtu7i") format("woff"), url("fonts/icomoon.svg?5wtu7i#icomoon") format("svg");
+  src: url("../css/fonts/acuarelaicon/fonts/icomoon.eot?5wtu7i");
+  src: url("../css/fonts/acuarelaicon/fonts/icomoon.eot?5wtu7i#iefix") format("embedded-opentype"), url("../css/fonts/icomoon.ttf?5wtu7i") format("truetype"), url("../css/fonts/icomoon.woff?5wtu7i") format("woff"), url("../css/fonts/icomoon.svg?5wtu7i#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -462,7 +462,7 @@ select:focus {
 main {
   padding: 0 160px;
   padding-top: 140px;
-  background-image: url(img/body_bg.png);
+  background-image: url(../img/body_bg.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center 100px;
@@ -1119,6 +1119,11 @@ main.no-bg {
 .contact .card__social i:hover {
   color: #55637e;
 }
+.card__ig{
+  height: 20px;
+  width: 21px;
+  margin-left:10px;
+}
 .info_politics{
   text-align: justify;
   margin: 0 50px;
@@ -1135,7 +1140,7 @@ main.no-bg {
 }
 .footer {
   background-color: #0cb5c3;
-  background-image: url(img/footer_bg.png);
+  background-image: url(../img/footer_bg.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center bottom;
@@ -1162,8 +1167,9 @@ main.no-bg {
 }
 .footer .over__buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: 20px;
+  padding: 0 80px;
 }
 .footer .over__buttons > div {
   text-align: center;
@@ -1342,6 +1348,8 @@ main.no-bg {
   }
   
 }
+
+
 @media (max-width: 998px) {
   .header {
     padding: 0 30px;
@@ -1402,13 +1410,21 @@ main.no-bg {
   .glider{
     width: 100%;
     display: flex;
-  
   }
   .glider .card{
     padding: 10px;
     width: 100%;
   }
- 
+  
+  .feature__title{
+    padding-bottom:10px;
+    padding-top: 10px;
+  }
+  .features__title1{
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
   .header__toggle {
     display: block;
     height: 16px;
@@ -1485,6 +1501,9 @@ main.no-bg {
   }
   .features .feature__img {
     height: 80px;
+  }
+  .footer .over__buttons{
+    padding: 0px;
   }
 
   .add-on {
@@ -1717,5 +1736,6 @@ body {
   text-align: justify;
   text-align-last: center;
 }
+
 
 /*# sourceMappingURL=styles.css.map */

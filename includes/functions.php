@@ -15,7 +15,7 @@ class acuarela
 		$result = '';
 		try {
 			if($from==""){
-				$from='empleo@acuarela.app';
+				$from='info@acuarela.app';
 			}
 			$mandrill = new Mandrill($mandrillApiKey);
 	
@@ -90,8 +90,8 @@ class acuarela
 			'COUNTRY' => $country,
 			'CITY' => $city
 		];
-		$this->send_notification('empleo@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'obtener-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
-		$this->send_notification('empleo@acuarela.app','empleo@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$this->send_notification('info@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'obtener-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$this->send_notification('info@acuarela.app','info@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
 }
 

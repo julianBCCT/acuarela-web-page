@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "ProximaNova";
+  font-weight: 900;
+  src: local("ProximaNova_Black"),
+    url(../fonts/proximanova/ProximaNova_Black.eot),
+    url(../fonts/proximanova/ProximaNova_Black.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNova_Black.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-weight: 700;
+  src: url(../fonts/proximanova/ProximaNova_Bold.eot),
+    url(../fonts/proximanova/ProximaNova_Bold.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNova_Bold.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-weight: 800;
+  src: url(../fonts/proximanova/ProximaNova_Extrabold.eot),
+    url(../fonts/proximanova/ProximaNova_Extrabold.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNova_Extrabold.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-weight: 400;
+  src: local("ProximaNova_Regular"),
+    url(../fonts/proximanova/ProximaNova_Regular.eot),
+    url(../fonts/proximanova/ProximaNova_Regular.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNova_Regular.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-weight: 100;
+  src: url(../fonts/proximanova/ProximaNova_Thin.eot),
+    url(../fonts/proximanova/ProximaNova_Thin.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNova_Thin.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNovaAlt";
+  font-weight: 700;
+  src: url(../fonts/proximanova/ProximaNovaAlt_Bold.eot),
+    url(../fonts/proximanova/ProximaNovaAlt_Bold.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNovaAlt_Bold.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNovaAlt";
+  font-weight: 300;
+  src: local("ProximaNovaAlt_Light"),
+    url(../fonts/../fonts/proximanova/ProximaNovaAlt_Light.eot),
+    url(../fonts/proximanova/ProximaNovaAlt_Light.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNovaAlt_Light.svg) format("svg");
+}
+@font-face {
+  font-family: "ProximaNovaAlt";
+  font-weight: 100;
+  src: url(../fonts/proximanova/ProximaNovaAlt_Thin.eot),
+    url(../fonts/proximanova/ProximaNovaAlt_Thin.ttf) format("truetype"),
+    url(../fonts/proximanova/ProximaNovaAlt_Thin.svg) format("svg");
+}

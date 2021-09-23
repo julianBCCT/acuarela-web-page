@@ -292,7 +292,7 @@ select:focus {
 .btn__text {
   color: #ffffff;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 17px;
 }
 .btn__icon {
   color: #ffffff;
@@ -338,7 +338,7 @@ select:focus {
   margin: 0 auto;
 }
 .btn--small {
-  padding: 6px 14px;
+  padding: 15px 30px;
 }
 
 .lang-selector {
@@ -1297,6 +1297,9 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
+  .btn--small{
+    padding: 15px 30px !important;
+  }
 }
 @media (max-width: 1400px) {
   .header {
@@ -1315,9 +1318,7 @@ main.no-bg {
     padding-left: 80px;
     padding-right: 80px;
   }
-  .btn--small{
-    padding: 15px 30px;
-  }
+ 
   .btn__text{
     font-size: 18px;
   }

@@ -631,8 +631,9 @@ main.no-bg {
 }
 .pricing-plan__price {
   margin-bottom: 16px;
-  font-size: 48px;
   line-height: 60px;
+  font-size:33px;
+  color:red;
 }
 .pricing-plan hr {
   margin-bottom: 16px;
@@ -1549,9 +1550,7 @@ main.no-bg {
     padding: 40px 16px;
     margin-top:40px;
   }
-  .pricing-plan__price{
-    font-size:44px;
-  }
+  
   .politics__title{
     font-size:40px;
     line-height: 43px;
@@ -1722,7 +1721,7 @@ body {
 }
 .container {
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 21px;
   position: relative;
   max-width: 1200px;
   width: 100%;

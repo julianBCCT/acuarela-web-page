@@ -633,8 +633,13 @@ main.no-bg {
   margin-bottom: 16px;
   line-height: 60px;
   font-size:33px;
-  color: #CF0000;
+  /*color: #CF0000;*/
 }
+s{
+  text-decoration-color: red;
+  transform:rotate(-15deg);
+}
+
 .pricing-plan hr {
   margin-bottom: 16px;
   width: 100%;

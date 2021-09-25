@@ -632,11 +632,11 @@ main.no-bg {
 .pricing-plan__price {
   margin-bottom: 16px;
   line-height: 60px;
-  font-size:33px;
-  /*color: #CF0000;*/
+  font-size:31px;
+  color: #0CB5C3;
 }
 s{
-  text-decoration-color: red;
+  /*text-decoration-color:#9E2F30;*/
   transform:rotate(-15deg);
 }
 
@@ -1130,6 +1130,9 @@ s{
   width: 21px;
   margin-left:10px;
 }
+.card__fb{
+  height:21px;
+}
 .info_politics{
   text-align: justify;
   margin: 0 50px;
@@ -1572,7 +1575,9 @@ s{
     margin-top: 16px;
     margin-bottom: 16px;
   }
-
+  .card__bottom h3{
+    margin-bottom:10px;
+  }
 
   .daycares {
     display: flex !important;

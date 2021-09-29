@@ -22,26 +22,26 @@
 
   gtag('config', 'G-SD09S4QRP5');
 </script>
-<!--Facebook pixel code-->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '924895545109881');
-  fbq('track', 'PageView');
-</script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924895545109881&ev=PageView&noscript=1"/></noscript>
-  <!-- End Facebook Pixel Code -->
 
-  </head>
+</head>
 
-  <body>
+<body>
+    <!--Facebook pixel code-->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '924895545109881');
+      fbq('track', 'PageView');
+    </script>
+      <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924895545109881&ev=PageView&noscript=1"/></noscript>
+      <!-- End Facebook Pixel Code -->
     <header class="header container">
       <a href="/">
         <img class="header__logo" src="img/logo.svg" alt="Acuarela" />
@@ -332,12 +332,12 @@
         <div class="over__buttons">
           <div>
             <h4>Descarga la app para Daycares</h4>
-            <button class="btn btn--white btn--big">
+            <button class="btn btn--white btn--big" onclick="trackDownload('appStore')">
               <a href="https://apps.apple.com/us/app/acuarela-for-daycares/id1573321954">
                 <img src="img/appStore_available.svg" />
               </a>
             </button>
-            <button class="btn btn--white btn--big">
+            <button class="btn btn--white btn--big" onclick="trackDownload('playstore')">
               <a href="https://play.google.com/store/apps/details?id=com.acuarela.daycaresapp">
                 <img src="img/playStore_available.svg" />
               </a>

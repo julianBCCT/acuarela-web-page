@@ -52,6 +52,7 @@ $("#contact__form").validate({
     $(element).parent("div").removeClass("error").addClass("success");
   },
   submitHandler: function (form) {
+
     $("#contact__form button").attr("disabled", true);
     $("#contact__form button").text("Enviando");
     $("#contact__form").ajaxSubmit({
@@ -59,6 +60,8 @@ $("#contact__form").validate({
       success: function (data) {
         console.log(data);
         console.log("Encviado");
+        TrackDemo(data.info);
+        
       },
     });
     setTimeout(() => {
@@ -67,4 +70,26 @@ $("#contact__form").validate({
       $(".contact__success").fadeIn();
     }, 500);
   },
+
 });
+
+
+function trackDownload(OS){
+  fbq('track','StartTrial',{
+    test_event_code:'TEST8078'
+  });
+}
+
+function InitiateCheckout(period, price){
+  fbq('track','InitiateCheckout',{
+    value: price,
+    currency:'USD',
+    period
+  });
+}
+
+function TrackDemo({name,email,daycare,phone,city}){
+  fbq('track','Lead',{
+    name,email,daycare,phone,city
+  });
+}

@@ -91,7 +91,7 @@ class acuarela
 			'CITY' => $city
 		];
 		$this->send_notification('info@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'obtener-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
-		$this->send_notification('info@acuarela.app','info@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$this->send_notification('info@acuarela.app','empleo@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
 }
 

@@ -106,7 +106,8 @@ module.exports = {
     if (validToken.ok) {
       let pageNo = skip > 0 ? ( ( skip - 1 ) * limit) : 0;
       let query = { _sort: 'date:desc' };
-      query.acuarelauser.daycare = { $eq: validToken.user.organization };
+      console.log(query);
+      // query.acuarelauser.daycare = { $eq: validToken.user.organization };
       // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('post')

@@ -134,6 +134,12 @@
       "repeatable": true,
       "component": "padres.parents",
       "max": 2
+    },
+    "hear_about": {
+      "type": "json"
+    },
+    "meals": {
+      "type": "json"
     }
   }
 }

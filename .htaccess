@@ -8,11 +8,11 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^s/([^/]*)/$ set/$1.php?lang=es [L,QSA]
 RewriteRule ^g/([^/]*)/$ get/$1.php?lang=es [L,QSA]
 
-RewriteRule ^/$ index.html [L,QSA]
-RewriteRule ^sobre-nosotros$ about.html [L,QSA]
-RewriteRule ^planes-precios$ pricing.html [L,QSA]
-RewriteRule ^preguntas-frecuentes$ faq.html [L,QSA]
-RewriteRule ^free-demo$ contact.html [L,QSA]
-RewriteRule ^politicas$ politics.html [L,QSA]
+RewriteRule ^/$ index.php [L,QSA]
+RewriteRule ^sobre-nosotros$ about.php [L,QSA]
+RewriteRule ^planes-precios$ pricing.php [L,QSA]
+RewriteRule ^preguntas-frecuentes$ faq.php [L,QSA]
+RewriteRule ^free-demo$ contact.php [L,QSA]
+RewriteRule ^politicas$ politics.php [L,QSA]
 
 

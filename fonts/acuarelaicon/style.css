@@ -1,14 +1,11 @@
-@charset "UTF-8";
 @font-face {
   font-family: "icomoon";
-  src: url("fonts/icomoon.eot?5wtu7i");
-  src: url("fonts/icomoon.eot?5wtu7i#iefix") format("embedded-opentype"),
-    url("fonts/icomoon.svg?5wtu7i#icomoon") format("svg");
+  src: url("../acuarelaicon/fonts/icomoon.eot?5wtu7i");
+  src: url("../acuarelaicon/fonts/icomoon.eot?5wtu7i#iefix") format("embedded-opentype"), url("../acuarelaicon/fonts/icomoon.ttf?5wtu7i") format("truetype"), url("../acuarelaicon/fonts/icomoon.woff?5wtu7i") format("woff"), url("../acuarelaicon/fonts/icomoon.svg?5wtu7i#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
@@ -24,70 +21,71 @@ i {
 }
 
 .icon-arrow-down:before {
-  content: "";
+  content: "\e907";
 }
 
 .icon-arrow-up:before {
-  content: "";
+  content: "\e90b";
 }
 
 .icon-assistant:before {
-  content: "";
+  content: "\e908";
 }
 
 .icon-checkmark:before {
-  content: "";
+  content: "\e900";
 }
 
 .icon-cross:before {
-  content: "";
+  content: "\e901";
 }
 
 .icon-facebook:before {
-  content: "";
+  content: "\e902";
 }
 
 .icon-first:before {
-  content: "";
+  content: "\e90d";
 }
 
 .icon-kid:before {
-  content: "";
+  content: "\e909";
 }
 
 .icon-last:before {
-  content: "";
+  content: "\e90e";
 }
 
 .icon-message:before {
-  content: "";
+  content: "\e903";
 }
 
 .icon-next:before {
-  content: "";
+  content: "\e90f";
 }
 
 .icon-phone:before {
-  content: "";
+  content: "\e90a";
 }
 
 .icon-prev:before {
-  content: "";
+  content: "\e910";
 }
 
 .icon-search:before {
-  content: "";
+  content: "\e90c";
 }
 
 .icon-star:before {
-  content: "";
+  content: "\e904";
 }
 
 .icon-twitter:before {
-  content: "";
+  content: "\e905";
 }
 
 .icon-youtube:before {
-  content: "";
+  content: "\e906";
 }
+
 /*# sourceMappingURL=style.css.map */

@@ -125,9 +125,10 @@ module.exports = {
         .populate('classactivity');
     
       validToken.msg = 'Query completed successfully!';
-      let results = entity.filter(x => x.acuarelauser.organization.id === validToken.user.organization.id);
-      console.log(results);
-      validToken.response = results;
+      entity.forEach(x => {
+        console.log(x);
+      });
+      validToken.response = entity;
       return ctx.send(validToken);
 
     } else return ctx.send(validToken);

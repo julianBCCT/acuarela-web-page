@@ -126,7 +126,7 @@ module.exports = {
     
       validToken.msg = 'Query completed successfully!';
       entity.forEach(x => {
-        console.log(x.acuarelauser);
+        console.log(x.acuarelauser.daycare === validToken.user.organization.id);
       });
       validToken.response = entity;
       return ctx.send(validToken);

@@ -156,6 +156,10 @@
     "movements": {
       "via": "daycare",
       "collection": "movement"
+    },
+    "inscripciones": {
+      "via": "daycare",
+      "model": "inscripciones"
     }
   }
 }

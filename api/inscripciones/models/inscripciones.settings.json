@@ -140,6 +140,10 @@
     },
     "meals": {
       "type": "json"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "inscripciones"
     }
   }
 }

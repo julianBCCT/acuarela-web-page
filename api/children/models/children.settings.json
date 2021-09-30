@@ -11,9 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "birthdate": {
-      "type": "date"
-    },
     "inscription_date": {
       "type": "datetime"
     },
@@ -21,27 +18,6 @@
       "type": "string"
     },
     "lastname": {
-      "type": "string"
-    },
-    "address": {
-      "type": "string"
-    },
-    "city": {
-      "type": "string"
-    },
-    "country": {
-      "type": "string"
-    },
-    "weight": {
-      "type": "decimal"
-    },
-    "height": {
-      "type": "decimal"
-    },
-    "rh": {
-      "type": "string"
-    },
-    "live_with": {
       "type": "string"
     },
     "photo": {
@@ -92,14 +68,6 @@
       "via": "children",
       "dominant": true
     },
-    "relationships": {
-      "collection": "relationship",
-      "via": "child"
-    },
-    "healthinfo": {
-      "model": "healthinfo",
-      "via": "child"
-    },
     "bag_item": {
       "type": "json"
     },
@@ -132,35 +100,69 @@
       "model": "daycare",
       "via": "children"
     },
-    "start_time": {
-      "type": "time",
-      "default": "00:00:00",
-      "required": false
+    "birthday": {
+      "type": "date"
     },
-    "end_time": {
-      "type": "time",
-      "default": "00:00:00"
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Masculino",
+        "Femenino"
+      ]
     },
-    "race": {
+    "phone": {
       "type": "string"
     },
-    "language": {
+    "address": {
       "type": "string"
     },
-    "days": {
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "doctor_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "doctor.doctor-info"
+    },
+    "ancestry": {
+      "type": "string"
+    },
+    "primary_language": {
+      "type": "string"
+    },
+    "days_of_care": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.days-of-care"
+    },
+    "care_weekends": {
+      "type": "component",
+      "repeatable": false,
+      "component": "daycare.care-weekends"
+    },
+    "ointments": {
       "type": "json"
     },
-    "meals": {
+    "nap_time": {
       "type": "json"
     },
-    "week_care": {
-      "type": "boolean"
+    "transportation": {
+      "type": "json"
     },
-    "week_care_start_time": {
-      "type": "time"
+    "files": {
+      "type": "component",
+      "repeatable": false,
+      "component": "files.files"
     },
-    "week_care_end_time": {
-      "type": "time"
+    "parents": {
+      "collection": "parents",
+      "via": "child"
     }
   }
 }

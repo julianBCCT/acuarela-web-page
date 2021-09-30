@@ -40,6 +40,10 @@
     "kid": {
       "via": "parents",
       "model": "kids"
+    },
+    "child": {
+      "via": "parents",
+      "model": "children"
     }
   }
 }

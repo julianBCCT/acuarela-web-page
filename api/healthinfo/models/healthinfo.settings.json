@@ -32,10 +32,6 @@
     "emergency_relationship": {
       "type": "string"
     },
-    "child": {
-      "via": "healthinfo",
-      "model": "children"
-    },
     "vacination": {
       "type": "text"
     },

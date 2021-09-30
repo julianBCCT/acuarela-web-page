@@ -18,10 +18,6 @@
       "via": "relationships",
       "model": "acuarelauser"
     },
-    "child": {
-      "via": "relationships",
-      "model": "children"
-    },
     "relationship": {
       "type": "string"
     }

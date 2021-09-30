@@ -126,7 +126,7 @@ module.exports = {
     
       validToken.msg = 'Query completed successfully!';
       entity.forEach(x => {
-        console.log(x);
+        console.log(x.acuarelauser);
       });
       validToken.response = entity;
       return ctx.send(validToken);

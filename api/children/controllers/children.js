@@ -305,11 +305,11 @@ module.exports = {
         child.status = true;
         child.daycare = validToken.user.organization;
         child.attitudes = [];
-        const child = await strapi.services.children.create(child);
+        const res = await strapi.services.children.create(child);
         return ctx.send({
           created: true,
           status: 200,
-          child
+          child: res
         });
       }
     } else return ctx.send(validToken);

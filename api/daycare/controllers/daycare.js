@@ -1,8 +1,8 @@
-"use strict";
-const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
-const verification = require("../../../middlewares/authJwt");
+'use strict';
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const verification = require('../../../middlewares/authJwt');
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -20,11 +20,11 @@ module.exports = {
       query._id = { $eq: validToken.user.id };
 
       let entity = await strapi
-        .query("acuarelauser")
-        .model.find(query, ["name", "lastname", "photo"])
+        .query('acuarelauser')
+        .model.find(query, ['name', 'lastname', 'photo'])
         .populate({
-          path: "daycare",
-          populate: "daycare",
+          path: 'daycare',
+          populate: 'daycare',
         });
 
       if (!entity)
@@ -32,10 +32,10 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Daycare not found.",
+          msg: 'Daycare not found.',
         });
       else {
-        validToken.msg = "Query completed successfully!";
+        validToken.msg = 'Query completed successfully!';
         validToken.response = entity;
         return ctx.send(validToken);
       }
@@ -53,7 +53,7 @@ module.exports = {
       query._id = { $eq: id };
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-      let entity = await strapi.query("daycare").model.find(query);
+      let entity = await strapi.query('daycare').model.find(query);
       //.populate('activities');
       console.log(entity);
       if (!entity)
@@ -61,10 +61,10 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Daycare not found.",
+          msg: 'Daycare not found.',
         });
       else {
-        validToken.msg = "Query completed successfully!";
+        validToken.msg = 'Query completed successfully!';
         validToken.response = entity;
         return ctx.send(validToken);
       }

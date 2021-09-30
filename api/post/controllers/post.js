@@ -113,7 +113,7 @@ module.exports = {
         .sort({ date: -1 })
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))
-        .populate('acuarelauser', ['name', 'id', 'photo', 'organization'])
+        .populate('acuarelauser', ['name', 'id', 'photo', 'daycare'])
         .populate({
           path: 'comments',
           populate: {
@@ -126,7 +126,7 @@ module.exports = {
     
       validToken.msg = 'Query completed successfully!';
       entity.forEach(x => {
-        console.log(x.acuarelauser.organization);
+        console.log(x.acuarelauser);
       });
       validToken.response = entity;
       return ctx.send(validToken);

@@ -105,7 +105,8 @@ module.exports = {
 
     if (validToken.ok) {
       let pageNo = skip > 0 ? ( ( skip - 1 ) * limit) : 0;
-      let query = { _sort: 'date:desc' };
+      let query = {};
+      query.acuarelauser.daycare = {$eq: validToken.user.organization.id};
       // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('post')
@@ -114,6 +115,7 @@ module.exports = {
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))
         .populate('acuarelauser', ['name', 'id', 'photo', 'daycare'])
+        .find(query)
         .populate({
           path: 'comments',
           populate: {
@@ -125,10 +127,8 @@ module.exports = {
         .populate('classactivity');
     
       validToken.msg = 'Query completed successfully!';
-      entity.forEach(x => {
-        console.log(x.acuarelauser.daycare === validToken.user.organization.id);
-      });
-      validToken.response = entity;
+      let results = entity.filter(x => x.acuarelauser.daycare === validToken.user.organization.id);
+      validToken.response = results;
       return ctx.send(validToken);
 
     } else return ctx.send(validToken);

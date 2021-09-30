@@ -26,6 +26,7 @@ module.exports = {
         });
       else {
         validToken.msg = 'Query completed successfully!';
+        let results = entity.filter(x => x.daycare === validToken.user.organization.id);
         validToken.response = entity;
         return ctx.send(validToken);
       }

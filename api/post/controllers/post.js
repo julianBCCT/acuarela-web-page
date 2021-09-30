@@ -125,7 +125,8 @@ module.exports = {
         .populate('classactivity');
     
       validToken.msg = 'Query completed successfully!';
-      validToken.response = entity;
+      let results = entity.filter(x => x.acuarelauser.daycare.id === validToken.user.daycare.id);
+      validToken.response = results;
       return ctx.send(validToken);
 
     } else return ctx.send(validToken);

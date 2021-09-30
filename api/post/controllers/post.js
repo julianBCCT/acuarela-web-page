@@ -109,7 +109,7 @@ module.exports = {
       // Realiza la consulta y pobla los datos.
       let entity = await strapi
         .query('post')
-        .model.find(query)
+        .model.find()
         .sort({ date: -1 })
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))

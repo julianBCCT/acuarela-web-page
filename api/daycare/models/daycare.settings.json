@@ -54,8 +54,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "acuarelauser"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",

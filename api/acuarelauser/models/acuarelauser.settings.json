@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "chats": {
       "collection": "chat",
@@ -74,8 +74,8 @@
       "via": "acuarelausers_invited"
     },
     "group": {
-      "via": "acuarelauser",
-      "model": "group"
+      "model": "group",
+      "via": "acuarelauser"
     },
     "relationships": {
       "collection": "relationship",
@@ -105,8 +105,8 @@
       "via": "acuarelausers"
     },
     "posts": {
-      "via": "acuarelauser",
-      "collection": "post"
+      "collection": "post",
+      "via": "acuarelauser"
     },
     "childminderinuser": {
       "collection": "checkin",
@@ -128,24 +128,44 @@
       "type": "string"
     },
     "visits": {
-      "via": "acuarelauser",
-      "collection": "visit"
+      "collection": "visit",
+      "via": "acuarelauser"
     },
     "comments": {
-      "via": "acuarelauser",
-      "collection": "comment"
+      "collection": "comment",
+      "via": "acuarelauser"
     },
     "reactions": {
-      "via": "acuarelauser",
-      "collection": "reaction"
+      "collection": "reaction",
+      "via": "acuarelauser"
     },
     "movements": {
-      "via": "payer",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "payer"
     },
     "employee_payroll": {
-      "via": "payroll",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "payroll"
+    },
+    "work_phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "work_place": {
+      "type": "string"
+    },
+    "profession": {
+      "type": "string"
+    },
+    "is_principal": {
+      "type": "boolean"
+    },
+    "children": {
+      "via": "acuarelausers",
+      "collection": "children",
+      "dominant": true
     }
   }
 }

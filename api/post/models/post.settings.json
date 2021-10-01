@@ -26,8 +26,8 @@
       "required": false
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "posts"
+      "via": "posts",
+      "model": "acuarelauser"
     },
     "date": {
       "type": "datetime"

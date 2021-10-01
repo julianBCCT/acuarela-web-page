@@ -15,8 +15,8 @@
       "type": "string"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "comments"
+      "via": "comments",
+      "model": "acuarelauser"
     },
     "post": {
       "via": "comments",

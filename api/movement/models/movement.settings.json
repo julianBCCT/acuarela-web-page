@@ -28,8 +28,8 @@
       "model": "children"
     },
     "payer": {
-      "model": "acuarelauser",
-      "via": "movements"
+      "via": "movements",
+      "model": "acuarelauser"
     },
     "category": {
       "via": "movements",
@@ -46,8 +46,8 @@
       "type": "string"
     },
     "payroll": {
-      "model": "acuarelauser",
-      "via": "employee_payroll"
+      "via": "employee_payroll",
+      "model": "acuarelauser"
     },
     "paypal": {
       "type": "json"

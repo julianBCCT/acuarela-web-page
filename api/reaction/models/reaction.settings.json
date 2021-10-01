@@ -19,8 +19,8 @@
       "type": "integer"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "reactions"
+      "via": "reactions",
+      "model": "acuarelauser"
     },
     "comment": {
       "model": "comment",

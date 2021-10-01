@@ -163,6 +163,15 @@
     "parents": {
       "collection": "parents",
       "via": "child"
+    },
+    "acuarelausers": {
+      "collection": "acuarelauser",
+      "via": "children"
+    },
+    "guardians": {
+      "type": "component",
+      "repeatable": true,
+      "component": "guardians.guardians"
     }
   }
 }

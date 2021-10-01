@@ -31,8 +31,8 @@
       "via": "visits"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "visits"
+      "via": "visits",
+      "model": "acuarelauser"
     },
     "visitors_name": {
       "type": "string"

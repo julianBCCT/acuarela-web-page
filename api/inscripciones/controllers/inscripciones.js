@@ -24,7 +24,7 @@ module.exports = {
         let entity = await strapi.services.acuarelauser.create(parent);
         parents.push(entity);
       }
-      const kidEdited = await strapi.services.children.update({ _id: id }, {parents: [parents[0].id, parents[1].id]});
+      const kidEdited = await strapi.services.children.update({ _id: kid.id }, {parents: [parents[0].id, parents[1].id]});
       return ctx.send({
         ok: true,
         status: 200,

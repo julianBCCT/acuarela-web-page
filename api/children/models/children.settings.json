@@ -160,10 +160,6 @@
       "repeatable": false,
       "component": "files.files"
     },
-    "parents": {
-      "collection": "parents",
-      "via": "child"
-    },
     "acuarelausers": {
       "collection": "acuarelauser",
       "via": "children"

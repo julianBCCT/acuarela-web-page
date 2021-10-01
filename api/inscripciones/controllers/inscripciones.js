@@ -17,19 +17,19 @@ module.exports = {
       child.attitudes = [];
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash('123456', 10);
-      //   let parents = [];
-      //   for (const parent of child.parents) {
-      //     parent.password = hashedPassword;
-      //     parent.status = true;
-      //     let entity = await strapi.services.acuarelauser.create(parent);
-      //     parents.push(entity);
-      //   }
+      let parents = [];
+      for (const parent of child.parents) {
+        parent.password = hashedPassword;
+        parent.status = true;
+        let entity = await strapi.services.acuarelauser.create(parent);
+        parents.push(entity);
+      }
       return ctx.send({
         ok: true,
         status: 200,
         code: 1,
         kid,
-        parents:child.parents
+        parents
       });
       //   let kidfound = await strapi.services.children.findOne({ _id: kid.id });
       //   if(kidfound){

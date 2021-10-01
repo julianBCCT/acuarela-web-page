@@ -25,12 +25,24 @@ module.exports = {
         let entity = await strapi.services.acuarelauser.create(parent);
         parents.push(entity);
       }
-      return ctx.send({
-        created: true,
-        status: 200,
-        child: res,
-        parents
-      });
+      let kidfound = await strapi.services.children.findOne({ _id: kid.id });
+      if(kidfound){
+        const kidEdited = await strapi.services.children.update({ _id: id }, child);
+        return ctx.send({
+          created: true,
+          status: 200,
+          child: kidEdited,
+          parents
+        });
+      }else{
+        return ctx.send({
+          ok: false,
+          status: 404,
+          code: 5,
+          msg: 'Child not found.',
+        });
+      }
+
     } else return ctx.send(validToken);
   },
 };

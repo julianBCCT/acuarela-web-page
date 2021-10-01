@@ -17,6 +17,7 @@ module.exports = {
       child.attitudes = [];
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash('123456', 10);
+      console.log(kid);
       let parents = [];
       let guardians = [];
       for (const parent of kid.parents) {
@@ -25,9 +26,12 @@ module.exports = {
         let entity = await strapi.services.acuarelauser.create(parent);
         parents.push(entity);
       }
+      console.log(parents);
       let kidfound = await strapi.services.children.findOne({ _id: kid.id });
+      console.log(kidFound);
       if(kidfound){
-        const kidEdited = await strapi.services.children.update({ _id: id }, child);
+        const kidEdited = await strapi.services.children.update({ _id: id }, {parents: [parents[0].id, parents[1].id]});
+        console.log(kidEdited);
         return ctx.send({
           created: true,
           status: 200,

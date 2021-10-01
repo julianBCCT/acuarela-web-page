@@ -19,12 +19,10 @@ module.exports = {
       let query = { active: true };
       query._id = { $eq: validToken.user.id };
 
-      let entity = await strapi
-        .query('acuarelauser')
-        .model.find(query, ['name', 'lastname', 'photo'])
+      let entity = await strapi.query('acuarelauser').model.find(query, ['name', 'lastname', 'photo'])
         .populate({
           path: 'daycare',
-          populate: 'daycare',
+          populate: 'daycare'
         });
 
       if (!entity)

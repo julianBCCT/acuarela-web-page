@@ -4,6 +4,7 @@
  * to customize this controller
  */
 const bcrypt = require('bcryptjs');
+const verification = require('../../../middlewares/authJwt');
 
 module.exports = {
   async completeInsc(ctx) {

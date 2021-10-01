@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/inscripciones/complete",
+      "handler": "inscripciones.completeInsc",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/inscripciones/:id",
       "handler": "inscripciones.update",

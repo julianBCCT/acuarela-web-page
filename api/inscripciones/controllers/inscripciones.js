@@ -18,12 +18,12 @@ module.exports = {
       const hashedPassword = await bcrypt.hash('123456', 10);
       let parents = [];
       let guardians = [];
-      kid.parents.forEach(parent => {
+      for (const parent of kid.parents) {
         parent.password = hashedPassword;
         parent.status = true;
         let entity = await strapi.services.acuarelauser.create(parent);
-        parents.push(entity)
-      });
+        parents.push(entity);
+      }
       return ctx.send({
         created: true,
         status: 200,

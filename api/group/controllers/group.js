@@ -17,8 +17,9 @@ module.exports = {
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
-
-      let entity = await strapi.query('group').model.find()
+      let query = { status: true };
+      query.daycare = { $eq: validToken.user.organization };
+      let entity = await strapi.query('group').model.find(query)
         .populate('activities')
         .populate('acuarelauser', ['name', 'lastname', 'photo']);
 

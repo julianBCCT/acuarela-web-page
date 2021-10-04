@@ -197,19 +197,13 @@ module.exports = {
         .query('children')
         .model.find(query)
         .populate({
-          path: 'relationships',
-          populate: {
-            path: 'acuarelauser',
-            select: ['name', 'lastname', 'mail', 'phone', 'photo'],
-          },
-        })
-        .populate({
           path: 'group',
           populate: {
             path: 'acuarelauser',
             select: ['name', 'lastname', 'mail', 'phone', 'photo'],
           },
         })
+        .populate('acuarelausers', ['name', 'lastname', 'mail', 'phone', 'photo'])
         .populate('attitudes', ['name', 'icon'])
         .populate('likings', ['name', 'icon'])
         .populate('others', ['name', 'icon'])

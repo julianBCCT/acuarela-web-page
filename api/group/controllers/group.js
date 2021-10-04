@@ -140,8 +140,9 @@ module.exports = {
             quantity: 0
           }
         ];
+        group.daycare = validToken.user.organization;
         let entity = await strapi.services.group.create(group);
-        return ctx.send({ ok: true, status: 200, code: 0, msg: 'Group Created.', user: validToken.user });
+        return ctx.send({ ok: true, status: 200, code: 0, msg: 'Group Created.', user: validToken.user, response: entity });
       }
     } else return ctx.send(validToken);
   },

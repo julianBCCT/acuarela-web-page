@@ -219,6 +219,7 @@ module.exports = {
         .populate('records', ['name', 'icon', 'file'])
         .populate('healthinfo')
         .populate('movements')
+        .populate('parents')
         .populate({
           path: 'childrenactivities',
           populate: {

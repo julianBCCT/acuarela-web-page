@@ -7,11 +7,11 @@
           <div>
             <h4>Descarga la app para Daycares</h4>
             <button class="btn btn--white btn--big" onclick="trackDownload('appStore')">
-              <a href="https://apps.apple.com/us/app/acuarela-for-daycares/id1573321954">
+              <a href="https://apps.apple.com/us/app/acuarela-for-daycares/id1573321954" target="_blank">
                 <img src="img/appStore_available.svg" />
               </a>
             </button>
-            <button class="btn btn--white btn--big" onclick="trackDownload('playstore')">
+            <button class="btn btn--white btn--big" onclick="trackDownload('playstore')" target="_blank"> 
               <a href="https://play.google.com/store/apps/details?id=com.acuarela.daycaresapp">
                 <img src="img/playStore_available.svg" />
               </a>

@@ -76,7 +76,7 @@
                                 <p class="testimonials-cont__name">
                                     Juliana de K Learning Daycare  
                                 </p>
-                                <p class="testimonials-cont__role">Mama</p>
+                                <p class="testimonials-cont__role">Proveedora de cuidado infantil</p>
                             </div>
                             <p class="testimonials-cont__date">
                                 18/08/2020
@@ -103,7 +103,7 @@
                                 <p class="testimonials-cont__name">
                                     Isabel de NWest Childcare
                                 </p>
-                                <p class="testimonials-cont__role">Acudiente</p>
+                                <p class="testimonials-cont__role">Proveedora de cuidado infantil</p>
                             </div>
                             <p class="testimonials-cont__date">
                                 20/08/2020
@@ -127,7 +127,7 @@
                                 <p class="testimonials-cont__name">
                                     Ana de Lovely Center Daycare
                                 </p>
-                                <p class="testimonials-cont__role">Acudiente</p>
+                                <p class="testimonials-cont__role">Proveedora de cuidado infantil</p>
                             </div>
                             <p class="testimonials-cont__date">
                                 25/08/2020

@@ -8,7 +8,7 @@
       </h1>
       <h2 class="banner__subtitle">
         Convierte el servicio de tu daycare en una experiencia 10/10 con la
-        familia de herramientas digitales ACUARELA.
+        familia de herramientas digitales Acuarela.
       </h2>
       <button
         class="btn btn--primary"

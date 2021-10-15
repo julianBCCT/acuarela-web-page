@@ -4,7 +4,7 @@
       <div class="info_politics">
         <ul class="information">
           <li>
-            <h3> NORMATIVIDAD LEGAL Y ÁMBITO DE APLICACIÓN</h3>
+            <h3> Normatividad legal y ámbito de aplicación</h3>
             <p>
             La presente política 
             de Tratamiento de datos personales está estipulada conforme a lo 
@@ -16,7 +16,7 @@
             </p>
           </li>
           <li>
-            <h3>DEFINICIONES</h3>
+            <h3>Definiciones</h3>
             <p>
             Para efectos de la ejecución de la presente política y 
             conforme con la normatividad legal, serán aplicables las
@@ -64,8 +64,9 @@
             </p>
           </li>
           <li>
-            <h3> FINALIDAD CON LA QUE SE EFECTÚA LA RECOLECCIÓN DE DATOS PERSONALES Y 
-                 TRATAMIENTO DE LOS MISMOS</h3>
+            <h3> Finalidad con la que se efectúa la recolección de datos personales y 
+              tratamiendo de los mismos
+            </h3>
             <p>
               PROFESSIONAL CHILD CARE TRAINING INC. podrá hacer uso de los datos personales para:
               a) Prestar de forma integral los servicios; b) Para la transferencia de datos a 
@@ -76,7 +77,7 @@
             </p>
           </li>
           <li>
-            <h3>PRINCIPIOS APLICABLES AL TRATAMIENTO DE DATOS PERSONALES</h3>
+            <h3>Principios aplicables al tratamiento de datos personales</h3>
             <p>
             El tratamiento de datos personales en PROFESSIONAL CHILD CARE TRAINING INC. 
             se regirá a partir de los siguientes principios: a) Principio de finalidad: El 
@@ -106,11 +107,15 @@
             a garantizar la reserva de la información, inclusive después de finalizada su
             relación con alguna de las labores que comprende el Tratamiento.
             </p>
+            <p>
             PARÁGRAFO PRIMERO: En el evento que se recolectan datos personales sensibles, el Titular
             podrá negarse a autorizar su Tratamiento.
+            </p>
           </li>
+         
           <li>
-            <h3>TRATAMIENTO DATOS SENSIBLES</h3>
+            
+            <h3>Tratamiento datos sensibles</h3>
             <p>
               Dada la relevancia de alguna información para establecer contacto con nuestros clientes, 
               proveedores y empleados, como puede ser la relacionada con la salud de la persona, 
@@ -123,7 +128,7 @@
             </p>
           </li>
           <li>
-            <h3>TRATAMIENTO DATOS PERSONALES DE MENORES DE EDAD</h3>
+            <h3>Tratamiento datos personales de menores de edad</h3>
             <p>
               El Tratamiento de datos de menores de edad debe observar el 
               cumplimiento y respeto a sus derechos. En caso de dar Tratamiento 
@@ -134,8 +139,9 @@
             </p>
           </li>
           <li>
-            <h3> DERECHOS DE LOS TITULARES DE DATOS PERSONALES OBJETO DE TRATAMIENTO POR PARTE DE
-                 PROFESSIONAL CHILD CARE TRAINING INC</h3>
+            <h3> Derechos de los titulares de datos personales objeto de tratamiento por parte 
+              de Professional ChildCare Training INC
+            </h3>
             <p>
               Los titulares de datos personales por sí o por intermedio de su representante y/o 
               apoderado o su causahabiente podrán ejercer los siguientes derechos, respecto de los 
@@ -162,7 +168,7 @@
             </p>
           </li>
           <li>
-            <h3>DEBERES DE PROFESSIONAL CHILD CARE TRAINING INC</h3>
+            <h3>Deberes de Professional ChildCare Training INC</h3>
             <p>
              Todos los obligados a cumplir esta política deben tener presente que 
              PROFESSIONAL CHILD CARE TRAINING INC está obligada a cumplir los deberes 
@@ -202,7 +208,7 @@
             </p>
           </li>
           <li>
-            <h3>SOLICITUD DE AUTORIZACIÓN AL TITULAR DEL DATO PERSONAL</h3>
+            <h3>Solicitud de autorización al titular del dato personal</h3>
             <p>
               Con antelación y/o al momento de efectuar la recolección del dato 
               personal, PROFESSIONAL CHILD CARE TRAINING solicitará al titular del 
@@ -219,7 +225,7 @@
             </p>
           </li>
           <li>
-            <h3>AVISO DE PRIVACIDAD</h3>
+            <h3>Aviso de privacidad</h3>
             <p>
               En el evento en el que PROFESSIONAL CHILD CARE TRAINING no 
               pueda poner a disposición del titular del dato personal la presente 
@@ -230,7 +236,7 @@
             </p>
           </li>
           <li>
-            <h3>LIMITACIONES TEMPORALES AL TRATAMIENTO DE LOS DATOS PERSONALE.</h3>
+            <h3>Limitaciones temprales al tratamiento de datos personales</h3>
             <p>
               PROFESSIONAL CHILD CARE TRAINING solo podrá recolectar, almacenar, usar o 
               circular los datos personales durante el tiempo que sea razonable y necesario, 
@@ -245,8 +251,9 @@
             </p>
           </li>
           <li>
-            <h3>ÁREA RESPONSABLE Y PROCEDIMIENTO PARA EL EJERCICIO DE LOS DERECHOS DE 
-                LOS TITULARES DEL DATO PERSONAL</h3>
+            <h3>Área responsable y procedimiento para el ejercicio de los derechos de 
+              los titulares del dato personal
+            </h3>
             <p>EL SERVICIO AL CLIENTE será el responsable de atender las peticiones, 
               quejas y reclamos que formule el titular del dato en ejercicio de los 
               derechos contemplados en el numeral 7 de la presente política, a 
@@ -280,7 +287,7 @@
             </p>
           </li>
           <li>
-            <h3>MEDIDAS DE SEGURIDAD</h3>
+            <h3>Medidas de seguridad</h3>
             <p>
               En desarrollo del principio de seguridad establecido en la Ley, PROFESSIONAL 
               CHILD CARE TRAINING adoptará las medidas técnicas, humanas y administrativas 
@@ -291,7 +298,7 @@
             </p>
           </li>
           <li>
-            <h3>FECHA DE ENTRADA EN VIGENCIA</h3>
+            <h3>Fecha de vigencia</h3>
             <p>
               La presente Política de Datos Personales fue creada el día 20 de junio de 2021 
               y entra en vigencia a partir del día 21 de junio de 2021. Cualquier cambio 

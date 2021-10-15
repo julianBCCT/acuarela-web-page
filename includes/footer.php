@@ -74,7 +74,7 @@
 
       <div class="footer__bottom">
         <span>© Bilingual Childcare Training 2021</span>
-        <a href="/politicas">Políticas de uso de datos personales</a>
+        <a href="/politicas">PRIVACIDAD, TÉRMINOS Y CONDICIONES</a>
       </div>
     </footer>
   </body>

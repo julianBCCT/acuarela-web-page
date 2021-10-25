@@ -29,7 +29,7 @@
       "path": "/daycares",
       "handler": "daycare.create",
       "config": {
-        "policies": [""]
+        "policies": []
       }
     },
     {

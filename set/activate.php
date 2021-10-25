@@ -3,8 +3,6 @@
     $array = array();
     extract($_POST);
     $curl = curl_init();
-    $today = date("Y-m-d");
-    $final = date("Y-m-d", strtotime("+1 month", $time));
 
     curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://acuarelacore.com/api/daycares',
@@ -52,7 +50,8 @@
         "country": "USA",
         "state": "'.$state.'",
         "city": "'.$city.'",
-        "end_demo": "'.$final.'"
+        "photo": "6154f70effa7c7fa7689f39e",
+        "end_demo": "'.date( "Y-m-d", strtotime( date("Y-m-d") ." +1 month")).'"
     }',
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json'

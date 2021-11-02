@@ -15,8 +15,8 @@
       <section class="pricing">
         <div class="pricing-plan">
           <b class="pricing-plan__name">Suscripción mensual</b>
-          <h1 class="launch__price">$21.00/mes</h1>
-          <h1 class="pricing-plan__price"><s>$24.00/mes</s></h1>
+          <h1 class="launch__price">$24.00/mes</h1>
+          <h1 class="pricing-plan__price"><s>$29.00/mes</s></h1>
           <hr />
           <ul class="pricing-plan__features">
             <li>
@@ -49,8 +49,8 @@
           <b class="pricing-plan__name"
             >Ahorra el 10% con una suscripción anual</b
           >
-          <h1 class="launch__price">$227.00/año</h1>
-          <h1 class="pricing-plan__price"><s>$259.00/año</s></h1>
+          <h1 class="launch__price">$259.00/año</h1>
+          <h1 class="pricing-plan__price"><s>$315.00/año</s></h1>
           <hr />
           <ul class="pricing-plan__features">
             <li>

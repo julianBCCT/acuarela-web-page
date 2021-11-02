@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="img/favicon.ico"/>
     <title>Acuarela | Home</title>
-
+    <meta name="facebook-domain-verification" content="lth8med3qtj6lk9akuvgnovn4u6ysj" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="fonts/acuarelaicon/style.css" />

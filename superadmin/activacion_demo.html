@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../img/favicon.ico" />
+    <title>Acuarela | Activación Demos</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../fonts/acuarelaicon/style.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="demoActive">
+    <header class="header container demos">
+      <a href="/">
+        <img class="header__logo" src="../img/logo.svg" alt="Acuarela" />
+      </a>
+    </header>
+    <div class="contact__success">
+      <h3 class="contact__subtitle">Nuevo demo activado</h3>
+      <button class="btn btn--primary" onclick="location.reload()">
+        Registrar otro
+      </button>
+    </div>
+    <form action="/s/activate/" id="demoForm" method="post">
+      <h1>Activar DEMO</h1>
+      <div class="form-group">
+        <label for="name">Nombres</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Nombres"
+          />
+          <label for="name"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Apellidos</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="lastname"
+            id="lastname"
+            type="text"
+            placeholder="Apellidos"
+          />
+          <label for="lastname"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="email"
+            id="email"
+            type="email"
+            placeholder="Correo"
+          />
+          <label for="email"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="phone"
+            id="phone"
+            type="tel"
+            placeholder="Teléfono"
+          />
+          <label for="phone"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">Estado</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="state"
+            id="state"
+            type="text"
+            placeholder="Estado"
+          />
+          <label for="state"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">Ciudad</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="city"
+            id="city"
+            type="text"
+            placeholder="Ciudad"
+          />
+          <label for="city"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="daycare_name">Nombre del Daycare</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="daycare_name"
+            id="daycare_name"
+            type="text"
+            placeholder="Nombre del Daycare"
+          />
+          <label for="daycare_name"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="licence">Número licencia</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="licence"
+            id="licence"
+            type="tel"
+            placeholder="Número licencia"
+          />
+          <label for="licence"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Contraseña"
+          />
+          <label for="password"></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="repeat_password">Confirmar contraseña</label>
+        <div class="input-wrapper">
+          <input
+            required
+            name="repeat_password"
+            id="repeat_password"
+            type="password"
+            placeholder="Confirmar contraseña"
+          />
+          <label for="repeat_password"></label>
+        </div>
+      </div>
+      <input
+        type="hidden"
+        name="rols"
+        id="rols"
+        value="5ff78feb5d6f2e272cfd7393"
+      />
+      <button class="btn btn--primary">Registrar</button>
+    </form>
+  </body>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/jquery-ui.min.js"></script>
+  <script src="../js/jquery.validate.min.js"></script>
+  <script src="../js/jquery.form.js"></script>
+  <script src="../js/additional-methods.min.js"></script>
+  <script src="../js/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+  <script
+    src="https://kit.fontawesome.com/2c36e9b7b1.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../js/jquery.mCustomScrollbar.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="validation.js"></script>
+  <!--Javascript file for carousel and burger menu settings-->
+  <script src="../js/app.js"></script>
+</html>

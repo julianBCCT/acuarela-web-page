@@ -119,7 +119,7 @@
                 <div class="testimonials-cont__testimonial">
                     <img
                         class="testimonials-cont__avatar"
-                        src="img/photo-2.png"
+                        src="img/Avatar2.png"
                     />
                     <div class="testimonials-cont__texts">
                         <div class="testimonials-cont__top">

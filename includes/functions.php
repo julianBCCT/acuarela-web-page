@@ -94,7 +94,7 @@ class acuarela
 		$this->send_notification('info@acuarela.app','empleo@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
 
-	function sendDemoActiveEmail($name,$mail,$pass,$subject = 'Demo Activado'){
+	function sendDemoActiveEmail($name,$mail,$pass,$subject = '¡Tu Demo está listo!'){
 		$mergeVars = [
 			'FNAME' => $name,
 			'EMAIL' => $mail,

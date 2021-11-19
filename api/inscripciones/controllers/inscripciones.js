@@ -30,6 +30,9 @@ module.exports = {
           parents.push(entity);
         }
       }
+      console.log({
+        acuarelausers: [parents.map((parent) => parent.id)],
+      });
       const kidEdited = await strapi.services.children.update(
         { _id: kid.id },
         {

@@ -49,6 +49,7 @@ module.exports = {
           guardians: child.guardians,
         }
       );
+      console.log(child.guardians);
       console.log(kidEdited);
       console.log(parents.map((parent) => parent.id));
       console.log(guardians.map((guardian) => guardian.id));

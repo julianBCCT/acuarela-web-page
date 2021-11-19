@@ -28,29 +28,10 @@ module.exports = {
           parents.push(entity);
         }
       }
-      let guardians = [];
-      for (const guardian of child.guardians) {
-        guardian.password = hashedPassword;
-        guardian.status = true;
-        guardian.rols = ["5ff7900c5d6f2e272cfd7395"];
-        guardian.children = [kid.id];
-        if (guardian.name != "") {
-          let entity = await strapi.services.acuarelauser.create(guardian);
-          guardians.push(entity);
-        }
-      }
-      console.log(child.guardians);
-      console.log(kidEdited);
-      console.log(parents.map((parent) => parent.id));
-      console.log(guardians.map((guardian) => guardian.id));
       const kidEdited = await strapi.services.children.update(
         { _id: kid.id },
         {
-          acuarelausers: [
-            parents.map((parent) => parent.id),
-            guardians.map((guardian) => guardian.id),
-          ],
-          guardians: child.guardians,
+          acuarelausers: [parents.map((parent) => parent.id)],
         }
       );
 

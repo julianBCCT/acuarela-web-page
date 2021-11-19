@@ -26,9 +26,25 @@ module.exports = {
           parents.push(entity);
         }
       }
+      let guardians = [];
+      for (const guardian of child.guardians) {
+        guardian.password = hashedPassword;
+        guardian.status = true;
+        guardian.rols = ["5ff7900c5d6f2e272cfd7395"];
+        if (guardian.name != "") {
+          let entity = await strapi.services.acuarelauser.create(parent);
+          guardians.push(entity);
+        }
+      }
       const kidEdited = await strapi.services.children.update(
         { _id: kid.id },
-        { acuarelausers: [parents[0].id, parents[1].id] }
+        {
+          acuarelausers: [
+            parents.map((parent) => parent.id),
+            guardians.map((guardian) => guardian.id),
+          ],
+          guardians: child.guardians,
+        }
       );
       return ctx.send({
         ok: true,

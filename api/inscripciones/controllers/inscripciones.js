@@ -22,10 +22,9 @@ module.exports = {
         parent.password = hashedPassword;
         parent.status = true;
         parent.rols = ["5ff790045d6f2e272cfd7394"];
+        parent.children = [kid.id];
         if (parent.name != "") {
           let entity = await strapi.services.acuarelauser.create(parent);
-          console.log("PARENT");
-          console.log(entity);
           parents.push(entity);
         }
       }
@@ -34,10 +33,9 @@ module.exports = {
         guardian.password = hashedPassword;
         guardian.status = true;
         guardian.rols = ["5ff7900c5d6f2e272cfd7395"];
+        guardian.children = [kid.id];
         if (guardian.name != "") {
           let entity = await strapi.services.acuarelauser.create(guardian);
-          console.log("GUARDIAN");
-          console.log(entity);
           guardians.push(entity);
         }
       }
@@ -51,12 +49,20 @@ module.exports = {
           guardians: child.guardians,
         }
       );
-      return ctx.send({
-        ok: true,
-        status: 200,
-        code: 1,
-        kid: kidEdited,
-      });
+      console.log(kidEdited);
+      console.log(parents.map((parent) => parent.id));
+      console.log(guardians.map((guardian) => guardian.id));
+      return ctx.send(
+        {
+          ok: true,
+          status: 200,
+          code: 1,
+          kid: kidEdited,
+          parents,
+          guardians,
+        },
+        200
+      );
     } else return ctx.send(validToken);
   },
   async completeInscEdit(ctx) {

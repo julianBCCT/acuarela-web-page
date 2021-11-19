@@ -33,7 +33,7 @@ module.exports = {
         guardian.status = true;
         guardian.rols = ["5ff7900c5d6f2e272cfd7395"];
         if (guardian.name != "") {
-          let entity = await strapi.services.acuarelauser.create(parent);
+          let entity = await strapi.services.acuarelauser.create(guardian);
           guardians.push(entity);
         }
       }

@@ -21,9 +21,10 @@ module.exports = {
         parent.password = hashedPassword;
         parent.status = true;
         parent.rols = ["5ff790045d6f2e272cfd7394"];
-        console.log(parent);
-        let entity = await strapi.services.acuarelauser.create(parent);
-        parents.push(entity);
+        if (parent.name != "") {
+          let entity = await strapi.services.acuarelauser.create(parent);
+          parents.push(entity);
+        }
       }
       const kidEdited = await strapi.services.children.update(
         { _id: kid.id },

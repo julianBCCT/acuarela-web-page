@@ -47,7 +47,6 @@ module.exports = {
           code: 1,
           kid: kidEdited,
           parents,
-          guardians,
         },
         200
       );

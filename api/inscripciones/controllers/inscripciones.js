@@ -1,4 +1,5 @@
 "use strict";
+const { sanitizeEntity } = require("strapi-utils");
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -53,5 +54,17 @@ module.exports = {
         kid: kidEdited,
       });
     } else return ctx.send(validToken);
+  },
+  async completeInscEdit(ctx) {
+    const { token } = ctx.request.header;
+    const { id } = ctx.params;
+    let validToken = await verification.renew(token);
+    if (validToken.ok) {
+      let entity = await strapi.services.inscripciones.update(
+        { id },
+        ctx.request.body
+      );
+      return sanitizeEntity(entity, { model: strapi.models.inscripciones });
+    }
   },
 };

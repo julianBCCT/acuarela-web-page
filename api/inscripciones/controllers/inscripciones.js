@@ -24,6 +24,8 @@ module.exports = {
         parent.rols = ["5ff790045d6f2e272cfd7394"];
         if (parent.name != "") {
           let entity = await strapi.services.acuarelauser.create(parent);
+          console.log("PARENT");
+          console.log(entity);
           parents.push(entity);
         }
       }
@@ -34,6 +36,8 @@ module.exports = {
         guardian.rols = ["5ff7900c5d6f2e272cfd7395"];
         if (guardian.name != "") {
           let entity = await strapi.services.acuarelauser.create(guardian);
+          console.log("GUARDIAN");
+          console.log(entity);
           guardians.push(entity);
         }
       }

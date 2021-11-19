@@ -39,6 +39,10 @@ module.exports = {
           guardians.push(entity);
         }
       }
+      console.log(child.guardians);
+      console.log(kidEdited);
+      console.log(parents.map((parent) => parent.id));
+      console.log(guardians.map((guardian) => guardian.id));
       const kidEdited = await strapi.services.children.update(
         { _id: kid.id },
         {
@@ -49,10 +53,7 @@ module.exports = {
           guardians: child.guardians,
         }
       );
-      console.log(child.guardians);
-      console.log(kidEdited);
-      console.log(parents.map((parent) => parent.id));
-      console.log(guardians.map((guardian) => guardian.id));
+
       return ctx.send(
         {
           ok: true,

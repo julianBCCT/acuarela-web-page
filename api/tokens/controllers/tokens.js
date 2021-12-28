@@ -19,7 +19,7 @@ module.exports = {
     if (user) {
       return strapi.services.acuarelauser.update(
         { id: user.id },
-        { token: tokencreated.id }
+        { tokenpass: tokencreated.id }
       );
     } else {
       return ctx.send(

@@ -58,6 +58,14 @@
     },
     {
       "method": "POST",
+      "path": "/wepetusers/change-password/:token",
+      "handler": "acuarelauser.changePassword",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/acuarelausers/invitation",
       "handler": "acuarelauser.invitation",
       "config": {

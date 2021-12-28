@@ -26,7 +26,7 @@
     },
     {
       "method": "POST",
-      "path": "/tokens",
+      "path": "/tokens/:email",
       "handler": "tokens.create",
       "config": {
         "policies": []

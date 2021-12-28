@@ -159,7 +159,7 @@
     },
     "inscripciones": {
       "via": "daycare",
-      "model": "inscripciones"
+      "collection": "inscripciones"
     }
   }
 }

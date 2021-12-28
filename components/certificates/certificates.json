@@ -1,16 +1,13 @@
 {
-  "collectionName": "components_files_files",
+  "collectionName": "components_certificates_certificates",
   "info": {
-    "name": "files",
-    "icon": "server",
+    "name": "certificates",
+    "icon": "book",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "file": {
+    "media": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

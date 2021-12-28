@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_pay_payments",
+  "info": {
+    "name": "payment",
+    "icon": "money-check-alt"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    }
+  }
+}

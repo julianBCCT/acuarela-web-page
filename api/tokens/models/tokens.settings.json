@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tokens",
+  "info": {
+    "name": "tokens"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "token": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "tokenpass"
+    }
+  }
+}

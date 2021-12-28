@@ -126,7 +126,7 @@
     },
     "files": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "files.files"
     },
     "parents": {
@@ -144,6 +144,19 @@
     "daycare": {
       "model": "daycare",
       "via": "inscripciones"
+    },
+    "files_extra": {
+      "type": "component",
+      "repeatable": true,
+      "component": "files.files"
+    },
+    "payment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "pay.payment"
+    },
+    "phone_2": {
+      "type": "string"
     }
   }
 }

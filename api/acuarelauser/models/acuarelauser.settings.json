@@ -163,9 +163,21 @@
       "type": "boolean"
     },
     "children": {
-      "via": "acuarelausers",
       "collection": "children",
+      "via": "acuarelausers",
       "dominant": true
+    },
+    "end_demo": {
+      "type": "date"
+    },
+    "certificates": {
+      "type": "component",
+      "repeatable": true,
+      "component": "certificates.certificates"
+    },
+    "tokenpass": {
+      "via": "acuarelauser",
+      "model": "tokens"
     }
   }
 }

@@ -7,7 +7,7 @@
 
 module.exports = {
   create: async (ctx) => {
-    const { email } = ctx.params;
+    const { mail } = ctx.params;
     var chars =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     var token = "";

@@ -226,7 +226,7 @@ module.exports = {
       let respuesta = {
         msg: "User password change.",
       };
-      const tokenDelete = await strapi.services.acuarelauser.delete({ token });
+      const tokenDelete = await strapi.services.tokens.delete({ token });
       if (tokenDelete) {
         return ctx.send(respuesta, 200);
       }

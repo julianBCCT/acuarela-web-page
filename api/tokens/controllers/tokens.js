@@ -15,7 +15,7 @@ module.exports = {
       token += chars[Math.floor(Math.random() * chars.length)];
     }
     const tokencreated = await strapi.services.tokens.create({ token: token });
-    const user = await strapi.services.acuarelauser.findOne({ email });
+    const user = await strapi.services.acuarelauser.findOne({ mail });
     if (user) {
       return strapi.services.acuarelauser.update(
         { id: user.id },
@@ -24,7 +24,7 @@ module.exports = {
     } else {
       return ctx.send(
         {
-          msg: "There is no user with this email",
+          msg: "There is no user with this mail",
         },
         409
       );

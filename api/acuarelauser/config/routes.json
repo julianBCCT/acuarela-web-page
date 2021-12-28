@@ -58,7 +58,7 @@
     },
     {
       "method": "POST",
-      "path": "/wepetusers/change-password/:token",
+      "path": "/acuarelauser/change-password/:token",
       "handler": "acuarelauser.changePassword",
       "config": {
         "policies": []

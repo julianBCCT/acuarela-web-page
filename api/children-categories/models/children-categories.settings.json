@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "tokens",
+  "collectionName": "children_categories",
   "info": {
-    "name": "tokens"
+    "name": "children_categories"
   },
   "options": {
     "increments": true,
@@ -10,12 +10,8 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "token": {
+    "name": {
       "type": "string"
-    },
-    "acuarelauser": {
-      "via": "tokenpass",
-      "model": "acuarelauser"
     }
   }
 }

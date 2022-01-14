@@ -2,17 +2,18 @@
   "collectionName": "components_schedule_schedules",
   "info": {
     "name": "schedule",
-    "icon": "calendar-alt"
+    "icon": "calendar-alt",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "week_day": {
-      "type": "string"
-    },
     "opening_hour": {
       "type": "string"
     },
     "closing_hour": {
+      "type": "string"
+    },
+    "part_time": {
       "type": "string"
     }
   }

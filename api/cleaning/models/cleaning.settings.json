@@ -17,8 +17,8 @@
       "type": "text"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "cleanings"
+      "via": "cleanings",
+      "model": "daycare"
     }
   }
 }

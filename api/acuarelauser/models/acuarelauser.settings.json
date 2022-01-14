@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "acuarelausers"
+      "via": "acuarelausers",
+      "model": "daycare"
     },
     "chats": {
       "collection": "chat",
@@ -176,8 +176,11 @@
       "component": "certificates.certificates"
     },
     "tokenpass": {
-      "via": "acuarelauser",
-      "model": "tokens"
+      "model": "tokens",
+      "via": "acuarelauser"
+    },
+    "abilities": {
+      "model": "abilities"
     }
   }
 }

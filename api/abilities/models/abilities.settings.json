@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "tokens",
+  "collectionName": "abilities",
   "info": {
-    "name": "tokens"
+    "name": "Abilities"
   },
   "options": {
     "increments": true,
@@ -10,12 +10,8 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "token": {
+    "title": {
       "type": "string"
-    },
-    "acuarelauser": {
-      "via": "tokenpass",
-      "model": "acuarelauser"
     }
   }
 }

@@ -39,8 +39,8 @@
       "type": "integer"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "movements"
+      "via": "movements",
+      "model": "daycare"
     },
     "extra_info": {
       "type": "string"

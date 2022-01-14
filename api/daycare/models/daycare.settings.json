@@ -54,8 +54,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
@@ -114,7 +114,7 @@
     },
     "schedule": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "schedule.schedule"
     },
     "description": {
@@ -138,28 +138,28 @@
       "type": "string"
     },
     "children": {
-      "via": "daycare",
-      "collection": "children"
+      "collection": "children",
+      "via": "daycare"
     },
     "groups": {
-      "via": "daycare",
-      "collection": "group"
+      "collection": "group",
+      "via": "daycare"
     },
     "visits": {
-      "via": "daycare",
-      "collection": "visit"
+      "collection": "visit",
+      "via": "daycare"
     },
     "cleanings": {
-      "via": "daycare",
-      "collection": "cleaning"
+      "collection": "cleaning",
+      "via": "daycare"
     },
     "movements": {
-      "via": "daycare",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "daycare"
     },
     "inscripciones": {
-      "via": "daycare",
-      "collection": "inscripciones"
+      "collection": "inscripciones",
+      "via": "daycare"
     }
   }
 }

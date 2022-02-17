@@ -108,7 +108,7 @@
             <li>info@acuarela.app</li>
             <li>+1 (561) 982 6122</li>
           </ul>
-          <a class="card__email">bilingualchildcaretraining.com</a>
+          <!-- <a class="card__email">bilingualchildcaretraining.com</a> -->
           <img class="card__img" src="img/contact-us.png" />
           <div class="card__bottom">
             <h3>Síguenos en redes</h3>

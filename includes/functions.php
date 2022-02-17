@@ -102,6 +102,82 @@ class acuarela
 		];
 		$this->send_notification('info@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'activaci-n-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
+	function sendInvitationAdmin($name,
+	$daycare,
+	$licencia,
+	$condado,
+	$email,
+	$phone,$subject = 'Nueva invitación recibida'){
+		$mergeVars = [
+			'NAME' => $name,
+			'DAYCARE' => $daycare,
+			'LICENCIA' => $licencia,
+			'CONDADO' => $condado,
+			'EMAIL' => $email,
+			'PHONE' => $phone
+		];
+		$this->send_notification('info@acuarela.app','stephy@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+	}
+	function setLeadInvitation($name,$daycare,$licencia,$condado,$email,$phone)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/acf/v2/leads-invitation',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS =>'{
+            "title":"'.$name.'"
+
+        }',
+          CURLOPT_HTTPHEADER => array(
+            'Authorization: Basic ZGV2ZWxvcGVyOm95RUMgdkRtbCBxT3NLIDVxU0sgR2NZQyAyTXo0',
+            'Content-Type: application/json',
+            'Cookie: PHPSESSID=d94a3c004cf26f50e1c2266bec0f6525'
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_decode($response);
+        $theID = $response->id;
+        curl_close($curl);
+        $curl2 = curl_init();
+        curl_setopt_array($curl2, array(
+          CURLOPT_URL => 'https://elmuseodelatesta.com/admin/wp-json/acf/v3/leads-invitation/'.$theID,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'PUT',
+          CURLOPT_POSTFIELDS =>'{
+			"fields":{
+				"daycare_name":"'.$daycare.'",
+				"licence":"'.$licencia.'",
+				"condado":"'.$condado.'",
+				"email":"'.$email.'",
+				"phone":"'.$phone.'",
+				}
+			}',
+          CURLOPT_HTTPHEADER => array(
+            'Authorization: Basic ZGV2ZWxvcGVyOm95RUMgdkRtbCBxT3NLIDVxU0sgR2NZQyAyTXo0',
+            'Content-Type: application/json',
+            'Cookie: PHPSESSID=d94a3c004cf26f50e1c2266bec0f6525'
+          ),
+        ));
+        $response2 = curl_exec($curl2);
+        //$response2 = json_decode($response2);
+        
+        curl_close($curl2);
+        
+        return $response2; 
+
+    }
 }
 
 

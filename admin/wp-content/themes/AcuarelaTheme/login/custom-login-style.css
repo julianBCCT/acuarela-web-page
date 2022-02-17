@@ -1,0 +1,25 @@
+.login h1 a {
+  background-image: url("http://www.elmuseodelatesta.com/adminwp-content/uploads/2020/07/mdlt-logo-1024x187.png");
+  background-size: 200px !important;
+  width: 200px !important;
+  background-position: center;
+}
+
+#loginform {
+  border-radius: 10px;
+  box-shadow: 0 0 12px #767676;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+body.login {
+  background-image: url("https://gamedugg.com/admin/wp-content/uploads/2021/03/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.login #backtoblog a,
+.login #nav a {
+  color: #fff;
+}

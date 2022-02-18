@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/age-groups",
+      "handler": "age-groups.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-groups/count",
+      "handler": "age-groups.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-groups/:id",
+      "handler": "age-groups.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/age-groups",
+      "handler": "age-groups.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/age-groups/:id",
+      "handler": "age-groups.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/age-groups/:id",
+      "handler": "age-groups.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

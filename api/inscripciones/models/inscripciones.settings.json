@@ -142,8 +142,8 @@
       "type": "json"
     },
     "daycare": {
-      "via": "inscripciones",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "inscripciones"
     },
     "files_extra": {
       "type": "component",
@@ -157,6 +157,9 @@
     },
     "phone_2": {
       "type": "string"
+    },
+    "formValuesValidation": {
+      "type": "json"
     }
   }
 }

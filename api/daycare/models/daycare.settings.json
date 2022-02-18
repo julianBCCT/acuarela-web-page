@@ -97,7 +97,7 @@
     },
     "networks_social_media": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "socialmedia.social-media"
     },
     "license_expiration_date": {
@@ -158,8 +158,8 @@
       "via": "daycare"
     },
     "inscripciones": {
-      "collection": "inscripciones",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "inscripciones"
     }
   }
 }

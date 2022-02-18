@@ -7,10 +7,16 @@
   },
   "options": {},
   "attributes": {
-    "name": {
+    "facebook": {
       "type": "string"
     },
-    "url": {
+    "instagram": {
+      "type": "string"
+    },
+    "tiktok": {
+      "type": "string"
+    },
+    "twitter": {
       "type": "string"
     }
   }

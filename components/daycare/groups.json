@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_daycare_groups",
+  "info": {
+    "name": "groups",
+    "icon": "baby-carriage"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

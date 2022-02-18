@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "age_groups",
+  "info": {
+    "name": "age_groups"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

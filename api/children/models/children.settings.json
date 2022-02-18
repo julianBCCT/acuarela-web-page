@@ -80,7 +80,8 @@
       "via": "children"
     },
     "indaycare": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "movements": {
       "collection": "movement",
@@ -161,8 +162,8 @@
       "component": "files.files"
     },
     "acuarelausers": {
-      "via": "children",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "children"
     },
     "guardians": {
       "type": "component",

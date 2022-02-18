@@ -163,8 +163,8 @@
       "type": "boolean"
     },
     "children": {
-      "collection": "children",
       "via": "acuarelausers",
+      "collection": "children",
       "dominant": true
     },
     "end_demo": {

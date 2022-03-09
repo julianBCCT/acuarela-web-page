@@ -211,6 +211,10 @@ module.exports = {
           "mail",
           "phone",
           "photo",
+          "work_phone",
+          "work_place",
+          "profession",
+          "is_principal",
         ])
         .populate("attitudes", ["name", "icon"])
         .populate("likings", ["name", "icon"])

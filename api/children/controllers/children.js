@@ -21,9 +21,26 @@ module.exports = {
     if (validToken.ok) {
       let query = { status: true };
       query.daycare = { $eq: validToken.user.organization };
-      let entity = await strapi.query("children").model.find(query).populate({
-        path: "acuarelausers",
-      });
+      let entity = await strapi
+        .query("children")
+        .model.find(query)
+        .populate({
+          path: "relationships",
+          populate: {
+            path: "acuarelauser",
+            select: [
+              "name",
+              "lastname",
+              "mail",
+              "phone",
+              "photo",
+              "work_phone",
+              "work_place",
+              "profession",
+              "is_principal",
+            ],
+          },
+        });
 
       if (!entity)
         return ctx.send({

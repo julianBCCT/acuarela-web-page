@@ -13,7 +13,6 @@
         <a class="header__menu-item" href="sobre-nosotros">Nosotros</a>
         <a class="header__menu-item" href="planes-precios">Planes y Precios</a>
         <a class="header__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>
-        <a class="header__menu-item" href="free-demo">Obtén un demo</a>
         <a class="header__menu-item invitation" href="invitaciones-new-york">Invitación a Acuarela</a>
       </nav>
       <!--<div class="header__actions">
@@ -59,7 +58,6 @@
           <a class="mobile-menu__menu-item" href="sobre-nosotros">Nosotros</a>
           <a class="mobile-menu__menu-item" href="planes-precios">Planes y Precios</a>
           <a class="mobile-menu__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>
-          <a class="mobile-menu__menu-item" href="free-demo">Obtén un demo</a>
           <a class="mobile-menu__menu-item invitation" href="invitaciones-new-york">Invitación a Acuarela</a>
         </nav>
         <!--<div class="mobile-menu__actions">

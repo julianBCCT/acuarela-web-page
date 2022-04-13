@@ -1,21 +1,34 @@
-'use strict';
-const cors = require('cors');
-const verification = require('../../../middlewares/authJwt');
-
+"use strict";
+const cors = require("cors");
+const verification = require("../../../middlewares/authJwt");
+const { sanitizeEntity } = require("strapi-utils");
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
  */
 
 module.exports = {
+  async find(ctx) {
+    let entities;
+    if (ctx.query._q) {
+      entities = await strapi.services.post.search(ctx.query);
+    } else {
+      entities = await strapi.services.post.find(ctx.query);
+    }
+
+    return entities.map((entity) =>
+      sanitizeEntity(entity, { model: strapi.models.post })
+    );
+  },
+
   // Crea un nuevo post.
   async create(ctx) {
     const { token } = ctx.request.header;
     const post = ctx.request.body;
-    
+
     // Valida el token.
     let validToken = await verification.renew(token);
-    
+
     if (validToken.ok) {
       // Valida que los datos hayan sido ingresados.
       if (!post.acuarelauser)
@@ -23,21 +36,21 @@ module.exports = {
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The author id is required.',
+          msg: "The author id is required.",
         });
       if (!post.content && !post.media)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The post content is required.',
+          msg: "The post content is required.",
         });
       if (!post.datetime)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The datetime is required.',
+          msg: "The datetime is required.",
         });
       else {
         // Si todos los datos son correctos se crea el post.
@@ -47,7 +60,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: 'Post created successfully.',
+          msg: "Post created successfully.",
           user: validToken.user,
         });
       }
@@ -58,10 +71,10 @@ module.exports = {
     const { token } = ctx.request.header;
     const { id } = ctx.params;
     const post = ctx.request.body;
-    
+
     // Valida el token.
     let validToken = await verification.renew(token);
-    
+
     if (validToken.ok) {
       // Valida que los datos hayan sido ingresados.
       if (!post.acuarelauser)
@@ -69,30 +82,42 @@ module.exports = {
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The author id is required.',
+          msg: "The author id is required.",
         });
       if (!post.content && !post.media)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The post content is required.',
+          msg: "The post content is required.",
         });
       if (!post.datetime)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: 'The datetime is required.',
+          msg: "The datetime is required.",
         });
       else {
         // Si todos los datos son correctos se crea el post.
         let entity = await strapi.services.post.findOne({ id });
 
-        if (!entity) return ctx.send({ ok: false, status: 404, code: 5, msg: 'Post not found.' });
+        if (!entity)
+          return ctx.send({
+            ok: false,
+            status: 404,
+            code: 5,
+            msg: "Post not found.",
+          });
         else {
           await strapi.services.post.update({ _id: id }, post);
-          return ctx.send({ ok: true, status: 200, code: 0, msg: 'Post Updated.', user: validToken.user });
+          return ctx.send({
+            ok: true,
+            status: 200,
+            code: 0,
+            msg: "Post Updated.",
+            user: validToken.user,
+          });
         }
       }
     } else return ctx.send(validToken);
@@ -104,30 +129,29 @@ module.exports = {
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
-      let pageNo = skip > 0 ? ( ( skip - 1 ) * limit) : 0;
-      let query = { _sort: 'date:desc' };
+      let pageNo = skip > 0 ? (skip - 1) * limit : 0;
+      let query = { _sort: "date:desc" };
       // Realiza la consulta y pobla los datos.
       let entity = await strapi
-        .query('post')
+        .query("post")
         .model.find()
         .sort({ date: -1 })
         .skip(parseInt(pageNo))
         .limit(parseInt(limit))
-        .populate('acuarelauser', ['name', 'id', 'photo'])
+        .populate("acuarelauser", ["name", "id", "photo"])
         .populate({
-          path: 'comments',
+          path: "comments",
           populate: {
-            path: 'acuarelauser',
-            select: ['name', 'lastname', 'mail', 'phone', 'photo', '_id'],
+            path: "acuarelauser",
+            select: ["name", "lastname", "mail", "phone", "photo", "_id"],
           },
         })
-        .populate('reactions')
-        .populate('classactivity');
-    
-      validToken.msg = 'Query completed successfully!';
+        .populate("reactions")
+        .populate("classactivity");
+
+      validToken.msg = "Query completed successfully!";
       validToken.response = entity;
       return ctx.send(validToken);
-
     } else return ctx.send(validToken);
-  }
+  },
 };

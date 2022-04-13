@@ -13,7 +13,6 @@ module.exports = {
       .query("post")
       .model.find()
       .sort({ date: -1 })
-      .limit(parseInt(limit))
       .populate("acuarelauser", ["name", "id", "photo"])
       .populate({
         path: "comments",

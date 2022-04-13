@@ -13,7 +13,7 @@ module.exports = {
       .query("post")
       .model.find()
       .sort({ date: -1 })
-      .populate("acuarelauser", ["name", "id", "photo"])
+      .populate("acuarelauser", ["name", "id", "photo", "daycare"])
       .populate({
         path: "comments",
         populate: {

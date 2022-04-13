@@ -9,24 +9,21 @@ const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   async find(ctx) {
-    let entities;
-    if (ctx.query._q) {
-      entities = await strapi.services.post.search(ctx.query);
-    } else {
-      entities = await strapi.services.post
-        .find(ctx.query)
-        .sort({ date: -1 })
-        .populate("acuarelauser", ["name", "id", "photo"])
-        .populate({
-          path: "comments",
-          populate: {
-            path: "acuarelauser",
-            select: ["name", "lastname", "mail", "phone", "photo", "_id"],
-          },
-        })
-        .populate("reactions")
-        .populate("classactivity");
-    }
+    let entities = await strapi
+      .query("post")
+      .model.find()
+      .sort({ date: -1 })
+      .limit(parseInt(limit))
+      .populate("acuarelauser", ["name", "id", "photo"])
+      .populate({
+        path: "comments",
+        populate: {
+          path: "acuarelauser",
+          select: ["name", "lastname", "mail", "phone", "photo", "_id"],
+        },
+      })
+      .populate("reactions")
+      .populate("classactivity");
 
     return entities.map((entity) =>
       sanitizeEntity(entity, { model: strapi.models.post })

@@ -13,7 +13,19 @@ module.exports = {
     if (ctx.query._q) {
       entities = await strapi.services.post.search(ctx.query);
     } else {
-      entities = await strapi.services.post.find(ctx.query);
+      entities = await strapi.services.post
+        .find(ctx.query)
+        .sort({ date: -1 })
+        .populate("acuarelauser", ["name", "id", "photo"])
+        .populate({
+          path: "comments",
+          populate: {
+            path: "acuarelauser",
+            select: ["name", "lastname", "mail", "phone", "photo", "_id"],
+          },
+        })
+        .populate("reactions")
+        .populate("classactivity");
     }
 
     return entities.map((entity) =>

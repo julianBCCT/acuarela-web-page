@@ -11,7 +11,7 @@ module.exports = {
     const { response } = ctx.request.body;
     //return ctx.send(response);
     console.log(response);
-    let entity = await strapi.query("movements").model.find();
+    let entity = await strapi.query("movement").model.find();
 
     if (!entity)
       return ctx.send({

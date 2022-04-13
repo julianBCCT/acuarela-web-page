@@ -9,12 +9,10 @@ const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   async find(ctx) {
-    console.log(ctx.params);
     let entities = await strapi
       .query("post")
       .model.find()
       .sort({ date: -1 })
-
       .populate("acuarelauser", ["name", "id", "photo", "daycare"])
       .populate({
         path: "comments",

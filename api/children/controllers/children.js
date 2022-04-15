@@ -25,9 +25,8 @@ module.exports = {
         .query("children")
         .model.find(query)
         .populate({
-          path: "relationships",
+          path: "acuarelauser",
           populate: {
-            path: "acuarelauser",
             select: [
               "name",
               "lastname",

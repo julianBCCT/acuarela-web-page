@@ -224,7 +224,14 @@ module.exports = {
           path: "childrenactivities",
           populate: {
             path: "activity",
-            select: ["name", "date", "rate", "classactivity", "infoadicional"],
+            select: [
+              "name",
+              "date",
+              "rate",
+              "classactivity",
+              "infoadicional",
+              "comments",
+            ],
           },
         });
 

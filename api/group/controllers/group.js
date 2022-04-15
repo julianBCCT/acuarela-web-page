@@ -319,6 +319,7 @@ module.exports = {
           groups: activity.groups,
           classactivity: activity.type,
           infoadicional: activity.infoadicional,
+          comments: activity.comments,
         };
         let entity = await strapi.services.activities.create(act);
         for (let i in activity.children) {

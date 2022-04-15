@@ -24,7 +24,7 @@ module.exports = {
       let entity = await strapi
         .query("children")
         .model.find(query)
-        .populate("acuarelauser", [
+        .populate("acuarelausers", [
           "name",
           "lastname",
           "mail",

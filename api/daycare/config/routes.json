@@ -4,25 +4,19 @@
       "method": "GET",
       "path": "/daycares",
       "handler": "daycare.find",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "GET",
       "path": "/daycares/count",
       "handler": "daycare.count",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "GET",
       "path": "/daycares/:id",
       "handler": "daycare.findOne",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "POST",
@@ -36,17 +30,13 @@
       "method": "PUT",
       "path": "/daycares/:id",
       "handler": "daycare.update",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "DELETE",
       "path": "/daycares/:id",
       "handler": "daycare.delete",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     }
   ]
 }

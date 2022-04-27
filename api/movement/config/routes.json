@@ -20,9 +20,7 @@
       "method": "GET",
       "path": "/movements/:id",
       "handler": "movement.findOne",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "POST",

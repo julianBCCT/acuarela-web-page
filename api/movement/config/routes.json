@@ -34,9 +34,7 @@
       "method": "PUT",
       "path": "/movements/:id",
       "handler": "movement.update",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
+      "config": {}
     },
     {
       "method": "DELETE",

@@ -3,35 +3,32 @@
     {
       "method": "GET",
       "path": "/daycares",
-      "handler": "daycare.find",
+      "handler": "daycare.find"
     },
     {
       "method": "GET",
       "path": "/daycares/count",
-      "handler": "daycare.count",
+      "handler": "daycare.count"
     },
     {
       "method": "GET",
       "path": "/daycares/:id",
-      "handler": "daycare.findOne",
+      "handler": "daycare.findOne"
     },
     {
       "method": "POST",
       "path": "/daycares",
-      "handler": "daycare.create",
-      "config": {
-        "policies": []
-      }
+      "handler": "daycare.create"
     },
     {
       "method": "PUT",
       "path": "/daycares/:id",
-      "handler": "daycare.update",
+      "handler": "daycare.update"
     },
     {
       "method": "DELETE",
       "path": "/daycares/:id",
-      "handler": "daycare.delete",
+      "handler": "daycare.delete"
     }
   ]
 }

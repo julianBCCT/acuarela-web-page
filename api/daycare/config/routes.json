@@ -4,19 +4,16 @@
       "method": "GET",
       "path": "/daycares",
       "handler": "daycare.find",
-      "config": {}
     },
     {
       "method": "GET",
       "path": "/daycares/count",
       "handler": "daycare.count",
-      "config": {}
     },
     {
       "method": "GET",
       "path": "/daycares/:id",
       "handler": "daycare.findOne",
-      "config": {}
     },
     {
       "method": "POST",
@@ -30,13 +27,11 @@
       "method": "PUT",
       "path": "/daycares/:id",
       "handler": "daycare.update",
-      "config": {}
     },
     {
       "method": "DELETE",
       "path": "/daycares/:id",
       "handler": "daycare.delete",
-      "config": {}
     }
   ]
 }

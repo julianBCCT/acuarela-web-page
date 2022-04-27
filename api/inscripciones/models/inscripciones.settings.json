@@ -142,8 +142,8 @@
       "type": "json"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "inscripciones"
+      "via": "inscripciones",
+      "model": "daycare"
     },
     "files_extra": {
       "type": "component",

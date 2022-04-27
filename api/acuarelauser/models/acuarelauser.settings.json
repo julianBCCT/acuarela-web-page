@@ -140,12 +140,12 @@
       "via": "acuarelauser"
     },
     "movements": {
-      "collection": "movement",
-      "via": "payer"
+      "via": "payer",
+      "collection": "movement"
     },
     "employee_payroll": {
-      "collection": "movement",
-      "via": "payroll"
+      "via": "payroll",
+      "collection": "movement"
     },
     "work_phone": {
       "type": "string"
@@ -181,6 +181,10 @@
     },
     "abilities": {
       "model": "abilities"
+    },
+    "paypalToken": {
+      "type": "text",
+      "default": "jHY8Y567hhFi793joJH"
     }
   }
 }

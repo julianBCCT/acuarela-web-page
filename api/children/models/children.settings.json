@@ -84,8 +84,8 @@
       "default": false
     },
     "movements": {
-      "collection": "movement",
-      "via": "child"
+      "via": "child",
+      "collection": "movement"
     },
     "childrenactivities": {
       "collection": "childrenactivity",
@@ -169,6 +169,13 @@
       "type": "component",
       "repeatable": true,
       "component": "guardians.guardians"
+    },
+    "inscripcion": {
+      "model": "inscripciones"
+    },
+    "automatic_payment": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

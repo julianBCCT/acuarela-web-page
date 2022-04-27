@@ -24,15 +24,14 @@
       "type": "boolean"
     },
     "child": {
-      "via": "movements",
-      "model": "children"
+      "model": "children",
+      "via": "movements"
     },
     "payer": {
-      "via": "movements",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "movements"
     },
     "category": {
-      "via": "movements",
       "model": "category"
     },
     "type": {
@@ -46,8 +45,8 @@
       "type": "string"
     },
     "payroll": {
-      "via": "employee_payroll",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "employee_payroll"
     },
     "paypal": {
       "type": "json"

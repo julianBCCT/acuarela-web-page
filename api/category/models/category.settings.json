@@ -17,10 +17,6 @@
     "description": {
       "type": "text"
     },
-    "movements": {
-      "collection": "movement",
-      "via": "category"
-    },
     "type_category": {
       "type": "enumeration",
       "enum": [

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_paypal_paypals",
+  "info": {
+    "name": "paypal",
+    "icon": "money-check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "client_id": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    },
+    "merchantIdInPayPal": {
+      "type": "string"
+    },
+    "merchantId": {
+      "type": "string"
+    },
+    "isset": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

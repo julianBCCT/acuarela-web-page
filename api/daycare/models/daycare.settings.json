@@ -158,8 +158,16 @@
       "via": "daycare"
     },
     "inscripciones": {
-      "via": "daycare",
-      "collection": "inscripciones"
+      "collection": "inscripciones",
+      "via": "daycare"
+    },
+    "paypal": {
+      "type": "component",
+      "repeatable": false,
+      "component": "paypal.paypal"
+    },
+    "late_pickup": {
+      "type": "integer"
     }
   }
 }

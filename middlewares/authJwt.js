@@ -48,7 +48,7 @@ async function generate_token(entity) {
 
   if (err) return { ok: false, status: 400, code: 2, msg: 'The token could not be generated.', user: {} };
 
-  let user = { mail, id: entity._id, name: entity.name, phone, token, rols: entity.rols, organization: entity.daycare };
+  let user = { mail, id: entity._id, name: entity.name, phone, token, rols: entity.rols, organization: entity.daycare, wizard_steps:entity.wizard_steps };
 
   return { ok: true, status: 200, code: 0, msg: 'User Logged.', user };
 }

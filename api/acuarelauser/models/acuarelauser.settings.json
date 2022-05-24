@@ -53,8 +53,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "chats": {
       "collection": "chat",
@@ -185,6 +185,9 @@
     "paypalToken": {
       "type": "text",
       "default": "jHY8Y567hhFi793joJH"
+    },
+    "wizard_steps": {
+      "type": "json"
     }
   }
 }

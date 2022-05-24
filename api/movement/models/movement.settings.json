@@ -24,8 +24,8 @@
       "type": "boolean"
     },
     "child": {
-      "model": "children",
-      "via": "movements"
+      "via": "movements",
+      "model": "children"
     },
     "payer": {
       "model": "acuarelauser",
@@ -38,8 +38,8 @@
       "type": "integer"
     },
     "daycare": {
-      "via": "movements",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "movements"
     },
     "extra_info": {
       "type": "string"
@@ -50,6 +50,12 @@
     },
     "paypal": {
       "type": "json"
+    },
+    "estado": {
+      "type": "string"
+    },
+    "payer_name": {
+      "type": "string"
     }
   }
 }

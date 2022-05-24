@@ -54,8 +54,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "acuarelauser"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
@@ -138,8 +138,8 @@
       "type": "string"
     },
     "children": {
-      "collection": "children",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "children"
     },
     "groups": {
       "collection": "group",
@@ -154,8 +154,8 @@
       "via": "daycare"
     },
     "movements": {
-      "collection": "movement",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "movement"
     },
     "inscripciones": {
       "collection": "inscripciones",

@@ -84,8 +84,8 @@
       "default": false
     },
     "movements": {
-      "via": "child",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "child"
     },
     "childrenactivities": {
       "collection": "childrenactivity",
@@ -98,8 +98,8 @@
       "type": "text"
     },
     "daycare": {
-      "via": "children",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "children"
     },
     "birthday": {
       "type": "date"
@@ -108,7 +108,8 @@
       "type": "enumeration",
       "enum": [
         "Masculino",
-        "Femenino"
+        "Femenino",
+        "X"
       ]
     },
     "phone": {
@@ -171,11 +172,16 @@
       "component": "guardians.guardians"
     },
     "inscripcion": {
-      "model": "inscripciones"
+      "model": "inscripciones",
+      "via": "child"
     },
     "automatic_payment": {
       "type": "boolean",
       "default": false
+    },
+    "status_text": {
+      "type": "string",
+      "default": "Activo"
     }
   }
 }

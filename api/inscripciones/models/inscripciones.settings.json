@@ -160,6 +160,10 @@
     },
     "formValuesValidation": {
       "type": "json"
+    },
+    "child": {
+      "via": "inscripcion",
+      "model": "children"
     }
   }
 }

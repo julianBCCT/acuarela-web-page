@@ -17,10 +17,10 @@ module.exports = {
     parser: {
       enabled: true,
       multipart: true,
-      formLimit: '10mb', // modify here limit of the form body
-      jsonLimit: '10mb', // modify here limit of the JSON body
+      formLimit: '100mb', // modify here limit of the form body
+      jsonLimit: '100mb', // modify here limit of the JSON body
       formidable: {
-        maxFileSize: 100 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
+        maxFileSize: 2000 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
       },
     }
   },

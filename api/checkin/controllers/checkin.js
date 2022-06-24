@@ -12,7 +12,7 @@ module.exports = {
   async create(ctx) {
     const { token } = ctx.request.header;
     const checkin = ctx.request.body;
-    
+
     // Valida el token.
     let validToken = await verification.renew(token);
     let bodyToken = await verification.get_data(checkin.token);
@@ -33,7 +33,7 @@ module.exports = {
           code: 5,
           msg: 'The assistant is required.',
         });
-      if (!bodyToken.user.id/*checkin.acudiente*/)
+      if (!bodyToken.user.id /*checkin.acudiente*/)
         return ctx.send({
           ok: false,
           status: 400,
@@ -54,17 +54,21 @@ module.exports = {
 
         //En el registro del niño se marca el atributo indaycare como true.
         const indaycare = true;
-        await strapi.services.children.update({ _id: checkin.children }, {indaycare});
-        
+        await strapi.services.children.update(
+          { _id: checkin.children },
+          { indaycare }
+        );
+
         return ctx.send({
           ok: true,
           status: 200,
           code: 0,
           msg: 'Check-in successful.',
           user: validToken.user,
+          emailSended
         });
       }
-    } else return ctx.send(validToken);
+    } else return ctx.send(validToken,bodyToken);
   },
 
   // Retorna todos los checkin realizados el día actual.
@@ -92,11 +96,10 @@ module.exports = {
         .populate('children', ['name', 'id', 'photo'])
         .populate('childminder', ['name', 'id'])
         .populate('guardian', ['name', 'id']);
-    
+
       validToken.msg = 'Query completed successfully!';
       validToken.response = entity;
       return ctx.send(validToken);
-
     } else return ctx.send(validToken);
-  }
+  },
 };

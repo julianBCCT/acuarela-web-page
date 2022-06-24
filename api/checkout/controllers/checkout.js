@@ -90,7 +90,7 @@ module.exports = {
           });
         }
       }
-    } else return ctx.send(validToken);
+    } else return ctx.send(validToken,bodyToken);
   },
 
   // Retorna todos los checkin realizados el día actual.

@@ -64,8 +64,7 @@ module.exports = {
           status: 200,
           code: 0,
           msg: 'Check-in successful.',
-          user: validToken.user,
-          emailSended
+          user: validToken.user
         });
       }
     } else return ctx.send({ ok: false,

@@ -68,7 +68,7 @@ module.exports = {
           emailSended
         });
       }
-    } else return ctx.send(validToken,bodyToken);
+    } else return ctx.send({validToken,bodyToken});
   },
 
   // Retorna todos los checkin realizados el día actual.

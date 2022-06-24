@@ -15,6 +15,15 @@
     },
     "part_time": {
       "type": "string"
+    },
+    "full_time": {
+      "type": "json"
+    },
+    "half_time": {
+      "type": "json"
+    },
+    "horario_extendido": {
+      "type": "json"
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attendance_logs",
+  "info": {
+    "name": "Attendance-logs",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "date": {
+      "type": "datetime"
+    },
+    "attendant": {
+      "type": "string"
+    },
+    "daycare": {
+      "model": "daycare"
+    },
+    "indaycare": {
+      "type": "boolean"
+    },
+    "children": {
+      "model": "children",
+      "via": "attendance_logs"
+    }
+  }
+}

@@ -54,8 +54,8 @@
       "via": "daycare"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
@@ -103,9 +103,6 @@
     "license_expiration_date": {
       "type": "date"
     },
-    "license_capacity": {
-      "type": "integer"
-    },
     "onside_provider_name": {
       "type": "string"
     },
@@ -138,8 +135,8 @@
       "type": "string"
     },
     "children": {
-      "via": "daycare",
-      "collection": "children"
+      "collection": "children",
+      "via": "daycare"
     },
     "groups": {
       "collection": "group",
@@ -154,8 +151,8 @@
       "via": "daycare"
     },
     "movements": {
-      "via": "daycare",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "daycare"
     },
     "inscripciones": {
       "collection": "inscripciones",
@@ -168,6 +165,20 @@
     },
     "late_pickup": {
       "type": "integer"
+    },
+    "certificates": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "license_capacity": {
+      "type": "json"
     }
   }
 }

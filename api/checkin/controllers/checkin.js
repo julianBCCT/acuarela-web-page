@@ -68,7 +68,10 @@ module.exports = {
           emailSended
         });
       }
-    } else return ctx.send({validToken,bodyToken});
+    } else return ctx.send({ ok: false,
+      status: 400,
+      code: 1,
+      msg: 'token errors',validToken,bodyToken});
   },
 
   // Retorna todos los checkin realizados el día actual.

@@ -1,11 +1,11 @@
-"use strict";
-const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
-const verification = require("../../../middlewares/authJwt");
-const verifyDate = require("../../../helpers/is_date");
-const email = require("../../../helpers/email_provider");
-const sms = require("../../../helpers/sms_provider");
+'use strict';
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const verification = require('../../../middlewares/authJwt');
+const verifyDate = require('../../../helpers/is_date');
+const email = require('../../../helpers/email_provider');
+const sms = require('../../../helpers/sms_provider');
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -22,18 +22,19 @@ module.exports = {
       let query = { status: true };
       query.daycare = { $eq: validToken.user.organization };
       let entity = await strapi
-        .query("children")
+        .query('children')
         .model.find(query)
-        .populate("acuarelausers", [
-          "name",
-          "lastname",
-          "mail",
-          "phone",
-          "photo",
-          "work_phone",
-          "work_place",
-          "profession",
-          "is_principal",
+        .populate('acuarelausers', [
+          'name',
+          'lastname',
+          'mail',
+          'phone',
+          'photo',
+          'work_phone',
+          'work_place',
+          'profession',
+          'is_principal',
+          'rols'
         ]);
 
       if (!entity)
@@ -41,10 +42,10 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Children not found.",
+          msg: 'Children not found.',
         });
       else {
-        validToken.msg = "Query completed successfully!";
+        validToken.msg = 'Query completed successfully!';
         validToken.response = entity;
         return ctx.send(validToken);
       }
@@ -62,7 +63,7 @@ module.exports = {
     if (respuesta.ok) {
       // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
       let entity;
-      if (user.mail != "-1")
+      if (user.mail != '-1')
         entity = await strapi.services.acuarelauser.findOne({
           mail: user.mail,
         });
@@ -76,7 +77,7 @@ module.exports = {
         // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
         let rols;
         if (user.roles) rols = user.roles;
-        else rols = ["5ff7900c5d6f2e272cfd7395"];
+        else rols = ['5ff7900c5d6f2e272cfd7395'];
 
         // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
@@ -90,13 +91,13 @@ module.exports = {
               ok: false,
               status: 404,
               code: 5,
-              msg: "Daycare not found.",
+              msg: 'Daycare not found.',
             });
 
           daycare = foundDaycare._id;
         } else {
           let foundDaycare = await strapi.services.daycare.findOne({
-            name: "Bilingual",
+            name: 'Bilingual',
           });
           daycare = foundDaycare._id;
         }
@@ -108,8 +109,8 @@ module.exports = {
         delete user.roles;
         delete user.relation;
         user.status = false;
-        if (user.mail == "-1") delete user.mail;
-        else if (!user.phone || user.phone == "-1") delete user.phone;
+        if (user.mail == '-1') delete user.mail;
+        else if (!user.phone || user.phone == '-1') delete user.phone;
 
         entity = await strapi.services.acuarelauser.create(user);
 
@@ -125,23 +126,23 @@ module.exports = {
           phone: user.phone,
         });
         let linkmail =
-          "https://acuarelacore.com/auth/register/" + redirect_token.token; // URL a la que el usuario debera ingresar para completar su registro.
+          'https://acuarelacore.com/auth/register/' + redirect_token.token; // URL a la que el usuario debera ingresar para completar su registro.
         let linkphone =
-          "https://acuarelacore.com/auth/register-phone/" +
+          'https://acuarelacore.com/auth/register-phone/' +
           redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        if (entity.mail == "-1" || !entity.mail)
+        if (entity.mail == '-1' || !entity.mail)
           resultado = await sms.send_sms(linkphone, user.phone);
         //message, to, sender_id, callback_url
         else
           resultado = await email.send_email(
             user.mail,
-            "kelvin@bilingualchildcaretraining.com",
-            "kelvin@bilingualchildcaretraining.com",
+            'kelvin@bilingualchildcaretraining.com',
+            'kelvin@bilingualchildcaretraining.com',
             linkmail,
-            "Acuarela Invitation"
+            'Acuarela Invitation'
           );
 
         resultado.senduri = redirect_token.token;
@@ -152,7 +153,7 @@ module.exports = {
         query.child = { $eq: id };
 
         // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-        let relacion = await strapi.query("relationship").model.find(query);
+        let relacion = await strapi.query('relationship').model.find(query);
         console.log(relacion);
         if (!relacion || relacion == []) {
           await strapi.services.relationship.create({
@@ -169,7 +170,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child added.",
+          msg: 'Child added.',
         });
       }
     } else {
@@ -190,47 +191,48 @@ module.exports = {
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi
-        .query("children")
+        .query('children')
         .model.find(query)
         .populate({
-          path: "group",
+          path: 'group',
           populate: {
-            path: "acuarelauser",
-            select: ["name", "lastname", "mail", "phone", "photo"],
+            path: 'acuarelauser',
+            select: ['name', 'lastname', 'mail', 'phone', 'photo'],
           },
         })
-        .populate("acuarelausers", [
-          "name",
-          "lastname",
-          "mail",
-          "phone",
-          "photo",
-          "work_phone",
-          "work_place",
-          "profession",
-          "is_principal",
+        .populate('acuarelausers', [
+          'name',
+          'lastname',
+          'mail',
+          'phone',
+          'photo',
+          'work_phone',
+          'work_place',
+          'profession',
+          'is_principal',
+          'rols'
         ])
-        .populate("attitudes", ["name", "icon"])
-        .populate("likings", ["name", "icon"])
-        .populate("others", ["name", "icon"])
-        .populate("for_workings", ["name", "icon", "date"])
+        .populate('attitudes', ['name', 'icon'])
+        .populate('likings', ['name', 'icon'])
+        .populate('others', ['name', 'icon'])
+        .populate('for_workings', ['name', 'icon', 'date'])
         //.populate('notes', ['name', 'description'])
-        .populate("bags", ["name"])
-        .populate("records", ["name", "icon", "file"])
-        .populate("healthinfo")
-        .populate("movements")
-        .populate("parents")
+        .populate('bags', ['name'])
+        .populate('records', ['name', 'icon', 'file'])
+        .populate('healthinfo')
+        .populate('movements')
+        .populate('parents')
         .populate({
-          path: "childrenactivities",
+          path: 'childrenactivities',
           populate: {
-            path: "activity",
+            path: 'activity',
             select: [
-              "name",
-              "date",
-              "rate",
-              "classactivity",
-              "infoadicional",
-              "comments",
+              'name',
+              'date',
+              'rate',
+              'classactivity',
+              'infoadicional',
+              'comments',
             ],
           },
         });
@@ -240,10 +242,10 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
-        validToken.msg = "Query completed successfully!";
+        validToken.msg = 'Query completed successfully!';
         validToken.response = entity;
         return ctx.send(validToken);
       }
@@ -261,18 +263,18 @@ module.exports = {
       query.child = { $eq: id };
 
       let entity = await strapi
-        .query("relationship")
+        .query('relationship')
         .model.find(query)
-        .populate("acuarelauser", ["name", "photo"]);
+        .populate('acuarelauser', ['name', 'photo']);
       if (!entity)
         return ctx.send({
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
-        validToken.msg = "Query completed successfully!";
+        validToken.msg = 'Query completed successfully!';
         validToken.response = entity;
         return ctx.send(validToken);
       }
@@ -293,21 +295,21 @@ module.exports = {
           ok: false,
           status: 400,
           code: 5,
-          msg: "The childs name is required.",
+          msg: 'The childs name is required.',
         });
       if (!child.lastname)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: "The childs lastname is required.",
+          msg: 'The childs lastname is required.',
         });
       if (!child.birthdate)
         return ctx.send({
           ok: false,
           status: 400,
           code: 5,
-          msg: "The childs birthdate is required.",
+          msg: 'The childs birthdate is required.',
         });
       else {
         child.status = true;
@@ -337,7 +339,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, child);
@@ -345,7 +347,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -365,20 +367,20 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
 
       let esPropietario = false;
 
       for (let i in validToken.user.rols)
-        if (rols.rols[i].id == "5ff78feb5d6f2e272cfd7393") esPropietario = true;
+        if (rols.rols[i].id == '5ff78feb5d6f2e272cfd7393') esPropietario = true;
 
       if (!esPropietario)
         return ctx.send({
           ok: false,
           status: 401,
           code: 5,
-          msg: "You do not have privileges to perform this action.",
+          msg: 'You do not have privileges to perform this action.',
         });
       else {
         entity.status = false;
@@ -387,7 +389,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Deleted.",
+          msg: 'Child Deleted.',
           user: validToken.user,
         });
       }
@@ -407,7 +409,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, attitudes);
@@ -415,7 +417,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -435,7 +437,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         //entity.others = others
@@ -444,7 +446,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -464,7 +466,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, likings);
@@ -472,7 +474,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -492,7 +494,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, for_workings);
@@ -500,7 +502,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -520,7 +522,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, notes);
@@ -528,7 +530,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -548,7 +550,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         await strapi.services.children.update({ _id: id }, records);
@@ -556,7 +558,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -576,7 +578,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         entity.bag_item = bag_item;
@@ -588,7 +590,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -608,7 +610,7 @@ module.exports = {
           ok: false,
           status: 404,
           code: 5,
-          msg: "Child not found.",
+          msg: 'Child not found.',
         });
       else {
         health.child = id;
@@ -617,7 +619,7 @@ module.exports = {
           ok: true,
           status: 200,
           code: 0,
-          msg: "Child Updated.",
+          msg: 'Child Updated.',
           user: validToken.user,
         });
       }
@@ -636,7 +638,7 @@ module.exports = {
       const newchild = await strapi.services.children.create(child);
       newchild.health.child = id;
       await strapi.services.healthinfo.create(newchild.health);
-      const hashedPassword = await bcrypt.hash("123456", 10);
+      const hashedPassword = await bcrypt.hash('123456', 10);
       await strapi.services.acuarelauser.create({
         mail: child.mom.mail,
         password: hashedPassword,
@@ -645,7 +647,7 @@ module.exports = {
         expiresIn: 259200, // tres dias
       });
       return ctx.send({
-        status: "User Created",
+        status: 'User Created',
         user: { mail: entity.mail, id: entity._id },
         ok: true,
       });

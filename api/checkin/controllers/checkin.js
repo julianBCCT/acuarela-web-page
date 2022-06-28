@@ -12,65 +12,86 @@ module.exports = {
   async create(ctx) {
     const { token } = ctx.request.header;
     const checkin = ctx.request.body;
+    if(checkin.token){
+      // Valida el token.
+      let validToken = await verification.renew(token);
+      let bodyToken = await verification.get_data(checkin.token);
+  
+      if (validToken.ok && bodyToken.ok) {
+        // Valida que los datos hayan sido ingresados.
+        if (!checkin.children)
+          return ctx.send({
+            ok: false,
+            status: 400,
+            code: 5,
+            msg: 'The childs id is required.',
+          });
+        if (!checkin.asistente)
+          return ctx.send({
+            ok: false,
+            status: 400,
+            code: 5,
+            msg: 'The assistant is required.',
+          });
+        if (!bodyToken.user.id /*checkin.acudiente*/)
+          return ctx.send({
+            ok: false,
+            status: 400,
+            code: 5,
+            msg: 'The guardian is required.',
+          });
+        if (!checkin.datetime)
+          return ctx.send({
+            ok: false,
+            status: 400,
+            code: 5,
+            msg: 'The check-in datetime is required.',
+          });
+        else {
+          // Si todos los datos son correctos se crea el registro de ingreso.
+          checkin.acudiente = [bodyToken.user.id];
+          await strapi.services.checkin.create(checkin);
+  
+          //En el registro del niño se marca el atributo indaycare como true.
+          const indaycare = true;
+          await strapi.services.children.update(
+            { _id: checkin.children },
+            { indaycare }
+          );
+  
+          return ctx.send({
+            ok: true,
+            status: 200,
+            code: 0,
+            msg: 'Check-in successful.',
+            user: validToken.user,
+            acudiente: bodyToken.user.id
+          });
+        }
+      } else return ctx.send({ ok: false,
+        status: 400,
+        code: 1,
+        msg: 'token errors',validToken,bodyToken});
+      
+    }else{
+      // Si todos los datos son correctos se crea el registro de ingreso.
+      await strapi.services.checkin.create(checkin);
 
-    // Valida el token.
-    let validToken = await verification.renew(token);
-    let bodyToken = await verification.get_data(checkin.token);
+      //En el registro del niño se marca el atributo indaycare como true.
+      const indaycare = true;
+      await strapi.services.children.update(
+        { _id: checkin.children },
+        { indaycare }
+      );
 
-    if (validToken.ok && bodyToken.ok) {
-      // Valida que los datos hayan sido ingresados.
-      if (!checkin.children)
-        return ctx.send({
-          ok: false,
-          status: 400,
-          code: 5,
-          msg: 'The childs id is required.',
-        });
-      if (!checkin.asistente)
-        return ctx.send({
-          ok: false,
-          status: 400,
-          code: 5,
-          msg: 'The assistant is required.',
-        });
-      if (!bodyToken.user.id /*checkin.acudiente*/)
-        return ctx.send({
-          ok: false,
-          status: 400,
-          code: 5,
-          msg: 'The guardian is required.',
-        });
-      if (!checkin.datetime)
-        return ctx.send({
-          ok: false,
-          status: 400,
-          code: 5,
-          msg: 'The check-in datetime is required.',
-        });
-      else {
-        // Si todos los datos son correctos se crea el registro de ingreso.
-        checkin.acudiente = [bodyToken.user.id];
-        await strapi.services.checkin.create(checkin);
-
-        //En el registro del niño se marca el atributo indaycare como true.
-        const indaycare = true;
-        await strapi.services.children.update(
-          { _id: checkin.children },
-          { indaycare }
-        );
-
-        return ctx.send({
-          ok: true,
-          status: 200,
-          code: 0,
-          msg: 'Check-in successful.',
-          user: validToken.user
-        });
-      }
-    } else return ctx.send({ ok: false,
-      status: 400,
-      code: 1,
-      msg: 'token errors',validToken,bodyToken});
+      return ctx.send({
+        ok: true,
+        status: 200,
+        code: 0,
+        msg: 'Check-in successful.',
+        user: validToken.user,
+      });
+    }
   },
 
   // Retorna todos los checkin realizados el día actual.

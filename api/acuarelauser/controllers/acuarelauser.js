@@ -26,10 +26,10 @@ module.exports = {
     if (entity) {
       // Valida que el usuario y la constraseña sean validos para el email o el número.
       let result = await bcrypt.compare(pass, entity.password);
-      console.log({ mail, pass, phone });
+      console.log({ mail, pass, phone,result });
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
-        let msg = 'Invalid Number.';
+        let msg = 'Invalid Password';
         let code = 'p-1';
         if (mail != '-1') (msg = 'Invalid Email.'), (code = 'e-1');
         return ctx.send({ ok: false, status: 400, code, msg });
@@ -323,6 +323,7 @@ module.exports = {
   async update(ctx) {
     const { id } = ctx.params;
     ctx.request.body.pass = await bcrypt.hash(ctx.request.body.pass, 10);
+    ctx.request.body.password = await bcrypt.hash(ctx.request.body.password, 10);
     console.log(ctx.request.body);
     console.log(ctx);
     let entity = await strapi.services.acuarelauser.update({ id }, ctx.request.body);

@@ -321,11 +321,9 @@ module.exports = {
   },
   async update(ctx) {
     const { id } = ctx.params;
-    const { pass } = ctx.request.body;
+    ctx.request.body.pass = await bcrypt.hash(pass, 10);
     console.log(ctx);
     let entity = await strapi.services.acuarelauser.update({ id }, ctx.request.body);
-    const hashedPassword = await bcrypt.hash(pass, 10);
-    entity = await strapi.services.acuarelauser.update({ id }, {password: hashedPassword});
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
    

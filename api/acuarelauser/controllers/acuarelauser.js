@@ -322,6 +322,7 @@ module.exports = {
   async update(ctx) {
     const { id } = ctx.params;
     const { pass } = ctx.request.body;
+    console.log(ctx);
     let entity = await strapi.services.acuarelauser.update({ id }, ctx.request.body);
     const hashedPassword = await bcrypt.hash(pass, 10);
     entity = await strapi.services.acuarelauser.update({ id }, {password: hashedPassword});

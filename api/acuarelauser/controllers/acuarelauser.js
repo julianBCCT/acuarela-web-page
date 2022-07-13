@@ -322,10 +322,10 @@ module.exports = {
   },
   async update(ctx) {
     const { id } = ctx.params;
-    ctx.request.body.pass = await bcrypt.hash(ctx.request.body.pass, 10);
-    ctx.request.body.password = await bcrypt.hash(ctx.request.body.password, 10);
-    console.log(ctx.request.body);
-    console.log(ctx);
+    if(ctx.request.body.pass || ctx.request.body.password){
+      ctx.request.body.pass = await bcrypt.hash(ctx.request.body.pass, 10);
+      ctx.request.body.password = await bcrypt.hash(ctx.request.body.password, 10);
+    }
     let entity = await strapi.services.acuarelauser.update({ id }, ctx.request.body);
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },

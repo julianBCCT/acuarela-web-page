@@ -16,7 +16,7 @@ module.exports = {
       let query = {};
       query.daycare = { $eq: validToken.user.daycare };
     const { response } = ctx.request.body;
-    let entity = await strapi.query('movement').model.find().populate('payer', [
+    let entity = await strapi.query('movement').model.find(query).populate('payer', [
       'name',
       'lastname',
       'mail',

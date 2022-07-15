@@ -20,7 +20,6 @@ async function send_email(to, from, replyTo, msg, subject) {
   };
   
   const response = await mailchimp.messages.send({ message });
-  console.log(response);
   if (response[0].status === 'sent')
     return { ok: true, status: 200, code: 0, msg: 'Email Send Succesfully.' };
   else {

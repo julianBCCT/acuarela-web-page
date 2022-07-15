@@ -8,6 +8,12 @@ const paypal = require('paypal-rest-sdk');
 
 module.exports = {
   async find(ctx) {
+    const { token } = ctx.request.header;
+    let validToken = await verification.renew(token);
+
+    if (validToken.ok) {
+      let query = {};
+      query._id = { $eq: validToken.user.id };
     const { response } = ctx.request.body;
     let entity = await strapi.query('movement').model.find().populate('payer', [
       'name',
@@ -33,6 +39,8 @@ module.exports = {
       response.response = entity;
       return ctx.send(response);
     }
+
+    }
   },
 
   /** -------------------------------------------------PAYPAL----------------------------------------------------- */
@@ -50,7 +58,6 @@ module.exports = {
   },
   // Se usa el billingAgreementId de un acuerdo de pago creado para cancelar la suscribción
   async cancel_aggrement(ctx) {
-    //console.log(req.body);
     var billingAgreementId = ctx.request.body.plan;
 
     var cancel_note = {

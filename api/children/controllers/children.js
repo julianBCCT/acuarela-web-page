@@ -154,7 +154,6 @@ module.exports = {
 
         // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
         let relacion = await strapi.query('relationship').model.find(query);
-        console.log(relacion);
         if (!relacion || relacion == []) {
           await strapi.services.relationship.create({
             relation,

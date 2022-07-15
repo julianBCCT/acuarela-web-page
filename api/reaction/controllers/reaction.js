@@ -14,7 +14,6 @@ module.exports = {
     query.post = { $eq: post };
     query.acuarelauser = { $eq: acuarelauser };
     let entity = await strapi.query('reaction').model.findOne(query);
-    console.log(entity);
     if (!entity) {
       await strapi.services.reaction.create({post, type, acuarelauser});
       return ctx.send({

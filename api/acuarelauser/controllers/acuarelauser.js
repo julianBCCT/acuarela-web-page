@@ -26,7 +26,6 @@ module.exports = {
     if (entity) {
       // Valida que el usuario y la constraseña sean validos para el email o el número.
       let result = await bcrypt.compare(pass, entity.password);
-      console.log({ mail, pass, phone,result });
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
         let msg = 'Invalid Password';
@@ -160,7 +159,6 @@ module.exports = {
 
       entity.password = hashedPassword;
       entity.status = true;
-      console.log(entity);
       // El registro del usuario es marcado como activo y se agrega la contraseña y el nombre.
       entity = await strapi
         .query('acuarelauser')
@@ -196,7 +194,6 @@ module.exports = {
           code,
           'Verification Code'
         );
-      console.log(resultado);
       // Si el código se envio exitosamente al usuario, se envia al front el código cifrado en el token.
       if (resultado.ok) resultado.code_token = code_token;
 

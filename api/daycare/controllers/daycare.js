@@ -53,7 +53,6 @@ module.exports = {
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi.query('daycare').model.find(query);
       //.populate('activities');
-      console.log(entity);
       if (!entity)
         return ctx.send({
           ok: false,

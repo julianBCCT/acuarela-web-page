@@ -13,6 +13,7 @@ module.exports = {
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
+      console.log(validToken);
       let query = {};
       query.daycare = { $eq: validToken.user.daycare };
     const { response } = ctx.request.body;

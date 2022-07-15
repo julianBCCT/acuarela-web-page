@@ -1,5 +1,6 @@
 'use strict';
 const paypal = require('paypal-rest-sdk');
+const verification = require('../../../middlewares/authJwt');
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -13,7 +14,7 @@ module.exports = {
 
     if (validToken.ok) {
       let query = {};
-      query._id = { $eq: validToken.user.id };
+      query.daycare = { $eq: validToken.user.daycare };
     const { response } = ctx.request.body;
     let entity = await strapi.query('movement').model.find().populate('payer', [
       'name',

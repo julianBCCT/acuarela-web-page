@@ -15,7 +15,7 @@ module.exports = {
     if (validToken.ok) {
       console.log(validToken);
       let query = {};
-      query.daycare = { $eq: validToken.user.daycare };
+      query.daycare = { $eq: validToken.user.organization.id };
     const { response } = ctx.request.body;
     let entity = await strapi.query('movement').model.find(query).populate('payer', [
       'name',

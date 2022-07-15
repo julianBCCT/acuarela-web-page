@@ -9,12 +9,17 @@ const paypal = require('paypal-rest-sdk');
 module.exports = {
   async find(ctx) {
     const { response } = ctx.request.body;
-    let entity = await strapi.query('movement').model.find().populate('acuarelausers', [
+    let entity = await strapi.query('movement').model.find().populate('payer', [
       'name',
       'lastname',
       'mail',
       'phone'
-    ]);;
+    ]).populate('parent', [
+      'name',
+      'lastname',
+      'mail',
+      'phone'
+    ]);
         
     if (!entity)
       return ctx.send({

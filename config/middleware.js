@@ -1,28 +1,28 @@
-const cors = require('cors');
-require('dotenv').config();
+const cors = require("cors");
+require("dotenv").config();
 
 module.exports = {
   //...
   settings: {
     cors: {
       origin: [
-        'http://localhost:3000',
-        'http://localhost:1337',
-        'http://198.211.114.51',
-        'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
-        'https://acuarelacore.com',
-        'https://acuarela.app/',
+        "http://localhost:3000",
+        "http://localhost:1337",
+        "http://198.211.114.51",
+        "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
+        "https://acuarelacore.com",
+        "https://acuarela.app/",
       ],
       credentials: true,
     },
     parser: {
       enabled: true,
       multipart: true,
-      formLimit: '100mb', // modify here limit of the form body
-      jsonLimit: '100mb', // modify here limit of the JSON body
+      formLimit: "100mb", // modify here limit of the form body
+      jsonLimit: "100mb", // modify here limit of the JSON body
       formidable: {
         maxFileSize: 2000 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
       },
-    }
+    },
   },
 };

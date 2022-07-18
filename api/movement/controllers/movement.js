@@ -1,6 +1,6 @@
-'use strict';
-const paypal = require('paypal-rest-sdk');
-const verification = require('../../../middlewares/authJwt');
+"use strict";
+const paypal = require("paypal-rest-sdk");
+const verification = require("../../../middlewares/authJwt");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -16,32 +16,24 @@ module.exports = {
       console.log(validToken);
       let query = {};
       query.daycare = { $eq: validToken.user.organization.id };
-    const { response } = ctx.request.body;
-    let entity = await strapi.query('movement').model.find(query).populate('payer', [
-      'name',
-      'lastname',
-      'mail',
-      'phone'
-    ]).populate('parent', [
-      'name',
-      'lastname',
-      'mail',
-      'phone'
-    ]);
-        
-    if (!entity)
-      return ctx.send({
-        ok: true,
-        status: 200,
-        code: 0,
-        msg: 'movements not found.',
-      });
-    else {
-      response.msg = 'Query completed successfully!';
-      response.response = entity;
-      return ctx.send(response);
-    }
+      const { response } = ctx.request.body;
+      let entity = await strapi
+        .query("movement")
+        .model.find(query)
+        .populate("payer", ["name", "lastname", "mail", "phone"]);
 
+      if (!entity)
+        return ctx.send({
+          ok: true,
+          status: 200,
+          code: 0,
+          msg: "movements not found.",
+        });
+      else {
+        response.msg = "Query completed successfully!";
+        response.response = entity;
+        return ctx.send(response);
+      }
     }
   },
 
@@ -63,7 +55,7 @@ module.exports = {
     var billingAgreementId = ctx.request.body.plan;
 
     var cancel_note = {
-      note: 'Canceling the agreement',
+      note: "Canceling the agreement",
     };
 
     paypal.billingAgreement.cancel(
@@ -74,7 +66,7 @@ module.exports = {
           console.log(error);
           throw error;
         } else {
-          console.log('Cancel Billing Agreement Response');
+          console.log("Cancel Billing Agreement Response");
           console.log(response);
 
           paypal.billingAgreement.get(
@@ -85,7 +77,7 @@ module.exports = {
                 throw error;
               } else {
                 console.log(billingAgreement.state);
-                return ctx.send('Subscription Canceled.');
+                return ctx.send("Subscription Canceled.");
               }
             }
           );
@@ -104,15 +96,15 @@ module.exports = {
     // cancel_url -> dirección a la que redirije al usuario en caso de que este no complete el proceso de suscribción
     // return_url -> dirección a la que redirije al usuario cuando completa la suscribición de forma exitosa
     let billingPlanAttributes = {
-      description: ' Add about subscription details.',
+      description: " Add about subscription details.",
       merchant_preferences: {
-        auto_bill_amount: 'yes',
-        cancel_url: 'http://localhost:3000/cancel',
-        initial_fail_amount_action: 'continue',
-        max_fail_attempts: '1',
-        return_url: 'http://localhost:3000/success',
+        auto_bill_amount: "yes",
+        cancel_url: "http://localhost:3000/cancel",
+        initial_fail_amount_action: "continue",
+        max_fail_attempts: "1",
+        return_url: "http://localhost:3000/success",
       },
-      name: 'Paypal Agreement',
+      name: "Paypal Agreement",
       payment_definitions: [
         {
           amount: {
@@ -120,14 +112,14 @@ module.exports = {
             value: value,
           },
           charge_models: [],
-          cycles: '0',
+          cycles: "0",
           frequency: frecuency,
           frequency_interval: 1,
-          name: 'Regular Payments',
-          type: 'REGULAR',
+          name: "Regular Payments",
+          type: "REGULAR",
         },
       ],
-      type: 'INFINITE',
+      type: "INFINITE",
     };
 
     // Create the billing plan
@@ -138,15 +130,15 @@ module.exports = {
           console.log(error);
           throw error;
         } else {
-          console.log('Create Billing Plan Response');
+          console.log("Create Billing Plan Response");
           console.log(billingPlan);
 
           let billingPlanUpdateAttributes = [
             {
-              op: 'replace',
-              path: '/',
+              op: "replace",
+              path: "/",
               value: {
-                state: 'ACTIVE',
+                state: "ACTIVE",
               },
             },
           ];
@@ -161,25 +153,25 @@ module.exports = {
                 throw error;
               } else {
                 console.log(
-                  'Billing Plan state changed to ' + billingPlan.state
+                  "Billing Plan state changed to " + billingPlan.state
                 );
                 //billingAgreementAttributes.plan.id = billingPlan.id;
                 // Se añada seis horas para que la direción del server vs la hora de la persona coincidan
                 // Si el usuario está en otra ubicación quizá el tiempo a agregar sea mayor o menor
                 let startDate =
                   Moment(new Date())
-                    .add(6, 'hour')
-                    .format('gggg-MM-DDTHH:mm:ss') + 'Z';
+                    .add(6, "hour")
+                    .format("gggg-MM-DDTHH:mm:ss") + "Z";
 
                 let billingAgreementAttributes = {
-                  name: 'Name of Payment Agreement',
-                  description: 'Description of  your payment  agreement',
+                  name: "Name of Payment Agreement",
+                  description: "Description of  your payment  agreement",
                   start_date: startDate,
                   plan: {
                     id: billingPlan.id,
                   },
                   payer: {
-                    payment_method: 'paypal',
+                    payment_method: "paypal",
                   },
                 };
 
@@ -191,7 +183,7 @@ module.exports = {
                       console.log(error);
                       throw error;
                     } else {
-                      console.log('Create Billing Agreement Response');
+                      console.log("Create Billing Agreement Response");
                       console.log(billingAgreement);
                       for (
                         var index = 0;
@@ -199,12 +191,12 @@ module.exports = {
                         index++
                       ) {
                         if (
-                          billingAgreement.links[index].rel === 'approval_url'
+                          billingAgreement.links[index].rel === "approval_url"
                         ) {
                           var approval_url = billingAgreement.links[index].href;
 
                           console.log(
-                            'For approving subscription via Paypal, first redirect user to'
+                            "For approving subscription via Paypal, first redirect user to"
                           );
                           console.log(approval_url);
                           // La url de la respuesta redirige a la pagina de PayPal que se encargará de completar la suscribción según la parametros fijados
@@ -238,10 +230,10 @@ module.exports = {
           paypal: JSON.stringify(billingAgreement),
           daycare: organization,
           payer: id,
-          category: '60b0ed8db83e2f4588f879a1',
-          extra_info: 'Creación de suscribción de PayPal.',
+          category: "60b0ed8db83e2f4588f879a1",
+          extra_info: "Creación de suscribción de PayPal.",
         });
-        return ctx.send('Success');
+        return ctx.send("Success");
       }
     });
   },

@@ -14,9 +14,7 @@ module.exports = {
         "https://acuarela.app",
         "http://acuarela.app",
         "acuarela.app",
-        "https://acuarelacore.com/api/movements/62d1d62c2db88187dac74153",
       ],
-      credentials: true,
     },
     parser: {
       enabled: true,

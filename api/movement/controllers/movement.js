@@ -38,6 +38,14 @@ module.exports = {
   },
   async findByUser(ctx) {
     let entities;
+
+    console.log(ctx.query, 'before');
+    ctx.query = {
+      ...ctx.query,
+      status: 'published',
+    };
+
+    console.log(ctx.query, 'after');
     if (ctx.query._q) {
       entities = await strapi.services.movement.search(ctx.query);
     } else {

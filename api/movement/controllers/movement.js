@@ -14,7 +14,7 @@ module.exports = {
 
     if (validToken.ok) {
       console.log(validToken);
-      let query = {};
+      let query = {...ctx.query};
       query.daycare = { $eq: validToken.user.organization.id };
       const { response } = ctx.request.body;
       let entity = await strapi
@@ -36,23 +36,8 @@ module.exports = {
       }
     }
   },
-  async findByUser(ctx) {
-    let entities;
-
-    console.log(ctx.query, 'before');
-    ctx.query = {
-      ...ctx.query,
-      status: 'published',
-    };
-
-    console.log(ctx.query, 'after');
-    if (ctx.query._q) {
-      entities = await strapi.services.movement.search(ctx.query);
-    } else {
-      entities = await strapi.services.movement.find(ctx.query);
-    }
-
-    return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.movement }));
+  async findByUser(params, populate) {
+    return strapi.query('movement').find(params, populate);
   }
 
 };

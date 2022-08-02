@@ -18,6 +18,12 @@
     },
     {
       "method": "GET",
+      "path": "/movements/byuser",
+      "handler": "movement.findByUser",
+      "config": {}
+    },
+    {
+      "method": "GET",
       "path": "/movements/:id",
       "handler": "movement.findOne",
       "config": {}
@@ -44,12 +50,6 @@
       "config": {
         "policies": ["global::is-authenticated"]
       }
-    },
-    {
-      "method": "GET",
-      "path": "/movements/byuser",
-      "handler": "movement.findByUser",
-      "config": {}
     }
   ]
 }

@@ -24,7 +24,7 @@
     },
     {
       "method": "GET",
-      "path": "/movements/byuser/:id",
+      "path": "/movements/byuser",
       "handler": "movement.findByUser",
       "config": {}
     },

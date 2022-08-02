@@ -49,46 +49,6 @@
       "config": {
         "policies": ["global::is-authenticated"]
       }
-    },
-    {
-      "method": "POST",
-      "path": "/movements/paypal/getandverify",
-      "handler": "movement.getAndVerify",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/movements/paypal/configure",
-      "handler": "movement.configure",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/movements/paypal/cancelaggremet",
-      "handler": "movement.cancel_aggrement",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/movements/paypal/createaggrement",
-      "handler": "movement.create_aggrement",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/movements/paypal/successaggrement",
-      "handler": "movement.success_aggrement",
-      "config": {
-        "policies": ["global::is-authenticated"]
-      }
     }
   ]
 }

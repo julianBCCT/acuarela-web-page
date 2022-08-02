@@ -23,6 +23,12 @@
       "config": {}
     },
     {
+      "method": "GET",
+      "path": "/movements/byuser/:id",
+      "handler": "movement.findByUser",
+      "config": {}
+    },
+    {
       "method": "POST",
       "path": "/movements",
       "handler": "movement.create",

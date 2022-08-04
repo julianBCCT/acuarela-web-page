@@ -17,10 +17,10 @@ module.exports = {
 
     if (validToken.ok) {
       let query = { active: true };
-      query._id = { $eq: validToken.user.id };
+      query.acuarelausers  = { $eq: validToken.user.id };
       console.log("🚀 ~ file: daycare.js ~ line 21 ~ find ~ query", query)
 
-      let entity = await strapi.query('acuarelauser').model.find(query, ['name', 'lastname', 'photo']).populate("daycare");
+      let entity = await strapi.query('daycare').model.find(query);
       console.log("🚀 ~ file: daycare.js ~ line 23 ~ find ~ entity", entity)
 
       if (!entity)

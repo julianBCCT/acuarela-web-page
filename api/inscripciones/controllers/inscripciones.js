@@ -17,37 +17,55 @@ module.exports = {
       child.attitudes = [];
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash("123456", 10);
-      let parents = [];
-      for (const parent of child.parents) {
-        parent.password = hashedPassword;
-        parent.status = true;
-        parent.rols = ["5ff790045d6f2e272cfd7394"];
-        parent.children = [kid.id];
-        parent.mail = parent.email;
-        parent.daycare = child.daycare;
-        if (parent.name != "") {
-          let entity = await strapi.services.acuarelauser.create(parent);
-          parents.push(entity);
+      if(parents_rel.length > 0){
+        const kidEdited = await strapi.services.children.update(
+          { _id: kid.id },
+          {
+            acuarelausers: parents_rel,
+          }
+        );
+        return ctx.send(
+          {
+            ok: true,
+            status: 200,
+            code: 1,
+            kid: kidEdited          },
+          200
+        );
+      }else{
+        let parents = [];
+        for (const parent of child.parents) {
+          parent.password = hashedPassword;
+          parent.status = true;
+          parent.rols = ["5ff790045d6f2e272cfd7394"];
+          parent.children = [kid.id];
+          parent.mail = parent.email;
+          parent.daycare = child.daycare;
+          if (parent.name != "") {
+            let entity = await strapi.services.acuarelauser.create(parent);
+            parents.push(entity);
+          }
         }
+  
+        const kidEdited = await strapi.services.children.update(
+          { _id: kid.id },
+          {
+            acuarelausers: parents.map((parent) => parent.id),
+          }
+        );
+        return ctx.send(
+          {
+            ok: true,
+            status: 200,
+            code: 1,
+            kid: kidEdited,
+            parents,
+          },
+          200
+        );
+
       }
 
-      const kidEdited = await strapi.services.children.update(
-        { _id: kid.id },
-        {
-          acuarelausers: parents.map((parent) => parent.id),
-        }
-      );
-
-      return ctx.send(
-        {
-          ok: true,
-          status: 200,
-          code: 1,
-          kid: kidEdited,
-          parents,
-        },
-        200
-      );
     } else return ctx.send(validToken);
   },
   async completeInscEdit(ctx) {

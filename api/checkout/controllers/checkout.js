@@ -48,31 +48,8 @@ module.exports = {
             msg: 'The check-in datetime is required.',
           });
         else {
-          var today = new Date();
-          var dd = String(today.getDate()).padStart(2, '0');
-          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-          var yyyy = today.getFullYear();
-  
-          // Obtiene la fecha actual.
-          today = yyyy + '-' + mm + '-' + dd;
-  
-          let query = {};
-          query.datetime = { $gte: today };
-          query.children = { $eq: checkout.children };
-  
-          // Revisa que en el día actual exista un checkin para el niño.
-          let entity = await strapi
-            .query('checkin')
-            .model.find(query);
-  
-          if (!entity || entity == '')
-            return ctx.send({
-              ok: false,
-              status: 400,
-              code: 5,
-              msg: 'Something wrong with the check-in.',
-            });
-          else {
+          
+          
             // Si todos los datos son correctos se crea el registro de salida.
             checkout.acudiente = [bodyToken.user.id];
             await strapi.services.checkout.create(checkout);
@@ -89,7 +66,7 @@ module.exports = {
               user: validToken.user,
               acudiente: bodyToken.user.id
             });
-          }
+          
         }
       } else return ctx.send({ ok: false,
         status: 400,

@@ -50,7 +50,7 @@ module.exports = {
         else {
           // Si todos los datos son correctos se crea el registro de salida.
           checkout.acudiente = [bodyToken.user.id];
-          const checkoutRes = await strapi.services.checkout.create(checkout);
+          await strapi.services.checkout.create(checkout);
 
           //En el registro del niño se marca el atributo indaycare como false.
           const indaycare = false;
@@ -58,7 +58,7 @@ module.exports = {
             { _id: checkout.children },
             { indaycare }
           );
-          console.log(checkoutRes);
+
           return ctx.send({
             ok: true,
             status: 200,

@@ -12,7 +12,7 @@ module.exports = {
     let entities = await strapi
       .query("post")
       .model.find()
-      .sort({ date: -1 })
+      .sort({ published_at: -1 })
       .populate("acuarelauser", ["name", "id", "photo", "daycare"])
       .populate({
         path: "comments",

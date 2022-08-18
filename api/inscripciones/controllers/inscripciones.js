@@ -17,10 +17,7 @@ module.exports = {
       child.attitudes = [];
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash("123456", 10);
-      if(child.parents_rel.length > 0){
-        console.log( {
-          acuarelausers: child.parents_rel,
-        });
+      if (child.parents_rel.length > 0) {
         const kidEdited = await strapi.services.children.update(
           { _id: kid.id },
           {
@@ -32,10 +29,11 @@ module.exports = {
             ok: true,
             status: 200,
             code: 1,
-            kid: kidEdited          },
+            kid: kidEdited,
+          },
           200
         );
-      }else{
+      } else {
         let parents = [];
         for (const parent of child.parents) {
           parent.password = hashedPassword;
@@ -49,7 +47,7 @@ module.exports = {
             parents.push(entity);
           }
         }
-  
+
         const kidEdited = await strapi.services.children.update(
           { _id: kid.id },
           {
@@ -66,9 +64,7 @@ module.exports = {
           },
           200
         );
-
       }
-
     } else return ctx.send(validToken);
   },
   async completeInscEdit(ctx) {

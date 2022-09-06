@@ -47,7 +47,7 @@ module.exports = {
       let entity = await strapi
         .query("group")
         .model.find()
-        .populate("children", ["name", "lastname", "photo"])
+        .populate("children", ["name", "lastname", "photo", "gender", "status_text"])
         .populate("acuarelauser", ["name", "lastname", "photo"]);
 
       if (!entity)
@@ -103,7 +103,7 @@ module.exports = {
       let entity = await strapi
         .query("group")
         .model.find(query)
-        .populate("children", ["name", "lastname", "photo"])
+        .populate("children", ["name", "lastname", "photo", "gender", "status_text"])
         .populate("activities")
         .populate("acuarelauser", ["name", "lastname", "photo"]);
       if (!entity)

@@ -49,7 +49,7 @@ module.exports = {
           });
         else {
           // Si todos los datos son correctos se crea el registro de ingreso.
-          checkin.acudiente = [bodyToken.user.id];
+          checkin.acudiente = [checkin.acudiente];
           await strapi.services.checkin.create(checkin);
 
           //En el registro del niño se marca el atributo indaycare como true.
@@ -65,7 +65,7 @@ module.exports = {
             code: 0,
             msg: "Check-in successful.",
             user: validToken.user,
-            acudiente: bodyToken.user.id,
+            acudiente: checkin.acudiente,
           });
         }
       } else

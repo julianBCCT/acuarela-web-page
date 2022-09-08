@@ -222,34 +222,8 @@ module.exports = {
         .populate("records", ["name", "icon", "file"])
         .populate("healthinfo")
         .populate("movements")
-        .populate({
-          path: "checkins",
-          populate: {
-            path: "acudiente",
-            select: ["name", "lastname", "mail", "phone", "photo"],
-          },
-        })
-        .populate({
-          path: "checkouts",
-          populate: {
-            path: "acudiente",
-            select: ["name", "lastname", "mail", "phone", "photo"],
-          },
-        })
-        .populate({
-          path: "checkins",
-          populate: {
-            path: "acuarelausers",
-            select: ["name", "lastname", "mail", "phone", "photo"],
-          },
-        })
-        .populate({
-          path: "checkouts",
-          populate: {
-            path: "acuarelausers",
-            select: ["name", "lastname", "mail", "phone", "photo"],
-          },
-        })
+        .populate("checkins", ["acudiente"])
+        .populate("checkouts", ["acudiente"])
         .populate("parents")
         .populate({
           path: "childrenactivities",

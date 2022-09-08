@@ -236,6 +236,20 @@ module.exports = {
             select: ["name", "lastname", "mail", "phone", "photo"],
           },
         })
+        .populate({
+          path: "checkins",
+          populate: {
+            path: "acuarelausers",
+            select: ["name", "lastname", "mail", "phone", "photo"],
+          },
+        })
+        .populate({
+          path: "checkouts",
+          populate: {
+            path: "acuarelausers",
+            select: ["name", "lastname", "mail", "phone", "photo"],
+          },
+        })
         .populate("parents")
         .populate({
           path: "childrenactivities",

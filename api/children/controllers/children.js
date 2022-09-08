@@ -222,8 +222,20 @@ module.exports = {
         .populate("records", ["name", "icon", "file"])
         .populate("healthinfo")
         .populate("movements")
-        .populate("checkins")
-        .populate("checkouts")
+        .populate({
+          path: "checkins",
+          populate: {
+            path: "acudiente",
+            select: ["name", "lastname", "mail", "phone", "photo"],
+          },
+        })
+        .populate({
+          path: "checkouts",
+          populate: {
+            path: "acudiente",
+            select: ["name", "lastname", "mail", "phone", "photo"],
+          },
+        })
         .populate("parents")
         .populate({
           path: "childrenactivities",

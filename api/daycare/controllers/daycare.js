@@ -14,24 +14,27 @@ module.exports = {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
 
-    let query = { active: true };
-    query._id = { $eq: id };
+    let validToken = await verification.renew(token);
 
-    // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-    let entity = await strapi.query("daycare").model.find(query);
-    //.populate('activities');
-    if (!entity)
-      return ctx.send({
-        ok: false,
-        status: 404,
-        code: 5,
-        msg: "Daycare not found.",
-      });
-    else {
-      let validToken = {};
-      validToken.msg = "Query completed successfully!";
-      validToken.response = entity;
-      return ctx.send(validToken);
-    }
+    if (validToken.ok) {
+      let query = { active: true };
+      query._id = { $eq: id };
+
+      // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
+      let entity = await strapi.query("daycare").model.find(query);
+      //.populate('activities');
+      if (!entity)
+        return ctx.send({
+          ok: false,
+          status: 404,
+          code: 5,
+          msg: "Daycare not found.",
+        });
+      else {
+        validToken.msg = "Query completed successfully!";
+        validToken.response = entity;
+        return ctx.send(validToken);
+      }
+    } else return ctx.send(validToken);
   },
 };

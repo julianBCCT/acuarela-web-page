@@ -18,40 +18,7 @@ module.exports = {
     query._id = { $eq: id };
 
     // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-    let entity = await strapi
-      .query("daycare")
-      .model.find(query)
-      .populate({
-        path: "children",
-        populate: {
-          path: "acuarelauser",
-          select: ["name", "lastname", "mail", "phone", "photo"],
-        },
-      })
-      .populate("children", [
-        "activity",
-        "acuarelauser",
-        "acuarelausers",
-        "attitudes",
-        "bags",
-        "checkins",
-        "checkouts",
-        "childrenactivities",
-        "for_workings",
-        "gender",
-        "group",
-        "healthinfo",
-        "inscription_date",
-        "lastname",
-        "likings",
-        "movements",
-        "name",
-        "others",
-        "parents",
-        "photo",
-        "records",
-        "status",
-      ]);
+    let entity = await strapi.query("daycare").model.find(query);
     //.populate('activities');
     if (!entity)
       return ctx.send({

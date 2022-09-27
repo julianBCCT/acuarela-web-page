@@ -21,28 +21,36 @@ module.exports = {
     let entity = await strapi
       .query("daycare")
       .model.find(query)
+      .populate({
+        path: "children",
+        populate: {
+          path: "acuarelauser",
+          select: ["name", "lastname", "mail", "phone", "photo"],
+        },
+      })
       .populate("children", [
-        "inscription_date",
-        "name",
-        "lastname",
-        "photo",
-        "status",
-        "gender",
-        "group",
+        "activity",
+        "acuarelauser",
         "acuarelausers",
         "attitudes",
-        "likings",
-        "others",
-        "for_workings",
         "bags",
-        "records",
-        "healthinfo",
-        "movements",
         "checkins",
         "checkouts",
-        "parents",
         "childrenactivities",
-        "activity",
+        "for_workings",
+        "gender",
+        "group",
+        "healthinfo",
+        "inscription_date",
+        "lastname",
+        "likings",
+        "movements",
+        "name",
+        "others",
+        "parents",
+        "photo",
+        "records",
+        "status",
       ]);
     //.populate('activities');
     if (!entity)

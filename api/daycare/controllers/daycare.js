@@ -14,8 +14,6 @@ module.exports = {
     const { id } = ctx.params;
     const { token } = ctx.request.header;
 
-    let validToken;
-
     let query = { active: true };
     query._id = { $eq: id };
 
@@ -30,6 +28,7 @@ module.exports = {
         msg: "Daycare not found.",
       });
     else {
+      let validToken = {};
       validToken.msg = "Query completed successfully!";
       validToken.response = entity;
       return ctx.send(validToken);

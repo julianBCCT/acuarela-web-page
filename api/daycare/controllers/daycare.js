@@ -22,6 +22,12 @@ module.exports = {
       .query("daycare")
       .model.find(query)
       .populate("children", [
+        "inscription_date",
+        "name",
+        "lastname",
+        "photo",
+        "status",
+        "gender",
         "group",
         "acuarelausers",
         "attitudes",

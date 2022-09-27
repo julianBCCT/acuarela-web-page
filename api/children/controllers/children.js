@@ -26,6 +26,14 @@ module.exports = {
         .model.find(query)
         .populate("checkins")
         .populate("checkouts")
+        .populate("childrenactivities", ["rate", "comments"])
+        .populate({
+          path: "childrenactivities",
+          populate: {
+            path: "activity",
+            select: ["name", "date", "classactivity"],
+          },
+        })
         .populate("acuarelausers", [
           "name",
           "lastname",

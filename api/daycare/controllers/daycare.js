@@ -12,6 +12,9 @@ const verification = require("../../../middlewares/authJwt");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
+    const { token } = ctx.request.header;
+
+    let validToken;
 
     let query = { active: true };
     query._id = { $eq: id };

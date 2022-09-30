@@ -27,21 +27,39 @@
       "type": "datetime"
     },
     "daycare": {
-      "via": "visits",
-      "model": "daycare"
-    },
-    "acuarelauser": {
-      "via": "visits",
-      "model": "acuarelauser"
+      "model": "daycare",
+      "via": "visits"
     },
     "visitors_name": {
       "type": "string"
     },
-    "visitors_id": {
-      "type": "integer"
-    },
     "visitors_phone": {
       "type": "integer"
+    },
+    "signature": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "photo": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "visitors_id": {
+      "type": "string"
     }
   }
 }

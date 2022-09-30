@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "discount_codes",
+  "info": {
+    "name": "Discount-code"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "percentaje_discount": {
+      "type": "biginteger",
+      "max": "100",
+      "min": "0"
+    },
+    "services": {
+      "via": "discount_code",
+      "collection": "service"
+    }
+  }
+}

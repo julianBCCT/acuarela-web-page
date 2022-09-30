@@ -38,33 +38,8 @@
       "model": "group",
       "via": "children"
     },
-    "attitudes": {
-      "collection": "attitude",
-      "via": "children",
-      "dominant": true
-    },
-    "likings": {
-      "collection": "liking",
-      "via": "children",
-      "dominant": true
-    },
-    "others": {
-      "collection": "other",
-      "via": "children",
-      "dominant": true
-    },
-    "for_workings": {
-      "collection": "for-working",
-      "via": "children",
-      "dominant": true
-    },
     "bags": {
       "collection": "bag",
-      "via": "children",
-      "dominant": true
-    },
-    "records": {
-      "collection": "records",
       "via": "children",
       "dominant": true
     },
@@ -72,20 +47,20 @@
       "type": "json"
     },
     "checkins": {
-      "collection": "checkin",
-      "via": "children"
+      "via": "children",
+      "collection": "checkin"
     },
     "checkouts": {
-      "collection": "checkout",
-      "via": "children"
+      "via": "children",
+      "collection": "checkout"
     },
     "indaycare": {
       "type": "boolean",
       "default": false
     },
     "movements": {
-      "collection": "movement",
-      "via": "child"
+      "via": "child",
+      "collection": "movement"
     },
     "childrenactivities": {
       "collection": "childrenactivity",
@@ -94,12 +69,9 @@
     "bag_obervations": {
       "type": "string"
     },
-    "notes": {
-      "type": "text"
-    },
     "daycare": {
-      "via": "children",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "children"
     },
     "birthday": {
       "type": "date"
@@ -163,8 +135,8 @@
       "component": "files.files"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "children"
+      "via": "children",
+      "collection": "acuarelauser"
     },
     "guardians": {
       "type": "component",
@@ -172,8 +144,8 @@
       "component": "guardians.guardians"
     },
     "inscripcion": {
-      "model": "inscripciones",
-      "via": "child"
+      "via": "child",
+      "model": "inscripciones"
     },
     "automatic_payment": {
       "type": "boolean",
@@ -184,8 +156,8 @@
       "default": "Activo"
     },
     "attendance_logs": {
-      "via": "children",
-      "collection": "attendance-logs"
+      "collection": "attendance-logs",
+      "via": "children"
     }
   }
 }

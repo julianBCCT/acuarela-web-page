@@ -28,7 +28,8 @@
       "type": "enumeration",
       "enum": [
         "Masculino",
-        "Femenino"
+        "Femenino",
+        "X"
       ]
     },
     "address": {
@@ -55,28 +56,6 @@
       "type": "component",
       "repeatable": true,
       "component": "guardians.guardians",
-      "required": false
-    },
-    "file_sleeping": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
-    "file_health": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
       "required": false
     },
     "status": {
@@ -142,13 +121,8 @@
       "type": "json"
     },
     "daycare": {
-      "via": "inscripciones",
-      "model": "daycare"
-    },
-    "files_extra": {
-      "type": "component",
-      "repeatable": true,
-      "component": "files.files"
+      "model": "daycare",
+      "via": "inscripciones"
     },
     "payment": {
       "type": "component",
@@ -162,8 +136,13 @@
       "type": "json"
     },
     "child": {
-      "via": "inscripcion",
-      "model": "children"
+      "model": "children",
+      "via": "inscripcion"
+    },
+    "parents_rel": {
+      "collection": "acuarelauser",
+      "via": "inscripciones",
+      "dominant": true
     }
   }
 }

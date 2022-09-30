@@ -15,19 +15,12 @@
       "type": "datetime"
     },
     "children": {
-      "via": "checkouts",
       "collection": "children",
-      "dominant": true
-    },
-    "asistente": {
-      "via": "childminderoutuser",
-      "collection": "acuarelauser",
+      "via": "checkouts",
       "dominant": true
     },
     "acudiente": {
-      "via": "guardianoutuser",
-      "collection": "acuarelauser",
-      "dominant": true
+      "model": "acuarelauser"
     }
   }
 }

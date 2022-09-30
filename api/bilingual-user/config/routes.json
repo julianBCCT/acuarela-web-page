@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bilingual-users",
+      "handler": "bilingual-user.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bilingual-users/count",
+      "handler": "bilingual-user.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bilingual-users/:id",
+      "handler": "bilingual-user.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bilingual-users",
+      "handler": "bilingual-user.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bilingual-users/:id",
+      "handler": "bilingual-user.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bilingual-users/:id",
+      "handler": "bilingual-user.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

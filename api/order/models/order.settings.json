@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "tokens",
+  "collectionName": "orders",
   "info": {
-    "name": "recover tokens",
-    "description": ""
+    "name": "Order"
   },
   "options": {
     "increments": true,
@@ -11,12 +10,11 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "token": {
+    "Status": {
       "type": "string"
     },
-    "acuarelauser": {
-      "via": "tokenpass",
-      "model": "acuarelauser"
+    "value": {
+      "type": "string"
     }
   }
 }

@@ -35,15 +35,12 @@
       "collection": "activities",
       "via": "groups"
     },
-    "maxmembers": {
-      "type": "integer"
-    },
     "rates": {
       "type": "json"
     },
     "daycare": {
-      "via": "groups",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "groups"
     }
   }
 }

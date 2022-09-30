@@ -37,32 +37,8 @@
       "plugin": "upload",
       "required": false
     },
-    "forms": {
-      "collection": "form",
-      "via": "daycare"
-    },
-    "templates": {
-      "collection": "template",
-      "via": "daycare"
-    },
-    "checklists": {
-      "collection": "checklist",
-      "via": "daycare"
-    },
-    "blogs": {
-      "collection": "blog",
-      "via": "daycare"
-    },
-    "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
-    },
     "acquiredcomplements": {
       "collection": "acquiredcomplement",
-      "via": "daycare"
-    },
-    "supporttickets": {
-      "collection": "supportticket",
       "via": "daycare"
     },
     "foundationdate": {
@@ -75,12 +51,6 @@
       "type": "email"
     },
     "hability": {
-      "type": "string"
-    },
-    "motto": {
-      "type": "string"
-    },
-    "socialmedia": {
       "type": "string"
     },
     "license": {
@@ -117,9 +87,6 @@
     "description": {
       "type": "text"
     },
-    "actual_capacity": {
-      "type": "integer"
-    },
     "phone": {
       "type": "string"
     },
@@ -135,28 +102,24 @@
       "type": "string"
     },
     "children": {
-      "collection": "children",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "children"
     },
     "groups": {
-      "collection": "group",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "group"
     },
     "visits": {
-      "collection": "visit",
-      "via": "daycare"
-    },
-    "cleanings": {
-      "collection": "cleaning",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "visit"
     },
     "movements": {
-      "collection": "movement",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "movement"
     },
     "inscripciones": {
-      "collection": "inscripciones",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "inscripciones"
     },
     "paypal": {
       "type": "component",
@@ -179,6 +142,10 @@
     },
     "license_capacity": {
       "type": "json"
+    },
+    "acuarelausers": {
+      "via": "daycare",
+      "collection": "acuarelauser"
     }
   }
 }

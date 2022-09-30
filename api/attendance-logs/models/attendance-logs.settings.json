@@ -24,8 +24,8 @@
       "type": "boolean"
     },
     "children": {
-      "model": "children",
-      "via": "attendance_logs"
+      "via": "attendance_logs",
+      "model": "children"
     }
   }
 }

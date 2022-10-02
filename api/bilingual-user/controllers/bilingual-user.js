@@ -28,7 +28,12 @@ module.exports = {
         entity = await strapi.services["bilingual-user"].findOne({ email });
         if (entity) {
             let result = await bcrypt.compare(password, entity.password);
-            return ctx.send(result);
+            if(result){
+                return ctx.send({ ok: true, status: 200, entity});
+            }else{
+                return ctx.send({ ok: false, status: 400, msg:"El correo o la contraseña no son correctas." });
+
+            }
         }else {
             return ctx.send({ ok: false, status: 400, msg:"No se encontro un usuario registrado con este correo." });
         }

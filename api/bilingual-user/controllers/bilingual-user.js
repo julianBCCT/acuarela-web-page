@@ -10,11 +10,11 @@ module.exports = {
     async create(ctx){
         let user = ctx.request.body;
         let entity;
-        entity = await strapi.services.bilingual_user.findOne({email: user.email});
+        entity = await strapi.services.bilingual_users.findOne({email: user.email});
         if (!entity || entity == []) {
             const hashedPassword = await bcrypt.hash(user.password, 10);
             user.password = hashedPassword;
-            entity = await strapi.services.bilingual_user.create(user);
+            entity = await strapi.services.bilingual_users.create(user);
             return ctx.send({ ok: true, status: 200, entity });
         }else {
             let msg = 'Ya existe un usuario registrado con este correo';
@@ -25,7 +25,7 @@ module.exports = {
     async login(ctx) {
         const { email, password } = ctx.request.body;
         let entity;
-        entity = await strapi.services.bilingual_user.findOne({ email });
+        entity = await strapi.services.bilingual_users.findOne({ email });
         if (entity) {
             let result = await bcrypt.compare(password, entity.password);
             return ctx.send(result);

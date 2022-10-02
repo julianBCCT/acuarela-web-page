@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    async create(){
+    async create(ctx){
         let user = ctx.request.body;
         let entity;
         entity = await strapi.services.bilingual_users.findOne({email: user.email});

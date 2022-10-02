@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/bilingual-users/login",
+      "handler": "bilingual-user.login",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/bilingual-users/:id",
       "handler": "bilingual-user.update",

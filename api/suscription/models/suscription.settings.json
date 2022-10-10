@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "suscriptions",
   "info": {
-    "name": "suscription"
+    "name": "suscription",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,6 +16,13 @@
     },
     "suscription_expiration": {
       "type": "date"
+    },
+    "bilingual_user": {
+      "model": "bilingual-user",
+      "via": "suscriptions"
+    },
+    "id_paypal": {
+      "type": "string"
     }
   }
 }

@@ -24,7 +24,7 @@ async function renew(token) {
 
     const entity = await strapi.services.acuarelauser.findOne({ _id: decoded.id });
     if (!entity) return {ok: false, status: 404, code: 3, msg: 'No user found.'};
-        
+
     let respuesta = await generate_token(entity);
     respuesta.msg = 'Valid Token.';
     return respuesta;
@@ -48,7 +48,7 @@ async function generate_token(entity) {
 
   if (err) return { ok: false, status: 400, code: 2, msg: 'The token could not be generated.', user: {} };
 
-  let user = { mail, id: entity._id, name: entity.name, phone, token, rols: entity.rols, organization: entity.daycare, wizard_steps:entity.wizard_steps };
+  let user = { mail, id: entity._id, name: entity.name, phone, token, rols: entity.rols, organization: entity.daycare, wizard_steps:entity.wizard_steps, bilingual_user: entity.bilingual_user };
 
   return { ok: true, status: 200, code: 0, msg: 'User Logged.', user };
 }
@@ -78,7 +78,7 @@ async function get_data(token) {
     else {query.phone = { $eq: phone };}
 
     const entity = await strapi.query('acuarelauser').model.findOne(query);
-    
+
     if (!entity) return {ok: false, status: 404, code: 3, msg: 'No user found.'};
 
     let id = entity.id;

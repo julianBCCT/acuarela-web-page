@@ -30,8 +30,12 @@
       "type": "string"
     },
     "suscriptions": {
-      "via": "bilingual_user",
-      "collection": "suscription"
+      "collection": "suscription",
+      "via": "bilingual_user"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "bilingual_user"
     }
   }
 }

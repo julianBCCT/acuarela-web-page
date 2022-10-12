@@ -18,11 +18,14 @@
       "type": "date"
     },
     "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "suscriptions"
+      "via": "suscriptions",
+      "model": "bilingual-user"
     },
     "id_paypal": {
       "type": "string"
+    },
+    "product": {
+      "model": "products"
     }
   }
 }

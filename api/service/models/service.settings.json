@@ -57,6 +57,9 @@
     },
     "paypal_id": {
       "type": "string"
+    },
+    "product": {
+      "model": "products"
     }
   }
 }

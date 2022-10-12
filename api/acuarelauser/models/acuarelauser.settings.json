@@ -142,6 +142,10 @@
     "inscripciones": {
       "via": "parents_rel",
       "collection": "inscripciones"
+    },
+    "bilingual_user": {
+      "via": "acuarelauser",
+      "model": "bilingual-user"
     }
   }
 }

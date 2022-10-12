@@ -25,7 +25,7 @@ module.exports = {
     async login(ctx) {
         const { email, password } = ctx.request.body;
         let entity;
-        entity = await strapi.services["bilingual-user"].findOne({ email });
+        entity = await strapi.services["bilingual-user"].findOne({ email }).populate('suscriptions', ['suscription_expiration', 'id_paypal', 'service']);;
         if (entity) {
             let result = await bcrypt.compare(password, entity.password);
             if(result){

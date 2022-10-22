@@ -4,14 +4,14 @@
       <section class="contact">
         <div class="contact__content">
           <div class="contact__texts">
-            <h1 class="contact__title">¡Obtén tu demo!</h1>
+            <h1 class="contact__title">¡Obtén tu invitación!</h1>
             <h3 class="contact__subtitle">
               Cuéntanos sobre ti y tu Daycare, uno de nuestros asesores se
-              comunicará contigo para presentarte Acuarela y activar tu free-demo.
+              comunicará contigo para presentarte Acuarela.
             </h3>
           </div>
           <div class="contact__success">
-            <h1 class="contact__title">¡Obtén tu demo!</h1>
+            <h1 class="contact__title">¡Obtén tu invitación!</h1>
             <h3 class="contact__subtitle">¡Listo! Recibimos tu mensaje</h3>
             <p class="contact__message">
               Muy pronto nos pondremos en contacto contigo para ayudarte a
@@ -106,7 +106,7 @@
           <h3 class="card__subtitle">Acuarela</h3>
           <ul class="card__address">
             <li>info@acuarela.app</li>
-            <li>+1 (561) 982 6122</li>
+            <li>+1 (347) 523-8504</li>
           </ul>
           <!-- <a class="card__email">bilingualchildcaretraining.com</a> -->
           <img class="card__img" src="img/contact-us.png" />

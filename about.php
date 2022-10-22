@@ -36,8 +36,8 @@
                     niños, los próximos responsables del planeta en que
                     vivimos.
                 </p>
-                <button class="btn btn--primary">
-                    <span class="btn__text"> Obtén un demo ahora </span>
+                <button class="btn btn--primary"   onclick="window.location.href='/invitaciones-new-york'">
+                    <span class="btn__text"> Obtén tu invitación ahora </span>
                 </button>
             </div>
         </section>

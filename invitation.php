@@ -126,16 +126,21 @@
             <div class="c-select">
                 <select name="condado" id="condado" onchange="filterProviders(<?=$_GET['id']?>, this.value, 0);activeCities(this.value)">
                   <option value="">Selecciona un condado</option>
-                  <option value="Western New York">Western New York</option>
-                  <option value="Finger Lakes">Finger Lakes</option>
-                  <option value="Southern Tier">Southern Tier</option>
-                  <option value="Central New York">Central New York</option>
-                  <option value="North Country">North Country</option>
+                  <option value="Bronx">Bronx</option>
+                  <option value="Brookling">Brookling</option>
                   <option value="Capital Region">Capital Region</option>
-                  <option value="Mohawk Valley">Mohawk Valley</option>
+                  <option value="Central New York">Central New York</option>
+                  <option value="Finger Lakes">Finger Lakes</option>
                   <option value="Hudson Valley">Hudson Valley</option>
-                  <option value="New York City">New York City</option>
                   <option value="Long Island">Long Island</option>
+                  <option value="Mohawk Valley">Mohawk Valley</option>
+                  <option value="New York City">New York City</option>
+                  <option value="North Country">North Country</option>
+                  <option value="Queens">Queens</option>
+                  <option value="Southern Tier">Southern Tier</option>
+                  <option value="State Island">State Island</option>
+                  <option value="West Chester">West Chester</option>
+                  <option value="Western New York">Western New York</option>
                 </select>
                 <div class="c-arrow"></div>
               </div>
@@ -146,8 +151,9 @@
           </span>
           <span>
             <label for="">Número telefónico</label>
-            <input type="text" id="phone" name="phone" placeholder="+00 300 5777777">
+            <input type="text" id="phone" name="phone" placeholder="+00 300 5777777" value="+1">
           </span>
+          <input type="hidden" name="ref" id="ref" value="<?=$_GET['ref']?>">
           <button class="btn btn-action-secondary" type="submit">Obtener invitación</button>
         </form>
       </div>

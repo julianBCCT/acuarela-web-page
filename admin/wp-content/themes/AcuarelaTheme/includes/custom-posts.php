@@ -1,8 +1,11 @@
 <?php
 
 function myPostTypes(){
+    create_post_types('Secciones Promo del home', 'Sección Promo del home', 'dashicons-megaphone', 'promo-home');
+    create_post_types('Planes y precios', 'Plan y precio', 'dashicons-money-alt', 'plan-precio');
+    create_post_types('Testimonios', 'Testimonio', 'dashicons-admin-comments', 'testimonio');
+    create_post_types('Preguntas Frecuentes', 'Pregunta Frecuente', 'dashicons-archive', 'preguntas-frecuentes');
     create_post_types('Leads invitación', 'Lead invitación', 'dashicons-buddicons-pm', 'leads-invitation');
-
 }
 
 function create_post_types($name, $singularName, $icon, $slug){

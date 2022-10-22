@@ -1,4 +1,22 @@
 <?php include 'includes/header.php'; ?>
+<div class="home-banner">
+    <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg" alt="unmuted" /></button>
+    <video
+
+    id="video1"
+      src="video/Acuarela_Promo_v2.mp4"
+      autobuffer
+      playsinline
+      preload="auto"
+      muted
+      loop
+      autoplay
+    >
+      <source
+        src="video/Acuarela_Promo_v2.mp4"
+      />
+    </video>
+</div>
 <main class="container">
   <!-- BANNER -->
   <section class="banner">
@@ -12,9 +30,9 @@
       </h2>
       <button
         class="btn btn--primary"
-        onclick="window.location.href='/free-demo'"
+        onclick="window.location.href='/invitaciones-new-york'"
       >
-        <span class="btn__text"> Obtén un demo ahora </span>
+        <span class="btn__text"> Obtén tu invitación ahora </span>
       </button>
     </div>
     <img class="banner__img" src="img/home_banner.jpg" />

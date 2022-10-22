@@ -37,7 +37,7 @@
               <h4>Acuarela</h4>
               <ul class="footer__address">
                 <li>info@acuarela.app</li>
-                <li>+1 (561) 982 6122</li>
+                <li>+1 (347) 523-8504</li>
               </ul>
               <a
                 class="footer__main-web"
@@ -54,7 +54,6 @@
               <a href="sobre-nosotros">Nosotros</a>
               <a href="planes-precios">Planes y Precios</a>
               <a href="preguntas-frecuentes">Preguntas Frecuentes</a>
-              <a href="free-demo">Contacto</a>
             </nav>
             <div class="footer__social social">
               <h4>Síguenos en redes sociales</h4>

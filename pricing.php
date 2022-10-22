@@ -13,33 +13,35 @@
   <!-- PRICING -->
 
   <section class="pricing">
-    <div class="pricing-plan">
-      <b class="pricing-plan__name">Suscripción Gratuita</b>
-      <h1 class="launch__price">GRATIS</h1>
-      <h1 class="pricing-plan__price"></h1>
-      <hr />
-      <ul class="pricing-plan__features">
-        <li>Demostración por 30 días</li>
-        <li>
-          Gestiona las inscripciones de hasta 16 niños, con sus respectivos
-          padres y acudientes
-        </li>
-        <li>Registra ingreso y salida de niños por medio de QR CODE.</li>
-        <li>Administra las finanzas de tu daycare desde tu iPad o tablet</li>
-        <li>Administra grupos y sus actividades.</li>
-        <li>Gestiona tus precios, horarios y asistentes.</li>
-        <li>
-          Ofrece a los padres la app móvil de tu guardería para estar en
-          constante comunicación.
-        </li>
-        <li>
-          Haz publicaciones del progreso de tus niños a sus padres y familiares.
-        </li>
-      </ul>
-      <a href="/free-demo" class="btn btn--primary btn--small">
-        <span class="btn__text">Activar demo GRATIS</span>
-      </a>
-    </div>
+    <?php if(!isset($_GET["free"])){ ?>
+      <div class="pricing-plan">
+        <b class="pricing-plan__name">Suscripción Gratuita</b>
+        <h1 class="launch__price">FREE TRIAL</h1>
+        <h1 class="pricing-plan__price"></h1>
+        <hr />
+        <ul class="pricing-plan__features">
+          <li>Disfruta del servicio completo por 14 días, luego podrás elegir entre una suscripción mensual o anual.</li>
+          <li>
+            Gestiona las inscripciones de hasta 16 niños, con sus respectivos
+            padres y acudientes
+          </li>
+          <li>Registra ingreso y salida de niños por medio de QR CODE.</li>
+          <li>Administra las finanzas de tu daycare desde tu iPad o tablet</li>
+          <li>Administra grupos y sus actividades.</li>
+          <li>Gestiona tus precios, horarios y asistentes.</li>
+          <li>
+            Ofrece a los padres la app móvil de tu guardería para estar en
+            constante comunicación.
+          </li>
+          <li>
+            Haz publicaciones del progreso de tus niños a sus padres y familiares.
+          </li>
+        </ul>
+        <a href="/invitaciones-new-york" class="btn btn--primary btn--small">
+          <span class="btn__text">Obtén tu invitación</span>
+        </a>
+      </div>
+    <?php } ?>
     <div class="pricing-plan">
       <b class="pricing-plan__name">Suscripción mensual</b>
       <h1 class="launch__price">$24.00/mes</h1>
@@ -67,8 +69,7 @@
         onclick="InitiateCheckout('monthly',21)"
       >
         <a
-          href="https://subscriptions.zoho.com/subscribe/0a93145293eae59c7a133c1c8577a54a1f563cd205dd5841ad482bf477cf719e/Acuarela01
-            "
+          href="https://bilingualchildcaretraining.com/checkout/?service=6352aad797a7c9104df3f2fd"
           target="_blank"
         >
           <span class="btn__text">Seleccionar</span>
@@ -102,9 +103,7 @@
         onclick="InitiateCheckout('yearly',227)"
       >
         <a
-          href="
-            https://subscriptions.zoho.com/subscribe/0a93145293eae59c7a133c1c8577a54a1f563cd205dd5841ad482bf477cf719e/Acuarela02            
-            "
+          href="https://bilingualchildcaretraining.com/checkout/?service=6352ab1a97a7c9104df3f300"
           target="_blank"
         >
           <span class="btn__text">Seleccionar</span>

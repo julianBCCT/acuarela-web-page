@@ -156,7 +156,7 @@ function doneBox() {
       condado: { required: true },
       email: { required: true, email: true },
       phone: {
-        digits: true,
+        required: true,
       },
     },
     messages: {
@@ -169,7 +169,7 @@ function doneBox() {
         email: "Correo no valido.",
       },
       phone: {
-        digits: "No es un número telefónico.",
+        required: "No es un número telefónico.",
       },
     },
     submitHandler: function (form) {
@@ -187,4 +187,15 @@ function doneBox() {
       }, 500);
     },
   });
+}
+
+function unMutedVideo() {
+  const video = document.querySelector(".home-banner #video1");
+  if (video.muted === true) {
+    document.querySelector("#unmutedBtn img").src = "img/volOn.svg";
+    video.muted = false;
+  } else if (video.muted === false) {
+    document.querySelector("#unmutedBtn img").src = "img/volOff.svg";
+    video.muted = true;
+  }
 }

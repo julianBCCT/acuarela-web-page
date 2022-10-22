@@ -181,26 +181,6 @@
                     </a>!-->
                 </div>
             </div>
-
-            <div
-                class="faq-item"
-                onclick="toggleAccordion('eight')"
-                data-toggle="eight"
-            >
-                <b class="faq-item__title"
-                    >¿Puedo obtener un free-demo antes de comprar mi suscripción?</b
-                >
-                <div class="faq-item__content content">
-                    <p>
-                        ¡Sí! Haz clic en el siguiente link y solicita una free-demostración 
-                        de 1 mes, sabemos que te encantará Acuarela.
-                    </p>
-                    <!--<a href="#" class="faq-item__message">
-                        <i class="icon-message"></i>
-                        <h5>Enviar mensaje</h5>
-                    </a>!-->
-                </div>
-            </div>
         </div>
         </section>
     </main>

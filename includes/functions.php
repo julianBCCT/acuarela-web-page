@@ -1,8 +1,12 @@
 <?php
-session_start();
 require_once 'src/Mandrill.php';
 class acuarela
 {
+	public $generalInfo = array();
+
+	function __construct() {
+	 }
+
 	function transformMergeVars($vars){
 		$mergeVars = array();
 		foreach ($vars as $key => $value) {
@@ -93,6 +97,44 @@ class acuarela
 		$this->send_notification('info@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'obtener-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 		$this->send_notification('info@acuarela.app','empleo@acuarela.app','Admin',$this->transformMergeVars($mergevariables),'Nuevo contacto desde página web','obtener-demo-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
+	function sendEndRegisterDaycare($name,$pass,$email,$subject = 'Registro finalizado'){
+		$mergeVars = [
+			'NOMBRE' => $name,
+			'PASS' => $pass
+		];
+		$a = $this->send_notification('info@acuarela.app',$email,'',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$b = $this->send_notification('info@acuarela.app','daniela@bilingualchildcaretraining.com','',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$c = $this->send_notification('info@acuarela.app','karen@bilingualchildcaretraining.com','',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		// $d = $this->send_notification('info@acuarela.app','dreinovcorp@gmail.com','',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$resp['a'] = $a;
+		$resp['b'] = $b;
+		$resp['c'] = $c;
+		$resp['d'] = $d;
+		return $resp;
+	}
+	function sendEndRegisterDaycareCheckout($name,$pass,$email,$subject = 'Registro finalizado'){
+		$mergeVars = [
+			'NOMBRE' => $name,
+			'PASS' => $pass,
+			'CHECKOUT' => 1
+		];
+		$a = $this->send_notification('info@acuarela.app',$email,'',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		// $c = $this->send_notification('info@acuarela.app','karen@bilingualchildcaretraining.com','',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		// $d = $this->send_notification('info@acuarela.app','dreinovcorp@gmail.com','',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-de-daycare','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$resp['a'] = $a;
+		// $resp['c'] = $c;
+		// $resp['d'] = $d;
+		return $resp;
+	}
+	function sendEndRegisterAsistente($name,$pass,$email,$subject = 'Registro finalizado'){
+		$mergeVars = [
+			'NOMBRE' => $name,
+			'PASS' => $pass
+		];
+		$a = $this->send_notification('info@acuarela.app',$email,'',$this->transformMergeVars($mergeVars),$subject,'registro-finalizado-asistentes','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$resp['a'] = $a;
+		return $resp;
+	}
 
 	function sendDemoActiveEmail($name,$mail,$pass,$subject = '¡Tu Demo está listo!'){
 		$mergeVars = [
@@ -101,6 +143,28 @@ class acuarela
 			'THEPASS' => $pass,
 		];
 		$this->send_notification('info@acuarela.app',$mail,$name,$this->transformMergeVars($mergeVars),$subject,'activaci-n-demo','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+	}
+	function sendCheckin($nameKid,$nameParent,$nameDaycare,$nameAcudiente,$time,$date,$mail,$subject = 'Check in'){
+		$mergeVars = [
+			'NOMBRENINO' => $nameKid,
+			'NOMBREPADRE' => $nameParent,
+			'NOMBREDAYCARE' => $nameDaycare,
+			'NOMBREACUDIENTE' => $nameAcudiente,
+			'HORA' => $time,
+			'FECHA' => $date
+		];
+		return $this->send_notification('info@acuarela.app',$mail,$nameParent,$this->transformMergeVars($mergeVars),$subject,'check-in','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+	}
+	function sendCheckout($nameKid,$nameParent,$nameDaycare,$nameAcudiente,$time,$date,$mail,$subject = 'Check out'){
+		$mergeVars = [
+			'NOMBRENINO' => $nameKid,
+			'NOMBREPADRE' => $nameParent,
+			'NOMBREDAYCARE' => $nameDaycare,
+			'NOMBREACUDIENTE' => $nameAcudiente,
+			'HORA' => $time,
+			'FECHA' => $date
+		];
+		return $this->send_notification('info@acuarela.app',$mail,$nameParent,$this->transformMergeVars($mergeVars),$subject,'check-out','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 	}
 	function sendInvitationAdmin($name,
 	$daycare,
@@ -116,10 +180,18 @@ class acuarela
 			'EMAIL' => $email,
 			'PHONE' => $phone
 		];
-		$this->send_notification('info@acuarela.app','stephy@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$resp = array();
+		$a = $this->send_notification('info@acuarela.app','info@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$b = $this->send_notification('info@acuarela.app','daniela@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$c = $this->send_notification('info@acuarela.app','karen@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$d = $this->send_notification('info@acuarela.app','dreinovcorp@gmail.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$resp['a'] = $a;
+		$resp['b'] = $b;
+		$resp['c'] = $c;
+		$resp['d'] = $d;
+		return $resp;
 	}
-	function setLeadInvitation($name,$daycare,$licencia,$condado,$email,$phone)
-    {
+	function setLeadInvitation($name,$daycare,$licencia,$condado,$email,$phone){
         $curl = curl_init();
         curl_setopt_array($curl, array(
           CURLOPT_URL => 'https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/acf/v2/leads-invitation',
@@ -178,6 +250,98 @@ class acuarela
         return $response2; 
 
     }
+	function query($url,$body=""){
+		$endpoint = $this->domain.$url;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $endpoint);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$output = curl_exec($ch);
+		$request = json_decode($output);
+		curl_close($ch);
+		return $request;
+	} 
+	function getInfoGeneral(){
+		if(isset($_SESSION['ginfo'])){
+			$gnrl = $_SESSION['ginfo'];
+		}else{
+			$result = $this->query("pages/14");
+			$gnrl = $result;
+			$_SESSION['ginfo'] = $gnrl;
+		}
+		return $gnrl;
+	}
+	function getHome(){}
+	function getHomeSections(){}
+	function getPrices(){}
+	function getAbout(){}
+	function getTestimonios(){}
+
+	function getParent($id){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://acuarelacore.com/api/acuarelausers/'. $id,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoib2VqYXJhbWlsbG9AZ21haWwuY29tIiwiaWQiOiI2MmNjMTRhMjljMWU0MGRiZmNjZTYzY2YiLCJuYW1lIjoiT3NjYXIgSmFyYW1pbGxvIiwicGhvbmUiOiI1NTU1NTU1IiwiaWF0IjoxNjU3OTIyNTI5LCJleHAiOjE2NTgxODE3Mjl9.BA7Dmtb7HrPHLm8kjYR_z7wsoobuPPLIEobo-n4KuMc'
+		),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		return json_decode($response);
+	}
+
+	function getMovement($id){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://acuarelacore.com/api/movements/'. $id,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoib2VqYXJhbWlsbG9AZ21haWwuY29tIiwiaWQiOiI2MmNjMTRhMjljMWU0MGRiZmNjZTYzY2YiLCJuYW1lIjoiT3NjYXIgSmFyYW1pbGxvIiwicGhvbmUiOiI1NTU1NTU1IiwiaWF0IjoxNjU3OTIyNTI5LCJleHAiOjE2NTgxODE3Mjl9.BA7Dmtb7HrPHLm8kjYR_z7wsoobuPPLIEobo-n4KuMc'
+		),
+		));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return json_decode($response);
+	}
+	function updateMovement($id){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://acuarelacore.com/api/movements/'. $id,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'PUT',
+		CURLOPT_POSTFIELDS =>'{
+			"type": 2
+		}',
+		CURLOPT_HTTPHEADER => array(
+			'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoib2VqYXJhbWlsbG9AZ21haWwuY29tIiwiaWQiOiI2MmNjMTRhMjljMWU0MGRiZmNjZTYzY2YiLCJuYW1lIjoiT3NjYXIgSmFyYW1pbGxvIiwicGhvbmUiOiI1NTU1NTU1IiwiaWF0IjoxNjU3OTIyNTI5LCJleHAiOjE2NTgxODE3Mjl9.BA7Dmtb7HrPHLm8kjYR_z7wsoobuPPLIEobo-n4KuMc',
+			'Content-Type: application/json'
+		),
+		));
+
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return $response;
+	}
+
 }
 
 

@@ -37,18 +37,18 @@ async function renew(token) {
 async function generate_token(entity) {
   let phone = '-1';
   if (entity.phone) phone = entity.phone;
-  let mail = '-1';
-  if (entity.mail) mail = entity.mail;
+  let email = '-1';
+  if (entity.email) email = entity.email;
 
   let err, token = await jwt.sign(
-    { mail, id: entity._id, name: entity.name, phone },
+    { email, id: entity._id, name: entity.name, phone },
     process.env.SECRET, {
       expiresIn: '3d', // tres dias
     });
 
   if (err) return { ok: false, status: 400, code: 2, msg: 'The token could not be generated.', user: {} };
 
-  let user = { mail, id: entity._id, name: entity.name, phone, token, rols: entity.rols, organization: entity.daycare, wizard_steps:entity.wizard_steps, bilingual_user: entity.bilingual_user };
+  let user = { email, id: entity.acuarelauser.id, name: entity.name, phone, token, rols: entity.acuarelauser.rols, organization: entity.acuarelauser.daycare, wizard_steps:entity.acuarelauser.wizard_steps, bilingual_user: entity.id };
 
   return { ok: true, status: 200, code: 0, msg: 'User Logged.', user };
 }
@@ -71,7 +71,7 @@ async function get_data(token) {
   if (!token) return {ok: false, status: 403, code: 3, msg: 'No token provided.'};
 
   try {
-    const {mail, phone} = await jwt.verify(token, process.env.SECRET);
+    const {email, phone} = await jwt.verify(token, process.env.SECRET);
     let query = {};
 
     if (mail != '-1' && mail) {query.mail = { $eq: mail };}

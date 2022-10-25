@@ -1,5 +1,6 @@
 'use strict';
 const bcrypt = require('bcryptjs');
+const verification = require('../../../middlewares/authJwt');
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller

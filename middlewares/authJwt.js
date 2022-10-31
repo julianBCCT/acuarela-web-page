@@ -22,7 +22,7 @@ async function renew(token) {
   try {
     const decoded = await jwt.verify(token, process.env.SECRET);
 
-    const entity = await strapi.services.acuarelauser.findOne({ _id: decoded.id });
+    const entity = await strapi.services["bilingual-user"].findOne({ _id: decoded.id });
     if (!entity) return {ok: false, status: 404, code: 3, msg: 'No user found.'};
 
     let respuesta = await generate_token(entity);
@@ -77,7 +77,7 @@ async function get_data(token) {
     if (mail != '-1' && mail) {query.mail = { $eq: mail };}
     else {query.phone = { $eq: phone };}
 
-    const entity = await strapi.query('acuarelauser').model.findOne(query);
+    const entity = await strapi.query('bilingual-user').model.findOne(query);
 
     if (!entity) return {ok: false, status: 404, code: 3, msg: 'No user found.'};
 

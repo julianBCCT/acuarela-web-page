@@ -8,26 +8,27 @@ const { sanitizeEntity } = require("strapi-utils");
  */
 
 module.exports = {
-  async find(ctx) {
-    let entities = await strapi
-      .query("post")
-      .model.find()
-      .sort({ published_at: -1 })
-      .populate("acuarelauser", ["name", "id", "photo", "daycare"])
-      .populate({
-        path: "comments",
-        populate: {
-          path: "acuarelauser",
-          select: ["name", "lastname", "mail", "phone", "photo", "_id"],
-        },
-      })
-      .populate("reactions")
-      .populate("classactivity");
+  // async find(ctx) {
+  //   const { token } = ctx.request.header;
+  //   let entities = await strapi
+  //     .query("post")
+  //     .model.find()
+  //     .sort({ published_at: -1 })
+  //     .populate("acuarelauser", ["name", "id", "photo", "daycare"])
+  //     .populate({
+  //       path: "comments",
+  //       populate: {
+  //         path: "acuarelauser",
+  //         select: ["name", "lastname", "mail", "phone", "photo", "_id"],
+  //       },
+  //     })
+  //     .populate("reactions")
+  //     .populate("classactivity");
 
-    return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models.post })
-    );
-  },
+  //   return entities.map((entity) =>
+  //     sanitizeEntity(entity, { model: strapi.models.post })
+  //   );
+  // },
 
   // Crea un nuevo post.
   async create(ctx) {

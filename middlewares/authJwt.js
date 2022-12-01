@@ -67,14 +67,14 @@ async function generate_token(entity) {
 
   let user = {
     email,
-    id: entity.acuarelauser.id,
+    id: entity.id,
     name: entity.name,
     phone,
     token,
-    rols: entity.acuarelauser.rols,
-    organization: entity.acuarelauser.daycare,
-    wizard_steps: entity.acuarelauser.wizard_steps,
-    bilingual_user: entity.id,
+    rols: entity.rols,
+    organization: entity.daycare,
+    wizard_steps: entity.wizard_steps,
+    bilingual_user: entity.bilingual_user.id,
   };
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };

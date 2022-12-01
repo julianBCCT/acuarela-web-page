@@ -25,7 +25,7 @@ async function renew(token) {
   try {
     const decoded = await jwt.verify(token, process.env.SECRET);
 
-    const entity = await strapi.services.acuarelauser.findOne({
+    const entity = await strapi.services["bilingual-user"].findOne({
       _id: decoded.id,
     });
     if (!entity)
@@ -43,12 +43,12 @@ async function renew(token) {
 async function generate_token(entity) {
   let phone = "-1";
   if (entity.phone) phone = entity.phone;
-  let mail = "-1";
-  if (entity.mail) mail = entity.mail;
+  let email = "-1";
+  if (entity.email) email = entity.email;
 
   let err,
     token = await jwt.sign(
-      { mail, id: entity._id, name: entity.name, phone },
+      { email, id: entity._id, name: entity.name, phone },
       process.env.SECRET,
       {
         expiresIn: "3d", // tres dias
@@ -64,16 +64,17 @@ async function generate_token(entity) {
       user: {},
     };
   console.log(entity);
+
   let user = {
-    mail,
-    id: entity._id,
+    email,
+    id: entity.acuarelauser.id,
     name: entity.name,
     phone,
     token,
-    rols: entity.rols,
-    organization: entity.daycare,
-    wizard_steps: entity.wizard_steps,
-    bilingual_user: entity.bilingual_user,
+    rols: entity.acuarelauser.rols,
+    organization: entity.acuarelauser.daycare,
+    wizard_steps: entity.acuarelauser.wizard_steps,
+    bilingual_user: entity.id,
   };
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };
@@ -104,7 +105,7 @@ async function get_data(token) {
     return { ok: false, status: 403, code: 3, msg: "No token provided." };
 
   try {
-    const { mail, phone } = await jwt.verify(token, process.env.SECRET);
+    const { email, phone } = await jwt.verify(token, process.env.SECRET);
     let query = {};
 
     if (mail != "-1" && mail) {
@@ -113,7 +114,7 @@ async function get_data(token) {
       query.phone = { $eq: phone };
     }
 
-    const entity = await strapi.query("acuarelauser").model.findOne(query);
+    const entity = await strapi.query("bilingual-user").model.findOne(query);
 
     if (!entity)
       return { ok: false, status: 404, code: 3, msg: "No user found." };

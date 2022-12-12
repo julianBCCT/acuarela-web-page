@@ -25,7 +25,7 @@ async function renew(token) {
   try {
     const decoded = await jwt.verify(token, process.env.SECRET);
 
-    const entity = await strapi.services.acuarelauser.findOne({
+    const entity = await strapi.services["bilingual-user"].findOne({
       _id: decoded.id,
     });
     if (!entity)

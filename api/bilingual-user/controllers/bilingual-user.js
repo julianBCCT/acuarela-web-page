@@ -1,4 +1,5 @@
 "use strict";
+const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 const bcrypt = require("bcryptjs");
 const verification = require("../../../middlewares/authJwt");
 /**

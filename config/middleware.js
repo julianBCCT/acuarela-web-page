@@ -5,7 +5,17 @@ module.exports = {
   //...
   settings: {
     cors: {
-      origin: "*"
+      origin: [
+        "http://localhost:3000",
+        "http://localhost:1337",
+        "http://198.211.114.51",
+        "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
+        "https://acuarelacore.com",
+        "https://acuarela.app",
+        "http://acuarela.app",
+        "acuarela.app",
+        "com.acuarela.daycares-app",
+      ],
     },
     parser: {
       enabled: true,

@@ -5,16 +5,7 @@ module.exports = {
   //...
   settings: {
     cors: {
-      origin: [
-        "http://localhost:3000",
-        "http://localhost:1337",
-        "http://198.211.114.51",
-        "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
-        "https://acuarelacore.com",
-        "https://acuarela.app",
-        "http://acuarela.app",
-        "acuarela.app",
-      ],
+      origin: "*"
     },
     parser: {
       enabled: true,
@@ -25,5 +16,7 @@ module.exports = {
         maxFileSize: 2000 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
       },
     },
+
   },
+
 };

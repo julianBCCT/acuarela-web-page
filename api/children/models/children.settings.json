@@ -70,8 +70,8 @@
       "type": "string"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "children"
+      "via": "children",
+      "model": "daycare"
     },
     "birthday": {
       "type": "date"

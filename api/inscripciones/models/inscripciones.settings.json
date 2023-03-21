@@ -121,8 +121,8 @@
       "type": "json"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "inscripciones"
+      "via": "inscripciones",
+      "model": "daycare"
     },
     "payment": {
       "type": "component",

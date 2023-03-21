@@ -39,8 +39,8 @@
       "type": "json"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "groups"
+      "via": "groups",
+      "model": "daycare"
     }
   }
 }

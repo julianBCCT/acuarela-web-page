@@ -27,8 +27,8 @@
       "type": "datetime"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "visits"
+      "via": "visits",
+      "model": "daycare"
     },
     "visitors_name": {
       "type": "string"

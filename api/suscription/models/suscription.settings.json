@@ -17,15 +17,19 @@
     "suscription_expiration": {
       "type": "date"
     },
-    "bilingual_user": {
-      "via": "suscriptions",
-      "model": "bilingual-user"
-    },
     "id_paypal": {
       "type": "string"
     },
     "product": {
       "model": "products"
+    },
+    "bilingual_user": {
+      "model": "bilingual-user",
+      "via": "suscriptions"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "suscription"
     }
   }
 }

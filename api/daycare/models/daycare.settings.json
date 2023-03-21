@@ -102,24 +102,24 @@
       "type": "string"
     },
     "children": {
-      "via": "daycare",
-      "collection": "children"
+      "collection": "children",
+      "via": "daycare"
     },
     "groups": {
-      "via": "daycare",
-      "collection": "group"
+      "collection": "group",
+      "via": "daycare"
     },
     "visits": {
-      "via": "daycare",
-      "collection": "visit"
+      "collection": "visit",
+      "via": "daycare"
     },
     "movements": {
-      "via": "daycare",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "daycare"
     },
     "inscripciones": {
-      "via": "daycare",
-      "collection": "inscripciones"
+      "collection": "inscripciones",
+      "via": "daycare"
     },
     "paypal": {
       "type": "component",
@@ -144,8 +144,22 @@
       "type": "json"
     },
     "acuarelausers": {
+      "collection": "acuarelauser",
+      "via": "daycare"
+    },
+    "services": {
+      "type": "richtext"
+    },
+    "filosofia": {
+      "type": "richtext"
+    },
+    "bilingual_user": {
       "via": "daycare",
-      "collection": "acuarelauser"
+      "model": "bilingual-user"
+    },
+    "suscription": {
+      "via": "daycare",
+      "model": "suscription"
     }
   }
 }

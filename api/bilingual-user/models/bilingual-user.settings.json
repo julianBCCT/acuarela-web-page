@@ -30,11 +30,19 @@
       "type": "string"
     },
     "suscriptions": {
-      "collection": "suscription",
-      "via": "bilingual_user"
+      "via": "bilingual_user",
+      "collection": "suscription"
     },
     "acuarelauser": {
       "model": "acuarelauser",
+      "via": "bilingual_user"
+    },
+    "free": {
+      "type": "boolean",
+      "default": true
+    },
+    "daycare": {
+      "model": "daycare",
       "via": "bilingual_user"
     }
   }

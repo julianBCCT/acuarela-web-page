@@ -14,8 +14,9 @@ module.exports = {
         "https://acuarela.app",
         "http://acuarela.app",
         "acuarela.app",
-        "com.acuarela.daycares-app",
+        "https://acuarelacore.com/api/movements/62d1d62c2db88187dac74153",
       ],
+      credentials: true,
     },
     parser: {
       enabled: true,
@@ -26,7 +27,6 @@ module.exports = {
         maxFileSize: 2000 * 1024 * 1024, // multipart data, modify here limit of uploaded file size
       },
     },
-
   },
 
 };

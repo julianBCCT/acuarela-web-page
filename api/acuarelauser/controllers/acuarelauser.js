@@ -1,11 +1,11 @@
-'use strict';
-const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
-const cors = require('cors');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const verification = require('../../../middlewares/authJwt');
-const email = require('../../../helpers/email_provider');
-const sms = require('../../../helpers/sms_provider');
+"use strict";
+const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
+const cors = require("cors");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const verification = require("../../../middlewares/authJwt");
+const email = require("../../../helpers/email_provider");
+const sms = require("../../../helpers/sms_provider");
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -18,7 +18,7 @@ module.exports = {
     let entity;
 
     // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
-    if (mail != '-1')
+    if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
@@ -28,15 +28,15 @@ module.exports = {
       let result = await bcrypt.compare(pass, entity.password);
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
-        let msg = 'Invalid Password';
-        let code = 'p-1';
-        if (mail != '-1') (msg = 'Invalid Email.'), (code = 'e-1');
+        let msg = "Invalid Password";
+        let code = "p-1";
+        if (mail != "-1") (msg = "Invalid Email."), (code = "e-1");
         return ctx.send({ ok: false, status: 400, code, msg });
       }
     } else {
-      let msg = 'Invalid Number.';
-      let code = 'p-1';
-      if (mail != '-1') (msg = 'Invalid Email.'), (code = 'e-1');
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") (msg = "Invalid Email."), (code = "e-1");
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
@@ -50,7 +50,7 @@ module.exports = {
     if (respuesta.ok) {
       // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
       let entity;
-      if (user.mail != '-1')
+      if (user.mail != "-1")
         entity = await strapi.services.acuarelauser.findOne({
           mail: user.mail,
         });
@@ -64,7 +64,7 @@ module.exports = {
         // Si no hay un rol asignado por defecto se le asigna el rol de bilingual.
         let rols;
         if (user.roles) rols = user.roles;
-        else rols = ['5ff790215d6f2e272cfd7396'];
+        else rols = ["5ff790215d6f2e272cfd7396"];
 
         // Se encarga de asignar la organización a la que está afiliado el usuario, sino se envia ninguna, se asigna a bilingual.
         let daycare;
@@ -72,20 +72,20 @@ module.exports = {
           let query = {};
           query._id = { $eq: user.organization };
 
-          let foundDaycare = await strapi.query('daycare').model.findOne(query);
+          let foundDaycare = await strapi.query("daycare").model.findOne(query);
 
           if (!foundDaycare)
             return ctx.send({
               ok: false,
               status: 404,
               code: 5,
-              msg: 'Daycare not found.',
+              msg: "Daycare not found.",
             });
 
           daycare = foundDaycare._id;
         } else {
           let foundDaycare = await strapi.services.daycare.findOne({
-            name: 'Bilingual',
+            name: "Bilingual",
           });
           daycare = foundDaycare._id;
         }
@@ -97,8 +97,8 @@ module.exports = {
         delete user.relation;
         delete user.token;
         user.status = false;
-        if (user.mail == '-1') delete user.mail;
-        else if (!user.phone || user.phone == '-1') delete user.phone;
+        if (user.mail == "-1") delete user.mail;
+        else if (!user.phone || user.phone == "-1") delete user.phone;
 
         // Hace la creación del usuario
         entity = await strapi.services.acuarelauser.create(user);
@@ -109,32 +109,32 @@ module.exports = {
           phone: user.phone,
         });
         let linkmail =
-          'https://acuarelacore.com/auth/register/' + redirect_token.token; // URL a la que el usuario debera ingresar para completar su registro.
+          "https://acuarelacore.com/auth/register/" + redirect_token.token; // URL a la que el usuario debera ingresar para completar su registro.
         let linkphone =
-          'https://acuarelacore.com/auth/register-phone/' +
+          "https://acuarelacore.com/auth/register-phone/" +
           redirect_token.token;
         let resultado;
 
         // Envia un mensaje de texto o un correo electronico según lo que el usuario haya seleccionado para crear la cuenta.
-        if (entity.mail == '-1' || !entity.mail)
+        if (entity.mail == "-1" || !entity.mail)
           resultado = await sms.send_sms(linkphone, user.phone);
         //message, to, sender_id, callback_url
         else
           resultado = await email.send_email(
             entity.mail,
-            'kelvin@bilingualchildcaretraining.com',
-            'kelvin@bilingualchildcaretraining.com',
+            "kelvin@bilingualchildcaretraining.com",
+            "kelvin@bilingualchildcaretraining.com",
             linkmail,
-            'Acuarela Invitation'
+            "Acuarela Invitation"
           );
 
         resultado.senduri = redirect_token.token;
         return ctx.send(resultado);
       } else {
-        let msg = 'User with this number already exits.';
-        let code = 'p-2';
-        if (user.mail != '-1')
-          (msg = 'User with this email already exits.'), (code = 'e-2');
+        let msg = "User with this number already exits.";
+        let code = "p-2";
+        if (user.mail != "-1")
+          (msg = "User with this email already exits."), (code = "e-2");
         return ctx.send({ ok: false, status: 400, code, msg });
       }
     } else {
@@ -148,24 +148,24 @@ module.exports = {
     const { ok, status, code, user } = await verification.get_data(token);
 
     if (!ok || (mail != user.mail && phone != user.phone)) {
-      return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+      return ctx.send({ ok, status, code, msg: "Invalid Invitation" });
     } else {
       const hashedPassword = await bcrypt.hash(pass, 10);
       let query = {};
       query._id = { $eq: user.id };
-      let entity = await strapi.query('acuarelauser').model.findOne(query);
+      let entity = await strapi.query("acuarelauser").model.findOne(query);
       if (!entity || entity == [])
-        return ctx.send({ ok, status, code, msg: 'Invalid Invitation' });
+        return ctx.send({ ok, status, code, msg: "Invalid Invitation" });
 
       entity.password = hashedPassword;
       entity.status = true;
       // El registro del usuario es marcado como activo y se agrega la contraseña y el nombre.
       entity = await strapi
-        .query('acuarelauser')
+        .query("acuarelauser")
         .update({ _id: entity._id }, entity);
       let respuesta = await verification.generate_token(entity);
       if (respuesta.ok)
-        (respuesta.status = 201), (respuesta.msg = 'User Created.');
+        (respuesta.status = 201), (respuesta.msg = "User Created.");
 
       return ctx.send(respuesta);
     }
@@ -174,7 +174,7 @@ module.exports = {
   async recover_pass(ctx) {
     const { mail, phone } = ctx.request.body;
     let entity;
-    if (mail != '-1')
+    if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
@@ -182,17 +182,17 @@ module.exports = {
       // genera un código de cuatro digitos.
       let code = await Math.round(Math.random() * (9999 - 1000) + 1000);
       // Se le agrega al codigo internamente una 'c' para cumplir con el formato de bcrypt.
-      let hashedcode = await bcrypt.hash('c' + code, 10);
+      let hashedcode = await bcrypt.hash("c" + code, 10);
       let code_token = await verification.new_token({ hashedcode });
       let resultado;
-      if (mail == '-1') resultado = await sms.send_sms(code, phone);
+      if (mail == "-1") resultado = await sms.send_sms(code, phone);
       else
         resultado = await email.send_email(
-          'kelvin@bilingualchildcaretraining.com',
+          "kelvin@bilingualchildcaretraining.com",
           mail,
-          'kelvin@bilingualchildcaretraining.com',
+          "kelvin@bilingualchildcaretraining.com",
           code,
-          'Verification Code'
+          "Verification Code"
         );
       // Si el código se envio exitosamente al usuario, se envia al front el código cifrado en el token.
       if (resultado.ok) resultado.code_token = code_token;
@@ -202,9 +202,9 @@ module.exports = {
 
       return ctx.send(resultado);
     } else {
-      let msg = 'Invalid Number.';
-      let code = 'p-1';
-      if (mail != '-1') (msg = 'Invalid Email.'), (code = 'e-1');
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") (msg = "Invalid Email."), (code = "e-1");
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
@@ -219,9 +219,18 @@ module.exports = {
     const hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
     if (userFound) {
-      strapi.services.acuarelauser.update({ id: userFound.id }, user);
+      let userAcuarela = strapi.services.acuarelauser.update(
+        { id: userFound.id },
+        user
+      );
+      let entity = await strapi.services["bilingual-user"].update(
+        { id: userFound.bilingual_user },
+        ctx.request.body
+      );
       let respuesta = {
-        msg: 'User password change.',
+        msg: "User password change.",
+        entity: entity,
+        userAcuarela: userAcuarela,
       };
       const tokenDelete = await strapi.services.tokens.delete({ token });
       if (tokenDelete) {
@@ -229,7 +238,7 @@ module.exports = {
       }
     } else {
       let respuesta = {
-        msg: 'User not found.',
+        msg: "User not found.",
       };
       return ctx.send(respuesta, 400);
     }
@@ -237,7 +246,7 @@ module.exports = {
   async change_pass(ctx) {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
-    if (mail != '-1')
+    if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
 
@@ -253,12 +262,12 @@ module.exports = {
         ok: true,
         status: 200,
         code: 0,
-        msg: 'Password changed successfully.',
+        msg: "Password changed successfully.",
       });
     } else {
-      let msg = 'Invalid Number.';
-      let code = 'p-1';
-      if (mail != '-1') (msg = 'Invalid Email.'), (code = 'e-1');
+      let msg = "Invalid Number.";
+      let code = "p-1";
+      if (mail != "-1") (msg = "Invalid Email."), (code = "e-1");
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
@@ -276,7 +285,7 @@ module.exports = {
     let entity = await strapi.services.acuarelauser.create(user);
     let respuesta = {
       status: 200,
-      msg: 'User Created.',
+      msg: "User Created.",
       entity,
     };
     return ctx.send(respuesta);
@@ -299,19 +308,19 @@ module.exports = {
       query._id = { $eq: id };
 
       let entity = await strapi
-        .query('acuarelauser')
+        .query("acuarelauser")
         .model.find(query)
-        .populate('group', ['name', 'shift']);
+        .populate("group", ["name", "shift"]);
 
       if (!entity)
         return ctx.send({
           ok: false,
           status: 404,
           code: 5,
-          msg: 'User not found.',
+          msg: "User not found.",
         });
       else {
-        validToken.msg = 'Query completed successfully!';
+        validToken.msg = "Query completed successfully!";
         validToken.response = entity;
         return ctx.send(validToken);
       }
@@ -319,12 +328,17 @@ module.exports = {
   },
   async update(ctx) {
     const { id } = ctx.params;
-    if(ctx.request.body.pass || ctx.request.body.password){
+    if (ctx.request.body.pass || ctx.request.body.password) {
       ctx.request.body.pass = await bcrypt.hash(ctx.request.body.pass, 10);
-      ctx.request.body.password = await bcrypt.hash(ctx.request.body.password, 10);
+      ctx.request.body.password = await bcrypt.hash(
+        ctx.request.body.password,
+        10
+      );
     }
-    let entity = await strapi.services.acuarelauser.update({ id }, ctx.request.body);
+    let entity = await strapi.services.acuarelauser.update(
+      { id },
+      ctx.request.body
+    );
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
-   
 };

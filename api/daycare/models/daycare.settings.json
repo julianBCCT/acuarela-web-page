@@ -154,12 +154,12 @@
       "type": "richtext"
     },
     "bilingual_user": {
-      "via": "daycare",
-      "model": "bilingual-user"
+      "model": "bilingual-user",
+      "via": "daycare"
     },
-    "suscription": {
-      "via": "daycare",
-      "model": "suscription"
+    "suscriptions": {
+      "collection": "suscription",
+      "via": "daycare"
     }
   }
 }

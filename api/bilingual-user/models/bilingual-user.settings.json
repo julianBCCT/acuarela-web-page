@@ -42,8 +42,8 @@
       "default": true
     },
     "daycare": {
-      "model": "daycare",
-      "via": "bilingual_user"
+      "via": "bilingual_user",
+      "model": "daycare"
     }
   }
 }

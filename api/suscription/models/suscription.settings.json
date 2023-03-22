@@ -28,8 +28,8 @@
       "via": "suscriptions"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "suscription"
+      "via": "suscriptions",
+      "model": "daycare"
     }
   }
 }

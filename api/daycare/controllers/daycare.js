@@ -21,10 +21,18 @@ module.exports = {
       query._id = { $eq: id };
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-      let entity = await strapi.query("daycare").model.find(query).populate({
-        path: "suscriptions",
-        select: "suscription_expiration product service",
-      });
+      let entity = await strapi
+        .query("daycare")
+        .model.find(query)
+        .populate({
+          path: "suscriptions",
+          select: "suscription_expiration product service",
+          populate: [
+            { path: "product", select: "name" },
+            { path: "service", select: "name price logo" },
+          ],
+        });
+
       if (!entity)
         return ctx.send({
           ok: false,

@@ -1,7 +1,7 @@
 module.exports = async (ctx, next) => {
   // Permite verificar que el usuario que realiza la consulta este loggeado
-  const verification = require('../../middlewares/authJwt');
-  
+  const verification = require("../../middlewares/authJwt");
+
   let { token } = ctx.request.header;
   let validToken = await verification.renew(token);
 

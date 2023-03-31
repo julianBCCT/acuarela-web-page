@@ -41,6 +41,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/bilingual-users/loginMultipleDaycares",
+      "handler": "bilingual-user.loginMultipleDaycares",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/bilingual-users/:id",
       "handler": "bilingual-user.update",

@@ -163,7 +163,7 @@ function doneBox() {
       name: { required: "Nombre obligatorio." },
       daycare: { required: "Daycare obligatorio." },
       licencia: { required: "Licencia obligatoria." },
-      condado: { required: "Condado obligatorio." },
+      condado: { required: "Estado obligatorio." },
       email: {
         required: "Correo obligatorio.",
         email: "Correo no valido.",

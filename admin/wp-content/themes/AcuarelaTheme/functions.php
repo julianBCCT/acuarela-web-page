@@ -45,7 +45,47 @@ add_action('after_setup_theme', 'gymsonline_theme_support');
 include get_template_directory() . '/includes/cleanup.php';
 include get_template_directory() . '/includes/enqueue.php';
 include get_template_directory() . '/includes/custom-posts.php';
-if (isset($_GET['field']) || isset($_GET['oby'])) {
+
+function afcFilt($type)
+{
+    add_filter('rest_' . $type . '_query', function ($args) {
+        if (isset($_GET['value'])) {
+
+            $fields = explode(",", $_GET['field']);
+            $vals = explode(",", $_GET['value']);
+            $completeQuery = array();
+            if (count($fields) > 0) {
+                for ($i = 0; $i < count($fields); $i++) {
+                    $thear = array(
+                        'key'   => $fields[$i],
+                        'value' => esc_sql($vals[$i]),
+                    );
+                    array_push($completeQuery, $thear);
+                }
+                
+                $args['meta_query'] = $completeQuery; // Agrega la cláusula meta_query aquí
+            }
+        }
+        
+        if(isset($_GET['pp'])) {
+            $args['posts_per_page'] = $_GET['pp'];
+        }
+        
+        if (isset($_GET['orderby'])) {
+            $args['orderby'] = $_GET['orderby'];
+        }
+
+        if (isset($_GET['order'])) {
+            $args['order'] = $_GET['order'];
+        }
+
+        
+        return $args;
+    });
+}
+
+
+if (isset($_GET['field']) || isset($_GET['oby']) || isset($_GET['pp']) ) {
     afcFilt("faq");
     afcFilt("matchs");
     afcFilt("games");
@@ -59,44 +99,9 @@ if (isset($_GET['field']) || isset($_GET['oby'])) {
     afcFilt("inscripciones");
     afcFilt("custom_money_request");
     afcFilt("custom_account_type");
+    afcFilt("daycare-web");
 }
-function afcFilt($type)
-{
-    add_filter('rest_' . $type . '_query', function ($args) {
-        if (isset($_GET['val'])) {
 
-            $fields = explode(",", $_GET['field']);
-            $vals = explode(",", $_GET['val']);
-            $completeQuery = array();
-            if (count($fields) > 0) {
-                for ($i = 0; $i < count($fields); $i++) {
-                    $thear = array(
-                        'key'   => $fields[$i],
-                        'value' => esc_sql($vals[$i]),
-                    );
-                    array_push($completeQuery, $thear);
-                }
-            }
-
-            $args['meta_query'] = array(
-                $completeQuery
-            );
-        }
-        $perpage = 0;
-        if(isset($_GET['pp']))
-        {
-            $perpage = $_GET['pp'];
-        }
-        $args['posts_per_page'] = $perpage;
-        
-        if (isset($_GET['oby'])) {
-            $args['orderby'] = 'meta_value';
-            $args['meta_key'] = $_GET['oby'];
-            $args['order'] = $_GET['ord'];
-        }
-        return $args;
-    });
-}
 
 
 
@@ -193,3 +198,54 @@ function fix_svg()
 add_action('admin_head', 'fix_svg');
 
 add_filter('use_block_editor_for_post_type', '__return_false');
+
+function setSubdomain($name, $id) {
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://api.cloudflare.com/client/v4/zones/b3fec63ce17bb7ca134241ca35ff557e/dns_records',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS =>'{
+    "comment": "ID_wordpress:'.$post_id.', DATE: '.date('d-M-Y').'",
+    "content": "minisites.acuarela.app",
+    "name": "'.get_field('nombre_para_url_del_sitio_web', $post_id).'",
+    "type":"CNAME",
+    "priority": 10,
+    "proxied": true,
+    "ttl": 3600
+    }',
+    CURLOPT_HTTPHEADER => array(
+        'Authorization: Bearer RNZwtRuCwROavH4eDhU-UQY6RamE3O87DcQQYQSH',
+        'Content-Type: application/json',
+        'Cookie: __cflb=0H28vgHxwvgAQtjUGUFqYFDiSDreGJnUjdtdtrra8WZ; __cfruid=3ad3d92d24091de2058a9b58bec8a943f80040ce-1671823710'
+    ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+}
+
+function wpse_save_post( $post_id ) {
+    global $post;
+    if ($post->post_type != 'daycare-web'){
+        return;
+    }
+    if ( wp_is_post_revision( $post_id ) )
+        return;
+
+            $post_title = get_the_title( $post_id );
+            $post_url = get_permalink( $post_id );
+            $subject = 'A post has been updated';
+            $message = "A post has been updated on your website:\n\n";
+            $message .= $post_title . ": " . $post_url;
+            setSubdomain($name, $post_id);
+}
+
+add_action( 'save_post', 'wpse_save_post' );

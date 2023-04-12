@@ -6,6 +6,7 @@ function myPostTypes(){
     create_post_types('Testimonios', 'Testimonio', 'dashicons-admin-comments', 'testimonio');
     create_post_types('Preguntas Frecuentes', 'Pregunta Frecuente', 'dashicons-archive', 'preguntas-frecuentes');
     create_post_types('Leads invitación', 'Lead invitación', 'dashicons-buddicons-pm', 'leads-invitation');
+    create_post_types('Daycares', 'Daycare', 'dashicons-store', 'daycare-web');
 }
 
 function create_post_types($name, $singularName, $icon, $slug){

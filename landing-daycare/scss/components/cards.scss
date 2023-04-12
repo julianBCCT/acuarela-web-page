@@ -1,0 +1,222 @@
+.cards {
+  padding: 40px;
+  h2 {
+    margin-bottom: 40px;
+  }
+  &-grid {
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 80px;
+      margin-bottom: 40px;
+    }
+    &.cols-5 {
+      .row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    h3 {
+      margin-bottom: 30px;
+    }
+  }
+  .card {
+    overflow: hidden;
+    &.w_image {
+      gap: 20px;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    &_content {
+      flex: 1;
+    }
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      &-title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: var(--gris1);
+      }
+      &-version {
+        align-items: flex-end;
+        color: var(--gris2);
+        display: flex;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 16px;
+        position: relative;
+        text-align: right;
+        &::before {
+          background-image: url(../img/icons/calendar_cielo.svg);
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          content: "";
+          display: inline-block;
+          height: 16px;
+          margin-right: 16px;
+          width: 16px;
+        }
+        small {
+          align-items: flex-end;
+          color: var(--gris1);
+          font-size: 11px;
+          font-style: normal;
+          font-weight: bold;
+          line-height: 16px;
+          margin-left: 16px;
+          text-align: right;
+        }
+      }
+      &-actions {
+        display: flex;
+        gap: 30px;
+        a {
+          font-size: 12px;
+          font-style: normal;
+          font-weight: bold;
+          line-height: 15px;
+          text-align: center;
+          color: var(--cielo);
+        }
+        &.column {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      &-btn {
+        border-radius: 8px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+        background: var(--cielo);
+        color: #fff;
+        font-size: 12px;
+        font-style: normal;
+        display: block;
+        font-weight: bold;
+        height: 23px;
+        line-height: 15px;
+        padding: 4px 12px;
+        text-align: center;
+        border: 1px solid var(--cielo);
+        &:hover {
+          color: var(--cielo);
+          background: #fff;
+        }
+        &:nth-of-type(2) {
+          background: #fff;
+          border: 1px solid var(--gris4);
+          color: var(--cielo);
+          &:hover {
+            color: #fff;
+            background: var(--cielo);
+          }
+        }
+      }
+    }
+    &__body {
+      color: var(--gris2);
+      font-size: 11px;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 16px;
+      padding-bottom: 22px;
+      flex: 1;
+    }
+    &__img {
+      background: var(--cielo);
+      border-radius: 8px;
+      height: 84px;
+      overflow: hidden;
+      width: 87px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &.lg {
+      background: #fbfcfe;
+      border-radius: 8px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      width: 100%;
+    }
+    &.sm {
+      background: #fbfcfe;
+      border-radius: 8px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 100%;
+      .card__header {
+        .card__header-title {
+          margin-bottom: 8px;
+        }
+      }
+      .card__body {
+        margin-bottom: 36px;
+      }
+      &.w_image {
+        padding: 0;
+        gap: 0;
+        align-items: center;
+        flex-direction: column;
+        .card__img {
+          width: 100%;
+          height: 120px;
+          border-radius: 0;
+        }
+      }
+      .card__content {
+        padding: 20px;
+      }
+    }
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      a {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 15px;
+        text-align: center;
+        color: var(--cielo);
+      }
+      &-btn {
+        border-radius: 8px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+        background: var(--cielo);
+        color: #fff;
+        font-size: 12px;
+        font-style: normal;
+        display: block;
+        font-weight: bold;
+        height: 39px;
+        line-height: 15px;
+        padding: 4px 12px;
+        text-align: center;
+        border: 1px solid var(--cielo);
+        &:hover {
+          color: var(--cielo);
+          background: #fff;
+        }
+        &:nth-of-type(2) {
+          background: #fff;
+          border: 1px solid var(--gris4);
+          color: var(--cielo);
+          &:hover {
+            color: #fff;
+            background: var(--cielo);
+          }
+        }
+      }
+    }
+  }
+}

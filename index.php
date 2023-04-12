@@ -4,7 +4,7 @@
     <video
 
     id="video1"
-      src="video/Acuarela_Promo_v2.mp4"
+      src="<?=$a->generalInfo->acf->video_home?>"
       autobuffer
       playsinline
       preload="auto"
@@ -13,7 +13,7 @@
       autoplay
     >
       <source
-        src="video/Acuarela_Promo_v2.mp4"
+        src="<?=$a->generalInfo->acf->video_home?>"
       />
     </video>
 </div>
@@ -132,73 +132,48 @@
 
   <!-- ADD-ONS -->
 
-  <section class="add-on">
-    <div class="add-on__texts">
-      <h2 class="add-on__title">
-        Funciones que te permiten dedicar más tiempo a cuidar y menos a
-        administrar...
-      </h2>
-      <p class="add-on__description">
-        El control de eventos, contratos, documentación, asistentes, fichas de
-        salud, gestión de ingresos / gastos, entre otras 40 funciones de
-        administración, te permitirán tener control de tu daycare fácilmente, y
-        dedicarte la mayoría de tu tiempo al cuidado del futuro del mundo: los
-        niños.
-      </p>
-      <br />
-      <p class="add-on__description">
-        Con una inversión mínima y pocos conocimientos de internet, tendrás al
-        alcance de tu tablet un sinnúmero de herramientas que llevarán tu
-        Daycare a otro nivel.
-      </p>
-      <button
-        class="btn btn--primary"
-        onclick="window.location.href='/planes-precios'"
-      >
-        <span class="btn__text"> Ver planes y precios </span>
-      </button>
-    </div>
-    <img class="add-on__img" src="img/add-on-1.png" />
-  </section>
-
-  <section class="add-on add-on--left">
-    <img class="add-on__img" src="img/add-on-2.png" />
-    <div class="add-on__texts">
-      <h2 class="add-on__title">Llega a más clientes sin más esfuerzo</h2>
-      <p class="add-on__description">
-        Los daycares que usan Acuarela , son parte de nuestra red de Daycares,
-        en la cual padres de familia de tu región pueden conocer tu servicio,
-        instalaciones y atractivos. Esta red no tiene costo adicional y se
-        convertirá en una importante fuente de clientes potenciales para que
-        hagas crecer tu negocio desde el día uno.
-      </p>
-      <button
-        class="btn btn--primary"
-        onclick="window.location.href='/planes-precios'"
-      >
-        <span class="btn__text"> Ver planes y precios </span>
-      </button>
-    </div>
-  </section>
-
-  <section class="add-on">
-    <div class="add-on__texts">
-      <h2 class="add-on__title">Cobros automáticos y Payrolls fáciles...</h2>
-      <p class="add-on__description">
-        Nuestro sistema de pagos automáticos está listo para facilitar los
-        cobros semanales de tu servicio a los padres de familia que son parte de
-        tu Daycare, además, Acuarela te permite hacer gestión de tus gastos
-        diarios y el pago periódico a los asistentes que te ayudan con el
-        cuidado de niños en tu negocio.
-      </p>
-      <button
-        class="btn btn--primary"
-        onclick="window.location.href='/planes-precios'"
-      >
-        <span class="btn__text"> Ver planes y precios </span>
-      </button>
-    </div>
-    <img class="add-on__img" src="img/add-on-3.png" />
-  </section>
+  <?php 
+  $sections = $a->getHomeSections();
+  for ($i=0; $i < count($sections); $i++) { 
+    $section = $sections[$i];
+   ?>
+   <?php if($i % 2 == 0){?>
+    <section class="add-on add-on--left">
+      <img class="add-on__img" src="<?=$section->acf->imagen?>" />
+      <div class="add-on__texts">
+        <h2 class="add-on__title">
+          <?=$section->title->rendered?>
+        </h2>
+        <p class="add-on__description">
+        <?=$section->content->rendered?>
+        </p>
+        <button
+          class="btn btn--primary"
+          onclick="window.location.href='/planes-precios'"
+        >
+          <span class="btn__text"> <?=$section->acf->texto_boton?> </span>
+        </button>
+      </div>
+    </section>
+   <?php }else{ ?>
+    <section class="add-on">
+      <div class="add-on__texts">
+        <h2 class="add-on__title">
+          <?=$section->title->rendered?>
+        </h2>
+        <p class="add-on__description">
+        <?=$section->content->rendered?>
+        </p>
+        <button
+          class="btn btn--primary"
+          onclick="window.location.href='/planes-precios'"
+        >
+          <span class="btn__text"> <?=$section->acf->texto_boton?> </span>
+        </button>
+      </div>
+      <img class="add-on__img" src="<?=$section->acf->imagen?>" />
+    </section>
+   <?php } ?>
+   <?php } ?>
 </main>
 <?php include 'includes/footer.php'; ?>

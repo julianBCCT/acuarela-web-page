@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php'; $prices = $a->getPrices(); ?>
 <main class="container">
   <!-- BANNER -->
   <section class="banner banner--center banner--short">
@@ -13,7 +13,19 @@
   <!-- PRICING -->
 
   <section class="pricing">
-    <?php if(!isset($_GET["free"])){ ?>
+    <?php for ($i=0; $i < count($prices); $i++) { $price = $prices[$i]; ?>
+      <div class="pricing-plan">
+        <b class="pricing-plan__name"><?=$price->title->rendered?></b>
+        <h1 class="launch__price"><?=$price->acf->precio?></h1>
+        <h1 class="pricing-plan__price"></h1>
+        <hr />
+        <?=$price->content->rendered?>
+        <a href="<?=$price->acf->link_de_pago?>" class="btn btn--primary btn--small">
+          <span class="btn__text"><?=$price->acf->texto_boton?></span>
+        </a>
+      </div>
+    <?php } ?>
+    <!-- <?php if(!isset($_GET["free"])){ ?>
       <div class="pricing-plan">
         <b class="pricing-plan__name">Suscripción Gratuita</b>
         <h1 class="launch__price">FREE TRIAL</h1>
@@ -109,7 +121,7 @@
           <span class="btn__text">Seleccionar</span>
         </a>
       </button>
-    </div>
+    </div> -->
   </section>
 </main>
 <?php include 'includes/footer.php'; ?>

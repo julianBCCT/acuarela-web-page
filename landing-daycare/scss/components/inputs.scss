@@ -1,0 +1,122 @@
+input {
+  border-bottom: 1px solid var(--gris4);
+  color: var(--gris3);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 16px;
+  padding: 5px;
+  &:hover {
+    border-bottom: 1px solid var(--gris3);
+  }
+  &:focus {
+    border-bottom: 1px solid var(--cielo);
+  }
+  &:active {
+    color: var(--gris1);
+    border-bottom: 1px solid var(--gris1);
+  }
+  &:disabled {
+    background: var(--gris4);
+    height: 20px;
+    border-radius: 8px;
+  }
+}
+span.positive {
+  position: relative;
+  input {
+    border-bottom: 1px solid var(--secundario1);
+  }
+  &::after {
+    background-image: url(../img/icons/check.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
+}
+span.negative {
+  position: relative;
+  input {
+    border-bottom: 1px solid var(--sandia);
+  }
+  &::after {
+    background-image: url(../img/icons/cross.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
+}
+span.search {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  input {
+    flex: 1;
+  }
+  &::after {
+    background-color: var(--cielo);
+    background-image: url(../img/icons/search.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 8px;
+    border-radius: 0px 8px 8px 0px;
+    content: "";
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+  }
+  &:hover {
+    &::after {
+      background-color: var(--cielo_hover);
+    }
+  }
+  &.disabled,
+  input:disabled {
+    border-radius: 8px 0 0 8px;
+    &::after {
+      background-color: var(--gris4);
+    }
+  }
+}
+span.calendar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  input {
+    flex: 1;
+  }
+  &::after {
+    background-color: var(--cielo);
+    background-image: url(../img/icons/calendar.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 8px;
+    border-radius: 0px 8px 8px 0px;
+    content: "";
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+  }
+  &:hover {
+    &::after {
+      background-color: var(--cielo_hover);
+    }
+  }
+  &.disabled,
+  input:disabled {
+    border-radius: 8px 0 0 8px;
+    &::after {
+      background-color: var(--gris4);
+    }
+  }
+}

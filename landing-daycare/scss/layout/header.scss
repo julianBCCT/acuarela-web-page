@@ -1,0 +1,25 @@
+body {
+  padding-top: 90px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  height: 80px;
+  z-index: 10;
+  nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    a {
+      font-size: 16px;
+      color: var(--color1);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}

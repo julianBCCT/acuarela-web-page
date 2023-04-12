@@ -8,12 +8,12 @@
             <div>
               <h4>Descarga la app para Daycares</h4>
               <button class="btn btn--white btn--big" onclick="trackDownload('appStore')">
-                <a href="https://apps.apple.com/us/app/acuarela-for-daycares/id1573321954" target="_blank">
+                <a href="<?=$a->generalInfo->acf->apps->app_store?>" target="_blank">
                   <img src="img/appStore_available.svg" />
                 </a>
               </button>
               <button class="btn btn--white btn--big" onclick="trackDownload('playstore')" target="_blank"> 
-                <a href="https://play.google.com/store/apps/details?id=com.acuarela.daycaresapp">
+                <a href="<?=$a->generalInfo->acf->apps->play_store?>">
                   <img src="img/playStore_available.svg" />
                 </a>
   
@@ -36,8 +36,8 @@
             <div class="footer__info">
               <h4>Acuarela</h4>
               <ul class="footer__address">
-                <li>info@acuarela.app</li>
-                <li>+1 (347) 523-8504</li>
+                <li><?=$a->generalInfo->acf->email?></li>
+                <li><?=$a->generalInfo->acf->phone?></li>
               </ul>
               <a
                 class="footer__main-web"
@@ -58,11 +58,11 @@
             <div class="footer__social social">
               <h4>Síguenos en redes sociales</h4>
               <div class="social__logos">
-                <a href="https://www.facebook.com/Acuarela-App-106811688249671" target="_blank">
+                <a href="<?=$a->generalInfo->acf->social->facebook?>" target="_blank">
                   <img src="img/facebook-icon.png" class="active"></img>
                   <img src="img/hover-facebook.png" class="hover"></img>
                 </a>
-                <a href="https://www.instagram.com/acuarela.app/" target="_blank">
+                <a href="<?=$a->generalInfo->acf->social->instagram?>" target="_blank">
                   <img src="img/instagram.svg" class="active"></img>
                   <img src="img/instagramy.svg" class="hover"></img>
                 </a>
@@ -73,7 +73,7 @@
         </div>
   
         <div class="footer__bottom">
-          <span>© Bilingual Childcare Training 2021</span>
+          <span><?=$a->generalInfo->acf->copy_footer?></span>
           <a href="/politicas">Privacidad, términos y condiciones</a>
         </div>
       </footer>

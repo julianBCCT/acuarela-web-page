@@ -1,0 +1,211 @@
+.btn {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 8px;
+  color: #fff;
+
+  &-big {
+    height: 40px;
+  }
+  &-small {
+    height: 24px;
+  }
+  &-action {
+    &-primary {
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+      background: var(--cielo);
+      &:hover {
+        background: var(--cielo_hover);
+      }
+      &:active {
+        background: var(--cielo_pulsado);
+      }
+      &:disabled {
+        background: var(--cielo_desactivado);
+      }
+      &.danger {
+        background: var(--sandia);
+        color: #fff;
+        &:hover {
+          color: #fff;
+          background: var(--sandia_hover);
+        }
+        &:active {
+          background: var(--sandia_pulsado);
+        }
+        &:disabled {
+          color: #fff;
+          background: var(--sandia_desactivado);
+        }
+      }
+    }
+    &-secondary {
+      border: 2px solid var(--gris4);
+      background: transparent;
+      color: var(--cielo);
+      &:hover {
+        background: var(--fondo1);
+        color: var(--cielo_hover);
+      }
+      &:active {
+        background: var(--gris4);
+        color: var(--cielo_pulsado);
+      }
+      &:disabled {
+        background: var(--gris4);
+        color: var(--gris3);
+      }
+      &.danger {
+        color: var(--sandia);
+        &:hover {
+          color: #fff;
+          background: var(--sandia_hover);
+        }
+        &:active {
+          background: var(--sandia_pulsado);
+        }
+        &:disabled {
+          background: var(--gris4);
+          color: var(--gris3);
+        }
+      }
+    }
+    &-tertiary {
+      color: var(--cielo);
+      #icon {
+        margin-right: 10px;
+      }
+      &:hover {
+        color: var(--cielo_hover);
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_hover);
+          }
+        }
+      }
+      &:active {
+        color: var(--cielo_pulsado);
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_pulsado);
+          }
+        }
+      }
+      &:disabled {
+        color: var(--cielo_desactivado);
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_desactivado);
+          }
+        }
+      }
+      &.active {
+        color: var(--gris1);
+        #icon {
+          rect,
+          line {
+            stroke: var(--gris1);
+          }
+        }
+      }
+      &.danger {
+        color: var(--sandia);
+        &:hover {
+          color: var(--sandia_hover);
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_hover);
+            }
+          }
+        }
+        &:active {
+          color: var(--sandia_pulsado);
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_pulsado);
+            }
+          }
+        }
+        &:disabled {
+          color: var(--sandia_desactivado);
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_desactivado);
+            }
+          }
+        }
+        &.active {
+          color: var(--gris1);
+          #icon {
+            rect,
+            line {
+              stroke: var(--gris1);
+            }
+          }
+        }
+      }
+    }
+    &-only-icon {
+      &:hover {
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_hover);
+          }
+        }
+      }
+      &:active {
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_pulsado);
+          }
+        }
+      }
+      &:disabled {
+        #icon {
+          rect,
+          line {
+            stroke: var(--cielo_desactivado);
+          }
+        }
+      }
+      &.danger {
+        &:hover {
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_hover);
+            }
+          }
+        }
+        &:active {
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_pulsado);
+            }
+          }
+        }
+        &:disabled {
+          #icon {
+            rect,
+            line {
+              stroke: var(--sandia_desactivado);
+            }
+          }
+        }
+      }
+    }
+  }
+}

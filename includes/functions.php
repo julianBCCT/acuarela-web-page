@@ -2,9 +2,16 @@
 require_once 'src/Mandrill.php';
 class acuarela
 {
+	public $domain = "https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/wp/v2/";
+	public $url = "https://adminwebacuarela.bilingualchildcaretraining.com/";
 	public $generalInfo = array();
+	public $politics = array();
+	public $about = array();
 
 	function __construct() {
+		$this->generalInfo = $this->getInfoGeneral();
+		$this->politics = $this->gPolitics();
+		$this->about = $this->gAbout();
 	 }
 
 	function transformMergeVars($vars){
@@ -270,11 +277,47 @@ class acuarela
 		}
 		return $gnrl;
 	}
+	function gPolitics(){
+		if(isset($_SESSION['gpolitics'])){
+			$gnrl = $_SESSION['gpolitics'];
+		}else{
+			$result = $this->query("pages/196");
+			$gnrl = $result;
+			$_SESSION['gpolitics'] = $gnrl;
+		}
+		return $gnrl;
+	}
+	function gAbout(){
+		if(isset($_SESSION['gAbout'])){
+			$gnrl = $_SESSION['gAbout'];
+		}else{
+			$result = $this->query("pages/54");
+			$gnrl = $result;
+			$_SESSION['gAbout'] = $gnrl;
+		}
+		return $gnrl;
+	}
 	function getHome(){}
-	function getHomeSections(){}
-	function getPrices(){}
-	function getAbout(){}
-	function getTestimonios(){}
+	function getHomeSections(){
+		$result = $this->query("promo-home");
+		return $result;
+		
+	}
+	function getFaq(){
+		$result = $this->query("preguntas-frecuentes");
+		return $result;
+		
+	}
+	function getPrices(){
+		$result = $this->query("plan-precio");
+		return $result;
+
+	}
+	function getTestimonios(){
+		$result = $this->query("testimonio");
+		return $result;
+		
+	}
 
 	function getParent($id){
 		$curl = curl_init();

@@ -1,0 +1,19 @@
+footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  margin-top: 50px;
+  p,
+  a {
+    font-size: 16px;
+    margin: 0;
+    color: #fff;
+    a {
+      text-decoration: underline;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

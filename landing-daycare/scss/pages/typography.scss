@@ -1,0 +1,23 @@
+.intro {
+  margin-bottom: 80px;
+  h1 {
+    margin-bottom: 40px;
+  }
+  p {
+    margin-bottom: 15px;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  .left,
+  .right {
+    display: grid;
+    grid-auto-rows: 50px;
+    align-items: center;
+    gap: 20px;
+    h2:nth-of-type(1) {
+      border-bottom: 1px solid #000;
+    }
+  }
+}

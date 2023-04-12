@@ -1,0 +1,14 @@
+.assets {
+  section {
+    align-items: center;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 80px;
+    .blue {
+      padding: 15px;
+      background-color: var(--cielo);
+      border-radius: 10px;
+    }
+  }
+}

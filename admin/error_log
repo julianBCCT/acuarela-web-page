@@ -1,0 +1,12 @@
+[05-Oct-2021 20:05:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_transient() in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wp86bu.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wp86bu.php on line 16
+[05-Oct-2021 20:05:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_transient() in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wpcico.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wpcico.php on line 16
+[05-Oct-2021 20:05:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_transient() in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wpfjnl.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/tiendasantuario/public_html/host/acuarela/admin/deleteme.wpfjnl.php on line 16

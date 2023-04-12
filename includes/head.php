@@ -1,3 +1,5 @@
+<?php include 'config.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +16,7 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="fonts/acuarelaicon/style.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=<?=time()?>" />
     <link rel="stylesheet" type="text/css" href="./css/glider.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

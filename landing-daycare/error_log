@@ -1,0 +1,2 @@
+[23-Dec-2022 21:34:17 UTC] PHP Warning:  require_once(src/Mandrill.php): failed to open stream: No such file or directory in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/functions.php on line 2
+[23-Dec-2022 21:34:17 UTC] PHP Fatal error:  require_once(): Failed opening required 'src/Mandrill.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/functions.php on line 2

@@ -28,8 +28,14 @@ async function renew(token) {
     const entity = await strapi.services["bilingual-user"].findOne({
       _id: decoded.id,
     });
-    if (!entity)
-      return { ok: false, status: 404, code: 3, msg: "No user found." };
+    if (!entity) {
+      const entityAcuarelaUser = await strapi.services.acuarelauser.findOne({
+        _id: decoded.id,
+      });
+      if (!entityAcuarelaUser) {
+        return { ok: false, status: 404, code: 3, msg: "No user found." };
+      }
+    }
 
     let respuesta = await generate_token(entity);
     respuesta.msg = "Valid Token.";
@@ -131,8 +137,14 @@ async function get_data(token) {
 
     const entity = await strapi.query("bilingual-user").model.findOne(query);
 
-    if (!entity)
-      return { ok: false, status: 404, code: 3, msg: "No user found." };
+    if (!entity) {
+      const entityUser = await strapi
+        .query("acuarelauser")
+        .model.findOne(query);
+      if (!entityUser) {
+        return { ok: false, status: 404, code: 3, msg: "No user found." };
+      }
+    }
 
     let id = entity.id;
     let user = { id, mail, phone };

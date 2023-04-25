@@ -63,7 +63,6 @@ async function generate_token(entity) {
       msg: "The token could not be generated.",
       user: {},
     };
-  console.log(entity);
 
   let user;
 
@@ -89,7 +88,7 @@ async function generate_token(entity) {
       rols: entity.rols,
       organization: entity.daycare,
       wizard_steps: entity.wizard_steps,
-      bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
+      bilingual_user: entity.bilingual_user,
     };
   }
 

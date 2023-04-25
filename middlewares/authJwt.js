@@ -130,10 +130,11 @@ async function get_data(token) {
     return { ok: false, status: 403, code: 3, msg: "No token provided." };
 
   try {
-    const { email, phone } = await jwt.verify(token, process.env.SECRET);
+    const { mail, email, phone } = await jwt.verify(token, process.env.SECRET);
+    console.log({ mail, email });
     let query = {};
 
-    if (email != "-1" && email) {
+    if ((email != "-1" && email) || (mail != "-1" && mail)) {
       query.mail = { $eq: mail };
     } else {
       query.phone = { $eq: phone };

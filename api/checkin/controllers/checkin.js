@@ -16,6 +16,7 @@ module.exports = {
       // Valida el token.
       let validToken = await verification.renew(token);
       let bodyToken = await verification.get_data(checkin.token);
+      console.log({ validToken, bodyToken });
 
       if (validToken.ok && bodyToken.ok) {
         // Valida que los datos hayan sido ingresados.

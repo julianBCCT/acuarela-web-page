@@ -89,7 +89,7 @@ async function generate_token(entity) {
       rols: entity.rols,
       organization: entity.daycare,
       wizard_steps: entity.wizard_steps,
-      bilingual_user: entity.bilingual_user.id,
+      bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
     };
   }
 

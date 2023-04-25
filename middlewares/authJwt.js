@@ -34,12 +34,16 @@ async function renew(token) {
       });
       if (!entityAcuarelaUser) {
         return { ok: false, status: 404, code: 3, msg: "No user found." };
+      } else {
+        let respuesta = await generate_token(entityAcuarelaUser);
+        respuesta.msg = "Valid Token.";
+        return respuesta;
       }
+    } else {
+      let respuesta = await generate_token(entity);
+      respuesta.msg = "Valid Token.";
+      return respuesta;
     }
-
-    let respuesta = await generate_token(entity);
-    respuesta.msg = "Valid Token.";
-    return respuesta;
   } catch (error) {
     return { ok: false, status: 401, code: 3, msg: "Invalid Token!" };
   }
@@ -143,12 +147,16 @@ async function get_data(token) {
         .model.findOne(query);
       if (!entityUser) {
         return { ok: false, status: 404, code: 3, msg: "No user found." };
+      } else {
+        let id = entityUser.id;
+        let user = { id, mail, phone };
+        return { ok: true, status: 200, code: 0, msg: "Succesfully.", user };
       }
+    } else {
+      let id = entity.id;
+      let user = { id, mail, phone };
+      return { ok: true, status: 200, code: 0, msg: "Succesfully.", user };
     }
-
-    let id = entity.id;
-    let user = { id, mail, phone };
-    return { ok: true, status: 200, code: 0, msg: "Succesfully.", user };
   } catch (error) {
     return { ok: false, status: 401, code: 3, msg: "Invalid Token!" };
   }

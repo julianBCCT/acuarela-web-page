@@ -19,11 +19,11 @@ module.exports = {
     let validToken = await verification.renew(token);
 
     if (validToken.ok) {
-      // let query = { status: true };
+      let query = {};
       query.daycare = { $eq: validToken.user.organization };
       let entity = await strapi
         .query("children")
-        .model.find({})
+        .model.find(query)
         .populate("checkins")
         .populate("checkouts")
         .populate("childrenactivities", ["rate", "comments"])

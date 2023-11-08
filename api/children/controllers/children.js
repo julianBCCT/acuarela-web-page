@@ -386,30 +386,15 @@ module.exports = {
           code: 5,
           msg: "Child not found.",
         });
-
-      let esPropietario = false;
-
-      for (let i in validToken.user.rols)
-        if (rols.rols[i].id == "5ff78feb5d6f2e272cfd7393") esPropietario = true;
-
-      if (!esPropietario)
-        return ctx.send({
-          ok: false,
-          status: 401,
-          code: 5,
-          msg: "You do not have privileges to perform this action.",
-        });
-      else {
-        entity.status = false;
-        await strapi.services.children.update({ _id: id }, entity);
-        return ctx.send({
-          ok: true,
-          status: 200,
-          code: 0,
-          msg: "Child Deleted.",
-          user: validToken.user,
-        });
-      }
+      entity.status = false;
+      await strapi.services.children.delete({ _id: id }, entity);
+      return ctx.send({
+        ok: true,
+        status: 200,
+        code: 0,
+        msg: "Child Deleted.",
+        user: validToken.user,
+      });
     } else return ctx.send(validToken);
   },
   async update_attitude(ctx) {

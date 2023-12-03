@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_daycare_rel_daycares",
+  "info": {
+    "name": "rel_daycare",
+    "icon": "globe-asia"
+  },
+  "options": {},
+  "attributes": {
+    "daycare": {
+      "model": "daycare"
+    },
+    "status_invitation": {
+      "type": "integer"
+    }
+  }
+}

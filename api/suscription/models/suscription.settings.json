@@ -24,12 +24,8 @@
       "model": "products"
     },
     "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "suscriptions"
-    },
-    "daycare": {
       "via": "suscriptions",
-      "model": "daycare"
+      "model": "bilingual-user"
     }
   }
 }

@@ -40,9 +40,6 @@
     "status": {
       "type": "boolean"
     },
-    "address": {
-      "type": "string"
-    },
     "country": {
       "type": "string"
     },
@@ -53,8 +50,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "rols": {
       "collection": "rol",
@@ -96,12 +93,12 @@
       "via": "acuarelauser"
     },
     "movements": {
-      "via": "payer",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "payer"
     },
     "employee_payroll": {
-      "via": "payroll",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "payroll"
     },
     "work_phone": {
       "type": "string"
@@ -140,12 +137,30 @@
       "type": "json"
     },
     "inscripciones": {
-      "via": "parents_rel",
-      "collection": "inscripciones"
+      "collection": "inscripciones",
+      "via": "parents_rel"
     },
     "bilingual_user": {
-      "via": "acuarelauser",
-      "model": "bilingual-user"
+      "model": "bilingual-user",
+      "via": "acuarelauser"
+    },
+    "daycares": {
+      "collection": "daycare",
+      "via": "acuarelausersMultiple",
+      "dominant": true
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "address.address"
+    },
+    "zipcode": {
+      "type": "string"
+    },
+    "rel_daycare": {
+      "type": "component",
+      "repeatable": true,
+      "component": "daycare.rel-daycare"
     }
   }
 }

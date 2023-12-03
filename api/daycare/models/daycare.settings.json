@@ -143,23 +143,29 @@
     "license_capacity": {
       "type": "json"
     },
-    "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
-    },
     "services": {
       "type": "richtext"
     },
     "filosofia": {
       "type": "richtext"
     },
-    "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "daycare"
-    },
     "suscriptions": {
-      "collection": "suscription",
-      "via": "daycare"
+      "collection": "suscription"
+    },
+    "bilingual_users": {
+      "collection": "bilingual-user",
+      "via": "daycares"
+    },
+    "acuarelausers": {
+      "via": "daycare",
+      "collection": "acuarelauser"
+    },
+    "acuarelausersMultiple": {
+      "via": "daycares",
+      "collection": "acuarelauser"
+    },
+    "zoho_daycare_id": {
+      "type": "string"
     }
   }
 }

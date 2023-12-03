@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menus",
+  "info": {
+    "name": "menus",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "age_group": {
+      "model": "age-groups"
+    },
+    "contenido": {
+      "type": "richtext"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "desayuno",
+        "almuerzo",
+        "cena",
+        "snack"
+      ]
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

@@ -140,8 +140,8 @@
       "via": "inscripcion"
     },
     "parents_rel": {
-      "collection": "acuarelauser",
       "via": "inscripciones",
+      "collection": "acuarelauser",
       "dominant": true
     }
   }

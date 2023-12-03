@@ -60,6 +60,16 @@
     },
     "product": {
       "model": "products"
+    },
+    "id_novedades": {
+      "type": "string"
+    },
+    "link_web": {
+      "type": "string"
+    },
+    "no_view": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

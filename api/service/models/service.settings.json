@@ -70,6 +70,9 @@
     "no_view": {
       "type": "boolean",
       "default": false
+    },
+    "quantity": {
+      "type": "biginteger"
     }
   }
 }

@@ -24,8 +24,11 @@
       "model": "products"
     },
     "bilingual_user": {
-      "via": "suscriptions",
-      "model": "bilingual-user"
+      "model": "bilingual-user",
+      "via": "suscriptions"
+    },
+    "number_menus": {
+      "type": "biginteger"
     }
   }
 }

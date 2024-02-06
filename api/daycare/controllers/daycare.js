@@ -25,6 +25,13 @@ module.exports = {
         .query("daycare")
         .model.find(query)
         .populate({
+          path: "acuarelausers",
+          select: "rols",
+          populate: [
+            { path: "rols", select: "rol" }
+          ],
+        })
+        .populate({
           path: "suscriptions",
           select: "suscription_expiration product service",
           populate: [

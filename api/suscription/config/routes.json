@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/suscriptions/expired",
+      "handler": "suscription.findExpired",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/suscriptions/count",
       "handler": "suscription.count",
       "config": {
@@ -44,14 +52,6 @@
       "method": "DELETE",
       "path": "/suscriptions/:id",
       "handler": "suscription.delete",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/suscriptions/expired",
-      "handler": "suscription.findExpired",
       "config": {
         "policies": []
       }

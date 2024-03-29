@@ -11,7 +11,7 @@ module.exports = {
       const currentDate = new Date().toISOString().split("T")[0]; // Obtener la fecha actual en formato ISO
       // Consultar suscripciones vencidas
       const expiredSubscriptions = await strapi.query("suscription").find({
-        suscription_expiration: { $lt: currentDate },
+        suscription_expiration: { $lt: "2024-03-28" },
       });
       console.log(expiredSubscriptions);
 

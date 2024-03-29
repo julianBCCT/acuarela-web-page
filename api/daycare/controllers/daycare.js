@@ -47,7 +47,7 @@ module.exports = {
         });
       else {
         // Filtrar suscripciones por el servicio deseado
-        const { suscriptions } = entity;
+        const { suscriptions } = entity[0];
 
         console.log(entity);
 

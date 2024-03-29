@@ -15,6 +15,7 @@ module.exports = {
           .populate("service")
           .populate("product")
           .populate("bilingual_user")
+          .populate("createdAt")
           .populate("daycare");
 
         if (!entity || entity.length === 0) {

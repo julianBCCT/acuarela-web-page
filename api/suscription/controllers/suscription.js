@@ -8,10 +8,16 @@
 module.exports = {
   async findExpired(ctx) {
     try {
-      const currentDate = new Date().toISOString().split("T")[0]; // Obtener la fecha actual en formato ISO
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+      var yyyy = today.getFullYear();
+
+      // Obtiene la fecha actual.
+      today = yyyy + "-" + mm + "-" + dd;
       // Consultar suscripciones vencidas
       const expiredSubscriptions = await strapi.query("suscription").find({
-        suscription_expiration: { $lt: "2024-03-28" },
+        suscription_expiration: { $lt: today },
       });
       console.log(expiredSubscriptions);
 

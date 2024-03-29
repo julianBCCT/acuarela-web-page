@@ -23,7 +23,7 @@ module.exports = {
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi
         .query("daycare")
-        .model.findOne(query)
+        .model.find(query)
         .populate({
           path: "acuarelausers",
           select: "rols",
@@ -47,7 +47,7 @@ module.exports = {
         });
       else {
         // Filtrar suscripciones por el servicio deseado
-        const { suscriptions } = entity;
+        const { suscriptions } = entity[0];
         // Objeto para mantener registro de la suscripción más reciente para cada servicio
         const latestSubscriptions = {};
 
@@ -66,7 +66,7 @@ module.exports = {
         // Convertir el objeto de suscripciones más recientes de nuevo a un array
         const filteredSubscriptions = Object.values(latestSubscriptions);
         validToken.msg = "Query completed successfully!";
-        entity.suscriptions = filteredSubscriptions;
+        entity[0].suscriptions = filteredSubscriptions;
         validToken.response = entity;
         return ctx.send(validToken);
       }

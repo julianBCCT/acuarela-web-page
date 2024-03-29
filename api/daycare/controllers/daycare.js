@@ -27,9 +27,7 @@ module.exports = {
         .populate({
           path: "acuarelausers",
           select: "rols",
-          populate: [
-            { path: "rols", select: "rol" }
-          ],
+          populate: [{ path: "rols", select: "rol" }],
         })
         .populate({
           path: "suscriptions",
@@ -48,7 +46,29 @@ module.exports = {
           msg: "Daycare not found.",
         });
       else {
+        // Filtrar suscripciones por el servicio deseado
+        const { suscriptions } = entity;
+
+        // Crear un objeto para almacenar las suscripciones más recientes por servicio
+        const latestSubscriptionsByService = {};
+
+        suscriptions.forEach((subscription) => {
+          const { service } = subscription;
+
+          // Si aún no se ha almacenado una suscripción para este servicio o si esta suscripción es más reciente que la almacenada, actualizarla
+          if (
+            !latestSubscriptionsByService[service.id] ||
+            new Date(subscription.createdAt) >
+              new Date(latestSubscriptionsByService[service.id].createdAt)
+          ) {
+            latestSubscriptionsByService[service.id] = subscription;
+          }
+        });
+
+        // Convertir el objeto de suscripciones más recientes a un arreglo
+        const latestSubscriptions = Object.values(latestSubscriptionsByService);
         validToken.msg = "Query completed successfully!";
+        entity.suscriptions = latestSubscriptions;
         validToken.response = entity;
         return ctx.send(validToken);
       }

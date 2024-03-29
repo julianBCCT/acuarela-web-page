@@ -49,6 +49,8 @@ module.exports = {
         // Filtrar suscripciones por el servicio deseado
         const { suscriptions } = entity;
 
+        console.log(entity);
+
         // Crear un objeto para almacenar las suscripciones más recientes por servicio
         const latestSubscriptionsByService = {};
 

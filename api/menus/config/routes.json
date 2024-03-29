@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/menus/random/:age_group",
-      "handler": "menu.findOneRandom",
+      "handler": "menus.findOneRandom",
       "config": {
         "policies": []
       }

@@ -48,29 +48,27 @@ module.exports = {
       else {
         // Filtrar suscripciones por el servicio deseado
         const { suscriptions } = entity[0];
+        // Objeto para mantener registro de la suscripción más reciente para cada servicio
+        const latestSubscriptions = {};
 
-        console.log(entity);
-
-        // Crear un objeto para almacenar las suscripciones más recientes por servicio
-        const latestSubscriptionsByService = {};
-
+        // Filtrar suscripciones para obtener solo la más reciente por servicio
         suscriptions.forEach((subscription) => {
-          const { service } = subscription;
-
-          // Si aún no se ha almacenado una suscripción para este servicio o si esta suscripción es más reciente que la almacenada, actualizarla
+          const serviceId = subscription.service.id;
           if (
-            !latestSubscriptionsByService[service.id] ||
+            !latestSubscriptions[serviceId] ||
             new Date(subscription.createdAt) >
-              new Date(latestSubscriptionsByService[service.id].createdAt)
+              new Date(latestSubscriptions[serviceId].createdAt)
           ) {
-            latestSubscriptionsByService[service.id] = subscription;
+            latestSubscriptions[serviceId] = subscription;
           }
         });
 
-        // Convertir el objeto de suscripciones más recientes a un arreglo
-        const latestSubscriptions = Object.values(latestSubscriptionsByService);
+        // Convertir el objeto de suscripciones más recientes de nuevo a un array
+        const filteredSubscriptions = Object.values(latestSubscriptions);
+
+        console.log(filteredSubscriptions);
         validToken.msg = "Query completed successfully!";
-        entity.suscriptions = latestSubscriptions;
+        entity.suscriptions = filteredSubscriptions;
         validToken.response = entity;
         return ctx.send(validToken);
       }

@@ -8,7 +8,7 @@
 module.exports = {
   async findExpired(ctx) {
     try {
-      const currentDate = new Date().toISOString(); // Obtener la fecha actual en formato ISO
+      const currentDate = new Date().toISOString().split("T")[0]; // Obtener la fecha actual en formato ISO
       // Consultar suscripciones vencidas
       const expiredSubscriptions = await strapi.query("suscription").find({
         suscription_expiration: { $lt: currentDate },

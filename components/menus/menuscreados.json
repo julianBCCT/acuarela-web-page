@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_menus_menuscreados",
+  "info": {
+    "name": "menuscreados",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "menus": {
+      "collection": "menus"
+    },
+    "creation_date": {
+      "type": "date"
+    }
+  }
+}

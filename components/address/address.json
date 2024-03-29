@@ -2,7 +2,8 @@
   "collectionName": "components_address_addresses",
   "info": {
     "name": "address",
-    "icon": "home"
+    "icon": "home",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,12 @@
       "type": "string"
     },
     "complement": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "string"
+    },
+    "longitude": {
       "type": "string"
     }
   }

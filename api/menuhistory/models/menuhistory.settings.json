@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menuhistories",
+  "info": {
+    "name": "menuhistory",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "suscription": {
+      "via": "menuhistory",
+      "model": "suscription"
+    },
+    "menuscreados": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menus.menuscreados"
+    }
+  }
+}

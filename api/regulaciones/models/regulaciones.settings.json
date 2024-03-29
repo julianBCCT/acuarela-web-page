@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regulaciones",
+  "info": {
+    "name": "Regulaciones ",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "archivos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "alabama",
+        "alaska",
+        "arizona",
+        "arkansas",
+        "california",
+        "colorado",
+        "connecticut",
+        "delaware",
+        "florida",
+        "georgia",
+        "hawai",
+        "idaho",
+        "illinois",
+        "indiana",
+        "iowa",
+        "kansas",
+        "kentucky",
+        "uisiana",
+        "maine",
+        "maryland",
+        "massachusetts",
+        "michigan",
+        "minnesota",
+        "misisipi",
+        "misuri",
+        "montana",
+        "nebraska",
+        "nevada",
+        "nuevo_hampshire",
+        "nueva_jersey",
+        "nuevo_mexico",
+        "nueva_york",
+        "carolina_del_norte",
+        "dakota_del_norte",
+        "ohio",
+        "oklahoma",
+        "oregon",
+        "pensilvania",
+        "rhode_island",
+        "carolina_del_sur",
+        "dakota_del_sur",
+        "tennessee",
+        "texas",
+        "utah",
+        "vermont",
+        "virginia",
+        "washington",
+        "virginia_occidental",
+        "wisconsin",
+        "wyoming"
+      ]
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "centros_cuidado_infantil",
+        "centros_cuidado_infantil_grupal",
+        "centros_cuidado_infantil_familiar"
+      ]
+    }
+  }
+}

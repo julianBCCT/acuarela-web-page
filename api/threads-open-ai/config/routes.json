@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/threads-open-ais",
+      "handler": "threads-open-ai.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/threads-open-ais/count",
+      "handler": "threads-open-ai.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/threads-open-ais/:id",
+      "handler": "threads-open-ai.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/threads-open-ais",
+      "handler": "threads-open-ai.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/threads-open-ais/:id",
+      "handler": "threads-open-ai.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/threads-open-ais/:id",
+      "handler": "threads-open-ai.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

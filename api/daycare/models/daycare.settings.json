@@ -149,23 +149,24 @@
     "filosofia": {
       "type": "richtext"
     },
-    "suscriptions": {
-      "collection": "suscription"
-    },
     "bilingual_users": {
       "collection": "bilingual-user",
       "via": "daycares"
     },
     "acuarelausers": {
-      "via": "daycare",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycare"
     },
     "acuarelausersMultiple": {
-      "via": "daycares",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "daycares"
     },
     "zoho_daycare_id": {
       "type": "string"
+    },
+    "suscriptions": {
+      "via": "daycare",
+      "collection": "suscription"
     }
   }
 }

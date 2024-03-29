@@ -29,6 +29,14 @@
     },
     "number_menus": {
       "type": "biginteger"
+    },
+    "menuhistory": {
+      "model": "menuhistory",
+      "via": "suscription"
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "suscriptions"
     }
   }
 }

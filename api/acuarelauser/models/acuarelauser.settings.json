@@ -50,8 +50,8 @@
       "type": "string"
     },
     "daycare": {
-      "model": "daycare",
-      "via": "acuarelausers"
+      "via": "acuarelausers",
+      "model": "daycare"
     },
     "rols": {
       "collection": "rol",
@@ -141,12 +141,12 @@
       "via": "parents_rel"
     },
     "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "model": "bilingual-user"
     },
     "daycares": {
-      "collection": "daycare",
       "via": "acuarelausersMultiple",
+      "collection": "daycare",
       "dominant": true
     },
     "address": {

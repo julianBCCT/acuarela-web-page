@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/regulaciones",
+      "handler": "regulaciones.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/regulaciones/count",
+      "handler": "regulaciones.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/regulaciones/:id",
+      "handler": "regulaciones.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/regulaciones",
+      "handler": "regulaciones.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/regulaciones/:id",
+      "handler": "regulaciones.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/regulaciones/:id",
+      "handler": "regulaciones.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "threads-openai",
+  "info": {
+    "name": "Threads OpenAI",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_thread": {
+      "type": "string",
+      "unique": true
+    },
+    "bilingual_user": {
+      "via": "threads_open_ais",
+      "model": "bilingual-user"
+    },
+    "estado_seleccionado": {
+      "type": "string"
+    },
+    "tipo_daycare_seleccionado": {
+      "type": "string"
+    }
+  }
+}

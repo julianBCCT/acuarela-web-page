@@ -28,6 +28,12 @@
     },
     "content": {
       "type": "text"
+    },
+    "version_promp": {
+      "type": "string"
+    },
+    "json_content": {
+      "type": "json"
     }
   }
 }

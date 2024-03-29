@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/suscriptions/expired",
+      "handler": "suscriptions.findExpired",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/suscriptions",
       "handler": "suscription.create",

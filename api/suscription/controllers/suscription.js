@@ -14,7 +14,7 @@ module.exports = {
       var yyyy = today.getFullYear();
 
       // Obtiene la fecha actual.
-      today = yyyy + "-" + mm + "-" + dd;
+      today = dd + "-" + mm + "-" + yyyy;
       // Consultar suscripciones vencidas
       const expiredSubscriptions = await strapi.query("suscription").find({
         suscription_expiration: { $lt: today },

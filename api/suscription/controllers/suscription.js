@@ -11,7 +11,7 @@ module.exports = {
       const currentDate = new Date();
 
       // Consultar suscripciones vencidas
-      const expiredSubscriptions = await strapi.query("suscriptions").find({
+      const expiredSubscriptions = await strapi.query("suscription").find({
         suscription_expiration: { $lt: currentDate },
       });
 

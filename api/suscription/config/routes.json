@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/suscriptions/expired",
-      "handler": "suscriptions.findExpired",
+      "handler": "suscription.findExpired",
       "config": {
         "policies": []
       }

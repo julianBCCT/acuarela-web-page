@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/menus/random/:age_group",
+      "handler": "menu.findOneRandom",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/menus",
       "handler": "menus.create",

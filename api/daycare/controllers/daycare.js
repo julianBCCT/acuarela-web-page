@@ -37,7 +37,6 @@ module.exports = {
           populate: [
             { path: "product", select: "name" },
             { path: "service", select: "name price logo" },
-            { path: "createdAt"},
           ],
         });
 

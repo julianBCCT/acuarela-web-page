@@ -78,14 +78,14 @@ module.exports = {
     }
 
     // Extraer todos los archivos en un solo arreglo
-    const archivos = entities.flatMap((entity) => entity.archivos || []);
+    const archivos = entities.map((entity) => entity.archivos);
 
     return ctx.send({
       ok: true,
       status: 200,
       code: 0,
       msg: "Random regulation retrieved successfully!",
-      archivos: archivos,
+      archivos,
     });
   },
 };

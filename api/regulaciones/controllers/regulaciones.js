@@ -78,7 +78,7 @@ module.exports = {
     }
 
     // Extraer todos los archivos en un solo arreglo
-    const archivos = entities.map((entity) => entity.archivos).flat();
+    const archivos = entities.map((entity) => entity.archivos);
 
     return ctx.send({
       ok: true,

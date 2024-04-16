@@ -85,7 +85,7 @@ module.exports = {
       status: 200,
       code: 0,
       msg: "Random regulation retrieved successfully!",
-      archivos,
+      archivos: archivos.map((a) => a[0]),
     });
   },
 };

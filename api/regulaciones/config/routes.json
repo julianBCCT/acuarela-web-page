@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/regulaciones/random",
+      "handler": "regulaciones.findRandom",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/regulaciones/count",
       "handler": "regulaciones.count",
       "config": {
@@ -20,14 +28,6 @@
       "method": "GET",
       "path": "/regulaciones/:id",
       "handler": "regulaciones.findOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/regulaciones/random",
-      "handler": "regulaciones.findRandom",
       "config": {
         "policies": []
       }

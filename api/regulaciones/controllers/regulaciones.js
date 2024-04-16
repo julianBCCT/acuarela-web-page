@@ -26,37 +26,37 @@ module.exports = {
       "iowa",
       "kansas",
       "kentucky",
-      "uisiana",
+      "louisiana",
       "maine",
       "maryland",
       "massachusetts",
       "michigan",
       "minnesota",
-      "misisipi",
-      "misuri",
+      "mississippi",
+      "missouri",
       "montana",
       "nebraska",
       "nevada",
-      "nuevo_hampshire",
-      "nueva_jersey",
-      "nuevo_mexico",
-      "nueva_york",
-      "carolina_del_norte",
-      "dakota_del_norte",
+      "new_hampshire",
+      "new_jersey",
+      "new_mexico",
+      "new_york",
+      "north_carolina",
+      "north_dakota",
       "ohio",
       "oklahoma",
       "oregon",
-      "pensilvania",
+      "pennsylvania",
       "rhode_island",
-      "carolina_del_sur",
-      "dakota_del_sur",
+      "south_carolina",
+      "south_dakota",
       "tennessee",
       "texas",
       "utah",
       "vermont",
       "virginia",
       "washington",
-      "virginia_occidental",
+      "west_virginia",
       "wisconsin",
       "wyoming",
     ];
@@ -77,15 +77,15 @@ module.exports = {
       });
     }
 
-    // Seleccionar una regulación aleatoria de la lista
-    const randomRegulacion = _.sample(entities);
+    // Extraer todos los archivos en un solo arreglo
+    const archivos = entities.map((entity) => entity.archivos).flat();
 
     return ctx.send({
       ok: true,
       status: 200,
       code: 0,
       msg: "Random regulation retrieved successfully!",
-      response: randomRegulacion,
+      archivos: archivos,
     });
   },
 };

@@ -7,8 +7,8 @@
   },
   "options": {},
   "attributes": {
-    "menus": {
-      "collection": "menus"
+    "menu": {
+      "model": "menus"
     },
     "creation_date": {
       "type": "date"

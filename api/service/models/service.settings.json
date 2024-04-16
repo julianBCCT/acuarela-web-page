@@ -21,8 +21,8 @@
       "type": "string"
     },
     "discount_code": {
-      "model": "discount-code",
-      "via": "services"
+      "via": "services",
+      "model": "discount-code"
     },
     "logo": {
       "model": "file",

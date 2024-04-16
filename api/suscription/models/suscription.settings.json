@@ -31,8 +31,8 @@
       "type": "biginteger"
     },
     "menuhistory": {
-      "model": "menuhistory",
-      "via": "suscription"
+      "via": "suscription",
+      "model": "menuhistory"
     },
     "daycare": {
       "model": "daycare",

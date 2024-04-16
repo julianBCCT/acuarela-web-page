@@ -12,8 +12,8 @@
   },
   "attributes": {
     "suscription": {
-      "via": "menuhistory",
-      "model": "suscription"
+      "model": "suscription",
+      "via": "menuhistory"
     },
     "menuscreados": {
       "type": "component",

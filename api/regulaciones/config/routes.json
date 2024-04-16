@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/regulaciones/random",
+      "handler": "menus.findOneRandom",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/regulaciones",
       "handler": "regulaciones.create",

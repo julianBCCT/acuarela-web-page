@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/regulaciones/random",
-      "handler": "menus.findOneRandom",
+      "handler": "regulaciones.findOneRandom",
       "config": {
         "policies": []
       }

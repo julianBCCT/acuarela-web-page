@@ -6,7 +6,7 @@ const _ = require("lodash");
  */
 
 module.exports = {
-  async findOneRandom(ctx) {
+  async findRandom(ctx) {
     // Obtener un estado aleatorio de la lista de estados disponibles
     const estados = [
       "alabama",

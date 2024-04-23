@@ -14,7 +14,7 @@ RewriteRule ^planes-precios$ pricing.php [L,QSA]
 RewriteRule ^preguntas-frecuentes$ faq.php [L,QSA]
 RewriteRule ^free-demo$ contact.php [L,QSA]
 RewriteRule ^politicas$ politics.php [L,QSA]
-RewriteRule ^invitaciones-new-york$ invitation.php [L,QSA]
+RewriteRule ^invitaciones$ invitation.php [L,QSA]
 RewriteRule ^([0-9]+)$ bluecard/index.php?id=$1 [L,QSA]
 RewriteRule ^pagos$ payments.php [L,QSA]
 RewriteRule ^paypal/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ paypal.php?idParent=$1&merchantID=$2&movement=$3 [L,QSA]
@@ -22,3 +22,5 @@ RewriteRule ^pagos-electronicos/activar-([a-zA-Z0-9_-]+)$ automaticPayments.php?
 RewriteRule ^pago-pendiente-([a-zA-Z0-9_-]+)$ pagopendiente.php?id=$1 [L,QSA]
 
 
+RewriteCond %{HTTP_HOST} ^acuarela\.app$ [NC]
+RewriteRule ^invitaciones-new-york/?$ /invitaciones [R=301,L]

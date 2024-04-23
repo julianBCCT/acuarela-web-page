@@ -39,13 +39,6 @@
                 <li><?=$a->generalInfo->acf->email?></li>
                 <li><?=$a->generalInfo->acf->phone?></li>
               </ul>
-              <a
-                class="footer__main-web"
-                href="https://www.bilingualchildcaretraining.com"
-                target="_blank"
-              >
-                bilingualchildcaretraining.com
-              </a>
             </div>
           </div>
           <div>

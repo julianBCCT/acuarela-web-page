@@ -26,7 +26,7 @@
                 <p class="add-on__description">
                    <?=$a->about->acf->seccion_1->descripcion?>
                 </p>
-                <button class="btn btn--primary"   onclick="window.location.href='/invitaciones-new-york'">
+                <button class="btn btn--primary"   onclick="window.location.href='/invitaciones'">
                     <span class="btn__text"><?=$a->about->acf->seccion_1->texto_boton?> </span>
                 </button>
             </div>
@@ -66,9 +66,7 @@
                                 </p>
                                 <p class="testimonials-cont__role">  <?=$testimonio->acf->cargo?> </p>
                             </div>
-                            <p class="testimonials-cont__date">
-                                18/08/2020
-                            </p>
+                            <p class="testimonials-cont__date"></p>
                         </div>
                         <p class="testimonials-cont__message">
                         <?=$testimonio->content->rendered?> 

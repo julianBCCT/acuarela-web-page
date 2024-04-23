@@ -45,8 +45,25 @@ add_action('after_setup_theme', 'gymsonline_theme_support');
 include get_template_directory() . '/includes/cleanup.php';
 include get_template_directory() . '/includes/enqueue.php';
 include get_template_directory() . '/includes/custom-posts.php';
+if (isset($_GET['field']) || isset($_GET['oby']) || isset($_GET['pp']) ) {
+    acfFilt("faq");
+    acfFilt("matchs");
+    acfFilt("games");
+    acfFilt("platfform");
+    acfFilt("game_mode");
+    acfFilt("coins_pack");
+    acfFilt("gamedugg_user");
+    acfFilt("shopping_record");
+    acfFilt("hosts");
+    acfFilt("victory_requests");
+    acfFilt("inscripciones");
+    acfFilt("custom_money_request");
+    acfFilt("custom_account_type");
+    acfFilt("daycare-web");
+	acfFilt("prueba_daycare");
+}
 
-function afcFilt($type)
+function acfFilt($type)
 {
     add_filter('rest_' . $type . '_query', function ($args) {
         if (isset($_GET['value'])) {
@@ -59,6 +76,7 @@ function afcFilt($type)
                     $thear = array(
                         'key'   => $fields[$i],
                         'value' => esc_sql($vals[$i]),
+                         'compare' => 'LIKE'
                     );
                     array_push($completeQuery, $thear);
                 }
@@ -83,27 +101,6 @@ function afcFilt($type)
         return $args;
     });
 }
-
-
-if (isset($_GET['field']) || isset($_GET['oby']) || isset($_GET['pp']) ) {
-    afcFilt("faq");
-    afcFilt("matchs");
-    afcFilt("games");
-    afcFilt("platfform");
-    afcFilt("game_mode");
-    afcFilt("coins_pack");
-    afcFilt("gamedugg_user");
-    afcFilt("shopping_record");
-    afcFilt("hosts");
-    afcFilt("victory_requests");
-    afcFilt("inscripciones");
-    afcFilt("custom_money_request");
-    afcFilt("custom_account_type");
-    afcFilt("daycare-web");
-}
-
-
-
 
 function my_rest_prepare_term($data, $item, $request)
 {

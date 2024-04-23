@@ -2,8 +2,8 @@
 class landing
 {
 
-	public $domain = "https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/wp/v2/";
-    public $url = "https://adminwebacuarela.bilingualchildcaretraining.com/";
+	public $domain = "https://acuarelaadmin.acuarela.app/wp-json/wp/v2/";
+    public $url = "https://acuarelaadmin.acuarela.app/";
     public $apiLogin = "xkmiO9u4yTM39SB";   
     public $apiKey = "gTC8acHXs09YZ8I0Kjd8sQ4JSw";   
     public $accountID = "912696";   

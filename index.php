@@ -30,7 +30,7 @@
       </h2>
       <button
         class="btn btn--primary"
-        onclick="window.location.href='/invitaciones-new-york'"
+        onclick="window.location.href='/invitaciones'"
       >
         <span class="btn__text"> Obtén tu invitación ahora </span>
       </button>

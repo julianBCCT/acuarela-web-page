@@ -18,16 +18,13 @@
         <div>
   
           <div class="txt">
-              <p>Para empezar,</p>
-              <h2>Digitalizaremos 150 Daycares en Estados Unidos</h2>
-              <p>y el tuyo puede ser uno de ellos.</p>
-              <strong>Inscríbete y obtén una invitación para entrar a la era de los Daycares Digitales.</strong>
+              <h2>Da un paso hacia el futuro en el cuidado infantil:</h2>
+              <p>Regístrate en Acuarela y ofrece a los padres la posibilidad de monitorear el progreso de sus hijos desde nuestra app móvil, ¡accediendo a publicaciones, informes y más desde cualquier lugar y en cualquier momento!  </p>
+              <strong>¡Únete a Acuarela ahora!</strong>
+              <a href="javascript:openInvitationForm();" class="btn btn-action-secondary" style="margin-top:30px;">Obtén tu invitación ahora</a>
           </div>
           
-          <div class="count-bar">
-              <div class="fill"></div>
-              <strong>125</strong><p>Cupos disponibles</p>
-          </div>
+     
         </div>
           <div class="map">
 

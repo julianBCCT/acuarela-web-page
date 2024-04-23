@@ -83,6 +83,10 @@
         display: flex;
         gap: 16px;
         align-items: center;
+        svg {
+          height: 25px;
+          width: 25px;
+        }
       }
       strong {
         display: block;

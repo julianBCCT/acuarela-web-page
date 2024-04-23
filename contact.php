@@ -106,7 +106,7 @@
           <h3 class="card__subtitle">Acuarela</h3>
           <ul class="card__address">
             <li>info@acuarela.app</li>
-            <li>+1 (347) 523-8504</li>
+            <li>+1 (347) 523-8504</li>
           </ul>
           <!-- <a class="card__email">bilingualchildcaretraining.com</a> -->
           <img class="card__img" src="img/contact-us.png" />

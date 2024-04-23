@@ -42,7 +42,8 @@ $info = $land->gInfoDaycare($nameUrl[0]);
       h1 {
         color: <?=$info->acf->color_1?>
       }
-    </style>
+   </style>
+
   </head>
 
   <body class="landing">
@@ -107,9 +108,9 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         class="cards-item"
         style="background-color: <?=$info->acf->color_2?>"
       >
-        <p><strong>Address</strong> <?=$info->acf->direccion?></p>
-        <p><strong>Email</strong> <?=$info->acf->correo?></p>
-        <p><strong>Phone</strong> <?=$info->acf->telefono?></p>
+        <p><strong>Address</strong> <a target="_blank" href="https://www.google.com/maps/place/<?=$info->acf->direccion?>"><?=$info->acf->direccion?></a></p>
+        <p><strong>Email</strong> <a href="mailto:<?=$info->acf->correo?>;"><?=$info->acf->correo?></a></p>
+        <p><strong>Phone</strong> <a href="tel:<?=$info->acf->telefono?>;"><?=$info->acf->telefono?></a></p>
       </div>
       <div
         class="cards-item"
@@ -119,7 +120,6 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         <p><strong>Hours of operation</strong></p>
         <p>
           <?=$info->acf->horario?>
-        
         </p>
       </div>
       <div
@@ -128,6 +128,16 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         style="background-color: <?=$info->acf->color_2?>"
       >
      <?=$info->acf->informacion_adicional?>
+     <?php 
+     if($info->acf->networks_social_media->facebook != "" ||
+     $info->acf->networks_social_media->instagram != "" ||
+     $info->acf->networks_social_media->tiktok != "" ||
+     $info->acf->networks_social_media->twitter != ""){
+     ?>
+     <strong>Social Network</strong> 
+     <?php 
+     }
+     ?>
      <div class="social">
 
        <?php if($info->acf->networks_social_media->facebook != ""){ ?>

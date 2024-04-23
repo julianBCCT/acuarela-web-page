@@ -49,7 +49,7 @@
             Haz publicaciones del progreso de tus niños a sus padres y familiares.
           </li>
         </ul>
-        <a href="/invitaciones-new-york" class="btn btn--primary btn--small">
+        <a href="/invitaciones" class="btn btn--primary btn--small">
           <span class="btn__text">Obtén tu invitación</span>
         </a>
       </div>

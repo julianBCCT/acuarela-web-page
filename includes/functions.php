@@ -2,8 +2,8 @@
 require_once 'src/Mandrill.php';
 class acuarela
 {
-	public $domain = "https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/wp/v2/";
-	public $url = "https://adminwebacuarela.bilingualchildcaretraining.com/";
+	public $domain = "https://acuarelaadmin.acuarela.app/wp-json/wp/v2/";
+	public $url = "https://acuarelaadmin.acuarela.app/";
 	public $generalInfo = array();
 	public $politics = array();
 	public $about = array();
@@ -189,8 +189,7 @@ class acuarela
 		];
 		$resp = array();
 		$a = $this->send_notification('info@acuarela.app','info@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
-		$b = $this->send_notification('info@acuarela.app','daniela@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
-		$c = $this->send_notification('info@acuarela.app','karen@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
+		$b = $this->send_notification('info@acuarela.app','marcela@bilingualchildcaretraining.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 		$d = $this->send_notification('info@acuarela.app','dreinovcorp@gmail.com',$name,$this->transformMergeVars($mergeVars),$subject,'invitation-admin','maRkSStgpCapJoSmwHOZDg',"Acuarela");
 		$resp['a'] = $a;
 		$resp['b'] = $b;
@@ -201,7 +200,7 @@ class acuarela
 	function setLeadInvitation($name,$daycare,$licencia,$condado,$email,$phone){
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'https://adminwebacuarela.bilingualchildcaretraining.com/wp-json/acf/v2/leads-invitation',
+          CURLOPT_URL => 'https://acuarelaadmin.acuarela.app/wp-json/acf/v2/leads-invitation',
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,

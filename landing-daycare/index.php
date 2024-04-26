@@ -31,12 +31,13 @@ $info = $land->gInfoDaycare($nameUrl[0]);
     <style>
     :root {
         --color-primario: <?=$info->acf->color_1?>;
-        --color-secundario: <?=$info->acf->color_1?>;
+        --color-secundario: <?=$info->acf->color_2?>;
         --titulos: #060606;
         --textos: #3e3e43;
         --fondo: #e0e0e0;
         --cards: #f4f4f5;
         --footer: #131727;
+        --color-botones: #060606;
     }
     </style>
 </head>
@@ -62,10 +63,10 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         <div class="overlay" id="mobile-menu">
             <a onclick="closeNav()" href="" class="close"><i class="acuarela acuarela-Cancelar"></i></a>
             <div class="overlay-content">
-                <a href="#about-us">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#contact-us">Contact Us</a>
-                <a href="#" class="btn"><button>
+                <a onclick="closeNav()" href="#about-us">About Us</a>
+                <a onclick="closeNav()" href="#services">Services</a>
+                <a onclick="closeNav()" href="#contact-us">Contact Us</a>
+                <a onclick="closeNav()" href="#" class="btn"><button>
                         <i class="acuarela acuarela-Evento"></i>Agendar Visita
                     </button></a>
             </div>
@@ -136,19 +137,27 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                     </div>
                 </div>
                 <div class="sidebar-right">
-                    <?php if($info->acf->galeria->imagen_1){ ?>
                     <div class="galeria card">
                         <ul class="image-gallery">
-                            <?php 
-                                for ($i=1; $i < 5; $i++) { 
-                                  if($info->acf->galeria->{'imagen_'.$i}){
-                                  
-                
-                                ?>
-                            <li class="splide__slide">
-                                <img src="<?=$info->acf->galeria->{'imagen_'.$i}?>" alt="Image Slide" />
+                            <li>
+                                <img src="<?=$info->acf->imagen_1->url?>" alt="Image 1" />
                             </li>
-                            <?php }}?>
+                            <li>
+                                <img src="<?=$info->acf->imagen_2->url?>" alt="Image 2" />
+                            </li>
+                            <li>
+                                <img src="<?=$info->acf->imagen_3->url?>" alt="Image 3" />
+                            </li>
+                            <?php if($info->acf->imagen_4->url){ ?>
+                            <li>
+                                <img src="<?=$info->acf->imagen_4->url?>" alt="Image 4" />
+                            </li>
+                            <?php } ?>
+                            <?php if($info->acf->imagen_5->url){ ?>
+                            <li>
+                                <img src="<?=$info->acf->imagen_5->url?>" alt="Image 5" />
+                            </li>
+                            <?php } ?>
                         </ul>
                         <button class="prev-btn">
                             <i class="acuarela acuarela-Flecha_izquierda"></i>
@@ -157,49 +166,27 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                             <i class="acuarela acuarela-Flecha_derecha"></i>
                         </button>
                     </div>
-                </div>
-                <?php } ?>
-                <!--<div class="galeria card">
-                    <ul class="image-gallery">
-                        <li>
-                            <img src="https://i.ibb.co/XC77rLZ/image-4.png" alt="Image 1" />
-                        </li>
-                        <li>
-                            <img src="https://i.ibb.co/wh4zWJZ/image-2.png" alt="Image 2" />
-                        </li>
-                        <li>
-                            <img src="https://i.ibb.co/vshJYLz/image-3.png" alt="Image 3" />
-                        </li>
-                    </ul>
-                    <button class="prev-btn">
-                        <i class="acuarela acuarela-Flecha_izquierda"></i>
-                    </button>
-                    <button class="next-btn">
-                        <i class="acuarela acuarela-Flecha_derecha"></i>
-                    </button>
-                </div>-->
-                <div class="popup-container">
-                    <div class="popup-content">
-                        <span class="close-btn">&times;</span>
-                        <img class="popup-image" src="" alt="Popup Image" />
+                    <div class="popup-container">
+                        <div class="popup-content">
+                            <span class="close-btn">&times;</span>
+                            <img class="popup-image" src="" alt="Popup Image" />
+                        </div>
+                    </div>
+                    <div class="mision-vision card">
+                        <b>Mision</b>
+                        <p><?=$info->acf->mision?>
+                        </p>
+                        <b>Vision</b>
+                        <p><?=$info->acf->vision?>
+                        </p>
                     </div>
                 </div>
-                <div class="mision-vision card">
-                    <b>Mision</b>
-                    <p><?=$info->acf->mision?>
-                    </p>
-                    <b>Vision</b>
-                    <p><?=$info->acf->vision?>
-                    </p>
-                </div>
-            </div>
             </div>
         </section>
         <div class="philosophy">
             <div class="of-education">
                 <b>Philosophy of Education</b>
-                <p><?=$info->acf->seccion_2->texto?>
-                </p>
+                <p><?=$info->acf->seccion_2->texto?></p>
             </div>
         </div>
         <section class="services" id="services">
@@ -210,17 +197,26 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                 </div>
             </div>
         </section>
+        <?php 
+        if($info->acf->networks_social_media->facebook != "" ||
+        $info->acf->networks_social_media->instagram != "" ||
+        $info->acf->networks_social_media->tiktok != "" ||
+        $info->acf->networks_social_media->twitter != ""){
+        ?>
         <section class="contact" id="contact-us">
             <div class="social-media">
                 <b>Networks Social Media</b>
                 <div class="icons">
-                    <a class="facebook" href="<?=$info->acf->networks_social_media->facebook?>">
+                    <?php if($info->acf->networks_social_media->facebook != ""){ ?>
+                    <a class="facebook" href="<?=$info->acf->networks_social_media->facebook?>" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
                             <path
                                 d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M37,19h-2c-2.14,0-3,0.5-3,2 v3h5l-1,5h-4v15h-5V29h-4v-5h4v-3c0-4,2-7,6-7c2.9,0,4,1,4,1V19z" />
                         </svg>
                     </a>
-                    <a class="instagram" href="<?=$info->acf->networks_social_media->instagram?>">
+                    <?php } ?>
+                    <?php if($info->acf->networks_social_media->instagram != ""){ ?>
+                    <a class="instagram" href="<?=$info->acf->networks_social_media->instagram?>" target="_blank">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
                             <path
                                 d="M0 0 C1.43653931 -0.00472824 1.43653931 -0.00472824 2.90209961 -0.009552 C3.94374268 -0.00752777 4.98538574 -0.00550354 6.05859375 -0.00341797 C7.12021729 -0.00437469 8.18184082 -0.00533142 9.27563477 -0.00631714 C11.52522847 -0.00699911 13.77482412 -0.00514366 16.02441406 -0.00097656 C19.48116446 0.00437143 22.93778492 -0.00092101 26.39453125 -0.00732422 C28.57421904 -0.00666344 30.75390675 -0.00538228 32.93359375 -0.00341797 C34.49605835 -0.00645432 34.49605835 -0.00645432 36.09008789 -0.009552 C37.04778076 -0.00639984 38.00547363 -0.00324768 38.9921875 0 C39.83966553 0.00079559 40.68714355 0.00159119 41.56030273 0.00241089 C43.49609375 0.12939453 43.49609375 0.12939453 44.49609375 1.12939453 C44.59440521 2.62809501 44.62407831 4.13137992 44.62548828 5.63330078 C44.62864044 6.59099365 44.6317926 7.54868652 44.63504028 8.53540039 C44.63301605 9.57704346 44.63099182 10.61868652 44.62890625 11.69189453 C44.62986298 12.75351807 44.6308197 13.8151416 44.63180542 14.90893555 C44.63248739 17.15852925 44.63063194 19.4081249 44.62646484 21.65771484 C44.62111685 25.11446525 44.62640929 28.5710857 44.6328125 32.02783203 C44.63215172 34.20751982 44.63087057 36.38720753 44.62890625 38.56689453 C44.63093048 39.6085376 44.63295471 40.65018066 44.63504028 41.72338867 C44.63031204 43.15992798 44.63031204 43.15992798 44.62548828 44.62548828 C44.62469269 45.47296631 44.62389709 46.32044434 44.62307739 47.19360352 C44.49609375 49.12939453 44.49609375 49.12939453 43.49609375 50.12939453 C41.99739327 50.22770599 40.49410836 50.25737909 38.9921875 50.25878906 C37.55564819 50.2635173 37.55564819 50.2635173 36.09008789 50.26834106 C35.04844482 50.26631683 34.00680176 50.2642926 32.93359375 50.26220703 C31.87197021 50.26316376 30.81034668 50.26412048 29.71655273 50.2651062 C27.46695903 50.26578817 25.21736338 50.26393272 22.96777344 50.25976562 C19.51102304 50.25441763 16.05440258 50.25971007 12.59765625 50.26611328 C10.41796846 50.2654525 8.23828075 50.26417135 6.05859375 50.26220703 C5.01695068 50.26423126 3.97530762 50.26625549 2.90209961 50.26834106 C1.94440674 50.2651889 0.98671387 50.26203674 0 50.25878906 C-0.84747803 50.25799347 -1.69495605 50.25719788 -2.56811523 50.25637817 C-4.50390625 50.12939453 -4.50390625 50.12939453 -5.50390625 49.12939453 C-5.60221771 47.63069405 -5.63189081 46.12740915 -5.63330078 44.62548828 C-5.63645294 43.66779541 -5.6396051 42.71010254 -5.64285278 41.72338867 C-5.64082855 40.68174561 -5.63880432 39.64010254 -5.63671875 38.56689453 C-5.63767548 37.505271 -5.6386322 36.44364746 -5.63961792 35.34985352 C-5.64029989 33.10025982 -5.63844444 30.85066416 -5.63427734 28.60107422 C-5.62892935 25.14432382 -5.63422179 21.68770336 -5.640625 18.23095703 C-5.63996422 16.05126924 -5.63868307 13.87158154 -5.63671875 11.69189453 C-5.63874298 10.65025146 -5.64076721 9.6086084 -5.64285278 8.53540039 C-5.63970062 7.57770752 -5.63654846 6.62001465 -5.63330078 5.63330078 C-5.63250519 4.78582275 -5.63170959 3.93834473 -5.63088989 3.06518555 C-5.38452851 -0.69044892 -3.24984304 0.00305088 0 0 Z M3.49609375 10.12939453 C0.60622128 14.83359988 1.16621034 19.7093269 1.18359375 25.06689453 C1.16748047 26.05625 1.15136719 27.04560547 1.13476562 28.06494141 C1.04205666 35.14575056 1.04205666 35.14575056 4.49609375 41.12939453 C9.2002991 44.01926701 14.07602612 43.45927794 19.43359375 43.44189453 C20.42294922 43.45800781 21.41230469 43.47412109 22.43164062 43.49072266 C29.51244977 43.58343162 29.51244977 43.58343162 35.49609375 40.12939453 C38.38596622 35.42518918 37.82597716 30.54946216 37.80859375 25.19189453 C37.82470703 24.20253906 37.84082031 23.21318359 37.85742188 22.19384766 C37.95013084 15.11303851 37.95013084 15.11303851 34.49609375 9.12939453 C29.7918884 6.23952206 24.91616138 6.79951112 19.55859375 6.81689453 C18.56923828 6.80078125 17.57988281 6.78466797 16.56054688 6.76806641 C9.47973773 6.67535745 9.47973773 6.67535745 3.49609375 10.12939453 Z "
@@ -233,25 +229,33 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                                 transform="translate(29,19)" />
                         </svg>
                     </a>
-                    <a class="tik-tok" href="<?=$info->acf->networks_social_media->tiktok?>">
+                    <?php } ?>
+                    <?php if($info->acf->networks_social_media->tiktok != ""){ ?>
+                    <a class="tik-tok" href="<?=$info->acf->networks_social_media->tiktok?>" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
                             <path
                                 d="M41,4H9C6.243,4,4,6.243,4,9v32c0,2.757,2.243,5,5,5h32c2.757,0,5-2.243,5-5V9C46,6.243,43.757,4,41,4z M37.006,22.323 c-0.227,0.021-0.457,0.035-0.69,0.035c-2.623,0-4.928-1.349-6.269-3.388c0,5.349,0,11.435,0,11.537c0,4.709-3.818,8.527-8.527,8.527 s-8.527-3.818-8.527-8.527s3.818-8.527,8.527-8.527c0.178,0,0.352,0.016,0.527,0.027v4.202c-0.175-0.021-0.347-0.053-0.527-0.053 c-2.404,0-4.352,1.948-4.352,4.352s1.948,4.352,4.352,4.352s4.527-1.894,4.527-4.298c0-0.095,0.042-19.594,0.042-19.594h4.016 c0.378,3.591,3.277,6.425,6.901,6.685V22.323z" />
                         </svg>
                     </a>
-                    <a class="twitter" href="<?=$info->acf->networks_social_media->twitter?>">
+                    <?php } ?>
+                    <?php if($info->acf->networks_social_media->twitter != ""){ ?>
+                    <a class="twitter" href="<?=$info->acf->networks_social_media->twitter?>" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
                             <path
                                 d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z" />
                         </svg>
                     </a>
+                    <?php } ?>
                 </div>
             </div>
         </section>
+        <?php 
+        }
+        ?>
     </main>
     <footer>
         <p>Sitio web hecho con</p>
-        <img src="/img/Logo_Acuarela.png" />
+        <img src="https://i.ibb.co/K9qk9Tr/Logo-Acuarela.png" alt="Logo-Acuarela" border="0">
     </footer>
     <script src="js/landing.js?v=<?=time()?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -259,4 +263,5 @@ $info = $land->gInfoDaycare($nameUrl[0]);
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
+
 </html>

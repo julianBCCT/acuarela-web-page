@@ -1,3 +1,49 @@
+//Contraste entre colores
+
+document.addEventListener("DOMContentLoaded", function() {
+    var colorPrimario = getComputedStyle(document.documentElement).getPropertyValue('--color-primario').trim();
+    var colorTexto = '#060606'; // Negro por defecto
+
+    var contraste = calcularContraste(colorPrimario, colorTexto);
+    
+    if (contraste < 4.5) {
+        document.documentElement.style.setProperty('--color-botones', 'white'); // Establece el color de texto en blanco
+    }
+});
+
+function calcularContraste(color1, color2) {
+    // Obtener los componentes RGB de cada color
+    var rgb1 = obtenerComponentesRGB(color1);
+    var rgb2 = obtenerComponentesRGB(color2);
+
+    // Calcular la luminancia de cada color
+    var luminancia1 = calcularLuminancia(rgb1);
+    var luminancia2 = calcularLuminancia(rgb2);
+
+    // Calcular el contraste
+    var contraste = (Math.max(luminancia1, luminancia2) + 0.05) / (Math.min(luminancia1, luminancia2) + 0.05);
+
+    return contraste;
+}
+
+function obtenerComponentesRGB(color) {
+    var match = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+    return match ? {
+        r: parseInt(match[1], 16) / 255,
+        g: parseInt(match[2], 16) / 255,
+        b: parseInt(match[3], 16) / 255
+    } : null;
+}
+
+function calcularLuminancia(rgb) {
+    var r = rgb.r <= 0.03928 ? rgb.r / 12.92 : Math.pow((rgb.r + 0.055) / 1.055, 2.4);
+    var g = rgb.g <= 0.03928 ? rgb.g / 12.92 : Math.pow((rgb.g + 0.055) / 1.055, 2.4);
+    var b = rgb.b <= 0.03928 ? rgb.b / 12.92 : Math.pow((rgb.b + 0.055) / 1.055, 2.4);
+
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+
 //Navbar
 
 function openNav() {

@@ -30,7 +30,7 @@ $info = $land->gInfoDaycare($nameUrl[0]);
     <meta name="description" content="<?=$info->content->rendered?>" />
     <style>
     :root {
-        --color-primario: <?=$info->acf->color_1?>;
+        --color-primario: <?=$info->acf->color_2?>;
         --color-secundario: <?=$info->acf->color_1?>;
         --titulos: #060606;
         --textos: #3e3e43;

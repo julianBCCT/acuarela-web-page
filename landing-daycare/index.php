@@ -51,7 +51,7 @@ $info = $land->gInfoDaycare($nameUrl[0]);
             <ul class="nav-links">
                 <li><a href="#about-us">About Us</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#contact-us">Contact Us</a></li>
+                <li><a href="https://wa.me/<?=$info->acf->telefono?>;">Contact Us</a></li>
             </ul>
         </nav>
         <a href="https://wa.me/<?=$info->acf->telefono?>;" class="btn">
@@ -65,8 +65,8 @@ $info = $land->gInfoDaycare($nameUrl[0]);
             <div class="overlay-content">
                 <a onclick="closeNav()" href="#about-us">About Us</a>
                 <a onclick="closeNav()" href="#services">Services</a>
-                <a onclick="closeNav()" href="#contact-us">Contact Us</a>
-                <a onclick="closeNav()" href="#" class="btn"><button>
+                <a onclick="closeNav()" href="#https://wa.me/<?=$info->acf->telefono?>;">Contact Us</a>
+                <a onclick="closeNav()" href="https://wa.me/<?=$info->acf->telefono?>;" class="btn"><button>
                         <i class="acuarela acuarela-Evento"></i>Agendar Visita
                     </button></a>
             </div>
@@ -95,7 +95,7 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         <section class="tour">
             <div class="sidebars">
                 <div class="sidebar-left">
-                    <div class="details card">
+                    <div id="details_card" class="details card">
                         <div class="detail">
                             <i class="acuarela acuarela-Mensajes"></i>
                             <div class="text">

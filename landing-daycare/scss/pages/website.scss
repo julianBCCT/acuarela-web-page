@@ -7,6 +7,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--fondo);
   color: var(--textos);
@@ -26,13 +30,13 @@ body {
     color: var(--titulos);
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 80px;
     padding: 5px 20%;
 
     .logo {
       img {
-        padding: 10px 0;
-        height: 70px;
+        padding: 0 0;
+        height: 100px;
         width: auto;
       }
     }
@@ -163,7 +167,7 @@ body {
 
   main {
     b {
-      font-size: 15px;
+      font-size: 22px;
     }
 
     .portada {
@@ -398,6 +402,7 @@ body {
           }
 
           .img {
+            display:none;
             height: 350px;
             @media screen and (max-width: 1120px) {
               height: 400px;
@@ -556,7 +561,7 @@ body {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 15px;
+            gap: 25px;
             height: auto;
             padding: 20px;
 

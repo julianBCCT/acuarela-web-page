@@ -54,9 +54,9 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                 <li><a href="#contact-us">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="#" class="btn"><button>
-                <i class="acuarela acuarela-Evento"></i>Agendar Visita
-            </button></a>
+        <a href="https://wa.me/<?=$info->acf->telefono?>;" class="btn">
+            <button><i class="acuarela acuarela-Evento"></i>Agendar Visita</button>
+        </a>
 
         <a onclick="openNav()" href="#" class="menu"><button><i class="acuarela acuarela-Justificar"></i></button></a>
 

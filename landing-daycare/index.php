@@ -54,7 +54,7 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                 <li><a href="https://wa.me/<?=$info->acf->telefono?>;" target="_blank">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="https://wa.me/<?=$info->acf->telefono?>;" class="btn">
+        <a href="https://wa.me/<?=$info->acf->telefono?>;" target="_blank" class="btn">
             <button><i class="acuarela acuarela-Evento"></i>Agendar Visita</button>
         </a>
 
@@ -65,8 +65,8 @@ $info = $land->gInfoDaycare($nameUrl[0]);
             <div class="overlay-content">
                 <a onclick="closeNav()" href="#about-us">About Us</a>
                 <a onclick="closeNav()" href="#services">Services</a>
-                <a onclick="closeNav()" href="#https://wa.me/<?=$info->acf->telefono?>;">Contact Us</a>
-                <a onclick="closeNav()" href="https://wa.me/<?=$info->acf->telefono?>;" class="btn"><button>
+                <a onclick="closeNav()" href="#https://wa.me/<?=$info->acf->telefono?>;" target="_blank">Contact Us</a>
+                <a onclick="closeNav()" href="https://wa.me/<?=$info->acf->telefono?>;" target="_blank" class="btn"><button>
                         <i class="acuarela acuarela-Evento"></i>Agendar Visita
                     </button></a>
             </div>

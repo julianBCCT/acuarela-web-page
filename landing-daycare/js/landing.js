@@ -2,12 +2,17 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     var colorPrimario = getComputedStyle(document.documentElement).getPropertyValue('--color-primario').trim();
+    var colorSecundario = getComputedStyle(document.documentElement).getPropertyValue('--color-secundario').trim();
     var colorTexto = '#060606'; // Negro por defecto
 
-    var contraste = calcularContraste(colorPrimario, colorTexto);
+    var contraste1 = calcularContraste(colorPrimario, colorTexto);
+    var contraste2 = calcularContraste(colorSecundario, colorTexto);
     
-    if (contraste < 4.5) {
-        document.documentElement.style.setProperty('--color-botones', 'white'); // Establece el color de texto en blanco
+    if (contraste1 < 4.5) {
+        document.documentElement.style.setProperty('--color-botones', 'white');
+    }
+    if (contraste2 < 4.5) {
+        document.documentElement.style.setProperty('--color-pasos', 'white'); 
     }
 });
 
@@ -109,4 +114,28 @@ popupContainer.addEventListener('click', function (event) {
     if (event.target === popupContainer) {
         popupContainer.style.display = 'none';
     }
+});
+
+//Funcionamiento de los titulos de los pasos al tener o no hover
+
+// Obtener todos los elementos li
+const listItems = document.querySelectorAll('.card li');
+
+// Agregar un controlador de eventos para cada elemento li
+listItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        // Al hacer hover, ocultar la etiqueta <b> en los otros elementos li
+        listItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.querySelector('b').style.display = 'none';
+            }
+        });
+    });
+
+    item.addEventListener('mouseout', () => {
+        // Al salir del hover, mostrar la etiqueta <b> en todos los elementos li
+        listItems.forEach(otherItem => {
+            otherItem.querySelector('b').style.display = 'block';
+        });
+    });
 });

@@ -33,10 +33,14 @@ body {
     height: 80px;
     padding: 5px 20%;
 
+    @media screen and (max-width: 1290px) {
+      padding: 5px 10%;
+    }
+
     .logo {
       img {
         padding: 0 0;
-        height: 100px;
+        max-height: 60px;
         width: auto;
       }
     }
@@ -223,6 +227,7 @@ body {
         }
 
         img {
+          background-color: white;
           object-fit: contain;
           border-radius: 10px;
           width: 180px;
@@ -355,6 +360,134 @@ body {
             width: 100%;
           }
 
+          .galeria-1 {
+            display: none;
+            position: relative;
+            width: 100%;
+            //height: 40%;
+            margin: 0 auto;
+
+            @media screen and (max-width: 860px) {
+              display: block;
+              height: 420px;
+            }
+
+            .image-gallery-1 {
+              list-style: none;
+              position: relative;
+              display: inline-block;
+              padding: 0;
+              margin: 0;
+              overflow: hidden;
+              width: 100%;
+
+              li {
+                float: left;
+                width: 100%;
+                height: 100%;
+                display: none;
+                overflow: hidden;
+
+                img {
+                  border-radius: 10px;
+                  object-fit: cover;
+                  width: 100%;
+                  height: 390px;
+
+                  @media screen and (max-width: 1290px) {
+                    height: 440px;
+                  }
+
+                  @media screen and (max-width: 1210px) {
+                    height: 460px;
+                  }
+
+                  @media screen and (max-width: 1120px) {
+                    height: 420px;
+                  }
+
+                  @media screen and (max-width: 1060px) {
+                    height: 460px;
+                  }
+
+                  @media screen and (max-width: 860px) {
+                    height: 300px;
+                  }
+                }
+              }
+            }
+
+            .prev-btn-1,
+            .next-btn-1 {
+              border-radius: 10px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              background: var(--color-secundario);
+              border: none;
+              padding: 20px;
+              cursor: pointer;
+
+              &:hover {
+                border: 2px solid var(--color-secundario);
+                background-color: white;
+
+                i {
+                  color: var(--color-secundario);
+                }
+              }
+
+              @media screen and (max-width: 860px) {
+                top: 88%;
+              }
+            }
+
+            .prev-btn-1 {
+              left: 50px;
+            }
+
+            .next-btn-1 {
+              right: 50px;
+            }
+          }
+
+          .popup-container-1 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+
+            .popup-content-1 {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              text-align: center;
+
+              .popup-image-1 {
+                border-radius: 10px;
+                width: 100%;
+                max-height: 80vh;
+              }
+
+              .close-btn-1 {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                padding: 5px 15px;
+                border-radius: 10px;
+                background-color: var(--color-primario);
+                color: var(--color-botones);
+                font-size: 30px;
+                cursor: pointer;
+              }
+            }
+          }
+
           .details {
             .detail {
               display: flex;
@@ -446,10 +579,11 @@ body {
           .galeria {
             position: relative;
             width: 100%;
-            //height: 40%;
+            height: 40%;
             margin: 0 auto;
 
             @media screen and (max-width: 860px) {
+              display: none;
               height: 420px;
             }
 
@@ -460,6 +594,7 @@ body {
               padding: 0;
               margin: 0;
               overflow: hidden;
+              width: 100%;
 
               li {
                 float: left;

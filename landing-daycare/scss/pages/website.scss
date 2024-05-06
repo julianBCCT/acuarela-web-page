@@ -1031,3 +1031,33 @@ body {
     }
   }
 }
+
+.whatsapp_cont {
+  position: fixed;
+  bottom: 20px; 
+  right: 80px; 
+  margin: 50px 30px;
+}
+
+.whatsapp {
+  width: 100px; 
+  height: auto; /* para mantener la proporción del icono */
+  background-color: green; 
+  padding: 10px; 
+  border-radius: 50%; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* sombra ligera */
+}
+
+.whatsapp:hover {
+  transform: scale(1.1); 
+}
+
+@media (max-width: 768px) {
+  .whatsapp_cont {
+      right: 10px;
+      margin: 30px 10px; 
+  }
+  .whatsapp {
+    width: 70px; 
+  }
+}

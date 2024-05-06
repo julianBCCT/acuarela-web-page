@@ -57,7 +57,7 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                 <li><a href="#contact-us">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="https://wa.me/+1<?= $info->acf->telefono ?>" target="_blank" class="btn">
+        <a href="https://wa.me/+1<?= $info->acf->telefono?>" target="_blank" class="btn">
             <button><i class="acuarela acuarela-Evento"></i>Agendar Visita</button>
         </a>
 
@@ -77,7 +77,6 @@ $info = $land->gInfoDaycare($nameUrl[0]);
             </div>
         </div>
     </header>
-
     <main>
         <div class="portada">
             <img class="img-portada" src="<?= $info->acf->banner_principal ?>" />
@@ -323,6 +322,11 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         }
         ?>
     </main>
+    <div class="whatsapp_cont">
+            <a href="https://wa.me/+1<?= $info->acf->telefono?>" target="_blank">
+                <img src="img/whatsapp.svg" class="whatsapp" />
+            </a>
+    </div>
     <footer>
         <p>Sitio web hecho con</p>
         <img src="https://i.ibb.co/K9qk9Tr/Logo-Acuarela.png" alt="Logo-Acuarela" border="0">

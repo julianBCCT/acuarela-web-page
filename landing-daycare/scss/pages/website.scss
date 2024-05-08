@@ -703,6 +703,16 @@ body {
             }
           }
 
+          .misionVision{
+            display: none;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: normal;
+            @media screen and (max-width: 860px) {
+              display: flex;
+            }
+          }
+
           .mision-vision {
             display: flex;
             flex-direction: column;
@@ -713,13 +723,34 @@ body {
 
             /*@media screen and (max-width: 1020px) {
               height: 90%;
-            }
+            }*/
 
             @media screen and (max-width: 860px) {
-              height: auto;
-            }*/
+              display: none;
+            }
+            @media screen and (max-width: 860px) {
+              &.flex-mobile {
+                  display: flex;
+              }
+            }           
           }
         }
+      }
+    }
+
+    .Philosophy1{
+      display: none;
+      margin: 15px 45px;
+      width: 80%;
+      padding: 20px;
+      background-color: var(--cards);
+      border-radius: 10px;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: normal;
+      @media screen and (max-width: 860px) {
+        display: flex;
       }
     }
 
@@ -740,8 +771,14 @@ body {
         gap: 10px;
 
         @media screen and (max-width: 1290px) {
+          display: none;
           width: 80%;
         }
+        @media screen and (max-width: 1290px) {
+          &.flexp-mobile {
+              display: flex;
+          }
+        }      
       }
     }
 

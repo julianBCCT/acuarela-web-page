@@ -211,18 +211,23 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                             <img class="popup-image" src="" alt="Popup Image" />
                         </div>
                     </div>
+                    <button class="misionVision card" id="misionVision">
+                            Misión y visión
+                    </button>
                     <div class="mision-vision card">
                         <b>Mision</b>
                         <p><?= $info->acf->mision ?>
                         </p>
                         <b>Vision</b>
-                        <p><?= $info->acf->vision ?>
-                        </p>
+                        <p><?= $info->acf->vision ?></p>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="philosophy">
+        <button class="Philosophy1" id="Philosophy1">
+            Philosophy
+        </button>
+        <div class="philosophy" id="philosophy">
             <div class="of-education">
                 <b>Philosophy of Education</b>
                 <p><?= $info->acf->filosofia_de_educacion ?></p>
@@ -331,6 +336,22 @@ $info = $land->gInfoDaycare($nameUrl[0]);
         <p>Sitio web hecho con</p>
         <img src="https://i.ibb.co/K9qk9Tr/Logo-Acuarela.png" alt="Logo-Acuarela" border="0">
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const misionVisionButton = document.getElementById("misionVision");
+            const misionVisionSection = document.querySelector(".mision-vision");
+            const PhilosophyButton = document.getElementById("Philosophy1");
+            const PhilosophySection = document.querySelector(".of-education");
+
+            misionVisionButton.addEventListener("click", function() {
+                console.log("lllllllllllll");
+                misionVisionSection.classList.toggle("flex-mobile");
+            });
+            PhilosophyButton.addEventListener("click", function() {
+                PhilosophySection.classList.toggle("flexp-mobile");
+            });
+        });
+    </script>
     <script src="js/landing.js?v=<?= time() ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>

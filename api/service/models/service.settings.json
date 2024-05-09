@@ -20,10 +20,6 @@
     "price": {
       "type": "string"
     },
-    "discount_code": {
-      "via": "services",
-      "model": "discount-code"
-    },
     "logo": {
       "model": "file",
       "via": "related",
@@ -73,6 +69,10 @@
     },
     "quantity": {
       "type": "biginteger"
+    },
+    "discount_codes": {
+      "via": "services",
+      "collection": "discount-code"
     }
   }
 }

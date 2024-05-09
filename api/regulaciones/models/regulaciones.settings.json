@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "regulaciones",
   "info": {
-    "name": "Regulaciones ",
+    "name": "Regulaciones",
     "description": ""
   },
   "options": {
@@ -84,6 +84,9 @@
         "centros_cuidado_infantil_grupal",
         "centros_cuidado_infantil_familiar"
       ]
+    },
+    "id_openai": {
+      "type": "string"
     }
   }
 }

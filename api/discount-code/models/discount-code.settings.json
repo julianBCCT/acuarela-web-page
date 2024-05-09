@@ -21,10 +21,17 @@
     },
     "services": {
       "collection": "service",
-      "via": "discount_code"
+      "via": "discount_codes",
+      "dominant": true
     },
     "price_discount": {
       "type": "biginteger"
+    },
+    "fecha_vigencia": {
+      "type": "date"
+    },
+    "hora_vigencia": {
+      "type": "time"
     }
   }
 }

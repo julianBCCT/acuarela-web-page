@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "identificadores_vector_stores",
+  "info": {
+    "name": "Identificadores VS",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_vector_store": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "string"
+    }
+  }
+}

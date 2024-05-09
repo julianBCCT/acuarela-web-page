@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "orders",
   "info": {
-    "name": "Order"
+    "name": "Order",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,6 +15,18 @@
       "type": "string"
     },
     "value": {
+      "type": "string"
+    },
+    "bilingual_user": {
+      "model": "bilingual-user"
+    },
+    "service": {
+      "model": "service"
+    },
+    "daycare": {
+      "model": "daycare"
+    },
+    "id_order_paypal": {
       "type": "string"
     }
   }

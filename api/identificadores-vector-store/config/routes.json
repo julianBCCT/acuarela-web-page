@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/identificadores-vector-stores",
+      "handler": "identificadores-vector-store.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/identificadores-vector-stores/count",
+      "handler": "identificadores-vector-store.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/identificadores-vector-stores/:id",
+      "handler": "identificadores-vector-store.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/identificadores-vector-stores",
+      "handler": "identificadores-vector-store.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/identificadores-vector-stores/:id",
+      "handler": "identificadores-vector-store.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/identificadores-vector-stores/:id",
+      "handler": "identificadores-vector-store.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -212,27 +212,26 @@ $info = $land->gInfoDaycare($nameUrl[0]);
                         </div>
                     </div>
                     <button class="misionVision card" id="misionVision">
-                            Misión y visión
+                        <b>Misión y visión</b>
+                        <div class="mision-vision card">
+                            <b>Mision</b>
+                            <p><?= $info->acf->mision ?>
+                            </p>
+                            <b>Vision</b>
+                            <p><?= $info->acf->vision ?></p>
+                        </div>
                     </button>
-                    <div class="mision-vision card">
-                        <b>Mision</b>
-                        <p><?= $info->acf->mision ?>
-                        </p>
-                        <b>Vision</b>
-                        <p><?= $info->acf->vision ?></p>
-                    </div>
                 </div>
             </div>
         </section>
         <button class="Philosophy1" id="Philosophy1">
-            Philosophy
-        </button>
-        <div class="philosophy" id="philosophy">
-            <div class="of-education">
-                <b>Philosophy of Education</b>
-                <p><?= $info->acf->filosofia_de_educacion ?></p>
+            <b>Philosophy of Education</b>
+            <div class="philosophy" id="philosophy">
+                <div class="of-education">                
+                    <p><?= $info->acf->filosofia_de_educacion ?></p>
+                </div>
             </div>
-        </div>
+        </button>
         <?php
         if (
             $info->acf->servicios != "" 

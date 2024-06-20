@@ -31,7 +31,7 @@ module.exports = {
         })
         .populate({
           path: "suscriptions",
-          select: "suscription_expiration product service createdAt, id_paypal",
+          select: "suscription_expiration product service createdAt id_paypal",
           populate: [
             { path: "product", select: "name" },
             { path: "service", select: "name price logo" },

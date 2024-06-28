@@ -29,7 +29,17 @@ module.exports = {
     const { id } = ctx.params;
     let query = { _id: { $eq: id } };
     // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
-    let entity = await strapi.query("bilingual-user").model.find(query);
+    let entity = await strapi
+      .query("bilingual-user")
+      .model.find(query)
+      .populate("acuarelauser", ["name", "photo", "rols", "id"])
+      .populate({
+        path: "acuarelauser",
+        populate: {
+          path: "rols",
+          select: ["rol"],
+        },
+      });
     if (!entity) {
       return ctx.send({
         ok: false,

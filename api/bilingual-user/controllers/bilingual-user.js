@@ -25,6 +25,22 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+  async findOneUser(ctx) {
+    const { id } = ctx.params;
+    let query = { _id: { $eq: id } };
+    // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
+    let entity = await strapi.query("bilingual-user").model.find(query);
+    if (!entity) {
+      return ctx.send({
+        ok: false,
+        status: 404,
+        code: 5,
+        msg: "bilingual-user not found.",
+      });
+    } else {
+      return ctx.send(entity);
+    }
+  },
   async login(ctx) {
     const { email, password } = ctx.request.body;
     let entity;

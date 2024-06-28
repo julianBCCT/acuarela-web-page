@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/bilingual-users/single/:id",
+      "handler": "bilingual-user.findOneUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/bilingual-users",
       "handler": "bilingual-user.create",

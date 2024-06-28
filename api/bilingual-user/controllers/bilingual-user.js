@@ -33,6 +33,7 @@ module.exports = {
       .query("bilingual-user")
       .model.find(query)
       .populate("acuarelauser", ["name", "photo", "rols", "id"])
+      .populate("daycares")
       .populate({
         path: "acuarelauser",
         populate: {

@@ -20,8 +20,8 @@
       "min": "0"
     },
     "services": {
-      "collection": "service",
       "via": "discount_codes",
+      "collection": "service",
       "dominant": true
     },
     "price_discount": {

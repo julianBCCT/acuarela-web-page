@@ -71,8 +71,11 @@
       "type": "biginteger"
     },
     "discount_codes": {
-      "via": "services",
-      "collection": "discount-code"
+      "collection": "discount-code",
+      "via": "services"
+    },
+    "id_wp": {
+      "type": "string"
     }
   }
 }

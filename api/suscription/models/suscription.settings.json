@@ -31,12 +31,16 @@
       "type": "biginteger"
     },
     "menuhistory": {
-      "via": "suscription",
-      "model": "menuhistory"
+      "model": "menuhistory",
+      "via": "suscription"
     },
     "daycare": {
       "model": "daycare",
       "via": "suscriptions"
+    },
+    "cancel": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

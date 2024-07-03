@@ -14,8 +14,9 @@ module.exports = {
         "http://acuarela.app",
         "https://acuarelacore.com/api/movements/62d1d62c2d088187dac74153",
         "https://bilingualchildcaretraining.com",
-        "https://bilingualchildcaretraining.com/",
       ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      headers: ["Content-Type", "Authorization"],
       credentials: true,
     },
     parser: {

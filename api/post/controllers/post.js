@@ -10,10 +10,20 @@ const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async find(ctx) {
     const { token } = ctx.request.header;
+    const { daycareId } = ctx.query; // Asumiendo que pasarás el ID de la guardería en la query
+
+    let filter = ctx.query;
+
+    if (daycareId) {
+      filter = {
+        ...ctx.query,
+        "acuarelauser.daycares": { $in: [daycareId] },
+      };
+    }
 
     let entities = await strapi
       .query("post")
-      .model.find(ctx.query)
+      .model.find(filter)
       .sort({ published_at: -1 })
       .populate("acuarelauser", ["name", "id", "photo", "daycare", "daycares"])
       .populate({

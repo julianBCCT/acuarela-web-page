@@ -30,6 +30,7 @@ module.exports = {
       const filterEntities = entities.filter((entity) => {
         return entity.acuarelauser.daycares.includes(daycareId);
       });
+      console.log(filterEntities);
       return filterEntities.map((entity) =>
         sanitizeEntity(entity, { model: strapi.models.post })
       );

@@ -12,13 +12,6 @@ module.exports = {
     const { token } = ctx.request.header;
     const { daycareId } = ctx.query;
     let filter = ctx.query;
-
-    if (daycareId) {
-      filter = {
-        ...ctx.query,
-        "acuarelauser.daycares": { $elemMatch: { $eq: daycareId } },
-      };
-    }
     let entities = await strapi
       .query("post")
       .model.find(filter)

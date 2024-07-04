@@ -11,10 +11,9 @@ module.exports = {
   async find(ctx) {
     const { token } = ctx.request.header;
     const { daycareId } = ctx.query;
-    let filter = ctx.query;
     let entities = await strapi
       .query("post")
-      .model.find(filter)
+      .model.find({})
       .sort({ published_at: -1 })
       .populate("acuarelauser", ["name", "id", "photo", "daycare", "daycares"])
       .populate({

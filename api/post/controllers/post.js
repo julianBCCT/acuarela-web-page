@@ -17,7 +17,7 @@ module.exports = {
     if (daycareId) {
       filter = {
         ...ctx.query,
-        "acuarelauser.daycares": { $in: [daycareId] },
+        "acuarelauser.daycares": { $elemMatch: { $eq: daycareId } },
       };
     }
 
@@ -42,7 +42,6 @@ module.exports = {
       sanitizeEntity(entity, { model: strapi.models.post })
     );
   },
-
   // Crea un nuevo post.
   async create(ctx) {
     const { token } = ctx.request.header;

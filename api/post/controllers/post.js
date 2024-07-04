@@ -20,7 +20,15 @@ module.exports = {
         path: "comments",
         populate: {
           path: "acuarelauser",
-          select: ["name", "lastname", "mail", "phone", "photo", "_id"],
+          select: [
+            "name",
+            "lastname",
+            "mail",
+            "phone",
+            "photo",
+            "_id",
+            "daycares",
+          ],
         },
       })
       .populate("reactions")

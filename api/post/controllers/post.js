@@ -28,6 +28,8 @@ module.exports = {
       .populate("classactivity");
     if (daycareId) {
       const filterEntities = entities.filter((entity) => {
+        console.log(entity.acuarelauser.daycares);
+        console.log(daycareId);
         return entity.acuarelauser.daycares.includes(daycareId);
       });
       console.log(filterEntities);

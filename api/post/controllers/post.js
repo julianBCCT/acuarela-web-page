@@ -10,8 +10,7 @@ const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async find(ctx) {
     const { token } = ctx.request.header;
-    const { daycareId } = ctx.query; // Asumiendo que pasarás el ID de la guardería en la query
-
+    const { daycareId } = ctx.query;
     let filter = ctx.query;
 
     if (daycareId) {
@@ -20,9 +19,6 @@ module.exports = {
         "acuarelauser.daycares": { $elemMatch: { $eq: daycareId } },
       };
     }
-
-    console.log(daycareId);
-
     let entities = await strapi
       .query("post")
       .model.find(filter)
@@ -37,10 +33,18 @@ module.exports = {
       })
       .populate("reactions")
       .populate("classactivity");
-
-    return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models.post })
-    );
+    if (daycareId) {
+      const filterEntities = entities.filter((entity) => {
+        return entity.acuarelauser.daycares.includes(daycareId);
+      });
+      return filterEntities.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.post })
+      );
+    } else {
+      return entities.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.post })
+      );
+    }
   },
   // Crea un nuevo post.
   async create(ctx) {

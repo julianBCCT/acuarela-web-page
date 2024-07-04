@@ -21,6 +21,8 @@ module.exports = {
       };
     }
 
+    console.log(daycareId);
+
     let entities = await strapi
       .query("post")
       .model.find(filter)

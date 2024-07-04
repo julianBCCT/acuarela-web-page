@@ -15,20 +15,12 @@ module.exports = {
       .query("post")
       .model.find(ctx.query)
       .sort({ published_at: -1 })
-      .populate("acuarelauser", ["name", "id", "photo", "daycare"])
+      .populate("acuarelauser", ["name", "id", "photo", "daycare", "daycares"])
       .populate({
         path: "comments",
         populate: {
           path: "acuarelauser",
-          select: [
-            "name",
-            "lastname",
-            "mail",
-            "phone",
-            "photo",
-            "_id",
-            "daycares",
-          ],
+          select: ["name", "lastname", "mail", "phone", "photo", "_id"],
         },
       })
       .populate("reactions")

@@ -19,7 +19,6 @@ module.exports = {
       const expiredSubscriptions = await strapi.query("suscription").find({
         suscription_expiration: { $lt: today },
       });
-      console.log(expiredSubscriptions);
 
       return ctx.send({
         ok: true,

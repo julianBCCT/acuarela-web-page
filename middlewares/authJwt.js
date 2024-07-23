@@ -131,7 +131,6 @@ async function get_data(token) {
 
   try {
     const { mail, email, phone } = await jwt.verify(token, process.env.SECRET);
-    console.log({ mail, email });
     let query = {};
 
     if ((email != "-1" && email) || (mail != "-1" && mail)) {

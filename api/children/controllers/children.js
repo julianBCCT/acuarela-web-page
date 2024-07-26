@@ -194,7 +194,6 @@ module.exports = {
     if (validToken.ok) {
       let query = { status: true };
       query._id = { $eq: id };
-      query.daycare = { $eq: validToken.user.organization };
 
       // Se realiza la consulta sobre un niño y se poblan los campos necesarios.
       let entity = await strapi
@@ -251,7 +250,6 @@ module.exports = {
             ],
           },
         });
-console.log(entity);
       if (!entity)
         return ctx.send({
           ok: false,

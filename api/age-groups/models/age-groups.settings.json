@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "age_groups",
   "info": {
-    "name": "age_groups"
+    "name": "age_groups",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,6 +17,21 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "aplica_menus": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "classes",
+  "info": {
+    "name": "Classes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Clase": {
+      "type": "string"
+    },
+    "Mes": {
+      "type": "string"
+    },
+    "Fecha": {
+      "type": "date"
+    },
+    "Ciudad": {
+      "type": "string"
+    },
+    "Modalidad": {
+      "type": "string"
+    },
+    "Distrito": {
+      "type": "string"
+    },
+    "Hora": {
+      "type": "time"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

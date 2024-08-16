@@ -1,18 +1,18 @@
 //Contraste entre colores
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var colorPrimario = getComputedStyle(document.documentElement).getPropertyValue('--color-primario').trim();
     var colorSecundario = getComputedStyle(document.documentElement).getPropertyValue('--color-secundario').trim();
     var colorTexto = '#060606'; // Negro por defecto
 
     var contraste1 = calcularContraste(colorPrimario, colorTexto);
     var contraste2 = calcularContraste(colorSecundario, colorTexto);
-    
+
     if (contraste1 < 4.5) {
         document.documentElement.style.setProperty('--color-botones', 'white');
     }
     if (contraste2 < 4.5) {
-        document.documentElement.style.setProperty('--color-pasos', 'white'); 
+        document.documentElement.style.setProperty('--color-pasos', 'white');
     }
 });
 
@@ -193,5 +193,47 @@ listItems.forEach(item => {
         listItems.forEach(otherItem => {
             otherItem.querySelector('b').style.display = 'block';
         });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const textContainers = document.querySelectorAll('.text-container');
+
+    textContainers.forEach(container => {
+        const textContent = container.querySelector('.text-content');
+        const readMoreBtn = container.querySelector('.read-more-btn');
+        const originalText = textContent.textContent.trim();
+
+        if (originalText.length > 300) {
+            const truncatedText = originalText.substring(0, 300) + '...';
+            textContent.textContent = truncatedText;
+            container.classList.add('show-btn');
+
+            // Obtén el idioma desde el atributo data-lang del botón
+            var lang = readMoreBtn.getAttribute('data-lang');
+
+            // Define las traducciones para los botones
+            var translations = {
+                "es": {
+                    "ver_mas": 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>',
+                    "ver_menos": 'Ver menos <i class="acuarela acuarela-Flecha_arriba"></i>'
+                },
+                "en": {
+                    "ver_mas": 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>',
+                    "ver_menos": 'Read less <i class="acuarela acuarela-Flecha_arriba"></i>'
+                }
+            };
+
+            readMoreBtn.addEventListener('click', function () {
+                if (textContent.classList.contains('expanded')) {
+                    textContent.textContent = truncatedText;
+                    readMoreBtn.innerHTML = translations[lang]["ver_mas"];
+                } else {
+                    textContent.textContent = originalText;
+                    readMoreBtn.innerHTML = translations[lang]["ver_menos"];
+                }
+                textContent.classList.toggle('expanded');
+            });
+        }
     });
 });

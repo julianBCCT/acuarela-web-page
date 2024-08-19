@@ -40,9 +40,9 @@ $titulos = [
         "complete-text" => "Fill out our admission forms to get to know you and your child better.",
         "send-text" => "Provide the results of your child's medical tests to ensure a safe environment.",
         "welcome-text" => "Get ready to join our community and start this exciting adventure together!",
-        "disabled" => "Page disabled",
-        "disabled-text-1" => "We are sorry, this page is temporarily disabled. If you wish to reactivate it or learn more about our services, please contact our sales team.",
-        "disabled-text-2" => "You can write to us at",
+        "disabled" => "Your website has been disabled",
+        "disabled-text-1" => "We are sorry, this page is temporarily disabled. If you want to reactivate it or learn more about our services, please contact our sales team.",
+        "disabled-text-2" => "Contact us at",
         "disabled-text-4" => "We are here to help you."
     ],
     "es" => [
@@ -67,9 +67,9 @@ $titulos = [
         "complete-text" => "Llena nuestros formularios de admisión para conocerte mejor a ti y a tu hijo/a.",
         "send-text" => "Proporciona los resultados de las pruebas médicas de tu hijo/a para garantizar un ambiente seguro.",
         "welcome-text" => "¡Prepárate para unirte a nuestra comunidad y comenzar esta emocionante aventura juntos!",
-        "disabled" => "Página Desactivada",
+        "disabled" => "Tu website ha sido desactivado",
         "disabled-text-1" => "Lo sentimos, esta página se encuentra temporalmente desactivada. Si deseas reactivarla o conocer más sobre nuestros servicios, por favor, ponte en contacto con nuestro equipo de ventas.",
-        "disabled-text-2" => "Puedes escribirnos al",
+        "disabled-text-2" => "Contáctanos al",
         "disabled-text-4" => "Estamos aquí para ayudarte."
     ]
 ];

@@ -4,14 +4,14 @@
       <section class="contact">
         <div class="contact__content">
           <div class="contact__texts">
-            <h1 class="contact__title">¡Obtén tu invitación!</h1>
+            <h1 class="contact__title">¡Crea una cuenta gratis!</h1>
             <h3 class="contact__subtitle">
               Cuéntanos sobre ti y tu Daycare, uno de nuestros asesores se
               comunicará contigo para presentarte Acuarela.
             </h3>
           </div>
           <div class="contact__success">
-            <h1 class="contact__title">¡Obtén tu invitación!</h1>
+            <h1 class="contact__title">¡Crea una cuenta gratis!</h1>
             <h3 class="contact__subtitle">¡Listo! Recibimos tu mensaje</h3>
             <p class="contact__message">
               Muy pronto nos pondremos en contacto contigo para ayudarte a

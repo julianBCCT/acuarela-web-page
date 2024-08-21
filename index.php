@@ -30,9 +30,9 @@
       </h2>
       <button
         class="btn btn--primary"
-        onclick="window.location.href='/invitaciones'"
+        onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
       >
-        <span class="btn__text"> Obtén tu invitación ahora </span>
+        <span class="btn__text"> Crea una cuenta gratis</span>
       </button>
     </div>
     <img class="banner__img" src="img/home_banner.jpg" />

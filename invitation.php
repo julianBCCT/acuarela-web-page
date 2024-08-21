@@ -8,7 +8,7 @@
                 
                 <h1>El futuro de los Daycares es Digital </h1>
                 <p>¿Quieres facilitar el proceso de inscripciones en tu Daycare, administrar tus finanzas en tiempo record, cobrar a los padres de manera automática y comunicarte fácilmente con ellos?</p>
-                <a href="javascript:openInvitationForm();" class="btn btn-action-secondary">Obtén tu invitación ahora</a>
+                <a href="https://bilingualchildcaretraining.com/miembros/crear-cuenta" class="btn btn-action-secondary">Crea una cuenta gratis</a>
             </div>
         </div>
     </section>
@@ -21,7 +21,7 @@
               <h2>Da un paso hacia el futuro en el cuidado infantil:</h2>
               <p>Regístrate en Acuarela y ofrece a los padres la posibilidad de monitorear el progreso de sus hijos desde nuestra app móvil, ¡accediendo a publicaciones, informes y más desde cualquier lugar y en cualquier momento!  </p>
               <strong>¡Únete a Acuarela ahora!</strong>
-              <a href="javascript:openInvitationForm();" class="btn btn-action-secondary" style="margin-top:30px;">Obtén tu invitación ahora</a>
+              <a href="https://bilingualchildcaretraining.com/miembros/crear-cuenta" class="btn btn-action-secondary" style="margin-top:30px;">Crea una cuenta gratis</a>
           </div>
           
      
@@ -477,7 +477,7 @@
                 <h3><strong>Gestiona tus finanzas</strong>en tiempo récord</h3>
             </div>
         </div>
-        <a href="javascript:openInvitationForm();" class="btn btn-action-secondary">Obtén tu invitación ahora</a>
+        <a href="https://bilingualchildcaretraining.com/miembros/crear-cuenta" class="btn btn-action-secondary">Crea una cuenta gratis</a>
     </section>
     <div class="boxes formLanding" id="dialog-content" style="display:none;max-width:880px;">
       <div class="form">
@@ -598,7 +598,7 @@
                 <strong>125</strong><p>Cupos disponibles</p>
               </a>
             </button>
-            <a href="javascript:openInvitationForm();" class="btn btn-action-secondary">Obtén tu invitación ahora</a>
+            <a href="https://bilingualchildcaretraining.com/miembros/crear-cuenta" class="btn btn-action-secondary">Crea una cuenta gratis</a>
           </div>
         </div>
       </div>

@@ -50,6 +50,12 @@ module.exports = {
         else {
           // Si todos los datos son correctos se crea el registro de salida.
           checkout.acudiente = [checkout.acudiente];
+          let acudiente = await strapi.services.acuarelauser.findOne({ id: checkout.acudiente });
+          let codeAcudiente = checkout.code;
+
+          console.log(codeAcudiente);
+          console.log(acudiente);
+
           await strapi.services.checkout.create(checkout);
 
           //En el registro del niño se marca el atributo indaycare como false.

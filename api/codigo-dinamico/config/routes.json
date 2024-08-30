@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/codigo-dinamicos",
+      "handler": "codigo-dinamico.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/codigo-dinamicos/count",
+      "handler": "codigo-dinamico.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/codigo-dinamicos/:id",
+      "handler": "codigo-dinamico.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/codigo-dinamicos",
+      "handler": "codigo-dinamico.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/codigo-dinamicos/:id",
+      "handler": "codigo-dinamico.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/codigo-dinamicos/:id",
+      "handler": "codigo-dinamico.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

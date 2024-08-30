@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "codigo_dinamicos",
+  "info": {
+    "name": "Codigo_dinamico"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Codigo": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "codigo_dinamico"
+    }
+  }
+}

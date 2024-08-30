@@ -52,27 +52,35 @@ module.exports = {
           checkout.acudiente = [checkout.acudiente];
           let acudiente = await strapi.services.acuarelauser.findOne({ id: checkout.acudiente });
           let codeAcudiente = checkout.code;
+          if(acudiente.codigo_dinamico.Codigo == codeAcudiente){
+            await strapi.services.checkout.create(checkout);
 
-          console.log(codeAcudiente);
-          console.log(acudiente);
+            //En el registro del niño se marca el atributo indaycare como false.
+            const indaycare = false;
+            await strapi.services.children.update(
+              { _id: checkout.children },
+              { indaycare }
+            );
+  
+            return ctx.send({
+              ok: true,
+              status: 200,
+              code: 0,
+              msg: "Check-out successful.",
+              user: validToken.user,
+              acudiente: checkout.acudiente,
+            });
+          }else{
+            return ctx.send({
+              ok: false,
+              status: 400,
+              code: 1,
+              msg: "Código de acudiente no es válido",
+              user: validToken.user
+            });
+          }
 
-          await strapi.services.checkout.create(checkout);
-
-          //En el registro del niño se marca el atributo indaycare como false.
-          const indaycare = false;
-          await strapi.services.children.update(
-            { _id: checkout.children },
-            { indaycare }
-          );
-
-          return ctx.send({
-            ok: true,
-            status: 200,
-            code: 0,
-            msg: "Check-out successful.",
-            user: validToken.user,
-            acudiente: checkout.acudiente,
-          });
+          
         }
       } else
         return ctx.send({

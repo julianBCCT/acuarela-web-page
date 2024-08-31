@@ -102,8 +102,8 @@
       "type": "string"
     },
     "children": {
-      "collection": "children",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "children"
     },
     "groups": {
       "collection": "group",

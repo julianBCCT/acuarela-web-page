@@ -47,20 +47,20 @@
       "type": "json"
     },
     "checkins": {
-      "via": "children",
-      "collection": "checkin"
+      "collection": "checkin",
+      "via": "children"
     },
     "checkouts": {
-      "via": "children",
-      "collection": "checkout"
+      "collection": "checkout",
+      "via": "children"
     },
     "indaycare": {
       "type": "boolean",
       "default": false
     },
     "movements": {
-      "via": "child",
-      "collection": "movement"
+      "collection": "movement",
+      "via": "child"
     },
     "childrenactivities": {
       "collection": "childrenactivity",
@@ -70,8 +70,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "children",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "children"
     },
     "birthday": {
       "type": "date"
@@ -135,8 +135,8 @@
       "component": "files.files"
     },
     "acuarelausers": {
-      "via": "children",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "children"
     },
     "guardians": {
       "type": "component",
@@ -144,8 +144,8 @@
       "component": "guardians.guardians"
     },
     "inscripcion": {
-      "via": "child",
-      "model": "inscripciones"
+      "model": "inscripciones",
+      "via": "child"
     },
     "automatic_payment": {
       "type": "boolean",

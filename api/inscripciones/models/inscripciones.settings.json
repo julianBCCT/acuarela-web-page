@@ -136,8 +136,8 @@
       "type": "json"
     },
     "child": {
-      "model": "children",
-      "via": "inscripcion"
+      "via": "inscripcion",
+      "model": "children"
     },
     "parents_rel": {
       "via": "inscripciones",

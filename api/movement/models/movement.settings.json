@@ -24,8 +24,8 @@
       "type": "boolean"
     },
     "child": {
-      "model": "children",
-      "via": "movements"
+      "via": "movements",
+      "model": "children"
     },
     "payer": {
       "via": "movements",

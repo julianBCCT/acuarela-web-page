@@ -370,7 +370,6 @@ body {
       align-items: center;
       margin-top: 150px;
 
-
       @media screen and (max-width: 1185px) {
         margin-top: 160px;
       }
@@ -911,7 +910,7 @@ body {
           align-items: center;
           gap: 30px;
           border-radius: 10px;
-          padding: .4em;
+          padding: 0.4em;
 
           @media screen and (max-width: 860px) {
             flex-direction: column;
@@ -924,7 +923,7 @@ body {
             overflow: hidden;
             cursor: pointer;
             border-radius: 10px;
-            transition: all .5s;
+            transition: all 0.5s;
             display: flex;
             flex-direction: column;
             text-align: center;
@@ -950,11 +949,11 @@ body {
                 min-width: 14em;
                 padding: 0 30px;
                 text-align: center;
-                transition: all .5s;
+                transition: all 0.5s;
                 color: var(--color-pasos);
-                letter-spacing: .1em;
+                letter-spacing: 0.1em;
 
-                &:not(:hover)+li.hovered & {
+                &:not(:hover) + li.hovered & {
                   display: none;
                 }
               }
@@ -1077,7 +1076,7 @@ body {
           }
 
           .containerThree:hover {
-            background-color: #25F4EE;
+            background-color: #25f4ee;
             transition-duration: 0.3s;
           }
 
@@ -1098,6 +1097,64 @@ body {
             opacity: 1;
           }
         }
+      }
+    }
+    #whatsapp {
+      .wtsapp {
+        position: fixed;
+        transition: all 0.5s ease;
+        background: #25d366;
+        display: block;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 50px;
+        border-right: 0;
+        color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+        bottom: 50px;
+        right: 50px;
+        border: 0;
+        z-index: 999;
+        width: 40px;
+        height: 40px;
+        line-height: 48px;
+
+        @media (max-width: 768px) {
+          right: 30px;
+          bottom: 30px;
+        }
+
+        &:focus {
+          border: 0;
+          outline: 0;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          display: block;
+          width: 60px;
+          height: 60px;
+          background: #25d366;
+          border-radius: 50%;
+          animation: pulse-border 1500ms ease-out infinite;
+        }
+      }
+    }
+
+    @keyframes pulse-border {
+      0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+        opacity: 0;
       }
     }
   }

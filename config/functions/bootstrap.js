@@ -33,12 +33,7 @@ module.exports = () => {
   });
 
   io.on("connection", (socket) => {
-    console.log("A user connected", socket.id);
-
     socket.on("join", ({ username, room }) => {
-      console.log("user connected");
-      console.log("username is ", username);
-      console.log("room is...", room);
       // Emit an acknowledgment back to the client
       socket.emit("joined", {
         message: `Welcome ${username} to room ${room}`,
@@ -46,6 +41,7 @@ module.exports = () => {
       });
       if (username) {
         socket.join("group"); // Adding the user to the group
+        console.log(socket.rooms);
         socket.emit("welcome", { // Sending a welcome message to the User
           user: "bot",
           text: `${username}, Welcome to the group chat`,

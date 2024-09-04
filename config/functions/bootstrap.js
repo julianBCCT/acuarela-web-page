@@ -33,48 +33,64 @@ module.exports = () => {
   });
 
   io.on("connection", (socket) => {
-    socket.on("join", ({ username, room }) => {
-      // Emit an acknowledgment back to the client
+    console.log(`User connected: ${socket.id}`);
+
+    // El usuario se une a su sala privada basada en su ID
+    socket.on("join", ({ username, userId }) => {
+      const privateRoom = `private-${userId}`;
+      socket.join(privateRoom);
+
       socket.emit("joined", {
-        message: `Welcome ${username} to room ${room}`,
+        message: `Welcome ${username} to your private chat.`,
         socketId: socket.id,
       });
-      if (username) {
-        socket.join("group"); // Adding the user to the group
-        console.log(socket.rooms);
-        socket.emit("welcome", { // Sending a welcome message to the User
-          user: "bot",
-          text: `${username}, Welcome to the group chat`,
-          userData: username,
+
+      console.log(`${username} joined room: ${privateRoom}`);
+    });
+    socket.on("sendMessage", async (data) => {
+      try {
+        let strapiData = {
+          content: data.message,
+          sender: data.userId,
+          receiver: data.toUserId,
+          timestamp: new Date(),
+          isRead: false, // Inicialmente marcado como no leído
+          room: `private-${data.userId}`, // Opcional, si usas salas
+        };
+
+        // Guardar el mensaje en Strapi
+        const message = await strapi.services.chats.create(strapiData);
+
+        // Emitir el mensaje solo al destinatario específico
+        io.to(`private-${data.toUserId}`).emit("message", {
+          messageId: message.id, // ID del mensaje para facilitar la actualización
+          user: data.username,
+          text: data.message,
         });
-      } else {
-        console.log("An error occurred");
+      } catch (error) {
+        console.error("Error sending message:", error);
       }
     });
 
-    socket.on("sendMessage", async (data) => {
-      let strapiData = {
-        user: data.user,
-        message: data.message,
-      };
-      await strapi.services.chats.create(strapiData);
-      socket.broadcast.to("group").emit("message", {
-        user: data.username,
-        text: data.message,
-      });
-    });
+    // Marcar un mensaje como leído
+    socket.on("messageRead", async ({ messageId }) => {
+      try {
+        // Actualizar el estado isRead del mensaje en Strapi
+        await strapi.services.chats.update(
+          { id: messageId },
+          { isRead: true }
+        );
 
-    socket.on("private message", ({ content, to }) => {
-      socket.to(to).emit("private message", {
-        content,
-        from: socket.id,
-      });
+        console.log(`Message ${messageId} marked as read.`);
+      } catch (error) {
+        console.error("Error marking message as read:", error);
+      }
     });
 
     socket.on("disconnect", () => {
-      // console.log("User disconnected", socket.id);
+      console.log(`User disconnected: ${socket.id}`);
     });
   });
 
-  strapi.io = io; // Make it available globally if needed
+  strapi.io = io;
 };

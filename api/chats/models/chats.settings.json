@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Chats",
+  "info": {
+    "name": "chats"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "User": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

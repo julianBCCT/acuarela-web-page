@@ -7,6 +7,8 @@ module.exports = {
       origin: [
         "http://localhost:3000",
         "http://localhost:1337",
+        "http://localhost:5500",
+        "http://localhost:5501",
         "http://198.211.114.51",
         "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
         "https://acuarelacore.com",

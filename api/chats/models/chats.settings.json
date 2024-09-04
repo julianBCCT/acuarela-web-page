@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "Chats",
   "info": {
-    "name": "chats"
+    "name": "chats",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -10,7 +11,7 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "User": {
+    "user": {
       "type": "string"
     },
     "message": {

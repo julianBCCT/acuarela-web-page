@@ -9,6 +9,8 @@ module.exports = {
         "http://localhost:1337",
         "http://localhost:5500",
         "http://localhost:5501",
+        "http://127.0.0.1:5501",
+        "http://127.0.0.1:5500",
         "http://198.211.114.51",
         "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
         "https://acuarelacore.com",

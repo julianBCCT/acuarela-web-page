@@ -44,6 +44,16 @@ module.exports = () => {
         message: `Welcome ${username} to room ${room}`,
         socketId: socket.id,
       });
+      if (username) {
+        socket.join("group"); // Adding the user to the group
+        socket.emit("welcome", { // Sending a welcome message to the User
+          user: "bot",
+          text: `${username}, Welcome to the group chat`,
+          userData: username,
+        });
+      } else {
+        console.log("An error occurred");
+      }
     });
 
     socket.on("sendMessage", async (data) => {

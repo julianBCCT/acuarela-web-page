@@ -10,7 +10,7 @@
  * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#bootstrap
  */
 
-module.exports = ({ strapi }) => {
+module.exports =  () => {
   const io = require('socket.io')(strapi.server, {
       cors: {
           origin: [

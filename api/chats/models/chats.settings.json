@@ -11,11 +11,20 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "user": {
+    "content": {
+      "type": "richtext"
+    },
+    "isRead": {
+      "type": "boolean"
+    },
+    "room": {
       "type": "string"
     },
-    "message": {
-      "type": "text"
+    "sender": {
+      "type": "string"
+    },
+    "receiver": {
+      "type": "string"
     }
   }
 }

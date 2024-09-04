@@ -64,7 +64,7 @@ module.exports = () => {
         // Emitir el mensaje solo al destinatario específico
         io.to(`private-${data.toUserId}`).emit("message", {
           messageId: message.id, // ID del mensaje para facilitar la actualización
-          user: data.username,
+          user: data.userId,
           text: data.message,
         });
       } catch (error) {

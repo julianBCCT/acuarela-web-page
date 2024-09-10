@@ -50,8 +50,8 @@
       "type": "string"
     },
     "daycare": {
-      "via": "acuarelausers",
-      "model": "daycare"
+      "model": "daycare",
+      "via": "acuarelausers"
     },
     "rols": {
       "collection": "rol",
@@ -116,8 +116,8 @@
       "type": "boolean"
     },
     "children": {
-      "via": "acuarelausers",
       "collection": "children",
+      "via": "acuarelausers",
       "dominant": true
     },
     "certificates": {
@@ -141,12 +141,12 @@
       "via": "parents_rel"
     },
     "bilingual_user": {
-      "via": "acuarelauser",
-      "model": "bilingual-user"
+      "model": "bilingual-user",
+      "via": "acuarelauser"
     },
     "daycares": {
-      "via": "acuarelausersMultiple",
       "collection": "daycare",
+      "via": "acuarelausersMultiple",
       "dominant": true
     },
     "address": {
@@ -163,8 +163,11 @@
       "component": "daycare.rel-daycare"
     },
     "codigo_dinamico": {
-      "via": "acuarelauser",
-      "model": "codigo-dinamico"
+      "model": "codigo-dinamico",
+      "via": "acuarelauser"
+    },
+    "socketId": {
+      "type": "string"
     }
   }
 }

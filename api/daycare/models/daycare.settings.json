@@ -154,12 +154,12 @@
       "via": "daycares"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "daycare"
+      "via": "daycare",
+      "collection": "acuarelauser"
     },
     "acuarelausersMultiple": {
-      "collection": "acuarelauser",
-      "via": "daycares"
+      "via": "daycares",
+      "collection": "acuarelauser"
     },
     "zoho_daycare_id": {
       "type": "string"

@@ -34,8 +34,8 @@
       "collection": "suscription"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "bilingual_user"
+      "via": "bilingual_user",
+      "model": "acuarelauser"
     },
     "free": {
       "type": "boolean",

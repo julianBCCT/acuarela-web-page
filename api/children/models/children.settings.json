@@ -135,8 +135,8 @@
       "component": "files.files"
     },
     "acuarelausers": {
-      "collection": "acuarelauser",
-      "via": "children"
+      "via": "children",
+      "collection": "acuarelauser"
     },
     "guardians": {
       "type": "component",

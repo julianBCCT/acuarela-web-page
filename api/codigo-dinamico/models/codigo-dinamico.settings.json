@@ -14,8 +14,8 @@
       "type": "string"
     },
     "acuarelauser": {
-      "model": "acuarelauser",
-      "via": "codigo_dinamico"
+      "via": "codigo_dinamico",
+      "model": "acuarelauser"
     }
   }
 }

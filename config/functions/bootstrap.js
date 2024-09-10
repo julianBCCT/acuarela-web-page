@@ -33,9 +33,32 @@ module.exports = () => {
       credentials: true,
     },
   });
+  io.on("connection", async (socket) => {
+    const userId = socket.handshake.auth.userId;
 
-  io.on("connection", (socket) => {
-    console.log(`User connected: ${socket.id}`);
+    if (!userId) {
+      console.error("UserId not provided");
+      socket.disconnect();
+      return;
+    }
+
+    // Buscar el usuario y aplicar la lógica
+    const acuarelaUser = await strapi.services.acuarelauser.findOne({
+      id: userId,
+    });
+
+    if (acuarelaUser && acuarelaUser.socketId) {
+      console.log(`User already has a socketId: ${acuarelaUser.socketId}`);
+      socket.id = acuarelaUser.socketId;
+    } else {
+      console.log(`Assigning new socketId: ${socket.id}`);
+      await strapi.services.acuarelauser.update(
+        { id: userId },
+        { socketId: socket.id }
+      );
+    }
+
+    console.log(`User connected with socketId: ${socket.id}`);
 
     // El usuario se une a su sala privada basada en su ID
     socket.on("join", ({ username, userId }) => {
@@ -46,8 +69,6 @@ module.exports = () => {
         message: `Welcome ${username} to your private chat.`,
         socketId: socket.id,
       });
-
-      console.log(`${username} joined room: ${privateRoom}`);
     });
     socket.on("sendMessage", async (data) => {
       try {
@@ -78,10 +99,7 @@ module.exports = () => {
     socket.on("messageRead", async ({ messageId }) => {
       try {
         // Actualizar el estado isRead del mensaje en Strapi
-        await strapi.services.chats.update(
-          { id: messageId },
-          { isRead: true }
-        );
+        await strapi.services.chats.update({ id: messageId }, { isRead: true });
 
         console.log(`Message ${messageId} marked as read.`);
       } catch (error) {

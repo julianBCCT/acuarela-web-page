@@ -65,23 +65,21 @@ module.exports = () => {
 
       console.log(`User connected with socketId: ${socket.id}`);
 
-      socket.on("joinRoom", (roomName) => {
-        console.log(`Attempting to join room: ${roomName}`);
+      socket.on("joinRoom", ({ senderId, receiverId }) => {
+        console.log(`Socket connected: ${socket.connected}`);
 
-        socket.join(roomName, (err) => {
-          if (err) {
-            console.error("Error joining room:", err);
-            socket.emit("error", { message: "Failed to join room." });
-            return;
-          }
+        if (!senderId || !receiverId) {
+          socket.emit("error", { message: "Invalid senderId or receiverId." });
+          return;
+        }
 
-          console.log(`User ${socket.id} joined room: ${roomName}`);
+        const roomName = getRoomName(senderId, receiverId);;
 
-          socket.emit("joined", {
-            message: `You have joined room: ${roomName}`,
-            socketId: socket.id,
-            roomName: roomName,
-          });
+        socket.join(roomName) 
+        socket.emit("joined", {
+          message: `Welcome ${senderId} to your private chat.`,
+          socketId: socket.id,
+          roomName: roomName,
         });
       });
 

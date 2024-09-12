@@ -67,13 +67,7 @@ module.exports = () => {
         }
 
         const roomName = getRoomName(senderId, receiverId);
-
-        socket.emit("joined", {
-          message: `Welcome ${senderId} to your private chat.`,
-          socketId: socket.id,
-          roomName: roomName,
-        });
-        
+        console.log(`Attempting to join room: ${roomName}`);
 
         if (!roomName) {
           socket.emit("error", { message: "Could not generate room name." });
@@ -85,6 +79,8 @@ module.exports = () => {
             socket.emit("error", { message: "Failed to join room." });
             return;
           }
+
+          console.log(`User ${socket.id} joined room: ${roomName}`);
 
           socket.emit("joined", {
             message: `Welcome ${senderId} to your private chat.`,

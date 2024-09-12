@@ -69,7 +69,7 @@ module.exports = () => {
       socket.join(privateRoom);
 
       socket.emit("joined", {
-        message: `Welcome ${username} to your private chat.`,
+        message: `Welcome ${senderId} to your private chat. ${privateRoom}`,
         socketId: socket.id,
       });
     });

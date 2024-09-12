@@ -47,9 +47,20 @@ module.exports = () => {
     // El cliente envía un mensaje dentro de la sala privada
     socket.on("sendMessage", async ({ roomId, text, user }) => {
       // Guardar el mensaje en la base de datos de Strapi
+      // const newMessage = await strapi.services.chats.create({
+      //   text,
+      //   user,
+      //   roomId,
+      //   timestamp: new Date(),
+      // });
 
       // Emitir el mensaje solo a la sala correspondiente
-      io.to(roomId).emit("receiveMessage", text);
+      io.to(roomId).emit("receiveMessage", {
+        text,
+        user,
+        roomId,
+        timestamp: new Date(),
+      });
     });
 
     socket.on("disconnect", () => {

@@ -65,15 +65,7 @@ module.exports = () => {
 
       console.log(`User connected with socketId: ${socket.id}`);
 
-      socket.on("joinRoom", ({ senderId, receiverId }) => {
-        console.log(`Socket connected: ${socket.connected}`);
-
-        if (!senderId || !receiverId) {
-          socket.emit("error", { message: "Invalid senderId or receiverId." });
-          return;
-        }
-
-        const roomName = getRoomName(senderId, receiverId);
+      socket.on("joinRoom", (roomName) => {
         console.log(`Attempting to join room: ${roomName}`);
 
         socket.join(roomName, (err) => {
@@ -86,7 +78,7 @@ module.exports = () => {
           console.log(`User ${socket.id} joined room: ${roomName}`);
 
           socket.emit("joined", {
-            message: `Welcome ${senderId} to your private chat.`,
+            message: `You have joined room: ${roomName}`,
             socketId: socket.id,
             roomName: roomName,
           });

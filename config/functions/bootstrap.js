@@ -33,84 +33,32 @@ module.exports = () => {
       credentials: true,
     },
   });
-  io.on("connection", async (socket) => {
-    const userId = socket.handshake.auth.userId;
 
-    if (!userId) {
-      console.error("UserId not provided");
-      socket.disconnect();
-      return;
-    }
+  // Lógica cuando un cliente se conecta
+  io.on("connection", (socket) => {
+    console.log("A user connected");
 
-    // Buscar el usuario y aplicar la lógica
-    const acuarelaUser = await strapi.services.acuarelauser.findOne({
-      id: userId,
+    // El cliente se une a una sala privada
+    socket.on("joinRoom", ({ roomId, user }) => {
+      socket.join(roomId);
+      console.log(`${user} joined room: ${roomId}`);
     });
 
-    if (acuarelaUser && acuarelaUser.socketId) {
-      console.log(`User already has a socketId: ${acuarelaUser.socketId}`);
-      socket.id = acuarelaUser.socketId;
-    } else {
-      console.log(`Assigning new socketId: ${socket.id}`);
-      await strapi.services.acuarelauser.update(
-        { id: userId },
-        { socketId: socket.id }
-      );
-    }
+    // El cliente envía un mensaje dentro de la sala privada
+    socket.on("sendMessage", async ({ roomId, text, user }) => {
+      // Guardar el mensaje en la base de datos de Strapi
 
-    console.log(`User connected with socketId: ${socket.id}`);
-
-    // El usuario se une a su sala privada basada en su ID
-    socket.on("join", ({ username, userId }) => {
-      const privateRoom = `private-${userId}`;
-      socket.join(privateRoom);
-
-      socket.emit("joined", {
-        message: `Welcome ${username} to your private chat.`,
-        socketId: socket.id,
-      });
-    });
-    socket.on("sendMessage", async (data) => {
-      try {
-        let strapiData = {
-          content: data.message,
-          sender: data.userId,
-          receiver: data.toUserId,
-          timestamp: new Date(),
-          isRead: false, // Inicialmente marcado como no leído
-          room: `private-${data.userId}`, // Opcional, si usas salas
-        };
-
-        // Guardar el mensaje en Strapi
-        const message = await strapi.services.chats.create(strapiData);
-
-        // Emitir el mensaje solo al destinatario específico
-        io.to(`private-${data.toUserId}`).emit("message", {
-          messageId: message.id, // ID del mensaje para facilitar la actualización
-          user: data.toUserId,
-          text: data.message,
-        });
-      } catch (error) {
-        console.error("Error sending message:", error);
-      }
-    });
-
-    // Marcar un mensaje como leído
-    socket.on("messageRead", async ({ messageId }) => {
-      try {
-        // Actualizar el estado isRead del mensaje en Strapi
-        await strapi.services.chats.update({ id: messageId }, { isRead: true });
-
-        console.log(`Message ${messageId} marked as read.`);
-      } catch (error) {
-        console.error("Error marking message as read:", error);
-      }
+      // Emitir el mensaje solo a la sala correspondiente
+      io.to(roomId).emit("receiveMessage", text);
     });
 
     socket.on("disconnect", () => {
-      console.log(`User disconnected: ${socket.id}`);
+      console.log("User disconnected");
     });
   });
+
+  // Hacer `io` accesible en Strapi si es necesario
+  strapi.io = io;
 
   strapi.io = io;
 };

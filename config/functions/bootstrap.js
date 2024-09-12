@@ -83,7 +83,7 @@ module.exports = () => {
         });
       });
 
-      socket.on("privateMessage", ({ senderId, receiverId, message }) => {
+      socket.on("privateMessage", ({ senderId, receiverId, message },callback) => {
           const roomName = getRoomName(senderId, receiverId);
           console.log(io.sockets.adapter.rooms);
           const clientsInRoom = io.sockets.adapter.rooms.get(roomName);

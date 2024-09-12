@@ -83,36 +83,22 @@ module.exports = () => {
         });
       });
 
-      socket.on("privateMessage", async ({ senderId, receiverId, message }) => {
-        try {
+      socket.on("privateMessage", ({ senderId, receiverId, message }) => {
           const roomName = getRoomName(senderId, receiverId);
-          const strapiData = {
-            content: message,
-            sender: senderId,
-            receiver: receiverId,
-            timestamp: new Date(),
-            isRead: false,
-            room: roomName,
-          };
-
-          const messageStrapi = await strapi.services.chats.create(strapiData);
 
           const clientsInRoom = io.sockets.adapter.rooms.get(roomName);
+          console.log(clientsInRoom);
+          
           if (!clientsInRoom) {
             console.error(`No clients in room: ${roomName}`);
             socket.emit("error", { message: "Room not found." });
             return;
           }
-
-          socket.to(roomName).emit("privateMessage", {
+          io.to(roomName).emit("privateMessage", {
             senderId,
             message,
-            messageId: messageStrapi.id,
             receiverId,
           });
-        } catch (error) {
-          console.error("Error sending message:", error);
-        }
       });
 
       socket.on("messageRead", async ({ messageId }) => {

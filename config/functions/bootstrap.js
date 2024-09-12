@@ -72,6 +72,14 @@ module.exports = () => {
         message: `Welcome ${senderId} to your private chat. ${privateRoom}`,
         socketId: socket.id,
       });
+      socket.broadcast.to(privateRoom).emit("message", {
+        user: "bot",
+        text: `${user.username} has joined!`,
+    })
+    io.to(privateRoom).emit("roomInfo", {
+      privateRoom,
+      users: {senderId,receiverId},
+  })
     });
     socket.on("sendMessage", async (data) => {
       const privateRoom = getRoomName(data.senderId, data.receiverId);

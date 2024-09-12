@@ -67,6 +67,8 @@ module.exports = () => {
         }
 
         const roomName = getRoomName(senderId, receiverId);
+        console.log(roomName);
+        
 
         if (!roomName) {
           socket.emit("error", { message: "Could not generate room name." });

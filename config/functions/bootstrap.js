@@ -89,9 +89,13 @@ module.exports = () => {
           const clientsInRoom = io.sockets.adapter.rooms.get(roomName);
           console.log("🚀 ~ socket.on ~ clientsInRoom:", clientsInRoom)
           console.log(`Emitting message to room: ${roomName}`);
+          socket.to(roomName).emit("message", message);
           io.to(roomName).emit("message", {
             senderId, receiverId, message
           });
+    callback({
+      status: "ok"
+    });
       });
 
       socket.on("messageRead", async ({ messageId }) => {

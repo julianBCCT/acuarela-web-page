@@ -33,6 +33,11 @@ module.exports = () => {
       credentials: true,
     },
   });
+  // Función para generar el nombre de la sala basado en los dos IDs
+  function getRoomName(user1, user2) {
+    // Ordenar IDs para que el nombre de la sala sea consistente
+    return [user1, user2].sort().join("-");
+  }
   io.on("connection", async (socket) => {
     const userId = socket.handshake.auth.userId;
 
@@ -60,35 +65,36 @@ module.exports = () => {
 
     console.log(`User connected with socketId: ${socket.id}`);
 
-    // El usuario se une a su sala privada basada en su ID
-    socket.on("join", ({ username, userId }) => {
-      const privateRoom = `private-${userId}`;
-      socket.join(privateRoom);
-
+    socket.on("joinRoom", ({ senderId, receiverId }) => {
+      const roomName = getRoomName(senderId, receiverId);
+      socket.join(roomName);
       socket.emit("joined", {
-        message: `Welcome ${username} to your private chat.`,
+        message: `Welcome ${senderId} to your private chat.`,
         socketId: socket.id,
+        roomName: roomName,
       });
     });
-    socket.on("sendMessage", async (data) => {
+
+    // Escuchar mensajes privados
+    socket.on("privateMessage", async ({ senderId, receiverId, message }) => {
       try {
+        const roomName = getRoomName(senderId, receiverId);
         let strapiData = {
-          content: data.message,
-          sender: data.userId,
-          receiver: data.toUserId,
+          content: message,
+          sender: senderId,
+          receiver: receiverId,
           timestamp: new Date(),
-          isRead: false, // Inicialmente marcado como no leído
-          room: `private-${data.userId}`, // Opcional, si usas salas
+          isRead: false,
+          room: roomName,
         };
-
         // Guardar el mensaje en Strapi
-        const message = await strapi.services.chats.create(strapiData);
+        const messageStrapi = await strapi.services.chats.create(strapiData);
 
-        // Emitir el mensaje solo al destinatario específico
-        io.to(`private-${data.toUserId}`).emit("message", {
-          messageId: message.id, // ID del mensaje para facilitar la actualización
-          user: data.toUserId,
-          text: data.message,
+        io.to(roomName).emit("privateMessage", {
+          senderId,
+          message,
+          messageId: messageStrapi.id,
+          receiverId,
         });
       } catch (error) {
         console.error("Error sending message:", error);

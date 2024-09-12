@@ -83,16 +83,34 @@ module.exports = () => {
         });
       });
 
+      socket.on("sendMessage", async (data) => {
+        try {
+          let strapiData = {
+            content: data.message,
+            sender: data.userId,
+            receiver: data.toUserId,
+            timestamp: new Date(),
+            isRead: false, // Inicialmente marcado como no leído
+            room: roomName, // Opcional, si usas salas
+          };
+  
+          // Guardar el mensaje en Strapi
+          const message = await strapi.services.chats.create(strapiData);
+  
+          // Emitir el mensaje solo al destinatario específico
+          io.to(`${roomName}`).emit("message", {
+            messageId: message.id, // ID del mensaje para facilitar la actualización
+            user: data.toUserId,
+            text: data.message,
+          });
+        } catch (error) {
+          console.error("Error sending message:", error);
+        }
+      });
+
       socket.on("privateMessage", ({ senderId, receiverId, message }) => {
           const roomName = getRoomName(senderId, receiverId);
-          console.log(io.sockets.adapter.rooms);
-          const clientsInRoom = io.sockets.adapter.rooms.get(roomName);
-          console.log("🚀 ~ socket.on ~ clientsInRoom:", clientsInRoom)
-          console.log(`Emitting message to room: ${roomName}`);
-          socket.to(roomName).emit("message", message);
-          io.to(roomName).emit("message", {
-            senderId, receiverId, message
-          });
+          socket.to(roomName).emit("message", {senderId, receiverId, message});
       });
 
       socket.on("messageRead", async ({ messageId }) => {

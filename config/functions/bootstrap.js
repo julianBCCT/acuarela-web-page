@@ -48,19 +48,26 @@ module.exports = () => {
     }
 
     try {
-      const acuarelaUser = await strapi.services.acuarelauser.findOne({ id: userId });
+      const acuarelaUser = await strapi.services.acuarelauser.findOne({
+        id: userId,
+      });
 
       if (acuarelaUser && acuarelaUser.socketId) {
         console.log(`User already has a socketId: ${acuarelaUser.socketId}`);
         socket.id = acuarelaUser.socketId;
       } else {
         console.log(`Assigning new socketId: ${socket.id}`);
-        await strapi.services.acuarelauser.update({ id: userId }, { socketId: socket.id });
+        await strapi.services.acuarelauser.update(
+          { id: userId },
+          { socketId: socket.id }
+        );
       }
 
       console.log(`User connected with socketId: ${socket.id}`);
 
       socket.on("joinRoom", ({ senderId, receiverId }) => {
+        console.log(`Socket connected: ${socket.connected}`);
+
         if (!senderId || !receiverId) {
           socket.emit("error", { message: "Invalid senderId or receiverId." });
           return;
@@ -71,6 +78,7 @@ module.exports = () => {
 
         socket.join(roomName, (err) => {
           if (err) {
+            console.error("Error joining room:", err);
             socket.emit("error", { message: "Failed to join room." });
             return;
           }
@@ -112,7 +120,10 @@ module.exports = () => {
 
       socket.on("messageRead", async ({ messageId }) => {
         try {
-          await strapi.services.chats.update({ id: messageId }, { isRead: true });
+          await strapi.services.chats.update(
+            { id: messageId },
+            { isRead: true }
+          );
           console.log(`Message ${messageId} marked as read.`);
         } catch (error) {
           console.error("Error marking message as read:", error);
@@ -122,7 +133,6 @@ module.exports = () => {
       socket.on("disconnect", () => {
         console.log(`User disconnected: ${socket.id}`);
       });
-
     } catch (error) {
       console.error("Error during socket connection:", error);
       socket.disconnect();

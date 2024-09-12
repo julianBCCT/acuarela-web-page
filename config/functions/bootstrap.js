@@ -94,11 +94,7 @@ module.exports = () => {
             socket.emit("error", { message: "Room not found." });
             return;
           }
-          io.to(roomName).emit("privateMessage", {
-            senderId,
-            message,
-            receiverId,
-          });
+          io.to(roomName).emit(message);
       });
 
       socket.on("messageRead", async ({ messageId }) => {

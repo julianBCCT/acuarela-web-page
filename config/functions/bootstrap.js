@@ -34,9 +34,6 @@ module.exports = () => {
     },
   });
   io.on("connection", async (socket) => {
-    function getRoomName(user1, user2) {
-      return [user1, user2].sort().join("-");
-    }
     const userId = socket.handshake.auth.userId;
 
     if (!userId) {
@@ -64,40 +61,31 @@ module.exports = () => {
     console.log(`User connected with socketId: ${socket.id}`);
 
     // El usuario se une a su sala privada basada en su ID
-    socket.on("joinRoom", ({ senderId, receiverId }) => {
-      const privateRoom = getRoomName(senderId, receiverId);
+    socket.on("join", ({ username, userId }) => {
+      const privateRoom = `private-${userId}`;
       socket.join(privateRoom);
 
       socket.emit("joined", {
-        message: `Welcome ${senderId} to your private chat. ${privateRoom}`,
+        message: `Welcome ${username} to your private chat.`,
         socketId: socket.id,
       });
-      socket.broadcast.to(privateRoom).emit("message", {
-        user: "bot",
-        text: `${senderId} has joined!`,
-    })
-    io.to(privateRoom).emit("roomInfo", {
-      privateRoom,
-      users: {senderId,receiverId},
-  })
     });
     socket.on("sendMessage", async (data) => {
-      const privateRoom = getRoomName(data.senderId, data.receiverId);
       try {
         let strapiData = {
           content: data.message,
-          sender: data.senderId,
-          receiver: data.receiverId,
+          sender: data.userId,
+          receiver: data.toUserId,
           timestamp: new Date(),
           isRead: false, // Inicialmente marcado como no leído
-          room: privateRoom, // Opcional, si usas salas
+          room: `private-${data.userId}`, // Opcional, si usas salas
         };
 
         // Guardar el mensaje en Strapi
         const message = await strapi.services.chats.create(strapiData);
 
         // Emitir el mensaje solo al destinatario específico
-        io.to(`${privateRoom}`).emit("message", {
+        io.to(`private-${data.toUserId}`).emit("message", {
           messageId: message.id, // ID del mensaje para facilitar la actualización
           user: data.toUserId,
           text: data.message,

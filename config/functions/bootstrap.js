@@ -69,11 +69,6 @@ module.exports = () => {
         const roomName = getRoomName(senderId, receiverId);
         console.log(`Attempting to join room: ${roomName}`);
 
-        if (!roomName) {
-          socket.emit("error", { message: "Could not generate room name." });
-          return;
-        }
-
         socket.join(roomName, (err) => {
           if (err) {
             socket.emit("error", { message: "Failed to join room." });

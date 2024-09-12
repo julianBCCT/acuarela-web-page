@@ -74,7 +74,7 @@ module.exports = () => {
       });
       socket.broadcast.to(privateRoom).emit("message", {
         user: "bot",
-        text: `${user.username} has joined!`,
+        text: `${senderId} has joined!`,
     })
     io.to(privateRoom).emit("roomInfo", {
       privateRoom,

@@ -67,7 +67,12 @@ module.exports = () => {
         }
 
         const roomName = getRoomName(senderId, receiverId);
-        console.log(roomName);
+
+        socket.emit("joined", {
+          message: `Welcome ${senderId} to your private chat.`,
+          socketId: socket.id,
+          roomName: roomName,
+        });
         
 
         if (!roomName) {

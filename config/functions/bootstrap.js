@@ -33,11 +33,11 @@ module.exports = () => {
       credentials: true,
     },
   });
-  // Función para generar el nombre de la sala basado en los dos IDs
+
   function getRoomName(user1, user2) {
-    // Ordenar IDs para que el nombre de la sala sea consistente
     return [user1, user2].sort().join("-");
   }
+
   io.on("connection", async (socket) => {
     const userId = socket.handshake.auth.userId;
 
@@ -47,92 +47,88 @@ module.exports = () => {
       return;
     }
 
-    // Buscar el usuario y aplicar la lógica
-    const acuarelaUser = await strapi.services.acuarelauser.findOne({
-      id: userId,
-    });
+    try {
+      const acuarelaUser = await strapi.services.acuarelauser.findOne({ id: userId });
 
-    if (acuarelaUser && acuarelaUser.socketId) {
-      console.log(`User already has a socketId: ${acuarelaUser.socketId}`);
-      socket.id = acuarelaUser.socketId;
-    } else {
-      console.log(`Assigning new socketId: ${socket.id}`);
-      await strapi.services.acuarelauser.update(
-        { id: userId },
-        { socketId: socket.id }
-      );
-    }
-
-    console.log(`User connected with socketId: ${socket.id}`);
-
-    socket.on("joinRoom", ({ senderId, receiverId }) => {
-      if (!senderId || !receiverId) {
-        socket.emit("error", { message: "Invalid senderId or receiverId." });
-        return;
+      if (acuarelaUser && acuarelaUser.socketId) {
+        console.log(`User already has a socketId: ${acuarelaUser.socketId}`);
+        socket.id = acuarelaUser.socketId;
+      } else {
+        console.log(`Assigning new socketId: ${socket.id}`);
+        await strapi.services.acuarelauser.update({ id: userId }, { socketId: socket.id });
       }
 
-      const roomName = getRoomName(senderId, receiverId);
+      console.log(`User connected with socketId: ${socket.id}`);
 
-      if (!roomName) {
-        socket.emit("error", { message: "Could not generate room name." });
-        return;
-      }
-
-      socket.join(roomName, (err) => {
-        if (err) {
-          socket.emit("error", { message: "Failed to join room." });
+      socket.on("joinRoom", ({ senderId, receiverId }) => {
+        if (!senderId || !receiverId) {
+          socket.emit("error", { message: "Invalid senderId or receiverId." });
           return;
         }
 
-        socket.emit("joined", {
-          message: `Welcome ${senderId} to your private chat.`,
-          socketId: socket.id,
-          roomName: roomName,
+        const roomName = getRoomName(senderId, receiverId);
+
+        if (!roomName) {
+          socket.emit("error", { message: "Could not generate room name." });
+          return;
+        }
+
+        socket.join(roomName, (err) => {
+          if (err) {
+            socket.emit("error", { message: "Failed to join room." });
+            return;
+          }
+
+          socket.emit("joined", {
+            message: `Welcome ${senderId} to your private chat.`,
+            socketId: socket.id,
+            roomName: roomName,
+          });
         });
       });
-    });
 
-    // Escuchar mensajes privados
-    socket.on("privateMessage", async ({ senderId, receiverId, message }) => {
-      try {
-        const roomName = getRoomName(senderId, receiverId);
-        let strapiData = {
-          content: message,
-          sender: senderId,
-          receiver: receiverId,
-          timestamp: new Date(),
-          isRead: false,
-          room: roomName,
-        };
-        // Guardar el mensaje en Strapi
-        const messageStrapi = await strapi.services.chats.create(strapiData);
+      socket.on("privateMessage", async ({ senderId, receiverId, message }) => {
+        try {
+          const roomName = getRoomName(senderId, receiverId);
+          const strapiData = {
+            content: message,
+            sender: senderId,
+            receiver: receiverId,
+            timestamp: new Date(),
+            isRead: false,
+            room: roomName,
+          };
 
-        io.to(roomName).emit("privateMessage", {
-          senderId,
-          message,
-          messageId: messageStrapi.id,
-          receiverId,
-        });
-      } catch (error) {
-        console.error("Error sending message:", error);
-      }
-    });
+          const messageStrapi = await strapi.services.chats.create(strapiData);
 
-    // Marcar un mensaje como leído
-    socket.on("messageRead", async ({ messageId }) => {
-      try {
-        // Actualizar el estado isRead del mensaje en Strapi
-        await strapi.services.chats.update({ id: messageId }, { isRead: true });
+          io.to(roomName).emit("privateMessage", {
+            senderId,
+            message,
+            messageId: messageStrapi.id,
+            receiverId,
+          });
+        } catch (error) {
+          console.error("Error sending message:", error);
+        }
+      });
 
-        console.log(`Message ${messageId} marked as read.`);
-      } catch (error) {
-        console.error("Error marking message as read:", error);
-      }
-    });
+      socket.on("messageRead", async ({ messageId }) => {
+        try {
+          await strapi.services.chats.update({ id: messageId }, { isRead: true });
+          console.log(`Message ${messageId} marked as read.`);
+        } catch (error) {
+          console.error("Error marking message as read:", error);
+        }
+      });
 
-    socket.on("disconnect", () => {
-      console.log(`User disconnected: ${socket.id}`);
-    });
+      socket.on("disconnect", () => {
+        console.log(`User disconnected: ${socket.id}`);
+      });
+
+    } catch (error) {
+      console.error("Error during socket connection:", error);
+      socket.disconnect();
+    }
   });
 
   strapi.io = io;

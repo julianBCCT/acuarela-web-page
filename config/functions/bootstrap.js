@@ -73,9 +73,9 @@ module.exports = () => {
           return;
         }
 
-        const roomName = getRoomName(senderId, receiverId);;
+        const roomName = getRoomName(senderId, receiverId);
 
-        socket.join(roomName) 
+        socket.join(roomName);
         socket.emit("joined", {
           message: `Welcome ${senderId} to your private chat.`,
           socketId: socket.id,
@@ -97,7 +97,14 @@ module.exports = () => {
 
           const messageStrapi = await strapi.services.chats.create(strapiData);
 
-          io.to(roomName).emit("privateMessage", {
+          const clientsInRoom = io.sockets.adapter.rooms.get(roomName);
+          if (!clientsInRoom) {
+            console.error(`No clients in room: ${roomName}`);
+            socket.emit("error", { message: "Room not found." });
+            return;
+          }
+
+          socket.to(roomName).emit("privateMessage", {
             senderId,
             message,
             messageId: messageStrapi.id,

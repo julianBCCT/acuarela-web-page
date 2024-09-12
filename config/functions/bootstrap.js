@@ -85,17 +85,10 @@ module.exports = () => {
 
       socket.on("privateMessage", ({ senderId, receiverId, message }) => {
           const roomName = getRoomName(senderId, receiverId);
-
+          console.log(io.sockets.adapter.rooms);
           const clientsInRoom = io.sockets.adapter.rooms.get(roomName);
-          console.log(clientsInRoom);
-          
-          if (!clientsInRoom) {
-            console.error(`No clients in room: ${roomName}`);
-            socket.emit("error", { message: "Room not found." });
-            return;
-          }
-          console.log(roomName);
-          
+          console.log("🚀 ~ socket.on ~ clientsInRoom:", clientsInRoom)
+          console.log(`Emitting message to room: ${roomName}`);
           io.to(roomName).emit("message", {
             senderId, receiverId, message
           });

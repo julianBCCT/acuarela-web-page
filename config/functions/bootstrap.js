@@ -43,21 +43,55 @@ module.exports = () => {
 
     // El cliente envía un mensaje dentro de la sala privada
     socket.on("sendMessage", async ({ roomId, text, user }) => {
-      // Guardar el mensaje en la base de datos de Strapi
-      // const newMessage = await strapi.services.chats.create({
-      //   text,
-      //   user,
-      //   roomId,
-      //   timestamp: new Date(),
-      // });
+      // Obtener la fecha actual y formatear el mes (YYYY-MM)
+      const currentMonth = new Date().toISOString().slice(0, 7); // Obtiene 'YYYY-MM'
+
+      // Buscar el chat correspondiente a la sala
+      let chat = await strapi.services.chats.findOne({ room: roomId });
+
+      // Si no existe, crearlo
+      if (!chat) {
+        chat = await strapi.services.chats.create({
+          room: roomId,
+          messages: {},
+        });
+      }
+
+      // Crear el nuevo mensaje
+      const newMessage = {
+        content: text,
+        sender: user.sender,
+        receiver: user.receiver,
+        isRead: false,
+        timestamp: new Date(),
+      };
+
+      // Verificar si existe el mes actual en el chat, si no, inicializarlo
+      if (!chat.messages[currentMonth]) {
+        chat.messages[currentMonth] = [];
+      }
+
+      // Agregar el nuevo mensaje al array del mes actual
+      chat.messages[currentMonth].push(newMessage);
+
+      // Actualizar la base de datos con el nuevo array de mensajes para ese mes
+      await strapi.services.chats.update(
+        { id: chat.id },
+        { messages: chat.messages }
+      );
 
       // Emitir el mensaje solo a la sala correspondiente
-      io.to(roomId).emit("receiveMessage", {
-        text,
-        user,
-        roomId,
-        timestamp: new Date(),
-      });
+      io.to(roomId).emit("receiveMessage", newMessage);
+    });
+    socket.on("getMessagesByMonth", async ({ roomId, month }) => {
+      // Buscar el chat de la sala
+      const chat = await strapi.services.chats.findOne({ room: roomId });
+
+      // Obtener los mensajes del mes solicitado
+      const messages = chat.messages[month] || [];
+
+      // Devolver los mensajes al cliente
+      socket.emit("receiveMessagesByMonth", messages);
     });
 
     socket.on("disconnect", () => {

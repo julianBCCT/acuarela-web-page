@@ -80,7 +80,12 @@ module.exports = () => {
       // Actualizar la base de datos con el nuevo array de mensajes para ese mes
       await strapi.services.chats.update(
         { id: chat.id },
-        { messages: chat.messages }
+        {
+          messages: chat.messages,
+          sender: user.sender,
+          receiver: user.receiver,
+          isRead: false,
+        }
       );
 
       // Emitir el mensaje solo a la sala correspondiente

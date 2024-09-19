@@ -21,16 +21,20 @@ module.exports = {
   async login(ctx) {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
-
+    
     // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
-
+    
+    
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
+      console.log("🚀 ~ login ~ { mail, pass, phone, entity }:", { mail, pass, phone, entity })
       // Valida que el usuario y la constraseña sean validos para el email o el número.
       let result = await bcrypt.compare(pass, entity.password);
+      console.log("🚀 ~ login ~ result:", result)
+      
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
         let msg = "Invalid Password";

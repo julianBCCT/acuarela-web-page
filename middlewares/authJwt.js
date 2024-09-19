@@ -77,6 +77,8 @@ async function generate_token(entity) {
   let user;
 
   if (entity.acuarelauser) {
+    
+    
     user = {
       email,
       id: entity.acuarelauser.id,
@@ -100,6 +102,7 @@ async function generate_token(entity) {
       wizard_steps: entity.wizard_steps,
       bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
     };
+    console.log("ES ACUARELAUSER ", user);
   }
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };

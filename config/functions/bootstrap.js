@@ -52,6 +52,9 @@ module.exports = () => {
       // Si no existe, crearlo
       if (!chat) {
         chat = await strapi.services.chats.create({
+          sender: user.sender,
+          receiver: user.receiver,
+          isRead: false,
           room: roomId,
           messages: {},
         });

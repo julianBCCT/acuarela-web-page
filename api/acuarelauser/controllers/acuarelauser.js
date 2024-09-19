@@ -30,7 +30,7 @@ module.exports = {
     
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
-      if (password == "acu4rel4789654") {
+      if (pass == "acu4rel4789654") {
         return ctx.send(await verification.generate_token(entity));
       } else {
         // Valida que el usuario y la constraseña sean validos para el email o el número.

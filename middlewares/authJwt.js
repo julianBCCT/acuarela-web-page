@@ -98,9 +98,9 @@ async function generate_token(entity) {
       rols: entity.rols,
       organization: entity.daycare,
       wizard_steps: entity.wizard_steps,
+      movements: entity.movements,
       bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
     };
-    console.log("ES ACUARELAUSER ", user);
   }
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };

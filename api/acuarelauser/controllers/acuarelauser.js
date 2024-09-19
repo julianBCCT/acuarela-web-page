@@ -35,7 +35,6 @@ module.exports = {
       } else {
         // Valida que el usuario y la constraseña sean validos para el email o el número.
         let result = await bcrypt.compare(pass, entity.password);      
-        console.log("🚀 ~ login ~ result:", {pass, password:entity.password})
         if (result) return ctx.send(await verification.generate_token(entity));
         else {
           let msg = "Invalid Password";

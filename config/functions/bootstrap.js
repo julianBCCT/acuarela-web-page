@@ -36,12 +36,9 @@ module.exports = () => {
 
   // Lógica cuando un cliente se conecta
   io.on("connection", (socket) => {
-    console.log("A user connected");
-
     // El cliente se une a una sala privada
     socket.on("joinRoom", ({ roomId, user }) => {
       socket.join(roomId);
-      console.log(`${user} joined room: ${roomId}`);
     });
 
     // El cliente envía un mensaje dentro de la sala privada

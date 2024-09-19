@@ -30,11 +30,9 @@ module.exports = {
     
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
-      console.log("🚀 ~ login ~ { mail, pass, phone, entity }:", { mail, pass, phone, entity })
       // Valida que el usuario y la constraseña sean validos para el email o el número.
-      let result = await bcrypt.compare(pass, entity.password);
-      console.log("🚀 ~ login ~ result:", result)
-      
+      let result = await bcrypt.compare(pass, entity.password);      
+      console.log("🚀 ~ login ~ result:", {pass, password:entity.password})
       if (result) return ctx.send(await verification.generate_token(entity));
       else {
         let msg = "Invalid Password";

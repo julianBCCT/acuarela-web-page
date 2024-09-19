@@ -75,6 +75,7 @@ async function generate_token(entity) {
     };
 
   let user;
+console.log(entity.acuarelauser);
 
   if (entity.acuarelauser) {
     

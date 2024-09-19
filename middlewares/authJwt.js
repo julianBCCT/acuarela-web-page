@@ -55,7 +55,7 @@ async function generate_token(entity) {
   if (entity.phone) phone = entity.phone;
   let email = "-1";
   if (entity.email) email = entity.email;
-  if(entity.mail) email = entity.mail;
+  if (entity.mail) email = entity.mail;
 
   let err,
     token = await jwt.sign(
@@ -102,7 +102,6 @@ async function generate_token(entity) {
       bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
     };
   }
-console.log(user);
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };
 }

@@ -99,8 +99,5 @@ module.exports = () => {
     });
   });
 
-  // Hacer `io` accesible en Strapi si es necesario
-  strapi.io = io;
-
   strapi.io = io;
 };

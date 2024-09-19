@@ -42,56 +42,60 @@ module.exports = () => {
     });
 
     // El cliente envía un mensaje dentro de la sala privada
-    socket.on("sendMessage", async ({ roomId, text, user }) => {
-      // Obtener la fecha actual y formatear el mes (YYYY-MM)
-      const currentMonth = new Date().toISOString().slice(0, 7); // Obtiene 'YYYY-MM'
+    socket.on(
+      "sendMessage",
+      async ({ roomId, text, senderId, receiverId, user }) => {
+        // Obtener la fecha actual y formatear el mes (YYYY-MM)
+        const currentMonth = new Date().toISOString().slice(0, 7); // Obtiene 'YYYY-MM'
 
-      // Buscar el chat correspondiente a la sala
-      let chat = await strapi.services.chats.findOne({ room: roomId });
+        // Buscar el chat correspondiente a la sala
+        let chat = await strapi.services.chats.findOne({ room: roomId });
 
-      // Si no existe, crearlo
-      if (!chat) {
-        chat = await strapi.services.chats.create({
-          sender: user.sender,
-          receiver: user.receiver,
+        // Si no existe, crearlo
+        if (!chat) {
+          chat = await strapi.services.chats.create({
+            sender: senderId,
+            receiver: receiverId,
+            isRead: false,
+            room: roomId,
+            messages: {},
+          });
+        }
+
+        // Crear el nuevo mensaje
+        const newMessage = {
+          roomId,
+          content: text,
+          sender: senderId,
+          receiver: receiverId,
           isRead: false,
           room: roomId,
-          messages: {},
-        });
-      }
+          timestamp: new Date(),
+          user,
+        };
 
-      // Crear el nuevo mensaje
-      const newMessage = {
-        roomId,
-        content: text,
-        sender: user.sender,
-        receiver: user.receiver,
-        isRead: false,
-        timestamp: new Date(),
-      };
-
-      // Verificar si existe el mes actual en el chat, si no, inicializarlo
-      if (!chat.messages[currentMonth]) {
-        chat.messages[currentMonth] = [];
-      }
-
-      // Agregar el nuevo mensaje al array del mes actual
-      chat.messages[currentMonth].push(newMessage);
-
-      // Actualizar la base de datos con el nuevo array de mensajes para ese mes
-      await strapi.services.chats.update(
-        { id: chat.id },
-        {
-          messages: chat.messages,
-          sender: user.sender,
-          receiver: user.receiver,
-          isRead: false,
+        // Verificar si existe el mes actual en el chat, si no, inicializarlo
+        if (!chat.messages[currentMonth]) {
+          chat.messages[currentMonth] = [];
         }
-      );
 
-      // Emitir el mensaje solo a la sala correspondiente
-      io.to(roomId).emit("receiveMessage", newMessage);
-    });
+        // Agregar el nuevo mensaje al array del mes actual
+        chat.messages[currentMonth].push(newMessage);
+
+        // Actualizar la base de datos con el nuevo array de mensajes para ese mes
+        await strapi.services.chats.update(
+          { id: chat.id },
+          {
+            messages: chat.messages,
+            sender: senderId,
+            receiver: receiverId,
+          }
+        );
+
+        // Emitir el mensaje solo a la sala correspondiente
+        io.to(roomId).emit("receiveMessage", newMessage);
+      }
+    );
     socket.on("getMessagesByMonth", async ({ roomId, month }) => {
       // Buscar el chat de la sala
       const chat = await strapi.services.chats.findOne({ room: roomId });

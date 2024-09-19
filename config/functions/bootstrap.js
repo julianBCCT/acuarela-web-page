@@ -62,6 +62,7 @@ module.exports = () => {
 
       // Crear el nuevo mensaje
       const newMessage = {
+        roomId,
         content: text,
         sender: user.sender,
         receiver: user.receiver,

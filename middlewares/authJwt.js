@@ -51,10 +51,8 @@ async function renew(token) {
 
 // Se encarga de generar un token con el número de telefono o con el correo con una expiración de dos días.
 async function generate_token(entity) {
-  let phone = "-1";
-  if (entity.phone) phone = entity.phone;
-  let email = "-1";
-  if (entity.email) email = entity.email ? entity.email : entity.mail;
+  let phone = entity.phone ?? "-1";
+  let email = entity.email ?? entity.mail ?? "-1";
 
   let err,
     token = await jwt.sign(

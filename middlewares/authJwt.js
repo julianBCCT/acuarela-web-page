@@ -102,6 +102,7 @@ async function generate_token(entity) {
       bilingual_user: entity.bilingual_user ? entity.bilingual_user.id : 0,
     };
   }
+console.log(user);
 
   return { ok: true, status: 200, code: 0, msg: "User Logged.", user };
 }

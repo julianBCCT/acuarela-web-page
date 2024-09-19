@@ -54,7 +54,7 @@ async function generate_token(entity) {
   let phone = "-1";
   if (entity.phone) phone = entity.phone;
   let email = "-1";
-  if (entity.email) email = entity.email;
+  if (entity.email) email = entity.email ? entity.email : entity.mail;
 
   let err,
     token = await jwt.sign(
@@ -75,11 +75,7 @@ async function generate_token(entity) {
     };
 
   let user;
-console.log(entity.acuarelauser);
-
   if (entity.acuarelauser) {
-    
-    
     user = {
       email,
       id: entity.acuarelauser.id,

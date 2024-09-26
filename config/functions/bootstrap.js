@@ -104,12 +104,8 @@ module.exports = () => {
     );
     socket.on("newMessageNotification", (data) => {
       const { message, roomId, sender } = data;
-
-      // Aquí podrías verificar si el usuario está en la sala activa o no
-      if (roomId !== currentActiveRoom) {
-        // Mostrar notificación, por ejemplo en un badge de notificaciones
-        showNotification(`Nuevo mensaje de ${sender}: ${message.content}`);
-      }
+      // Mostrar notificación, por ejemplo en un badge de notificaciones
+      showNotification(`Nuevo mensaje de ${sender}: ${message.content}`);
     });
     socket.on("getMessagesByMonth", async ({ roomId, month }) => {
       // Buscar el chat de la sala

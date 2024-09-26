@@ -59,7 +59,7 @@ module.exports = () => {
     // El cliente envía un mensaje dentro de la sala privada
     socket.on(
       "sendMessage",
-      async ({ roomId, text, senderId, receiverId, user }) => {
+      async ({ roomId, text, senderId, receiverId, user, socketid }) => {
         // Obtener la fecha actual y formatear el mes (YYYY-MM)
         const currentMonth = new Date().toISOString().slice(0, 7); // Obtiene 'YYYY-MM'
 
@@ -110,7 +110,7 @@ module.exports = () => {
         // Emitir el mensaje solo a la sala correspondiente
         io.to(roomId).emit("receiveMessage", newMessage);
         // Notificar al destinatario
-        io.to(user.receiver).emit("newMessageNotification", {
+        io.to(socketid).emit("newMessageNotification", {
           message: newMessage,
           roomId,
           sender: user,

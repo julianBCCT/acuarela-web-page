@@ -35,8 +35,21 @@ module.exports = () => {
   });
 
   // Lógica cuando un cliente se conecta
-  io.on("connection", (socket) => {
-    console.log(socket.id);
+  io.on("connection", async (socket) => {
+    console.log(socket.id); // El ID del socket
+    // Escuchar el evento 'register' para recibir el ID del usuario
+    socket.on("register", async ({ userId }) => {
+      console.log("User ID:", userId);
+
+      // Actualizar la base de datos con el socket ID para ese usuario
+      await strapi.services.acuarelauser.update(
+        { id: userId }, // Pasas el ID aquí
+        {
+          socketId: socket.id, // Guardas el socket ID
+        }
+      );
+      console.log("Socket ID saved for user:", userId);
+    });
 
     // El cliente se une a una sala privada
     socket.on("joinRoom", ({ roomId, user }) => {

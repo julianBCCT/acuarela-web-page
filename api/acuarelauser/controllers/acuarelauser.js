@@ -58,7 +58,7 @@ module.exports = {
       "codigo_dinamico",
       "socketId",
     ]);
-    return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
+    return sanitizeEntity(entity, { model: strapi.models.acuarelausers });
   },
   // Valida el login de la aplicación.
   async login(ctx) {

@@ -14,7 +14,7 @@ const sms = require("../../../helpers/sms_provider");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-    const entity = await strapi.services.acuarelauser.findOne({ id }, [
+    const entity = await strapi.services.acuarelausers.findOne({ id }, [
       "name",
       "lastname",
       "password",

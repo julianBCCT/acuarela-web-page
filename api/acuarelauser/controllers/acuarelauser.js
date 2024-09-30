@@ -14,7 +14,7 @@ const sms = require("../../../helpers/sms_provider");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-    const entity = await strapi.services.acuarelausers.findOne({ id }, [
+    const entity = await strapi.services.acuarelauser.findOne({ id }, [
       "name",
       "lastname",
       "password",
@@ -58,7 +58,7 @@ module.exports = {
       "codigo_dinamico",
       "socketId",
     ]);
-    return sanitizeEntity(entity, { model: strapi.models.acuarelausers });
+    return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
   // Valida el login de la aplicación.
   async login(ctx) {

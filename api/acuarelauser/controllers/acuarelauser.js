@@ -14,27 +14,28 @@ const sms = require("../../../helpers/sms_provider");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-    const entity = await strapi.services.acuarelauser.findOne({ id });
+    const entity = await strapi.services.acuarelauser
+      .findOne({ id })
+      .populate("children");
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
   // Valida el login de la aplicación.
   async login(ctx) {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
-    
+
     // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
-    
-    
+
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
       if (pass == "acu4rel4789654") {
         return ctx.send(await verification.generate_token(entity));
       } else {
         // Valida que el usuario y la constraseña sean validos para el email o el número.
-        let result = await bcrypt.compare(pass, entity.password);      
+        let result = await bcrypt.compare(pass, entity.password);
         if (result) return ctx.send(await verification.generate_token(entity));
         else {
           let msg = "Invalid Password";

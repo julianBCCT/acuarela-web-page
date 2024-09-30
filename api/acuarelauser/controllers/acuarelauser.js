@@ -14,10 +14,10 @@ const sms = require("../../../helpers/sms_provider");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-
-    // Encuentra la entidad con todas las relaciones pobladas
-    const entity = await strapi.services.acuarelauser.findOne({ id }, ["*"]);
-
+    let entity = await strapi
+      .query("acuarelauser")
+      .model.findOne({ id })
+      .populate("children", "daycare", "daycares");
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
   // Valida el login de la aplicación.

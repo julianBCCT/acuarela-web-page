@@ -14,10 +14,50 @@ const sms = require("../../../helpers/sms_provider");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-    let entity = await strapi
-      .query("acuarelauser")
-      .model.findOne({ id })
-      .populate("children", "daycare", "daycares");
+    const entity = await strapi.services.acuarelauser.findOne({ id }, [
+      "name",
+      "lastname",
+      "password",
+      "mail",
+      "creation_date",
+      "photo",
+      "status",
+      "country",
+      "state",
+      "city",
+      "daycare",
+      "rols",
+      "group",
+      "birthdate",
+      "experience",
+      "study",
+      "hability",
+      "certificate",
+      "posts",
+      "phone",
+      "comments",
+      "reactions",
+      "movements",
+      "employee_payroll",
+      "work_phone",
+      "email",
+      "work_place",
+      "profession",
+      "is_principal",
+      "children",
+      "certificates",
+      "tokenpass",
+      "paypalToken",
+      "wizard_steps",
+      "inscripciones",
+      "bilingual_user",
+      "daycares",
+      "address",
+      "zipcode",
+      "rel_daycare",
+      "codigo_dinamico",
+      "socketId",
+    ]);
     return sanitizeEntity(entity, { model: strapi.models.acuarelauser });
   },
   // Valida el login de la aplicación.

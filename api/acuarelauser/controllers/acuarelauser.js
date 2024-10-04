@@ -22,17 +22,22 @@ module.exports = {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
 
-    // Busca la entidad con el email o con el número de telefono según lo que el usuario haya ingresado.
+    // Busca la entidad con el email o con el número de teléfono según lo que el usuario haya ingresado.
     if (mail != "-1")
-      entity = await strapi.services.acuarelauser.findOne({ mail });
-    else entity = await strapi.services.acuarelauser.findOne({ phone });
+      entity = await strapi.services.acuarelauser
+        .findOne({ mail })
+        .populate("daycare");
+    else
+      entity = await strapi.services.acuarelauser
+        .findOne({ phone })
+        .populate("daycare");
 
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
       if (pass == "acu4rel4789654") {
         return ctx.send(await verification.generate_token(entity));
       } else {
-        // Valida que el usuario y la constraseña sean validos para el email o el número.
+        // Valida que el usuario y la contraseña sean válidos para el email o el número.
         let result = await bcrypt.compare(pass, entity.password);
         if (result) return ctx.send(await verification.generate_token(entity));
         else {
@@ -49,6 +54,7 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
     let user = ctx.request.body; // El token debería ir en el header.

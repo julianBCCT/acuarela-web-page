@@ -38,6 +38,9 @@ module.exports = {
       "daycare.movements",
       "daycare.inscripciones",
       "daycare.suscriptions",
+      "daycare.bilingual_users",
+      "daycare.acuarelausers",
+      "daycare.acuarelausersMultiple",
     ];
 
     // Busca la entidad con el email o con el número de teléfono según lo que el usuario haya ingresado.

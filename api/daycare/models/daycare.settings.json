@@ -150,8 +150,8 @@
       "type": "richtext"
     },
     "bilingual_users": {
-      "collection": "bilingual-user",
-      "via": "daycares"
+      "via": "daycares",
+      "collection": "bilingual-user"
     },
     "acuarelausers": {
       "via": "daycare",

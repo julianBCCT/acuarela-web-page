@@ -30,20 +30,20 @@
       "type": "string"
     },
     "suscriptions": {
-      "via": "bilingual_user",
-      "collection": "suscription"
+      "collection": "suscription",
+      "via": "bilingual_user"
     },
     "acuarelauser": {
-      "via": "bilingual_user",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "bilingual_user"
     },
     "free": {
       "type": "boolean",
       "default": true
     },
     "daycares": {
-      "via": "bilingual_users",
       "collection": "daycare",
+      "via": "bilingual_users",
       "dominant": true
     },
     "zoho_contact_id": {
@@ -56,6 +56,9 @@
     "fromwix": {
       "type": "boolean",
       "default": false
+    },
+    "username": {
+      "type": "string"
     }
   }
 }

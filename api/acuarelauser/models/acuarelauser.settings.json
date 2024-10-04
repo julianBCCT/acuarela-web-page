@@ -141,8 +141,8 @@
       "via": "parents_rel"
     },
     "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "model": "bilingual-user"
     },
     "daycares": {
       "collection": "daycare",

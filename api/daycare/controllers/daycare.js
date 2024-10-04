@@ -30,6 +30,9 @@ module.exports = {
           populate: [{ path: "rols", select: "rol" }],
         })
         .populate({
+          path: "bilingual_users",
+        })
+        .populate({
           path: "suscriptions",
           select:
             "suscription_expiration product service createdAt id_paypal cancel",

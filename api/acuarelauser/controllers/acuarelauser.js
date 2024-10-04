@@ -22,7 +22,7 @@ module.exports = {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
 
-    // Configura las relaciones que quieres poblar (incluyendo los componentes)
+    // Configura las relaciones que quieres poblar como strings
     const populateOptions = [
       "daycare",
       "daycare.photo",
@@ -38,21 +38,18 @@ module.exports = {
       "daycare.movements",
       "daycare.inscripciones",
       "daycare.suscriptions",
-      "daycare.bilingual_users",
-      "daycare.acuarelausers",
-      "daycare.acuarelausersMultiple",
     ];
 
     // Busca la entidad con el email o con el número de teléfono según lo que el usuario haya ingresado.
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne(
         { mail },
-        { populate: populateOptions }
+        populateOptions.join(" ")
       );
     else
       entity = await strapi.services.acuarelauser.findOne(
         { phone },
-        { populate: populateOptions }
+        populateOptions.join(" ")
       );
 
     // Valida la existencia de la entidad por email o por número.

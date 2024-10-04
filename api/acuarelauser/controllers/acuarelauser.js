@@ -22,15 +22,20 @@ module.exports = {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
 
+    // Configura las relaciones que quieres poblar (en este caso, 'daycare')
+    const populateOptions = ["daycare"];
+
     // Busca la entidad con el email o con el número de teléfono según lo que el usuario haya ingresado.
     if (mail != "-1")
-      entity = await strapi.services.acuarelauser
-        .findOne({ mail })
-        .populate("daycare");
+      entity = await strapi.services.acuarelauser.findOne(
+        { mail },
+        populateOptions
+      );
     else
-      entity = await strapi.services.acuarelauser
-        .findOne({ phone })
-        .populate("daycare");
+      entity = await strapi.services.acuarelauser.findOne(
+        { phone },
+        populateOptions
+      );
 
     // Valida la existencia de la entidad por email o por número.
     if (entity) {
@@ -54,7 +59,6 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
-
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
     let user = ctx.request.body; // El token debería ir en el header.

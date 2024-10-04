@@ -22,19 +22,37 @@ module.exports = {
     const { mail, pass, phone } = ctx.request.body;
     let entity;
 
-    // Configura las relaciones que quieres poblar (en este caso, 'daycare')
-    const populateOptions = ["daycare"];
+    // Configura las relaciones que quieres poblar (incluyendo los componentes)
+    const populateOptions = [
+      "daycare",
+      "daycare.photo",
+      "daycare.certificates",
+      "daycare.schedule",
+      "daycare.address",
+      "daycare.paypal",
+      "daycare.networks_social_media",
+      "daycare.acquiredcomplements",
+      "daycare.children",
+      "daycare.groups",
+      "daycare.visits",
+      "daycare.movements",
+      "daycare.inscripciones",
+      "daycare.suscriptions",
+      "daycare.bilingual_users",
+      "daycare.acuarelausers",
+      "daycare.acuarelausersMultiple",
+    ];
 
     // Busca la entidad con el email o con el número de teléfono según lo que el usuario haya ingresado.
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne(
         { mail },
-        populateOptions
+        { populate: populateOptions }
       );
     else
       entity = await strapi.services.acuarelauser.findOne(
         { phone },
-        populateOptions
+        { populate: populateOptions }
       );
 
     // Valida la existencia de la entidad por email o por número.
@@ -59,6 +77,7 @@ module.exports = {
       return ctx.send({ ok: false, status: 400, code, msg });
     }
   },
+
   // Hace un pre-registro del usuario y envia un correo/email con la información necesaria para completar el registro.
   async invitation(ctx) {
     let user = ctx.request.body; // El token debería ir en el header.

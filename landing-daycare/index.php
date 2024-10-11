@@ -204,7 +204,7 @@ $titulos = [
             </div>
         </header>
 
-        <main>
+        <main style="background-image: url('<?= $info->acf->imagen_fondo_web ?>');">
             <div class="portada">
                 <img class="img-portada" src="<?= $info->acf->banner_principal ?>" />
             </div>

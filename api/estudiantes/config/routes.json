@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/estudiantes/search",
+      "handler": "estudiantes.customSearch",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/estudiantes",
       "handler": "estudiantes.find",
       "config": {
@@ -20,14 +28,6 @@
       "method": "GET",
       "path": "/estudiantes/:id",
       "handler": "estudiantes.findOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/estudiantes/search",
-      "handler": "estudiantes.customSearch",
       "config": {
         "policies": []
       }

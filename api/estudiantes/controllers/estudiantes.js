@@ -11,10 +11,18 @@ module.exports = {
     }
 
     try {
-      // Aplicar el operador 'contains' correctamente
-      const estudiantes = await strapi.query("estudiantes").find({
-        nombre: { $regex: nombre_contains, $options: "i" }, // Búsqueda insensible a mayúsculas/minúsculas
-      });
+      // Dividir las palabras del nombre_contains en un array
+      const palabras = nombre_contains.split(" ").filter(Boolean);
+
+      // Crear una consulta para buscar estudiantes cuyo campo "nombre" contenga alguna de las palabras
+      const query = {
+        $or: palabras.map((palabra) => ({
+          nombre: { $regex: palabra, $options: "i" },
+        })),
+      };
+
+      // Ejecutar la consulta con las condiciones creadas
+      const estudiantes = await strapi.query("estudiantes").find(query);
 
       return estudiantes.map((estudiante) =>
         sanitizeEntity(estudiante, { model: strapi.models.estudiantes })

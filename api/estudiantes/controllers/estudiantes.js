@@ -11,20 +11,21 @@ module.exports = {
     }
 
     try {
-      // Dividir las palabras del nombre_contains en un array
+      // Obtener todas las entradas de estudiantes
+      const allEstudiantes = await strapi.query("estudiantes").find();
+
+      // Dividir las palabras de nombre_contains
       const palabras = nombre_contains.split(" ").filter(Boolean);
 
-      // Crear una consulta para buscar estudiantes cuyo campo "nombre" contenga alguna de las palabras
-      const query = {
-        $or: palabras.map((palabra) => ({
-          nombre: { $regex: palabra, $options: "i" },
-        })),
-      };
+      // Filtrar los estudiantes cuyo nombre contenga alguna de las palabras
+      const estudiantesFiltrados = allEstudiantes.filter((estudiante) => {
+        return palabras.some((palabra) =>
+          estudiante.nombre.toLowerCase().includes(palabra.toLowerCase())
+        );
+      });
 
-      // Ejecutar la consulta con las condiciones creadas
-      const estudiantes = await strapi.query("estudiantes").find(query);
-
-      return estudiantes.map((estudiante) =>
+      // Devolver los estudiantes filtrados
+      return estudiantesFiltrados.map((estudiante) =>
         sanitizeEntity(estudiante, { model: strapi.models.estudiantes })
       );
     } catch (error) {

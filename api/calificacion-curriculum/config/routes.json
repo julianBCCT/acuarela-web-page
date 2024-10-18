@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/calificacion-curricula",
+      "handler": "calificacion-curriculum.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calificacion-curricula/count",
+      "handler": "calificacion-curriculum.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calificacion-curricula/:id",
+      "handler": "calificacion-curriculum.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/calificacion-curricula",
+      "handler": "calificacion-curriculum.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/calificacion-curricula/:id",
+      "handler": "calificacion-curriculum.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/calificacion-curricula/:id",
+      "handler": "calificacion-curriculum.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/calificacion-actividads",
+      "handler": "calificacion-actividad.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calificacion-actividads/count",
+      "handler": "calificacion-actividad.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calificacion-actividads/:id",
+      "handler": "calificacion-actividad.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/calificacion-actividads",
+      "handler": "calificacion-actividad.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/calificacion-actividads/:id",
+      "handler": "calificacion-actividad.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/calificacion-actividads/:id",
+      "handler": "calificacion-actividad.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

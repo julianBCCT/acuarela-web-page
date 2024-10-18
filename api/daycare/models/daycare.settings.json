@@ -37,10 +37,6 @@
       "plugin": "upload",
       "required": false
     },
-    "acquiredcomplements": {
-      "collection": "acquiredcomplement",
-      "via": "daycare"
-    },
     "foundationdate": {
       "type": "date"
     },

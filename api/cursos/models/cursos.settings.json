@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cursos",
+  "info": {
+    "name": "Cursos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_crm": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "fecha_inicio": {
+      "type": "date"
+    },
+    "fecha_fin": {
+      "type": "date"
+    },
+    "instructor": {
+      "type": "string"
+    },
+    "clases": {
+      "collection": "classes"
+    },
+    "mes": {
+      "type": "string"
+    },
+    "horas": {
+      "type": "string"
+    },
+    "estudiantes": {
+      "collection": "estudiantes",
+      "via": "cursos",
+      "dominant": true
+    },
+    "classes": {
+      "via": "curso",
+      "collection": "classes"
+    },
+    "tipo_curso": {
+      "type": "enumeration",
+      "enum": [
+        "CDA",
+        "RCP"
+      ]
+    }
+  }
+}

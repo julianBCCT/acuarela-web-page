@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "actividades",
+  "info": {
+    "name": "actividades",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "semana": {
+      "type": "integer"
+    },
+    "id_wordpress": {
+      "type": "string"
+    },
+    "curriculum": {
+      "model": "curriculum"
+    }
+  }
+}

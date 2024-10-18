@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/asistencia-cdas",
+      "handler": "asistencia-cda.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/asistencia-cdas/count",
+      "handler": "asistencia-cda.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/asistencia-cdas/:id",
+      "handler": "asistencia-cda.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/asistencia-cdas",
+      "handler": "asistencia-cda.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/asistencia-cdas/:id",
+      "handler": "asistencia-cda.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/asistencia-cdas/:id",
+      "handler": "asistencia-cda.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

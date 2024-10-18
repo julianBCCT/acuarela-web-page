@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Asistencia_CDA",
+  "info": {
+    "name": "Asistencia_CDA",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "hora_ingreso": {
+      "type": "datetime"
+    },
+    "hora_salida": {
+      "type": "datetime"
+    },
+    "estudiante": {
+      "model": "estudiantes",
+      "via": "asistencia_cdas"
+    },
+    "class": {
+      "via": "asistencia_cdas",
+      "model": "classes"
+    }
+  }
+}

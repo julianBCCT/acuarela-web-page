@@ -26,7 +26,7 @@
     "Modalidad": {
       "type": "string"
     },
-    "Distrito": {
+    "distrito": {
       "type": "string"
     },
     "Hora": {
@@ -34,6 +34,20 @@
     },
     "link": {
       "type": "string"
+    },
+    "id_crm": {
+      "type": "string"
+    },
+    "curso": {
+      "model": "cursos",
+      "via": "classes"
+    },
+    "estudiantes": {
+      "collection": "estudiantes"
+    },
+    "asistencia_cdas": {
+      "collection": "asistencia-cda",
+      "via": "class"
     }
   }
 }

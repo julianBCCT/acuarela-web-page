@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calificacion_curricula",
+  "info": {
+    "name": "calificacion_curriculum"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "bilingual_user": {
+      "model": "bilingual-user",
+      "via": "calificacion_curriculum"
+    },
+    "curriculum": {
+      "via": "calificacion_curriculum",
+      "model": "curriculum"
+    },
+    "semana": {
+      "type": "integer"
+    },
+    "puntuacion": {
+      "type": "integer"
+    }
+  }
+}

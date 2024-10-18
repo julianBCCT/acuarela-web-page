@@ -59,6 +59,14 @@
     },
     "username": {
       "type": "string"
+    },
+    "calificacion_actividad": {
+      "via": "bilingual_user",
+      "model": "calificacion-actividad"
+    },
+    "calificacion_curriculum": {
+      "via": "bilingual_user",
+      "model": "calificacion-curriculum"
     }
   }
 }

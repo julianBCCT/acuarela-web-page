@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estudiantes",
+  "info": {
+    "name": "Estudiantes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "codigo": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "cursos": {
+      "via": "estudiantes",
+      "collection": "cursos"
+    },
+    "asistencia_cdas": {
+      "via": "estudiante",
+      "collection": "asistencia-cda"
+    }
+  }
+}

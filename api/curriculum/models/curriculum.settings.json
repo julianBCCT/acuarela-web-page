@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "curricula",
+  "info": {
+    "name": "Curriculums",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "actividades": {
+      "collection": "actividades"
+    },
+    "calificacion_curriculum": {
+      "model": "calificacion-curriculum",
+      "via": "curriculum"
+    }
+  }
+}

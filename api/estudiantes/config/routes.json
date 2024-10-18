@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/estudiantes/search",
+      "handler": "estudiantes.customSearch",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/estudiantes",
       "handler": "estudiantes.create",

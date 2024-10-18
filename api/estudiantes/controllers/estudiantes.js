@@ -1,9 +1,6 @@
 "use strict";
 
-/**
- * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
- * to customize this controller
- */
+const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   async customSearch(ctx) {
@@ -14,9 +11,9 @@ module.exports = {
     }
 
     try {
-      // Usa el operador contains para hacer la búsqueda parcial
+      // Aplicar el operador 'contains' correctamente
       const estudiantes = await strapi.query("estudiantes").find({
-        nombre_contains,
+        nombre: { $regex: nombre_contains, $options: "i" }, // Búsqueda insensible a mayúsculas/minúsculas
       });
 
       return estudiantes.map((estudiante) =>

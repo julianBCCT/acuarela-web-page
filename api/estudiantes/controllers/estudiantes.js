@@ -14,8 +14,9 @@ module.exports = {
     }
 
     try {
+      // Usa el operador contains para hacer la búsqueda parcial
       const estudiantes = await strapi.query("estudiantes").find({
-        nombre: nombre_contains,
+        nombre_contains,
       });
 
       return estudiantes.map((estudiante) =>

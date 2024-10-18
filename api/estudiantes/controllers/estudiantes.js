@@ -15,7 +15,7 @@ module.exports = {
 
     try {
       const estudiantes = await strapi.query("estudiantes").find({
-        nombre_contains,
+        nombre: nombre_contains,
       });
 
       return estudiantes.map((estudiante) =>

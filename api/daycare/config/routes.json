@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/daycares/custom-find",
+      "handler": "custom-daycare.findWithSubscriptionsAndBilingualUsers",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/daycares",
       "handler": "daycare.find"
     },

@@ -76,4 +76,19 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  // Custom endpoint to get daycares with subscriptions and bilingual users
+  async findWithSubscriptionsAndBilingualUsers(ctx) {
+    try {
+      // Query to get all daycares that have at least one subscription and bilingual users
+      const daycares = await strapi.query("daycare").find({
+        suscriptions: { $exists: true, $not: { $size: 0 } }, // Filters daycares with at least one subscription
+        bilingual_users: { $exists: true, $not: { $size: 0 } }, // Filters daycares with at least one bilingual user
+      });
+
+      // Return the filtered results
+      ctx.send(daycares);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
 };

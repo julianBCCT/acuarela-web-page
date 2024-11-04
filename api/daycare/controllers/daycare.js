@@ -81,7 +81,7 @@ module.exports = {
     try {
       // Query to get all daycares that have at least one subscription and bilingual users
       const daycares = await strapi.query("daycare").find({
-        suscriptions: { $exists: true, $not: { $size: 0 } },
+        suscriptions: { $not: { $size: 0 } },
       });
 
       // Return the filtered results

@@ -38,9 +38,9 @@
     "id_crm": {
       "type": "string"
     },
-    "curso": {
-      "model": "cursos",
-      "via": "classes"
+    "cursos": {
+      "via": "classes",
+      "collection": "cursos"
     },
     "estudiantes": {
       "collection": "estudiantes"

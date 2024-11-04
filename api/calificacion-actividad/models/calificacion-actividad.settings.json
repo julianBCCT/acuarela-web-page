@@ -11,18 +11,19 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "bilingual_user": {
-      "model": "bilingual-user",
-      "via": "calificacion_actividad"
-    },
-    "actividad": {
-      "model": "actividades"
-    },
     "semana": {
       "type": "integer"
     },
     "puntuacion": {
       "type": "integer"
+    },
+    "actividad": {
+      "via": "calificacion_actividads",
+      "model": "actividades"
+    },
+    "bilingual_user": {
+      "via": "calificacion_actividads",
+      "model": "bilingual-user"
     }
   }
 }

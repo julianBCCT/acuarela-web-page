@@ -26,9 +26,6 @@
     "instructor": {
       "type": "string"
     },
-    "clases": {
-      "collection": "classes"
-    },
     "mes": {
       "type": "string"
     },
@@ -40,16 +37,17 @@
       "via": "cursos",
       "dominant": true
     },
-    "classes": {
-      "via": "curso",
-      "collection": "classes"
-    },
     "tipo_curso": {
       "type": "enumeration",
       "enum": [
         "CDA",
         "RCP"
       ]
+    },
+    "classes": {
+      "collection": "classes",
+      "via": "cursos",
+      "dominant": true
     }
   }
 }

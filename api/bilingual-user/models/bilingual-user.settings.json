@@ -60,13 +60,16 @@
     "username": {
       "type": "string"
     },
-    "calificacion_actividad": {
-      "via": "bilingual_user",
-      "model": "calificacion-actividad"
+    "calificacion_actividads": {
+      "collection": "calificacion-actividad",
+      "via": "bilingual_user"
     },
-    "calificacion_curriculum": {
-      "via": "bilingual_user",
-      "model": "calificacion-curriculum"
+    "calificacion_curricula": {
+      "collection": "calificacion-curriculum",
+      "via": "bilingual_user"
+    },
+    "have_daycare": {
+      "type": "boolean"
     }
   }
 }

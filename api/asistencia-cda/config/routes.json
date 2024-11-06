@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/asistencia-cdas/createMultiple",
+      "handler": "asistencia-cda.createMultipleAsistencias",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/asistencia-cdas/:id",
       "handler": "asistencia-cda.update",

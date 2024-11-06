@@ -45,7 +45,7 @@ module.exports = {
       // Obtener todos los estudiantes
       let allEstudiantes = await strapi.query("estudiantes").model.find();
 
-      // Filtrar estudiantes por nombre
+      // Filtrar estudiantes por nombre (asegúrate de que no falte ninguno)
       const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
         AllParticipants.includes(estudiante.nombre)
       );
@@ -53,6 +53,7 @@ module.exports = {
       let query = { Fecha: { $eq: formatDate } };
       let clase = await strapi.query("classes").model.findOne(query);
 
+      // Crear asistencias para todos los participantes encontrados
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
           let asistencia = await strapi.services["asistencia-cda"].create({

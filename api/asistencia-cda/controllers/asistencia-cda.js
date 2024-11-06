@@ -47,11 +47,10 @@ module.exports = {
       const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
         AllParticipants.some((participant) => participant === estudiante.nombre)
       );
+      console.log(formatDate, earliestStartTimedateStr, latestEndTime);
       let query = {};
       query.Fecha = { $eq: formatDate };
       let clase = await strapi.query("classes").model.findOne(query);
-
-      console.log(formatDate, earliestStartTimedateStr, latestEndTime);
 
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {

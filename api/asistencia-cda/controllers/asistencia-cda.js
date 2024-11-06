@@ -67,7 +67,7 @@ module.exports = {
         })
       );
 
-      return asistencias;
+      return { asistencias, filteredEstudiantes, AllParticipants };
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);
     }

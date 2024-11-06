@@ -17,8 +17,17 @@ module.exports = {
         let {
           signedinUser: { displayName },
         } = participant;
-        return displayName.trim().toLowerCase(); // Normalizar nombres: quitar espacios y convertir a minúsculas
+        return normalizeName(displayName); // Normalizar nombres de los participantes
       });
+
+      // Función de normalización de nombres
+      const normalizeName = (name) => {
+        return name
+          .trim()
+          .toLowerCase()
+          .normalize("NFD") // Descomponer caracteres con tildes
+          .replace(/[\u0300-\u036f]/g, ""); // Eliminar los diacríticos (acentos)
+      };
 
       // Extraer las fechas de earliestStartTime y latestEndTime
       let earliestStartTimes = participants.map(
@@ -48,7 +57,7 @@ module.exports = {
       // Filtrar estudiantes por nombre, normalizando también el nombre del estudiante
       const filteredEstudiantes = allEstudiantes.filter(
         (estudiante) =>
-          AllParticipants.includes(estudiante.nombre.trim().toLowerCase()) // Normalizar nombres de estudiantes
+          AllParticipants.includes(normalizeName(estudiante.nombre)) // Normalizar nombres de estudiantes
       );
 
       // Verificar si se encuentran estudiantes coincidentes

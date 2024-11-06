@@ -15,11 +15,11 @@ module.exports = {
       let {
         signedinUser: { displayName },
       } = participant;
-      return { displayName };
+      return displayName;
     });
     let date = participants.map((participant) => participant.earliestStartTime);
-    date = moment(date).format("YYYY-MM-DD");
+    let formatDate = moment(date).format("YYYY-MM-DD");
     // const entity = await strapi.services.acuarelauser.findOne({ id });
-    return { AllParticipants, date };
+    return { AllParticipants, formatDate, date };
   },
 };

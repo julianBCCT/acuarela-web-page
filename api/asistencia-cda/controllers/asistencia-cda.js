@@ -17,7 +17,7 @@ module.exports = {
         let {
           signedinUser: { displayName },
         } = participant;
-        return displayName;
+        return displayName.trim().toLowerCase(); // Normalizar nombres: quitar espacios y convertir a minúsculas
       });
 
       // Extraer las fechas de earliestStartTime y latestEndTime
@@ -45,15 +45,24 @@ module.exports = {
       // Obtener todos los estudiantes
       let allEstudiantes = await strapi.query("estudiantes").model.find();
 
-      // Filtrar estudiantes por nombre (asegúrate de que no falte ninguno)
-      const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
-        AllParticipants.includes(estudiante.nombre)
+      // Filtrar estudiantes por nombre, normalizando también el nombre del estudiante
+      const filteredEstudiantes = allEstudiantes.filter(
+        (estudiante) =>
+          AllParticipants.includes(estudiante.nombre.trim().toLowerCase()) // Normalizar nombres de estudiantes
       );
+
+      // Verificar si se encuentran estudiantes coincidentes
+      if (filteredEstudiantes.length === 0) {
+        throw new Error("No students found for the provided participants");
+      }
+
+      // Imprimir el arreglo de estudiantes filtrados para ver los resultados
+      console.log(filteredEstudiantes);
 
       let query = { Fecha: { $eq: formatDate } };
       let clase = await strapi.query("classes").model.findOne(query);
 
-      // Crear asistencias para todos los participantes encontrados
+      // Crear asistencias para los estudiantes filtrados
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
           let asistencia = await strapi.services["asistencia-cda"].create({
@@ -68,7 +77,7 @@ module.exports = {
         })
       );
 
-      return { asistencias, filteredEstudiantes, AllParticipants };
+      return { asistencias, filteredEstudiantes, allEstudiantes };
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);
     }

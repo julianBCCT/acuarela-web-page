@@ -9,6 +9,14 @@ const moment = require("moment");
 
 module.exports = {
   async createMultipleAsistencias(ctx) {
+    // Función de normalización de nombres
+    const normalizeName = (name) => {
+      return name
+        .trim()
+        .toLowerCase()
+        .normalize("NFD") // Descomponer caracteres con tildes
+        .replace(/[\u0300-\u036f]/g, ""); // Eliminar los diacríticos (acentos)
+    };
     try {
       const { participants } = ctx.request.body;
 
@@ -19,15 +27,6 @@ module.exports = {
         } = participant;
         return normalizeName(displayName); // Normalizar nombres de los participantes
       });
-
-      // Función de normalización de nombres
-      const normalizeName = (name) => {
-        return name
-          .trim()
-          .toLowerCase()
-          .normalize("NFD") // Descomponer caracteres con tildes
-          .replace(/[\u0300-\u036f]/g, ""); // Eliminar los diacríticos (acentos)
-      };
 
       // Extraer las fechas de earliestStartTime y latestEndTime
       let earliestStartTimes = participants.map(
@@ -64,9 +63,6 @@ module.exports = {
       if (filteredEstudiantes.length === 0) {
         throw new Error("No students found for the provided participants");
       }
-
-      // Imprimir el arreglo de estudiantes filtrados para ver los resultados
-      console.log(filteredEstudiantes);
 
       let query = { Fecha: { $eq: formatDate } };
       let clase = await strapi.query("classes").model.findOne(query);

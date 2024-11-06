@@ -21,8 +21,8 @@
       "type": "string"
     },
     "curricula": {
-      "collection": "curriculum",
       "via": "actividades",
+      "collection": "curriculum",
       "dominant": true
     },
     "promedio": {

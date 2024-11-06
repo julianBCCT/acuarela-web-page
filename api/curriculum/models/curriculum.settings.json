@@ -14,13 +14,13 @@
     "nombre": {
       "type": "string"
     },
-    "calificacion_curriculum": {
-      "via": "curriculum",
-      "model": "calificacion-curriculum"
+    "calificacion_curricula": {
+      "collection": "calificacion-curriculum",
+      "via": "curriculum"
     },
     "actividades": {
-      "via": "curricula",
-      "collection": "actividades"
+      "collection": "actividades",
+      "via": "curricula"
     }
   }
 }

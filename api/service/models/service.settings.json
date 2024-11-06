@@ -76,6 +76,9 @@
     },
     "id_wp": {
       "type": "string"
+    },
+    "prueba_gratis": {
+      "type": "boolean"
     }
   }
 }

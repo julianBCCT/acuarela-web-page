@@ -10,8 +10,15 @@ const moment = require("moment");
 module.exports = {
   async createMultipleAsistencias(ctx) {
     try {
-      // Recibir datos del BODY
-      const { participants } = ctx.request.body;
+      // Recibir el texto desde el cuerpo de la solicitud
+      const { text } = ctx.request.body;
+
+      // Convertir el texto a JSON
+      const jsonData = JSON.parse(text);
+
+      // Obtener los participantes desde el JSON convertido
+      const { participants } = jsonData;
+
       // Filtrar el arreglo de participantes para solo devolver el displayName
       let AllParticipants = participants.map((participant) => {
         let {

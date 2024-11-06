@@ -33,7 +33,6 @@ module.exports = {
       let latestEndTime = participants.map(
         (participant) => participant.latestEndTime
       );
-      console.log(earliestStartTimedateStr, latestEndTime);
 
       // Formatear fecha YYYY-MM-DD
       const date = new Date(earliestStartTimedateStr);
@@ -59,8 +58,6 @@ module.exports = {
             estudiante: estudiante.id,
             nombre: estudiante.nombre,
             email: estudiante.email,
-            hora_ingreso: earliestStartTimedateStr,
-            hora_salida: latestEndTime,
           });
           return asistencia;
         })

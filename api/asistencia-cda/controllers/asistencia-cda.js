@@ -51,6 +51,8 @@ module.exports = {
       query.Fecha = { $eq: formatDate };
       let clase = await strapi.query("classes").model.findOne(query);
 
+      console.log(formatDate, earliestStartTimedateStr, latestEndTime);
+
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
           let asistencia = await strapi.services["asistencia-cda"].create({
@@ -58,6 +60,8 @@ module.exports = {
             estudiante: estudiante.id,
             nombre: estudiante.nombre,
             email: estudiante.email,
+            hora_ingreso: earliestStartTimedateStr,
+            hora_salida: latestEndTime,
           });
           return asistencia;
         })

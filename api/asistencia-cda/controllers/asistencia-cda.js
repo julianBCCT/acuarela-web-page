@@ -11,7 +11,10 @@ module.exports = {
   async createMultipleAsistencias(ctx) {
     try {
       // Recibir datos del BODY
-      const { participants } = ctx.request.body;
+      const body = ctx.request.body;
+
+      let participants = JSON.parse(body);
+
       // Filtrar el arreglo de participantes para solo devolver el displayName
       let AllParticipants = participants.map((participant) => {
         let {

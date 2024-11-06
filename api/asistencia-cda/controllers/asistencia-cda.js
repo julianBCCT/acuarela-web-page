@@ -20,6 +20,17 @@ module.exports = {
     let date = participants.map((participant) => participant.earliestStartTime);
     let formatDate = moment(date).format("YYYY-MM-DD");
     // const entity = await strapi.services.acuarelauser.findOne({ id });
-    return { AllParticipants, formatDate, date };
+    let allEstudiantes = await strapi.query("estudiantes").model.find();
+    const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
+      AllParticipants.some((participant) => participant === estudiante.nombre)
+    );
+
+    return {
+      AllParticipants,
+      formatDate,
+      date,
+      allEstudiantes,
+      filteredEstudiantes,
+    };
   },
 };

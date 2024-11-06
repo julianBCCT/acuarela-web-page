@@ -11,17 +11,31 @@ module.exports = {
     }
 
     try {
+      // Eliminar caracteres especiales y convertir todo a minúsculas
+      const normalize = (str) => {
+        return str
+          .normalize("NFD") // Normaliza caracteres especiales (acentos, tildes, etc.)
+          .replace(/[\u0300-\u036f]/g, "") // Elimina los acentos
+          .replace(/[^a-zA-Z0-9 ]/g, "") // Elimina caracteres especiales
+          .toLowerCase(); // Convierte todo a minúsculas
+      };
+
       // Obtener todas las entradas de estudiantes
       const allEstudiantes = await strapi.query("estudiantes").find();
 
-      // Dividir las palabras de nombre_contains
-      const palabras = nombre_contains.split(" ").filter(Boolean);
+      // Normalizar y dividir las palabras de nombre_contains
+      const palabras = nombre_contains
+        .split(" ")
+        .filter(Boolean)
+        .map((palabra) => normalize(palabra));
 
-      // Filtrar los estudiantes cuyo nombre contenga alguna de las palabras
+      // Filtrar los estudiantes
       const estudiantesFiltrados = allEstudiantes.filter((estudiante) => {
-        return palabras.some((palabra) =>
-          estudiante.nombre.toLowerCase().includes(palabra.toLowerCase())
-        );
+        // Normalizamos el nombre del estudiante
+        const nombreNormalizado = normalize(estudiante.nombre);
+
+        // Verificamos si el nombre completo coincide o si todas las palabras coinciden en alguna parte del nombre
+        return palabras.every((palabra) => nombreNormalizado.includes(palabra));
       });
 
       // Devolver los estudiantes filtrados

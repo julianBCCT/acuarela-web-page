@@ -45,7 +45,7 @@ module.exports = {
 
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
-          let asistencia = await strapi.services.Asistencia_CDA.create({
+          let asistencia = await strapi.services["asistencia-cda"].create({
             class: clase.id,
             estudiante: estudiante.id,
             nombre: estudiante.nombre,

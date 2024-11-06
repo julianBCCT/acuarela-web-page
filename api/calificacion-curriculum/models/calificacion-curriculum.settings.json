@@ -11,10 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "curriculum": {
-      "model": "curriculum",
-      "via": "calificacion_curriculum"
-    },
     "semana": {
       "type": "integer"
     },
@@ -27,6 +23,10 @@
     "bilingual_user": {
       "via": "calificacion_curricula",
       "model": "bilingual-user"
+    },
+    "curriculum": {
+      "via": "calificacion_curricula",
+      "model": "curriculum"
     }
   }
 }

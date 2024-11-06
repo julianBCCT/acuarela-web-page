@@ -10,15 +10,8 @@ const moment = require("moment");
 module.exports = {
   async createMultipleAsistencias(ctx) {
     try {
-      // Recibir el texto desde el cuerpo de la solicitud
-      const { text } = ctx.request.body;
-
-      // Convertir el texto a JSON
-      const jsonData = JSON.parse(text);
-
-      // Obtener los participantes desde el JSON convertido
-      const { participants } = jsonData;
-
+      // Recibir datos del BODY
+      const { participants } = ctx.request.body;
       // Filtrar el arreglo de participantes para solo devolver el displayName
       let AllParticipants = participants.map((participant) => {
         let {
@@ -33,7 +26,6 @@ module.exports = {
       let latestEndTime = participants.map(
         (participant) => participant.latestEndTime
       );
-
       // Formatear fecha YYYY-MM-DD
       const date = new Date(earliestStartTimedateStr);
       // Ajustar la hora a las 00:00:00
@@ -47,7 +39,6 @@ module.exports = {
       const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
         AllParticipants.some((participant) => participant === estudiante.nombre)
       );
-      console.log(formatDate, earliestStartTimedateStr, latestEndTime);
       let query = {};
       query.Fecha = { $eq: formatDate };
       let clase = await strapi.query("classes").model.findOne(query);

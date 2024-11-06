@@ -7,8 +7,17 @@
 
 module.exports = {
   async createMultipleAsistencias(ctx) {
-    const body = ctx.request.body;
+    const { participants, fecha } = ctx.request.body;
+
+    let AllParticipants = participants.map((participant) => {
+      let {
+        signedinUser: { displayName },
+      } = participant;
+      return { displayName };
+    });
+    let date = participants.map((participant) => participant.earliestStartTime);
+    date = moment(date).format("YYYY-MM-DD");
     // const entity = await strapi.services.acuarelauser.findOne({ id });
-    return body;
+    return { AllParticipants, date };
   },
 };

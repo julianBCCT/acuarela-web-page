@@ -33,6 +33,8 @@ module.exports = {
       let latestEndTime = participants.map(
         (participant) => participant.latestEndTime
       );
+      console.log(earliestStartTimedateStr, latestEndTime);
+
       // Formatear fecha YYYY-MM-DD
       const date = new Date(earliestStartTimedateStr);
       // Ajustar la hora a las 00:00:00

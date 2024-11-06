@@ -10,8 +10,8 @@ const moment = require("moment");
 module.exports = {
   async createMultipleAsistencias(ctx) {
     try {
-      // Recibir datos del BODY
       const { participants } = ctx.request.body;
+
       // Filtrar el arreglo de participantes para solo devolver el displayName
       let AllParticipants = participants.map((participant) => {
         let {
@@ -19,28 +19,38 @@ module.exports = {
         } = participant;
         return displayName;
       });
-      // Fecha que trae 1 de lso estudiantes
-      let earliestStartTimedateStr = participants.map(
+
+      // Extraer las fechas de earliestStartTime y latestEndTime
+      let earliestStartTimes = participants.map(
         (participant) => participant.earliestStartTime
       );
-      let latestEndTime = participants.map(
+      let latestEndTimes = participants.map(
         (participant) => participant.latestEndTime
       );
-      // Formatear fecha YYYY-MM-DD
-      const date = new Date(earliestStartTimedateStr);
-      // Ajustar la hora a las 00:00:00
-      date.setUTCHours(0, 0, 0, 0);
-      // Convertir la fecha a ISO y recortar el tiempo para dejar solo "00:00:00"
-      const formattedDate = date.toISOString().split("T")[0] + "T00:00:00";
-      let formatDate = moment(formattedDate).format("YYYY-MM-DD");
-      // Traer todos los estudiantes
+
+      // Verificar si las fechas son válidas
+      const earliestStartTime = new Date(earliestStartTimes[0]);
+      const latestEndTime = new Date(latestEndTimes[0]);
+
+      if (
+        isNaN(earliestStartTime.getTime()) ||
+        isNaN(latestEndTime.getTime())
+      ) {
+        throw new Error("Invalid time value");
+      }
+
+      // Formatear la fecha en el formato deseado
+      const formatDate = moment(earliestStartTime).format("YYYY-MM-DD");
+
+      // Obtener todos los estudiantes
       let allEstudiantes = await strapi.query("estudiantes").model.find();
-      // Filtrar estudiantes por Nombre comparando los 2 arreglos allEstudiantes - AllParticipants
+
+      // Filtrar estudiantes por nombre
       const filteredEstudiantes = allEstudiantes.filter((estudiante) =>
-        AllParticipants.some((participant) => participant === estudiante.nombre)
+        AllParticipants.includes(estudiante.nombre)
       );
-      let query = {};
-      query.Fecha = { $eq: formatDate };
+
+      let query = { Fecha: { $eq: formatDate } };
       let clase = await strapi.query("classes").model.findOne(query);
 
       let asistencias = await Promise.all(
@@ -50,8 +60,8 @@ module.exports = {
             estudiante: estudiante.id,
             nombre: estudiante.nombre,
             email: estudiante.email,
-            hora_ingreso: earliestStartTimedateStr,
-            hora_salida: latestEndTime,
+            hora_ingreso: earliestStartTime.toISOString(),
+            hora_salida: latestEndTime.toISOString(),
           });
           return asistencia;
         })

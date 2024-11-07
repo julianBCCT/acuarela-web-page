@@ -102,7 +102,11 @@ module.exports = {
               signedinUser: { displayName },
             } = participant;
             return normalizeName(displayName); // Normalizar nombres de los participantes
+          } else {
+            return "";
           }
+        } else {
+          return "";
         }
       });
 

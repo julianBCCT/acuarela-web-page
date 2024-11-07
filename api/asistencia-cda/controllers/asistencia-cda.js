@@ -34,8 +34,9 @@ module.exports = {
             participant.signedinUser.displayName
           ) {
             return normalizeName(participant.signedinUser.displayName);
+          } else {
+            return normalizeName(participant.anonymousUser.displayName);
           }
-          return "";
         })
         .filter(Boolean); // Filtrar valores vacíos
 
@@ -121,8 +122,9 @@ module.exports = {
             participant.signedinUser.displayName
           ) {
             return normalizeName(participant.signedinUser.displayName);
+          } else {
+            return normalizeName(participant.anonymousUser.displayName);
           }
-          return "";
         })
         .filter(Boolean); // Filtrar valores vacíos
 

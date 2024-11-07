@@ -68,7 +68,7 @@ module.exports = {
         await Promise.all(filteredEstudiantesPromises)
       ).filter(Boolean);
 
-      let query = { Fecha: { $eq: formatDate } };
+      let query = { Fecha: { $eq: "2024-11-06" } };
       let clase = await strapi.query("classes").model.findOne(query);
 
       if (clase) {
@@ -155,7 +155,8 @@ module.exports = {
         await Promise.all(filteredEstudiantesPromises)
       ).filter(Boolean);
 
-      let query = { Fecha: { $eq: formatDate } };
+      let query = { Fecha: { $eq: "2024-11-06" } };
+      let clase = await strapi.query("classes").model.findOne(query);
 
       // Crear asistencias para los estudiantes filtrados
       let asistencias = await Promise.all(
@@ -172,6 +173,7 @@ module.exports = {
       );
 
       return {
+        clase,
         asistencias,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
         AllParticipants,

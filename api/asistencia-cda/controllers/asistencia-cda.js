@@ -69,22 +69,26 @@ module.exports = {
       let query = { Fecha: { $eq: formatDate } };
       let clase = await strapi.query("classes").model.findOne(query);
 
-      // Crear asistencias para los estudiantes filtrados
-      let asistencias = await Promise.all(
-        filteredEstudiantes.map(async (estudiante) => {
-          let asistencia = await strapi.services["asistencia-cda"].create({
-            class: clase ? clase.id : "",
-            estudiante: estudiante.id,
-            nombre: estudiante.nombre,
-            email: estudiante.email,
-            hora_ingreso: earliestStartTime.toISOString(),
-            hora_salida: latestEndTime.toISOString(),
-          });
-          return asistencia;
-        })
-      );
+      if (clase) {
+        // Crear asistencias para los estudiantes filtrados
+        let asistencias = await Promise.all(
+          filteredEstudiantes.map(async (estudiante) => {
+            let asistencia = await strapi.services["asistencia-cda"].create({
+              class: clase.id,
+              estudiante: estudiante.id,
+              nombre: estudiante.nombre,
+              email: estudiante.email,
+              hora_ingreso: earliestStartTime.toISOString(),
+              hora_salida: latestEndTime.toISOString(),
+            });
+            return asistencia;
+          })
+        );
 
-      return asistencias;
+        return asistencias;
+      } else {
+        return ctx.badRequest("No Class found!", err.message);
+      }
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);
     }
@@ -148,13 +152,11 @@ module.exports = {
       ).filter(Boolean);
 
       let query = { Fecha: { $eq: formatDate } };
-      let clase = await strapi.query("classes").model.findOne(query);
 
       // Crear asistencias para los estudiantes filtrados
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
           let asistencia = await strapi.services["asistencia-cda"].create({
-            class: clase ? clase.id : "",
             estudiante: estudiante.id,
             nombre: estudiante.nombre,
             email: estudiante.email,
@@ -167,7 +169,6 @@ module.exports = {
 
       return {
         asistencias,
-        clase: clase ? clase : "",
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
         AllParticipants,
         formatDate,

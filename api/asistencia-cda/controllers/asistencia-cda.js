@@ -51,7 +51,7 @@ module.exports = {
         throw new Error("Invalid time value");
       }
 
-      const formatDate = moment().format("YYYY-MM-DD");
+      const formatDate = moment().subtract(1, "days").format("YYYY-MM-DD");
 
       // Llamar a la función customSearch para obtener los estudiantes filtrados
       let filteredEstudiantesPromises = AllParticipants.map(async (name) => {
@@ -136,7 +136,7 @@ module.exports = {
         throw new Error("Invalid time value");
       }
 
-      const formatDate = moment().format("YYYY-MM-DD");
+      const formatDate = moment().subtract(1, "days").format("YYYY-MM-DD");
 
       // Llamar a la función customSearch para obtener los estudiantes filtrados
       let filteredEstudiantesPromises = AllParticipants.map(async (name) => {

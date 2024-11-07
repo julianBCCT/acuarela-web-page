@@ -159,7 +159,11 @@ module.exports = {
       //   })
       // );
 
-      return { clase, filteredEstudiantes, AllParticipants };
+      return {
+        clase,
+        filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
+        AllParticipants,
+      };
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);
     }

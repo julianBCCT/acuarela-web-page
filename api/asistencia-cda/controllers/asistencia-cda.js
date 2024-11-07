@@ -96,10 +96,14 @@ module.exports = {
 
       // Filtrar el arreglo de participantes para solo devolver el displayName
       let AllParticipants = participants.map((participant) => {
-        let {
-          signedinUser: { displayName },
-        } = participant;
-        return normalizeName(displayName); // Normalizar nombres de los participantes
+        if (participant.signedinUser) {
+          if (participant.signedinUser.displayName) {
+            let {
+              signedinUser: { displayName },
+            } = participant;
+            return normalizeName(displayName); // Normalizar nombres de los participantes
+          }
+        }
       });
 
       // Extraer las fechas de earliestStartTime y latestEndTime

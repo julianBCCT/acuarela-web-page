@@ -162,6 +162,7 @@ module.exports = {
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
         AllParticipants,
+        formatDate,
       };
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);

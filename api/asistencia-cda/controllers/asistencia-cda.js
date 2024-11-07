@@ -144,19 +144,19 @@ module.exports = {
       let clase = await strapi.query("classes").model.findOne(query);
 
       // Crear asistencias para los estudiantes filtrados
-      let asistencias = await Promise.all(
-        filteredEstudiantes.map(async (estudiante) => {
-          let asistencia = await strapi.services["asistencia-cda"].create({
-            class: clase.id,
-            estudiante: estudiante.id,
-            nombre: estudiante.nombre,
-            email: estudiante.email,
-            hora_ingreso: earliestStartTime.toISOString(),
-            hora_salida: latestEndTime.toISOString(),
-          });
-          return asistencia;
-        })
-      );
+      // let asistencias = await Promise.all(
+      //   filteredEstudiantes.map(async (estudiante) => {
+      //     let asistencia = await strapi.services["asistencia-cda"].create({
+      //       class: clase.id,
+      //       estudiante: estudiante.id,
+      //       nombre: estudiante.nombre,
+      //       email: estudiante.email,
+      //       hora_ingreso: earliestStartTime.toISOString(),
+      //       hora_salida: latestEndTime.toISOString(),
+      //     });
+      //     return asistencia;
+      //   })
+      // );
 
       return {
         clase,

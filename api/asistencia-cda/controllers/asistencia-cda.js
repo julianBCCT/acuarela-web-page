@@ -18,7 +18,13 @@ module.exports = {
     };
 
     try {
-      const { participants } = ctx.request.body;
+      const {
+        conference: {
+          startTime,
+          endTime,
+          asistentes: { participants },
+        },
+      } = ctx.request.body;
 
       // Filtrar y normalizar los nombres de los participantes
       let AllParticipants = participants
@@ -34,12 +40,8 @@ module.exports = {
         .filter(Boolean); // Filtrar valores vacíos
 
       // Extraer las fechas de earliestStartTime y latestEndTime
-      let earliestStartTimes = participants.map(
-        (participant) => participant.earliestStartTime
-      );
-      let latestEndTimes = participants.map(
-        (participant) => participant.latestEndTime
-      );
+      let earliestStartTimes = startTime;
+      let latestEndTimes = endTime;
 
       const earliestStartTime = new Date(earliestStartTimes[0]);
       const latestEndTime = new Date(latestEndTimes[0]);
@@ -51,7 +53,7 @@ module.exports = {
         throw new Error("Invalid time value");
       }
 
-      const formatDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+      const formatDate = moment(earliestStartTime).format("YYYY-MM-DD");
 
       // Llamar a la función customSearch para obtener los estudiantes filtrados
       let filteredEstudiantesPromises = AllParticipants.map(async (name) => {
@@ -103,7 +105,13 @@ module.exports = {
     };
 
     try {
-      const { participants } = ctx.request.body;
+      const {
+        conference: {
+          startTime,
+          endTime,
+          asistentes: { participants },
+        },
+      } = ctx.request.body;
 
       // Filtrar y normalizar los nombres de los participantes
       let AllParticipants = participants
@@ -119,12 +127,8 @@ module.exports = {
         .filter(Boolean); // Filtrar valores vacíos
 
       // Extraer las fechas de earliestStartTime y latestEndTime
-      let earliestStartTimes = participants.map(
-        (participant) => participant.earliestStartTime
-      );
-      let latestEndTimes = participants.map(
-        (participant) => participant.latestEndTime
-      );
+      let earliestStartTimes = startTime;
+      let latestEndTimes = endTime;
 
       const earliestStartTime = new Date(earliestStartTimes[0]);
       const latestEndTime = new Date(latestEndTimes[0]);

@@ -87,7 +87,7 @@ module.exports = {
 
         return asistencias;
       } else {
-        return ctx.badRequest("No Class found!", err.message);
+        return ctx.badRequest("No Class found!");
       }
     } catch (err) {
       return ctx.badRequest("Error while creating entries", err.message);

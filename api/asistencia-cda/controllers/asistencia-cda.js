@@ -175,6 +175,10 @@ module.exports = {
       );
 
       return {
+        earliestStartTimes,
+        latestEndTimes,
+        earliestStartTime,
+        latestEndTime,
         clase,
         asistencias,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),

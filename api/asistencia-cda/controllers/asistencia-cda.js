@@ -118,29 +118,29 @@ module.exports = {
       if (!Array.isArray(participants) || participants.length === 0) {
         throw new Error("participants no es un array válido o está vacío");
       }
-      if (!Array.isArray(startTime) || startTime.length === 0) {
-        throw new Error("startTime no es un array válido o está vacío");
+      if (!startTime || typeof startTime !== "string") {
+        throw new Error("startTime no es un string válido");
       }
-      if (!Array.isArray(endTime) || endTime.length === 0) {
-        throw new Error("endTime no es un array válido o está vacío");
+      if (!endTime || typeof endTime !== "string") {
+        throw new Error("endTime no es un string válido");
       }
 
       // Normalizar nombres
       let allParticipants = participants
         .map((participant) =>
-          participant.signedinUser.displayName
+          participant.signedinUser?.displayName
             ? normalizeName(participant.signedinUser.displayName)
-            : normalizeName(participant.anonymousUser.displayName || "")
+            : normalizeName(participant.anonymousUser?.displayName || "")
         )
         .filter(Boolean);
 
       // Manejo de fechas
       const earliestStartTime = moment(
-        startTime[0],
+        startTime,
         moment.ISO_8601,
         true
       ).toDate();
-      const latestEndTime = moment(endTime[0], moment.ISO_8601, true).toDate();
+      const latestEndTime = moment(endTime, moment.ISO_8601, true).toDate();
 
       if (
         isNaN(earliestStartTime.getTime()) ||

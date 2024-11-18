@@ -128,7 +128,7 @@ module.exports = {
       // Normalizar nombres
       let allParticipants = participants
         .map((participant) =>
-          participant.signedinUser.displayName
+          participant.signedinUser
             ? normalizeName(participant.signedinUser.displayName)
             : normalizeName(participant.anonymousUser.displayName || "")
         )

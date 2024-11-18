@@ -101,8 +101,8 @@ module.exports = {
       return name
         .trim()
         .toLowerCase()
-        .normalize("NFD") // Descomponer caracteres con tildes
-        .replace(/[\u0300-\u036f]/g, ""); // Eliminar los diacríticos (acentos)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
     };
 
     try {
@@ -114,20 +114,10 @@ module.exports = {
         },
       } = ctx.request.body;
 
-      // Filtrar y normalizar los nombres de los participantes
-      let AllParticipants = participants
-        .map((participant) => {
-          if (
-            participant.signedinUser &&
-            participant.signedinUser.displayName
-          ) {
-            return normalizeName(participant.signedinUser.displayName);
-          } else {
-            return normalizeName(participant.anonymousUser.displayName);
-          }
-        })
-        .filter(Boolean); // Filtrar valores vacíos
-
+      // Validar entradas
+      if (!Array.isArray(participants) || participants.length === 0) {
+        throw new Error("participants no es un array válido o está vacío");
+      }
       if (!Array.isArray(startTime) || startTime.length === 0) {
         throw new Error("startTime no es un array válido o está vacío");
       }
@@ -135,6 +125,16 @@ module.exports = {
         throw new Error("endTime no es un array válido o está vacío");
       }
 
+      // Normalizar nombres
+      let allParticipants = participants
+        .map((participant) =>
+          participant.signedinUser?.displayName
+            ? normalizeName(participant.signedinUser.displayName)
+            : normalizeName(participant.anonymousUser?.displayName || "")
+        )
+        .filter(Boolean);
+
+      // Manejo de fechas
       const earliestStartTime = moment(
         startTime[0],
         moment.ISO_8601,
@@ -149,49 +149,52 @@ module.exports = {
         throw new Error("Formato de fecha no válido");
       }
 
-      // Llamar a la función customSearch para obtener los estudiantes filtrados
-      let filteredEstudiantesPromises = AllParticipants.map(async (name) => {
-        const estudiantes = await strapi.controllers.estudiantes.customSearch({
-          query: { nombre_contains: name },
-        });
-        return estudiantes.length > 0 ? estudiantes[0] : null; // Asumimos que queremos el primer resultado si hay coincidencias
+      // Buscar estudiantes
+      let filteredEstudiantes = await Promise.all(
+        allParticipants.map(async (name) => {
+          try {
+            const estudiantes =
+              await strapi.controllers.estudiantes.customSearch({
+                query: { nombre_contains: name },
+              });
+            return estudiantes.length > 0 ? estudiantes[0] : null;
+          } catch (err) {
+            console.error(`Error buscando estudiante: ${name}`, err);
+            return null;
+          }
+        })
+      ).then((res) => res.filter(Boolean));
+
+      // Buscar clase
+      let clase = await strapi.query("classes").model.findOne({
+        Fecha: { $eq: "2024-11-17" },
       });
 
-      // Obtener los resultados de todas las promesas
-      let filteredEstudiantes = (
-        await Promise.all(filteredEstudiantesPromises)
-      ).filter(Boolean);
-
-      let query = { Fecha: { $eq: "2024-11-17" } };
-      let clase = await strapi.query("classes").model.findOne(query);
-
-      // Crear asistencias para los estudiantes filtrados
+      // Crear asistencias
       let asistencias = await Promise.all(
         filteredEstudiantes.map(async (estudiante) => {
-          let asistencia = await strapi.services["asistencia-cda"].create({
+          return await strapi.services["asistencia-cda"].create({
             estudiante: estudiante.id,
             nombre: estudiante.nombre,
             email: estudiante.email,
             hora_ingreso: earliestStartTime.toISOString(),
             hora_salida: latestEndTime.toISOString(),
           });
-          return asistencia;
         })
       );
 
       return {
-        earliestStartTimes,
-        latestEndTimes,
-        earliestStartTime,
-        latestEndTime,
+        earliestStartTime: earliestStartTime.toISOString(),
+        latestEndTime: latestEndTime.toISOString(),
         clase,
         asistencias,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
-        AllParticipants,
-        formatDate,
       };
     } catch (err) {
-      return ctx.badRequest("Error while creating entries", err.message);
+      return ctx.badRequest("Error while creating entries", {
+        message: err.message,
+        stack: err.stack,
+      });
     }
   },
 };

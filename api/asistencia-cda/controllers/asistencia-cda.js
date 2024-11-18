@@ -183,24 +183,8 @@ module.exports = {
         Fecha: { $eq: "2024-11-17" },
       });
 
-      // Crear asistencias
-      let asistencias = await Promise.all(
-        filteredEstudiantes.map(async (estudiante) => {
-          return await strapi.services["asistencia-cda"].create({
-            estudiante: estudiante.id,
-            nombre: estudiante.nombre,
-            email: estudiante.email,
-            hora_ingreso: earliestStartTime.toISOString(),
-            hora_salida: latestEndTime.toISOString(),
-          });
-        })
-      );
-
       return {
-        earliestStartTime: earliestStartTime.toISOString(),
-        latestEndTime: latestEndTime.toISOString(),
         clase,
-        asistencias,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
       };
     } catch (err) {

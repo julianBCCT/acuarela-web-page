@@ -128,21 +128,26 @@ module.exports = {
         })
         .filter(Boolean); // Filtrar valores vacíos
 
-      // Extraer las fechas de earliestStartTime y latestEndTime
-      let earliestStartTimes = startTime;
-      let latestEndTimes = endTime;
+      if (!Array.isArray(startTime) || startTime.length === 0) {
+        throw new Error("startTime no es un array válido o está vacío");
+      }
+      if (!Array.isArray(endTime) || endTime.length === 0) {
+        throw new Error("endTime no es un array válido o está vacío");
+      }
 
-      const earliestStartTime = new Date(earliestStartTimes[0]);
-      const latestEndTime = new Date(latestEndTimes[0]);
+      const earliestStartTime = moment(
+        startTime[0],
+        moment.ISO_8601,
+        true
+      ).toDate();
+      const latestEndTime = moment(endTime[0], moment.ISO_8601, true).toDate();
 
       if (
         isNaN(earliestStartTime.getTime()) ||
         isNaN(latestEndTime.getTime())
       ) {
-        throw new Error("Invalid time value");
+        throw new Error("Formato de fecha no válido");
       }
-
-      const formatDate = moment().subtract(1, "days").format("YYYY-MM-DD");
 
       // Llamar a la función customSearch para obtener los estudiantes filtrados
       let filteredEstudiantesPromises = AllParticipants.map(async (name) => {
@@ -157,7 +162,7 @@ module.exports = {
         await Promise.all(filteredEstudiantesPromises)
       ).filter(Boolean);
 
-      let query = { Fecha: { $eq: "2024-11-07" } };
+      let query = { Fecha: { $eq: "2024-11-17" } };
       let clase = await strapi.query("classes").model.findOne(query);
 
       // Crear asistencias para los estudiantes filtrados

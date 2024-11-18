@@ -128,9 +128,9 @@ module.exports = {
       // Normalizar nombres
       let allParticipants = participants
         .map((participant) =>
-          participant.signedinUser?.displayName
+          participant.signedinUser.displayName
             ? normalizeName(participant.signedinUser.displayName)
-            : normalizeName(participant.anonymousUser?.displayName || "")
+            : normalizeName(participant.anonymousUser.displayName || "")
         )
         .filter(Boolean);
 

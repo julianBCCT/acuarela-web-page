@@ -79,6 +79,9 @@
     },
     "prueba_gratis": {
       "type": "boolean"
+    },
+    "id_stripe": {
+      "type": "string"
     }
   }
 }

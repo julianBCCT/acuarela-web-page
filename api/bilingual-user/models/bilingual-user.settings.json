@@ -70,6 +70,10 @@
     },
     "have_daycare": {
       "type": "boolean"
+    },
+    "new_account": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

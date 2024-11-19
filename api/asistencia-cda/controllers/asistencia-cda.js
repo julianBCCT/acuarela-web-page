@@ -263,13 +263,56 @@ module.exports = {
           }
         })
       ).then((res) => res.filter(Boolean));
-
-      // Buscar clase
+      // Buscar la clase
       let clase = await strapi.query("classes").model.findOne({
         Fecha: { $eq: "2024-11-17" },
       });
 
+      if (!clase) {
+        throw new Error("Clase no encontrada.");
+      }
+
+      // Obtener todas las asistencias relacionadas con la clase
+      let asistenciasExistentes = await strapi.services["asistencia-cda"].find({
+        class: clase.id,
+      });
+
+      // Mapear asistencias existentes para acceso rápido por estudiante
+      let asistenciasMap = asistenciasExistentes.reduce((map, asistencia) => {
+        map[asistencia.estudiante] = asistencia;
+        return map;
+      }, {});
+
+      // Procesar estudiantes
+      let resultados = await Promise.all(
+        filteredEstudiantes.map(async (estudiante) => {
+          const asistenciaExistente = asistenciasMap[estudiante.id];
+          if (asistenciaExistente) {
+            // Actualizar asistencia existente
+            return await strapi.services["asistencia-cda"].update(
+              { id: asistenciaExistente.id },
+              {
+                hora_ingreso: earliestStartTime.toISOString(),
+                hora_salida: latestEndTime.toISOString(),
+                // Otros campos que necesites actualizar
+              }
+            );
+          } else {
+            // Crear nueva asistencia
+            return await strapi.services["asistencia-cda"].create({
+              class: clase.id,
+              estudiante: estudiante.id,
+              nombre: estudiante.nombre,
+              email: estudiante.email,
+              hora_ingreso: earliestStartTime.toISOString(),
+              hora_salida: latestEndTime.toISOString(),
+            });
+          }
+        })
+      );
+
       return {
+        resultados,
         today: moment().toDate(),
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),

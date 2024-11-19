@@ -17,6 +17,7 @@ module.exports = {
     if (!entity || entity == []) {
       const hashedPassword = await bcrypt.hash(user.password, 10);
       user.password = hashedPassword;
+      user.new_account = true;
       entity = await strapi.services["bilingual-user"].create(user);
       return ctx.send({ ok: true, status: 200, entity });
     } else {

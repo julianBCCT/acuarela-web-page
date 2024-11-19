@@ -270,7 +270,7 @@ module.exports = {
       });
 
       return {
-        today: moment("", moment.ISO_8601, true).toDate(),
+        today: moment().toDate(),
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
       };

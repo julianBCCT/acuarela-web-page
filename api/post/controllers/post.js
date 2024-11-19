@@ -27,7 +27,9 @@ module.exports = {
       .populate("classactivity");
     if (daycareId) {
       const filterEntities = entities.filter((entity) => {
-        return entity.acuarelauser.daycares.includes(daycareId);
+        if (entity.acuarelauser) {
+          return entity.acuarelauser.daycares.includes(daycareId);
+        }
       });
       return filterEntities.map((entity) =>
         sanitizeEntity(entity, { model: strapi.models.post })

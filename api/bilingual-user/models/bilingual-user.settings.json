@@ -73,7 +73,7 @@
     },
     "new_account": {
       "type": "boolean",
-      "default": false
+      "default": true
     }
   }
 }

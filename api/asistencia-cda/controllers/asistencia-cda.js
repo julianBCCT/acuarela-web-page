@@ -265,7 +265,7 @@ module.exports = {
       ).then((res) => res.filter(Boolean));
       // Buscar la clase
       let clase = await strapi.query("classes").model.findOne({
-        Fecha: { $eq: "2024-11-17" },
+        Fecha: { $eq: earliestStartTime },
       });
 
       if (!clase) {

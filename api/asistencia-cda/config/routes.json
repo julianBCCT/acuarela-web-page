@@ -49,7 +49,7 @@
       }
     },
     {
-      "method": "POST",
+      "method": "PUT",
       "path": "/asistencia-cdas/updateMultipleAsistencias",
       "handler": "asistencia-cda.updateMultipleAsistencias",
       "config": {

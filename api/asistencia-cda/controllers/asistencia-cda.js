@@ -292,9 +292,7 @@ module.exports = {
             return await strapi.services["asistencia-cda"].update(
               { id: asistenciaExistente.id },
               {
-                hora_ingreso: earliestStartTime.toISOString(),
-                hora_salida: latestEndTime.toISOString(),
-                // Otros campos que necesites actualizar
+                hora_salida: moment().toDate(),
               }
             );
           } else {

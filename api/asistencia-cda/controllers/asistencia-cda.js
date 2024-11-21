@@ -233,6 +233,10 @@ module.exports = {
         )
         .filter(Boolean);
 
+      let allParticipantsIngreso = participants
+        .map((participant) => participant.earliestStartTime)
+        .filter(Boolean);
+
       // Manejo de fechas
       const earliestStartTime = moment(
         startTime,
@@ -287,7 +291,7 @@ module.exports = {
 
       // Procesar estudiantes
       let resultados = await Promise.all(
-        filteredEstudiantes.map(async (estudiante) => {
+        filteredEstudiantes.map(async (estudiante, index) => {
           const asistenciaExistente = asistenciasMap[estudiante.id];
           if (asistenciaExistente) {
             // Actualizar asistencia existente
@@ -304,7 +308,7 @@ module.exports = {
               estudiante: estudiante.id,
               nombre: estudiante.nombre,
               email: estudiante.email,
-              hora_ingreso: earliestStartTime.toISOString(),
+              hora_ingreso: allParticipantsIngreso[index].toISOString(),
               hora_salida: latestEndTime.toISOString(),
             });
           }

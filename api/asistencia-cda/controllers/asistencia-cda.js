@@ -223,14 +223,18 @@ module.exports = {
       if (!Array.isArray(participants) || participants.length === 0) {
         throw new Error("El array de participantes es inválido o está vacío.");
       }
-      if (!startTime || !endTime) {
-        throw new Error(
-          "startTime y endTime son obligatorios y deben ser cadenas."
-        );
+      if (!startTime) {
+        throw new Error("startTime es obligatorio.");
       }
 
       const earliestStartTime = parseISODate(startTime);
-      const latestEndTime = parseISODate(endTime);
+      const latestEndTime = endTime
+        ? parseISODate(endTime)
+        : moment(
+            moment().format("Y-MM-DD hh:mm:ss"),
+            moment.ISO_8601,
+            true
+          ).toDate();
 
       // Normalizar participantes
       const allParticipants = participants
@@ -296,11 +300,7 @@ module.exports = {
             return await strapi.services["asistencia-cda"].update(
               { id: asistenciaExistente.id },
               {
-                hora_salida: moment(
-                  moment().format("Y-MM-DD hh:mm:ss"),
-                  moment.ISO_8601,
-                  true
-                ).toDate(),
+                hora_salida: latestEndTime,
               }
             );
           } else {

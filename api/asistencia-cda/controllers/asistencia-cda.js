@@ -295,7 +295,13 @@ module.exports = {
             // Actualizar asistencia existente
             return await strapi.services["asistencia-cda"].update(
               { id: asistenciaExistente.id },
-              { hora_salida: latestEndTime }
+              {
+                hora_salida: moment(
+                  moment().format("Y-MM-DD hh:mm:ss"),
+                  moment.ISO_8601,
+                  true
+                ).toDate(),
+              }
             );
           } else {
             // Crear nueva asistencia

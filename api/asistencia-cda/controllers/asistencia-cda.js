@@ -284,15 +284,14 @@ module.exports = {
       });
 
       // Mapear asistencias existentes para acceso rápido por estudiante
-      let asistenciasMap = asistenciasExistentes.reduce((map, asistencia) => {
-        map[asistencia.estudiante] = asistencia;
-        return map;
-      }, {});
+      let asistenciasMap = asistenciasExistentes.map(
+        (asistencia) => asistencia.estudiante.id
+      );
 
       // Procesar estudiantes
       let resultados = await Promise.all(
         filteredEstudiantes.map(async (estudiante, index) => {
-          const asistenciaExistente = asistenciasMap[estudiante.id];
+          const asistenciaExistente = asistenciasMap.includes(estudiante.id);
           if (asistenciaExistente) {
             // Actualizar asistencia existente
             return await strapi.services["asistencia-cda"].update(
@@ -320,8 +319,6 @@ module.exports = {
         latestEndTime,
         asistenciasExistentes,
         resultados,
-        today: moment().toDate(),
-        todayFormat: moment().format("YYYY-MM-DD"),
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
       };

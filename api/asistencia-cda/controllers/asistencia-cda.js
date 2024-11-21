@@ -234,11 +234,14 @@ module.exports = {
 
       // Normalizar participantes
       const allParticipants = participants
-        .map((p) =>
-          normalizeName(
-            p.signedinUser?.displayName || p.anonymousUser?.displayName || ""
-          )
-        )
+        .map((p) => {
+          if (p.signedinUser && p.signedinUser.displayName) {
+            return normalizeName(p.signedinUser.displayName);
+          } else if (p.anonymousUser && p.anonymousUser.displayName) {
+            return normalizeName(p.anonymousUser.displayName);
+          }
+          return "";
+        })
         .filter(Boolean);
 
       const allParticipantsIngreso = participants

@@ -310,6 +310,7 @@ module.exports = {
       );
 
       return {
+        asistenciasMap,
         resultados,
         today: moment().toDate(),
         clase,

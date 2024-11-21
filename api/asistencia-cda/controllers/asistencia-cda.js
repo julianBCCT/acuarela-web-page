@@ -234,7 +234,9 @@ module.exports = {
         .filter(Boolean);
 
       let allParticipantsIngreso = participants
-        .map((participant) => participant.earliestStartTime)
+        .map((participant) =>
+          moment(participant.earliestStartTime, moment.ISO_8601, true).toDate()
+        )
         .filter(Boolean);
 
       // Manejo de fechas

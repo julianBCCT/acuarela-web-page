@@ -273,9 +273,11 @@ module.exports = {
       }
 
       // Obtener todas las asistencias relacionadas con la clase
-      let asistenciasExistentes = await strapi.services["asistencia-cda"].find({
-        class: clase.id,
-      });
+      let asistenciasExistentes = await strapi.services["asistencia-cdas"].find(
+        {
+          class: clase.id,
+        }
+      );
 
       // Mapear asistencias existentes para acceso rápido por estudiante
       let asistenciasMap = asistenciasExistentes.reduce((map, asistencia) => {
@@ -315,6 +317,7 @@ module.exports = {
         asistenciasExistentes,
         resultados,
         today: moment().toDate(),
+        todayFormat: moment().toDate().format(""),
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
       };

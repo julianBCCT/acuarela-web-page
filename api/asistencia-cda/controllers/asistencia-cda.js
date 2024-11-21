@@ -310,6 +310,8 @@ module.exports = {
       );
 
       return {
+        earliestStartTime,
+        latestEndTime,
         asistenciasExistentes,
         resultados,
         today: moment().toDate(),

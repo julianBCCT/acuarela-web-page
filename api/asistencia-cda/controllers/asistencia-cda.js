@@ -321,7 +321,7 @@ module.exports = {
         asistenciasExistentes,
         resultados,
         today: moment().toDate(),
-        todayFormat: moment().toDate().format(""),
+        todayFormat: moment().format("YYYY-MM-DD"),
         clase,
         filteredEstudiantes: filteredEstudiantes.map((est) => est.nombre),
       };

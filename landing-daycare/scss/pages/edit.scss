@@ -173,3 +173,80 @@
         background-color: #d9363e; /* Más oscuro al pasar el mouse */
     }
 }
+
+/* Ocultar inputs por defecto */
+.social-media input.change_sm {
+    display: none;
+    margin-top: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+}
+
+/* Alineación del grupo de redes sociales */
+.social-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ocultar el panel de edición por defecto */
+.edit-images-panel {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.edit-images-panel ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.edit-images-panel li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-images-panel img {
+    max-width: 100px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.edit-images-panel input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.edit-images-panel .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-images-panel .save-changes-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.edit-images-panel button:hover {
+    opacity: 0.9;
+}

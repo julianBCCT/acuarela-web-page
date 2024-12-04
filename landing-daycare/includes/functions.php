@@ -4,7 +4,6 @@ class landing
 
 	public $domain = "https://acuarelaadmin.acuarela.app/wp-json/wp/v2/";
     public $url = "https://acuarelaadmin.acuarela.app/";
-    public $domainStrapi = "https://acuarelacore.com/api/";
     public $apiLogin = "xkmiO9u4yTM39SB";   
     public $apiKey = "gTC8acHXs09YZ8I0Kjd8sQ4JSw";   
     public $accountID = "912696";   
@@ -23,32 +22,8 @@ class landing
 		return $request;
 	} 
 
-    function queryStrapi($url, $body = "", $method = "GET")
-	{
-
-		$endpoint = $this->domainStrapi . $url;
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => $endpoint,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => $method,
-			CURLOPT_POSTFIELDS => $body,
-			CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
-		));
-
-		$response = curl_exec($curl);
-		curl_close($curl);
-		return json_decode($response);
-	}
-
 	function gInfoDaycare($url){
         $result = $this->query("daycare-web?field=nombre_para_url_del_sitio_web&value=".$url."&pp=1");
-        //$result = $this->query("websites?field=Url&value=".$url."&pp=1");
 		return $result[0];
 	}
 	// UTILITY

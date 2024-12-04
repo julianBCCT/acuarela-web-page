@@ -1,36 +1,8 @@
 <?php include 'includes/config.php';
-/*$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$nameUrl = explode('.', $url);
-$info = $land->gInfoDaycare($nameUrl[0]);*/
 $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $nameUrl = explode('.', $url);
 $info = $land->gInfoDaycare($nameUrl[0]);
-
-function obtener_idioma_contenido($idioma_acf)
-
-
-//$info = getWebDayCareInfo($nameUrl[0]);
-//echo $info;
-
-function getWebDayCareInfo($id) {
-    $api_url = "https://acuarelacore.com/api/websites/" . $id;
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $api_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    
-    $info = json_decode($response);
-
-    if (!$info) {
-        die('Error: No se pudo obtener la información del endpoint.');
-    }
-    
-    return $info;
-}   
 
 function obtener_idioma_contenido($idioma_acf)
 {
@@ -113,7 +85,7 @@ $titulos = [
     <meta name="theme-color" content="<?= $info->acf->color_1 ?>" />
     <meta name="twitter:card" value="summary" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="<?= $info->acf->title->rendered ?>" />
+    <meta property="og:title" content="<?= $info->title->rendered ?>" />
     <meta property="og:url" content=" url" />
     <meta property="og:image" content="<?= $info->acf->banner_principal ?>" />
     <meta property="og:description" content="<?= $info->content->rendered ?>" />
@@ -169,7 +141,7 @@ $titulos = [
     </style>
 </head>
 
-<?php if ($info->activacion == "no"): ?>
+<?php if ($info->acf->activacion == "no"): ?>
 
     <body id="inactivo">
         <div class="container-inactivo">
@@ -256,7 +228,7 @@ $titulos = [
                     <div class="info">
                         <div class="info-esp">
                             <h2 contenteditable="false" data-field="title">
-                                <?= $info->acf->rendered ?>
+                                <?= $info->title->rendered ?>
                             </h2> 
                             <div class="location">
                                 <i class="acuarela acuarela-Localizacion"></i>
@@ -266,7 +238,7 @@ $titulos = [
                             </div>
                         </div>
                         <p contenteditable="false" data-field="content">
-                            <?= $info->acf->content->rendered ?> 
+                            <?= $info->content->rendered ?> 
                         </p>
                         <!--<p contenteditable="false" data-field="content"><?= htmlspecialchars($info->content->rendered, ENT_QUOTES, 'UTF-8') ?></p>-->
                     </div>
@@ -420,9 +392,9 @@ $titulos = [
                             <div class="edit-images-panel">
                                 <ul>
                                     <?php foreach ([$info->acf->imagen_1, $info->acf->imagen_2, $info->acf->imagen_3, $info->acf->imagen_4, $info->acf->imagen_5] as $index => $image) { ?>
-                                        <?php if (!empty($image->acf->url)) { ?>
+                                        <?php if (!empty($image->url)) { ?>
                                             <li>
-                                                <img src="<?= $image->acf->url ?>" alt="Image <?= $index + 1 ?>" />
+                                                <img src="<?= $image->url ?>" alt="Image <?= $index + 1 ?>" />
                                                 <input type="file" accept="image/*" onchange="handleImageChange(this, <?= $index + 1 ?>)" />
                                                 <button class="delete-btn" onclick="deleteImage(<?= $index + 1 ?>)">Eliminar</button>
                                             </li>
@@ -463,7 +435,7 @@ $titulos = [
                 <div class="of-education card">
                     <b><?= $titulos[$idioma_contenido]["philosophy"] ?></b>
                     <p>
-                        <?= $info->filosofia_de_educacion ?>         
+                        <?= $info->acf->filosofia_de_educacion ?>         
                     </p>
                     <span class="edit-icon" onclick="enableEdit(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -481,7 +453,7 @@ $titulos = [
             <ul id="services-list">
                 <?php
                 // Dividir los servicios por saltos de línea
-                $servicios = explode("\n", $info->servicios);
+                $servicios = explode("\n", $info->acf->servicios);
 
                 // Filtrar elementos vacíos y etiquetas no deseadas
                 $servicios = array_filter($servicios, function ($servicio) {
@@ -511,14 +483,14 @@ $titulos = [
 </section>
             <!--<?php
             if (
-                $info->servicios != ""
+                $info->acf->servicios != ""
             ) {
                 ?>
                 <section class="services" id="services">
                     <div class="services-tags">
                         <b><?= $titulos[$idioma_contenido]["services"] ?></b>
                         <div class="tags">
-                            <?= $info->servicios ?>
+                            <?= $info->acf->servicios ?>
                         </div>
                     </div>
                 </section>
@@ -564,19 +536,70 @@ $titulos = [
             </section>
             <?php
             if (
-                $info->facebook != "" ||
-                $info->instagram != "" ||
-                $info->tiktok != "" ||
-                $info->twitter != ""
+                $info->acf->facebook != "" ||
+                $info->acf->instagram != "" ||
+                $info->acf->tiktok != "" ||
+                $info->acf->twitter != ""
             ) {
                 ?>
+                <!--<section class="contact" id="contact-us">
+                    <div class="social-media card">
+                        <b><?= $titulos[$idioma_contenido]["social"] ?></b>
+                        <div class="icons">
+                            <?php if ($info->acf->facebook != "") { ?>
+                                <a href="<?= $info->acf->facebook ?>" target="_blank" class="socialContainer containerOne">
+                                    <svg class="socialSvg facebookSvg" viewBox="0 0 16 16">
+                                        <path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"></path>
+                                    </svg>
+                                </a>
+                                <input type="text" name="" id="">
+                            <?php } ?>
+                            <?php if ($info->acf->instagram != "") { ?>
+                                <a href="<?= $info->acf->instagram ?>" target="_blank" class="socialContainer containerTwo">
+                                    <svg class="socialSvg instagramSvg" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <input type="text" name="" id="" class="change_sm">
+                            <?php } ?>
+                            <?php if ($info->acf->tiktok != "") { ?>
+                                <a href="<?= $info->acf->tik_tok ?>" target="_blank" class="socialContainer containerThree">
+                                    <svg class="socialSvg tiktokSvg" viewBox="0 0 16 16">
+                                        <path
+                                            d="M41,4H9C6.243,4,4,6.243,4,9v32c0,2.757,2.243,5,5,5h22c2.757,0,5-2.243,5-5V9C46,6.243,43.757,4,41,4z M37.006,22.323 c-0.227,0.021-0.457,0.035-0.69,0.035c-2.623,0-4.928-1.349-6.269-3.388c0,5.349,0,11.435,0,11.537c0,4.709-3.818,8.527-8.527,8.527 s-8.527-3.818-8.527-8.527s3.818-8.527,8.527-8.527c0.178,0,0.352,0.016,0.527,0.027v4.202c-0.175-0.021-0.347-0.053-0.527-0.053 c-2.404,0-4.352,1.948-4.352,4.352s1.948,4.352,4.352,4.352s4.527-1.894,4.527-4.298c0-0.095,0.042-19.594,0.042-19.594h4.016 c0.378,3.591,3.277,6.425,6.901,6.685V22.323z" />
+                                    </svg>
+                                </a>
+                                <input type="text" name="" id="" class="change_sm">
+                            <?php } ?>
+                            <?php if ($info->acf->twitter != "") { ?>
+                                <a class="socialContainer containerFour" href="<?= $info->acf->twitter ?>" target="_blank">
+                                    <svg viewBox="0 0 16 16" class="socialSvg twitterSvg">
+                                        <path
+                                            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <input type="text" name="" id="" class="change_sm">
+                            <?php } ?>
+                        </div>
+                        <span class="edit-icon" onclick="enableEdit(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                                <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+                            </svg>
+                            Editar
+                        </span>
+                    </div>
+                </section>-->
+
                     <section class="contact" id="contact-us">
                     <div class="social-media card">
                         <b><?= $titulos[$idioma_contenido]["social"] ?></b>
                         <div class="icons">
                             <?php if ($info->acf->facebook != "") { ?>
                                 <div class="social-group">
-                                    <a href="<?= $info->facebook ?>" target="_blank" class="socialContainer containerOne">
+                                    <a href="<?= $info->acf->facebook ?>" target="_blank" class="socialContainer containerOne">
                                         <svg class="socialSvg facebookSvg" viewBox="0 0 16 16">
                                             <path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"></path>
                                         </svg>

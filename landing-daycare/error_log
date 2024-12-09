@@ -1,84 +1,24 @@
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/functions.php on line 27
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 14
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 14
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'title' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 17
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 17
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 19
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'banner_principal' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 19
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'content' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 20
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 20
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'title' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 21
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 21
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'content' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 37
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 37
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 40
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 40
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 43
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 43
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 61
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'banner_principal' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 61
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 66
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'logo' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 66
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'title' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 67
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 67
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'content' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 69
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'rendered' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 69
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 72
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'galeria' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 72
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'imagen_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 72
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 90
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'seccion_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 90
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'texto' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 90
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 98
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'seccion_2' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 98
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'texto' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 98
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 109
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_2' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 109
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 111
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'direccion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 111
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 111
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'direccion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 111
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 112
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'correo' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 112
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 112
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'correo' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 112
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 113
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 113
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 113
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 113
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 118
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 118
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 122
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'horario' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 122
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 128
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_2' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 128
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 130
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'informacion_adicional' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 130
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 132
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 132
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'facebook' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 132
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 133
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 133
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'instagram' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 133
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 134
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 134
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'tiktok' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 134
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 135
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 135
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'twitter' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 135
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 143
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 143
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'facebook' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 143
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 148
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 148
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'instagram' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 148
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 155
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 155
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'tiktok' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 155
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 161
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'networks_social_media' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 161
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'twitter' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 161
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 172
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'color_1' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 172
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 179
-[03-Apr-2024 21:11:51 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/index.php on line 179
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'activacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 358
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 358
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 363
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 363
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 379
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 379
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 384
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 384
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591
+[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591

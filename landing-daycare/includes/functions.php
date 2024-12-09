@@ -51,6 +51,10 @@ class landing
         $result = $this->query("daycare-web?field=nombre_para_url_del_sitio_web&value=".$url."&pp=1");
 		return $result[0];
 	}
+    function gInfoDaycareStrapi($url){
+        $result = $this->queryStrapi("websites?url=".$url);
+		return $result[0];
+	}
 	// UTILITY
 	function get_alias($String){
         $String = html_entity_decode($String); // Traduce codificación

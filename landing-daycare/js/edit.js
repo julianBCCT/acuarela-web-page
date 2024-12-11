@@ -208,6 +208,39 @@ function saveSocialMedia(section) {
         });
 }
 
+function updateColors() {
+    // Obtener los valores seleccionados de los colores
+    const primaryColor = document.getElementById("color_1").value;
+    const secondaryColor = document.getElementById("color_2").value;
+
+    // Crear el cuerpo de la solicitud
+    const body = {
+        color_1: primaryColor,
+        color_2: secondaryColor
+    };
+
+    // Enviar los datos a process.php usando fetch
+    fetch('../set/process.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body) // Convertir el objeto a JSON
+    })
+    .then(response => response.json()) // Parsear la respuesta como JSON
+    .then(data => {
+        if (data.status === 'success') {
+            console.log("Colores actualizados con éxito:", data.message);
+        } else {
+            console.error("Error al actualizar los colores:", data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Error al enviar la solicitud:", error);
+    });
+}
+
+
 
 function exitEditMode() {
     alert('Saliendo del modo de edición...');

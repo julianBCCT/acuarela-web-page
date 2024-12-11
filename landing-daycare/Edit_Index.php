@@ -16,6 +16,16 @@ function obtener_idioma_contenido($idioma_acf)
     }
 }
 
+$galeriaIds = []; // Inicializamos un array para almacenar los IDs
+
+foreach ($webInfo->galeria as $index => $item) {
+    if (!empty($item->id)) { // Verificamos que el ID esté presente
+        $galeriaIds[] = $item->id; // Añadimos el ID al array
+    }
+}
+
+// Convertimos el array PHP en JSON
+$galeriaIdsJson = json_encode($galeriaIds);
 
 
 
@@ -212,12 +222,22 @@ $titulos = [
         </header>
 
         <main style="background-image: url('<?= $webInfo->banner_principal->url ?>');">
-            <div id="edit-topbar">
-                <div class="container">
-                    <span class="edit-mode-label">Estás en modo de edición</span>
-                    <button id="exit-edit-mode" onclick="exitEditMode()">Salir de edición</button>
+        <div id="edit-topbar">
+            <div class="container">
+                <span class="edit-mode-label">Estás en modo de edición</span>
+                <div class="color-picker-container">
+                    <div class="color-picker">
+                        <label for="color_1">Primario</label>
+                        <input type="color" id="color_1" value="<?=$webInfo->color_1?>" onchange="updateColors()">
+                    </div>
+                    <div class="color-picker">
+                        <label for="color_2">Secundario</label>
+                        <input type="color" id="color_2" value="<?=$webInfo->color_2?>" onchange="updateColors()">
+                    </div>
                 </div>
+                <button id="exit-edit-mode" onclick="exitEditMode()">Salir de edición</button>
             </div>
+        </div>
 
 
             <div class="portada">
@@ -256,6 +276,24 @@ $titulos = [
                     </span>
                 </div>
             </section>
+
+            <div class="edit-images">
+                <!-- Editar Portada -->
+                <div class="edit-section">
+                    <label for="portada-input" class="edit-label">
+                        Cambiar Portada
+                    </label>
+                    <input type="file" id="portada-input" data-type="portada" accept="image/*" onchange="handleImageChange(this)"/>
+                </div>
+
+                <!-- Editar Logo -->
+                <div class="edit-section">
+                    <label for="logo-input" class="edit-label">
+                        Cambiar Logo
+                    </label>
+                    <input type="file" id="logo-input" data-type="logo" accept="image/*" onchange="handleImageChange(this)" />
+                </div>
+            </div>
 
 
             <section class="tour">
@@ -376,29 +414,26 @@ $titulos = [
                             <button class="next-btn">
                                 <i class="acuarela acuarela-Flecha_derecha"></i>
                             </button>
-                            <span class="edit-images edit-icon" onclick="toggleImageEdit(this)"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                                    <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
-                                </svg>
-                                Editar
-                            </span>
+
+
 
                             <!-- Contenedor para la edición de imágenes -->
-                            <div class="edit-images-panel" style="display: none;">
-                            <ul>
-                                <?php foreach ($webInfo->galeria as $index => $item) { ?>
-                                    <?php if (!empty($item->url)) { ?>
-                                        <li>
-                                            <img src="https://acuarelacore.com/api<?= $item->url ?>" alt="Image <?= $index + 1 ?>" />
-                                            <input type="file" accept="image/*" onchange="uploadImage(this, <?= $index + 1 ?>)" />
-                                            <button class="delete-btn" onclick="deleteImage(<?= $index + 1 ?>)">Eliminar</button>
-                                        </li>
+                            <div class="edit-images-panel" style="display:block">
+                                <ul>
+                                    <?php foreach ($webInfo->galeria as $index => $item) { ?>
+                                        <?php if (!empty($item->url)) { ?>
+                                            <li>
+                                                <img src="https://acuarelacore.com/api<?= $item->url ?>" alt="Image <?= $index + 1 ?>" />
+                                                <input type="file" accept="image/*" data-type="galeria" onclick="handleImageChange(this)" />
+                                                <button class="delete-btn" onclick="deleteImage(<?= $index + 1 ?>)">Eliminar</button>
+                                            </li>
+                                        <?php } ?>
                                     <?php } ?>
-                                <?php } ?>
-                            </ul>
-
-                                <button onclick="addNewImage()">Agregar Imagen</button>
+                                </ul>
+                                <br>
+                                <button class="btn-add-image" onclick="addNewImage(<?= htmlspecialchars($galeriaIdsJson, ENT_QUOTES, 'UTF-8') ?>)">Agregar Imagen</button>
                             </div>
+
                         </div>
 
 

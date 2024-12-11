@@ -1,24 +1,149 @@
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'activacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 358
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 358
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 363
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 363
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 379
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 379
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 384
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 384
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 406
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 450
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 504
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591
-[09-Dec-2024 04:02:21 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 591
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'activacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 1 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 298
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 298
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 2 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 301
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 301
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 1 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 385
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 385
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 2 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 388
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 388
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:17:26 UTC] Valor de galeria: Array
+(
+    [0] => stdClass Object
+        (
+            [_id] => 6758896a32829c0621bbd70b
+            [name] => Julian.png
+            [hash] => Julian_542f91f485
+            [ext] => .png
+            [mime] => image/png
+            [size] => 47.77
+            [width] => 1080
+            [height] => 1080
+            [url] => /uploads/Julian_542f91f485.png
+            [formats] => stdClass Object
+                (
+                    [thumbnail] => stdClass Object
+                        (
+                            [name] => thumbnail_Julian.png
+                            [hash] => thumbnail_Julian_542f91f485
+                            [ext] => .png
+                            [mime] => image/png
+                            [width] => 156
+                            [height] => 156
+                            [size] => 15.16
+                            [path] => 
+                            [url] => /uploads/thumbnail_Julian_542f91f485.png
+                        )
+
+                    [large] => stdClass Object
+                        (
+                            [name] => large_Julian.png
+                            [hash] => large_Julian_542f91f485
+                            [ext] => .png
+                            [mime] => image/png
+                            [width] => 1000
+                            [height] => 1000
+                            [size] => 141.86
+                            [path] => 
+                            [url] => /uploads/large_Julian_542f91f485.png
+                        )
+
+                    [medium] => stdClass Object
+                        (
+                            [name] => medium_Julian.png
+                            [hash] => medium_Julian_542f91f485
+                            [ext] => .png
+                            [mime] => image/png
+                            [width] => 750
+                            [height] => 750
+                            [size] => 94.98
+                            [path] => 
+                            [url] => /uploads/medium_Julian_542f91f485.png
+                        )
+
+                    [small] => stdClass Object
+                        (
+                            [name] => small_Julian.png
+                            [hash] => small_Julian_542f91f485
+                            [ext] => .png
+                            [mime] => image/png
+                            [width] => 500
+                            [height] => 500
+                            [size] => 56.01
+                            [path] => 
+                            [url] => /uploads/small_Julian_542f91f485.png
+                        )
+
+                )
+
+            [provider] => local
+            [related] => Array
+                (
+                    [0] => 675079ec55984708e0adffc9
+                )
+
+            [createdAt] => 2024-12-10T18:33:14.773Z
+            [updatedAt] => 2024-12-10T18:33:16.092Z
+            [__v] => 0
+            [id] => 6758896a32829c0621bbd70b
+        )
+
+)
+
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 466
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 466
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 466
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 529
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 529
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 529
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 670
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 670
+[10-Dec-2024 20:17:26 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 670
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'activacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 1 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 298
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 298
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 2 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 301
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 301
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 1 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 385
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 385
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 2 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 388
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 388
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:22:32 UTC] IDs de la galería: 6758896a32829c0621bbd70b
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674
+[10-Dec-2024 20:22:32 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'activacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 151
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined offset: 3 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 390
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined offset: 4 in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'url' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 395
+[10-Dec-2024 20:24:41 UTC] IDs de la galería: 6758896a32829c0621bbd70b, 62ef5bd0b37966d8a90b2e54, 62ef5be5b37966d8a90b2e55
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 470
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'filosofia_de_educacion' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 533
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Undefined variable: info in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'acf' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674
+[10-Dec-2024 20:24:41 UTC] PHP Notice:  Trying to get property 'telefono' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/Edit_Index.php on line 674

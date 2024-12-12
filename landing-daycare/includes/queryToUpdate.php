@@ -60,32 +60,6 @@ function setWebDayCareInfo($land, $id, $body) {
     }
 }
 
-// function uploadImage($file) {
-//     $url = "https://acuarelacore.com/api/upload";
-//     $headers = [
-//         "content-type: multipart/form-data ",
-//     ];
-
-//     $postFields = [
-//         "files" => new CURLFile($file['tmp_name'], $file['type'], $file['name']),
-//     ];
-
-//     $ch = curl_init($url);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//     curl_setopt($ch, CURLOPT_POST, true);
-//     curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-//     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-//     $response = curl_exec($ch);
-//     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-//     curl_close($ch);
-
-//     if ($status === 200) {
-//         return json_decode($response, true)[0];
-//     } else {
-//         return null;
-//     }
-// } 
 function uploadImage($file) {
     $url = "https://acuarelacore.com/api/upload";
     $headers = [
@@ -126,3 +100,45 @@ function uploadImage($file) {
         return null;
     }
 }
+
+function deleteImage($fileId) {
+
+    error_log("ID recibido en deleteImage: " . print_r($fileId, true));
+    // Verificar que el ID no esté vacío
+    if (empty($fileId)) {
+        error_log("El ID del archivo no es válido: " . print_r($fileId, true));
+        return null;
+    }
+
+    // Construir la URL con el ID del archivo
+    $url = "https://acuarelacore.com/api/upload/files/" . $fileId;
+
+    // Configurar los encabezados necesarios (puedes agregar autenticación si es necesario)
+    $headers = [
+        "Content-Type: application/json", // Aunque no enviamos cuerpo, puede ser requerido
+    ];
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE"); // Método DELETE
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($ch);
+    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    // Manejo de errores de cURL
+    if (curl_errno($ch)) {
+        error_log("Error en cURL: " . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    // Verificar el estado HTTP de la respuesta
+    if ($status === 200) {
+        return json_decode($response, true); // Devuelve la respuesta decodificada si es necesario
+    } else {
+        error_log("Error al eliminar la imagen: Código de estado HTTP " . $status);
+        return null;
+    }
+}
+

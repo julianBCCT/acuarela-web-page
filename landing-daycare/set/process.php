@@ -8,7 +8,6 @@ if (ob_get_length()) {
     ob_clean();
 }
 
-
 //session_start();
 
 $id = $_SESSION['webInfo_id'];
@@ -21,7 +20,6 @@ if (!isset($_SESSION['webInfo_id'])) {
     ]);
     exit;
 }
-
 
 try {
     // Capturar los datos enviados en el cuerpo de la solicitud
@@ -62,9 +60,6 @@ try {
             "details" => $result 
         ]);
     }
-
-
-
 } catch (Exception $e) {
     // Manejo de errores
     error_log("Error en el proceso: " . $e->getMessage());

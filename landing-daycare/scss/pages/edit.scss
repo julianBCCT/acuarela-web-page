@@ -160,7 +160,7 @@
     color: white;
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 100;
     /* Asegurarse de que esté encima de todo */
 
     .container {
@@ -381,4 +381,9 @@
         outline: none;
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); // Resaltado al enfocar
     }
+}
+.galery-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

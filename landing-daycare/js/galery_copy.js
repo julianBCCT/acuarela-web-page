@@ -11,6 +11,7 @@ function handleSocialMediaEdit(button) {
     }
 }
 
+
 function toggleSocialMediaEdit(button) {
     const socialMediaCard = button.closest('.social-media');
     const inputs = socialMediaCard.querySelectorAll('.change_sm');
@@ -42,6 +43,54 @@ function toggleSocialMediaEdit(button) {
         `;
     }
 }
+
+
+// const galeria = []; // Array global para almacenar imágenes temporalmente
+
+// function handleImageChange(input) {
+//     console.log("Ejecutando handleImageChange");
+//     const file = input.files[0];
+
+//     if (!file) {
+//         console.error("No se seleccionó ningún archivo.");
+//         return;
+//     }
+
+//     galeria.push(file); // Agregar la imagen al array galería
+//     console.log(galeria);
+
+//     const formDataImg = new FormData();
+//     galeria.forEach((imagen, index) => {
+//         formDataImg.append(`files[${index}]`, imagen); // Ajustar el nombre de los archivos
+//     });
+//     fetch("../set/handleGallery.php", {
+//         method: "POST",
+//         body: formDataImg,
+//     })
+//         .then(response => {
+//             console.log("Estado de la respuesta:", response.status);
+//             return response.json();
+//         })
+//         .then(data => {
+//             //console.log("Respuesta JSON:", data);
+    
+//             if (data && data.results && data.results.length > 0) {
+//                 data.results.forEach(result => {
+//                     if (result.hash) {
+//                         updateGallery(result.hash);
+//                         console.log(result.hash);
+//                     } else {
+//                         console.error("No se encontró un hash válido en el resultado.");
+//                     }
+//                 });
+//             } else {
+//                 console.error("No se encontraron resultados en la respuesta.");
+//             }
+//         })
+//         .catch(error => {
+//             console.error("Error al cargar la imagen:", error);
+//         });   
+// }
 
 const galeria = []; // Array global para almacenar imágenes temporalmente
 //console.log(galeria);
@@ -92,6 +141,17 @@ function handleImageChange(input) {
                         } else {
                             console.warn("Tipo de input desconocido:", inputType);
                         }
+                        // if (inputType === "galeria") {
+                        //     updateGallery(result.hash);
+                        // } else if (inputType === "logo") {
+                        //     console.log("Actualizar logo con hash:", result.hash);
+                        //     updateLogo(result.hash); 
+                        // } else if (inputType === "portada") {
+                        //     console.log("Actualizar portada con hash:", result.hash);
+                        //     updatePortada(result.hash);
+                        // } else {
+                        //     console.warn("Tipo de input desconocido:", inputType);
+                        // }
                     } else {
                         console.error("No se encontró un hash válido en el resultado.");
                     }
@@ -107,6 +167,59 @@ function handleImageChange(input) {
     // Limpiar el input para permitir seleccionar el mismo archivo nuevamente
     input.value = "";
 }
+
+
+
+// function addNewImage(galeriaIds) {
+//     console.log("IDs de la galería recibidos:", galeriaIds);
+//     getFormattedGallery(galeriaIds);
+//     const ul = document.querySelector('.edit-images-panel ul');
+//     const newLi = document.createElement('li');
+//     const newIndex = ul.children.length + 1;
+
+//     console.log("Ejecutado AddNewImage, índice:", newIndex);
+//     newLi.innerHTML = `
+//         <img src="https://via.placeholder.com/100" alt="New Image" />
+//         <input type="file" accept="image/*" data-type="galeria" onchange="handleImageChange(this, ${newIndex})" />
+//         <button class="delete-btn" onclick="deleteImage(${newIndex})">Eliminar</button>
+//     `;
+
+//     ul.appendChild(newLi);
+// }
+
+// //  // Función para formatear el array
+// // function getFormattedGallery(galeriaIds) {
+// //     const galeryArray = [...galeriaIds];
+// //     return galeryArray.map(id => ({ id })); // Convierte cada ID en un objeto con clave `id`
+// // }
+
+// function updateGallery(galeryArray) {
+//     // Convertir el array de objetos a JSON
+//     const bodyResponse = JSON.stringify(galeryArray);
+
+//     console.log('Este es el array de ids que traemos'+bodyResponse);
+//     // Enviar el array al backend
+//     fetch("../set/updateGalery.php", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json", // Enviar datos como JSON
+//         },
+//         body: bodyResponse,
+//     })
+//         .then(response => {
+//             console.log("Estado de la respuesta:", response.status);
+//             return response.json();
+//         })
+//         .then(data => {
+//             console.log("Respuesta JSON:", data);
+//         })
+//         .catch(error => {
+//             console.error("Error al actualizar la galería:", error);
+//         });
+// }
+
+
+
 
 // Función para formatear el array
 function getFormattedGallery(galeriaIds) {
@@ -158,6 +271,7 @@ function convertToIdObjects(array) {
     return array.map(item => ({ id: item })); // Convierte cada elemento en un objeto con clave `id`
 }
 
+
 // Función para actualizar la galería en el backend
 function updateGallery(galeryArray) {
 
@@ -184,12 +298,13 @@ function updateGallery(galeryArray) {
         })
         .then(data => {
             console.log("Respuesta JSON:", data);
-            location.reload();
         })
         .catch(error => {
             console.error("Error al actualizar la galería:", error);
         });
 }
+
+
 
 function updateLogo(logoArray) {
     // Convertir el array de objetos a JSON
@@ -212,7 +327,6 @@ function updateLogo(logoArray) {
         })
         .then(data => {
             console.log("Respuesta JSON:", data);
-            location.reload();
         })
         .catch(error => {
             console.error("Error al actualizar el logo:", error);
@@ -241,48 +355,9 @@ function updatePortada(portadaArray) {
         })
         .then(data => {
             console.log("Respuesta JSON:", data);
-            location.reload();
         })
         .catch(error => {
             console.error("Error al actualizar la portada:", error);
-        });
-}
-
-
-function deleteFromGalery(imageId) {
-    if (!imageId) {
-        console.error("ID de imagen no proporcionado.");
-        return;
-    }
-
-    // Confirmar antes de eliminar
-    // if (!confirm("¿Estás seguro de que deseas eliminar esta imagen?")) {
-    //     return;
-    // }
-
-    //Enviar solicitud DELETE al servidor
-    fetch("../set/deleteImage.php", {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: imageId }) // Enviar como un objeto con una clave 'id'
-    })
-        .then(response => {
-            console.log("Estado de la respuesta:", response.status);
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                console.log("Imagen eliminada exitosamente:", data);
-                //Aquí puedes eliminar el elemento del DOM si es necesario
-                location.reload(); // Recargar la página para reflejar los cambios
-            } else {
-                console.error("Error al eliminar la imagen:", data.error || "Respuesta inesperada");
-            }
-        })
-        .catch(error => {
-            console.error("Error en la solicitud de eliminación:", error);
         });
 }
 

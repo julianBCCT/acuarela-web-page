@@ -201,7 +201,7 @@ $titulos = [
                     <li><a href="#contact-us"><?= $titulos[$idioma_contenido]["contact-us"] ?></a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/+1<?= $webInfo->telefono ?>" target="_blank" class="btn">
+            <a href="https://wa.me/+1<?= $webInfo->whatsapp ?>" target="_blank" class="btn">
                 <button><i class="acuarela acuarela-Evento"></i><?= $titulos[$idioma_contenido]["visit"] ?></button>
             </a>
 
@@ -235,6 +235,8 @@ $titulos = [
                         <input type="color" id="color_2" value="<?=$webInfo->color_2?>" onchange="updateColors()">
                     </div>
                 </div>
+
+
                 <button id="exit-edit-mode" onclick="exitEditMode()">Salir de edición</button>
             </div>
         </div>
@@ -293,6 +295,11 @@ $titulos = [
                     </label>
                     <input type="file" id="logo-input" data-type="logo" accept="image/*" onchange="handleImageChange(this)" />
                 </div>
+
+                <div class="edit-section">
+                    <label for="edit-wh" class="edit-label">Cambiar Whatsapp</label>
+                    <input type="text" id="wh-value" value="<?=$webInfo->whatsapp?>" onchange="changeWhatsapp()">
+                </div>
             </div>
 
 
@@ -305,11 +312,21 @@ $titulos = [
                                     <img src="https://acuarelacore.com/api<?= $webInfo->galeria[0]->url ?>" alt="Image 1" />
                                 </li>
                                 <li>
-                                    <img src="https://acuarelacore.com/api<?= $webInfo->galeria[1]->url  ?>" alt="Image 2" />
+                                    <img src="https://acuarelacore.com/api<?= $webInfo->galeria[1]->url ?>" alt="Image 2" />
                                 </li>
                                 <li>
-                                    <img src="https://acuarelacore.com/api<?= $webInfo->galeria[2]->url  ?>" alt="Image 3" />
+                                    <img src="https://acuarelacore.com/api<?= $webInfo->galeria[2]->url ?>" alt="Image 3" />
                                 </li>
+                                <?php if ($webInfo->galeria[3]->url) { ?>
+                                    <li>
+                                        <img src="https://acuarelacore.com/api<?= $webInfo->galeria[3]->url ?>" alt="Image 4" />
+                                    </li>
+                                <?php } ?>
+                                <?php if ($webInfo->galeria[4]->url) { ?>
+                                    <li>
+                                        <img src="https://acuarelacore.com/api<?= $webInfo->galeria[4]->url ?>" alt="Image 5" />
+                                    </li>
+                                <?php } ?>
                             </ul>
                             <button class="prev-btn-1">
                                 <i class="acuarela acuarela-Flecha_izquierda"></i>
@@ -408,12 +425,15 @@ $titulos = [
                                     </li>
                                 <?php } ?>
                             </ul>
-                            <button class="prev-btn">
-                                <i class="acuarela acuarela-Flecha_izquierda"></i>
-                            </button>
-                            <button class="next-btn">
-                                <i class="acuarela acuarela-Flecha_derecha"></i>
-                            </button>
+                            <div class="galery-btn">
+                                <button class="prev-btn">
+                                    <i class="acuarela acuarela-Flecha_izquierda"></i>
+                                </button>
+                                <button class="next-btn">
+                                    <i class="acuarela acuarela-Flecha_derecha"></i>
+                                </button>
+                            </div>
+
 
 
 
@@ -425,7 +445,7 @@ $titulos = [
                                             <li>
                                                 <img src="https://acuarelacore.com/api<?= $item->url ?>" alt="Image <?= $index + 1 ?>" />
                                                 <input type="file" accept="image/*" data-type="galeria" onclick="handleImageChange(this)" />
-                                                <button class="delete-btn" onclick="deleteImage(<?= $index + 1 ?>)">Eliminar</button>
+                                                <button class="delete-btn" onclick="deleteFromGalery('<?= $item->id ?>')">Eliminar</button>
                                             </li>
                                         <?php } ?>
                                     <?php } ?>
@@ -481,37 +501,6 @@ $titulos = [
 <section class="services" id="services">
     <div class="services-tags card">
         <b><?= htmlspecialchars($titulos[$idioma_contenido]["services"], ENT_QUOTES, 'UTF-8') ?></b>
-        <!-- <div class="tags">
-            <ul id="services-list" data-field="servicios">
-                <?php
-                // Dividir los servicios por saltos de línea
-                // $servicios = explode("\n", $info->acf->servicios);
-                $servicios = explode(",", $webInfo->servicios);
-                
-                // Filtrar elementos vacíos y etiquetas no deseadas
-                $servicios = array_filter($servicios, function ($servicio) {
-                    $servicio = trim($servicio); // Eliminar espacios en blanco
-                    return !empty($servicio) && strip_tags($servicio) !== ''; // Ignorar vacíos o etiquetas sin contenido
-                });
-
-                // Generar HTML solo para elementos válidos
-                foreach ($servicios as $index => $servicio) {
-                    // Decodificar entidades HTML y eliminar etiquetas <li>
-                    $textoLimpio = strip_tags(htmlspecialchars_decode(trim($servicio), ENT_QUOTES));
-                    ?>
-                    <li data-id="<?= $index ?>">
-                        <p contenteditable="false"><?= $textoLimpio ?></p>
-                        <span class="edit-icon" onclick="enableServiceEdit(this)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                                <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
-                            </svg></span>
-                        <button class="delete-btn" onclick="deleteServiceItem(this)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
-                    </li>
-                    <?php
-                }
-                ?>
-            </ul>
-            <button id="add-service-btn" onclick="addNewService()">Agregar Servicio</button>
-        </div> -->
         <p data-field="servicios">
             <?= $webInfo->servicios ?>     
         </p>
@@ -549,61 +538,6 @@ $titulos = [
                     $webInfo->twitter != ""
                 ) {
                 ?>
-                    <!-- <section class="contact" id="contact-us">
-                    <div class="social-media card">
-                        <b><?= $titulos[$idioma_contenido]["social"] ?></b>
-                        <div class="icons">
-                            <?php if ($webInfo->facebook != "") { ?>
-                                <div class="social-group">
-                                    <a href="<?= $webInfo->facebook ?>" target="_blank" class="socialContainer containerOne" >
-                                        <svg class="socialSvg facebookSvg" viewBox="0 0 16 16">
-                                            <path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"></path>
-                                        </svg>
-                                    </a>
-                                    <input type="text" class="change_sm" value="<?= $webInfo->facebook ?>" contenteditable="true" data-field="facebook"/>
-                                </div>
-                            <?php } ?>
-                            <?php if ($webInfo->instagram != "") { ?>
-                                <div class="social-group" data-field="instagram">
-                                    <a href="<?= $webInfo->instagram ?>" target="_blank" class="socialContainer containerTwo">
-                                        <svg class="socialSvg instagramSvg" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
-                                            </path>
-                                        </svg>
-                                    </a>
-                                    <input type="text" class="change_sm" value="<?= $webInfo->instagram ?>" contenteditable="true" data-field="instagram"/>
-                                </div>
-                            <?php } ?>
-                            <?php if ($webInfo->tik_tok != "") { ?>
-                                <div class="social-group" >
-                                    <a href="<?= $webInfo->tik_tok ?>" target="_blank" class="socialContainer containerThree" data-field="tik_tok">
-                                        <svg class="socialSvg tiktokSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; " xml:space="preserve" width="512" height="512">
-                                            <path d="M22.465,9.866c-2.139,0-4.122-0.684-5.74-1.846v8.385c0,4.188-3.407,7.594-7.594,7.594c-1.618,0-3.119-0.51-4.352-1.376  c-1.958-1.375-3.242-3.649-3.242-6.218c0-4.188,3.407-7.595,7.595-7.595c0.348,0,0.688,0.029,1.023,0.074v0.977v3.235  c-0.324-0.101-0.666-0.16-1.023-0.16c-1.912,0-3.468,1.556-3.468,3.469c0,1.332,0.756,2.489,1.86,3.07  c0.481,0.253,1.028,0.398,1.609,0.398c1.868,0,3.392-1.486,3.462-3.338L12.598,0h4.126c0,0.358,0.035,0.707,0.097,1.047  c0.291,1.572,1.224,2.921,2.517,3.764c0.9,0.587,1.974,0.93,3.126,0.93V9.866z" fill="white"/>
-                                        </svg>
-                                    </a>
-                                    <input type="text" class="change_sm" value="<?= $webInfo->tik_tok ?>" contenteditable="true" data-field="tik_tok"/>
-                                </div>
-                            <?php } ?>
-                            <?php if ($webInfo->twitter != "") { ?>
-                                <div class="social-group" data-field="twitter">
-                                    <a class="socialContainer containerFour" href="<?= $webInfo->twitter ?>" target="_blank">
-                                        <svg class="socialSvg twitterSvg" width="396" height="396" viewBox="0 0 396 396" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M301.026 37.125H355.608L236.362 173.415L376.645 358.875H266.805L180.774 246.395L82.335 358.875H27.72L155.265 213.098L20.691 37.125H133.32L211.084 139.937L301.026 37.125ZM281.869 326.205H312.114L116.886 68.079H84.4305L281.869 326.205Z" fill="white"/>
-                                        </svg>
-                                    </a>
-                                    <input type="text" class="change_sm" value="<?= $webInfo->twitter ?>" contenteditable="true" data-field="twitter"/>
-                                </div>
-                            <?php } ?> 
-                        </div>
-                        <span class="edit-icon" onclick="toggleSocialMediaEdit(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-                                <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
-                            </svg>
-                            Editar
-                        </span>
-                    </div>
-                </section>                 -->
 
                 <section class="contact" id="contact-us">
                     <div class="social-media card">
@@ -670,7 +604,7 @@ $titulos = [
 
 
             <div id="whatsapp" data-field="whatsapp">
-                <a href="https://wa.me/+1<?= $info->acf->telefono ?>" target="_blank" id="toggle1" class="wtsapp">
+                <a href="https://wa.me/+1<?= $webInfo->whatsapp ?>" target="_blank" id="toggle1" class="wtsapp">
 
                     <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
                         text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"

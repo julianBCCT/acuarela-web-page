@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/buscador-daycares",
+      "handler": "buscador-daycares.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/buscador-daycares/count",
+      "handler": "buscador-daycares.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/buscador-daycares/:id",
+      "handler": "buscador-daycares.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/buscador-daycares",
+      "handler": "buscador-daycares.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/buscador-daycares/:id",
+      "handler": "buscador-daycares.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/buscador-daycares/:id",
+      "handler": "buscador-daycares.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

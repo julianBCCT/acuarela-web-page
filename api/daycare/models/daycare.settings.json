@@ -163,6 +163,10 @@
     "suscriptions": {
       "via": "daycare",
       "collection": "suscription"
+    },
+    "website_rel": {
+      "via": "daycare",
+      "model": "websites"
     }
   }
 }

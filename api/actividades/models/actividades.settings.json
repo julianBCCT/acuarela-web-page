@@ -14,15 +14,12 @@
     "nombre": {
       "type": "string"
     },
-    "semana": {
-      "type": "integer"
-    },
     "id_wordpress": {
       "type": "string"
     },
     "curricula": {
-      "via": "actividades",
       "collection": "curriculum",
+      "via": "actividades",
       "dominant": true
     },
     "promedio": {
@@ -32,6 +29,180 @@
     "calificacion_actividads": {
       "collection": "calificacion-actividad",
       "via": "actividad"
+    },
+    "dia_especifico": {
+      "type": "date"
+    },
+    "mes": {
+      "type": "enumeration",
+      "enum": [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    },
+    "estacion": {
+      "type": "enumeration",
+      "enum": [
+        "primavera",
+        "verano",
+        "otono",
+        "invierno"
+      ]
+    },
+    "tema": {
+      "type": "string"
+    },
+    "tipo_de_actividad": {
+      "type": "enumeration",
+      "enum": [
+        "lectura",
+        "adivinanzas",
+        "trabalenguas",
+        "poesias",
+        "cuentos",
+        "coplas",
+        "canciones",
+        "retahilas",
+        "pictogramas",
+        "fabulas",
+        "historietas",
+        "actividades",
+        "arte",
+        "cocina",
+        "manualidades"
+      ]
+    },
+    "instrucciones": {
+      "type": "richtext"
+    },
+    "materiales": {
+      "type": "richtext"
+    },
+    "requiere_plantilla": {
+      "type": "boolean"
+    },
+    "plantilla": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "plantilla_en": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "plantilla_es_horizontal": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "plantilla_en_horizontal": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "evidencia": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "objetivos": {
+      "type": "richtext"
+    },
+    "elof": {
+      "type": "richtext"
+    },
+    "dominios_uc": {
+      "type": "richtext"
+    },
+    "enfoque_general": {
+      "type": "enumeration",
+      "enum": [
+        "cognitivo",
+        "espiritual",
+        "emocional",
+        "fisico",
+        "social"
+      ]
+    },
+    "tiempo_en_minutos": {
+      "type": "integer"
+    },
+    "grupo_de_edad": {
+      "type": "richtext"
+    },
+    "momento_de_aprendizaje": {
+      "type": "richtext"
+    },
+    "tips": {
+      "type": "richtext"
+    },
+    "link_cancion": {
+      "type": "string"
+    },
+    "link_cuento": {
+      "type": "string"
+    },
+    "enfoque_pedagogico": {
+      "type": "enumeration",
+      "enum": [
+        "pedagogia",
+        "reggioemilia",
+        "waldorf",
+        "pikleriana",
+        "tradicional",
+        "montessori"
+      ]
+    },
+    "lenguaje": {
+      "type": "enumeration",
+      "enum": [
+        "es",
+        "en"
+      ]
+    },
+    "semana": {
+      "type": "string"
     }
   }
 }

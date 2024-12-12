@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buscador_daycares",
+  "info": {
+    "name": "Buscador_Daycares",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Nombre_Daycare": {
+      "type": "string"
+    },
+    "Servicios": {
+      "type": "string"
+    },
+    "Edad": {
+      "type": "integer"
+    },
+    "Distancia": {
+      "type": "integer"
+    },
+    "Ubicacion": {
+      "type": "string"
+    },
+    "Precio": {
+      "type": "integer"
+    },
+    "Jornada": {
+      "type": "string"
+    },
+    "Resultados_Busquedas": {
+      "type": "json"
+    }
+  }
+}

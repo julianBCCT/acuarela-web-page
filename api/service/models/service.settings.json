@@ -82,6 +82,12 @@
     },
     "id_stripe": {
       "type": "string"
+    },
+    "link_pago": {
+      "type": "string"
+    },
+    "zoho_name": {
+      "type": "string"
     }
   }
 }

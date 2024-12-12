@@ -28,6 +28,7 @@ module.exports = () => {
         "https://acuarelacore.com/api/movements/62d1d62c2d088187dac74153",
         "https://bilingualchildcaretraining.com",
         "https://dev.bilingualchildcaretraining.com",
+        "https://twinkle.acuarelacore.com",
       ],
       methods: ["GET", "POST"],
       credentials: true,

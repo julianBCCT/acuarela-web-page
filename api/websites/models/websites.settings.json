@@ -1,0 +1,133 @@
+{
+  "kind": "collectionType",
+  "collectionName": "websites",
+  "info": {
+    "name": "websites",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "idioma": {
+      "type": "enumeration",
+      "enum": [
+        "Ingles",
+        "Espanol"
+      ]
+    },
+    "logo_web": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "color_1": {
+      "type": "string"
+    },
+    "color_2": {
+      "type": "string"
+    },
+    "banner_principal": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "imagen_fondo_web": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "mision": {
+      "type": "text"
+    },
+    "vision": {
+      "type": "richtext"
+    },
+    "filosofia_de_educacion": {
+      "type": "richtext"
+    },
+    "servicios": {
+      "type": "richtext"
+    },
+    "horario": {
+      "type": "richtext"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "correo": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "whatsapp": {
+      "type": "string"
+    },
+    "proceso_de_admision": {
+      "type": "richtext"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "tik_tok": {
+      "type": "string"
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "informacion_adicional": {
+      "type": "richtext"
+    },
+    "galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "daycare": {
+      "model": "daycare",
+      "via": "website_rel"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "richtext"
+    }
+  }
+}

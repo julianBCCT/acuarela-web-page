@@ -19,8 +19,8 @@
       "via": "curriculum"
     },
     "actividades": {
-      "collection": "actividades",
-      "via": "curricula"
+      "via": "curricula",
+      "collection": "actividades"
     }
   }
 }

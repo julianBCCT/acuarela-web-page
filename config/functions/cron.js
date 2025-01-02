@@ -6,19 +6,19 @@ module.exports = {
     strapi.log.info('Ejecutando Cron Job para procesar pagos');
 
     try {
-      // Obtener los registros por períodos de pago
-      const semanal = await strapi.services.inscripciones.find({
-        'payment.time': 'Semanal',
-      });
 
-      const mensual = await strapi.services.inscripciones.find({
-        'payment.time': 'Mensual',
-      });
+    // Step 1: Fetch all entities with optional `status` filter
+    const filters = {};
+    filters.status = "Finalizado";
 
-      const diario = await strapi.services.inscripciones.find({
-        'payment.time': 'Diario',
-      });
+    let entities = await strapi.services.inscripciones.find(filters);
 
+    // Step 2: Filter entities manually based on `payment.time`
+      const semanal = entities.filter(entity => entity.payment && entity.payment.time === "Semanal");
+      const mensual = entities.filter(entity => entity.payment && entity.payment.time === "Mensual");
+      const diario = entities.filter(entity => entity.payment && entity.payment.time === "Diario");
+
+      
       // Procesar los registros (ejemplo: loguear cantidades)
       strapi.log.info(`Registros Semanales: ${semanal.length}`);
       strapi.log.info(`Registros Mensuales: ${mensual.length}`);

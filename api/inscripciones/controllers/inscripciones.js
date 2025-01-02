@@ -89,11 +89,12 @@ module.exports = {
       payment:{time: time},status: "Finalizado"
     };
 
+
     // Fetch filtered results
     const entriesFind = await strapi.query("inscripciones").model.find();
     const entries = await strapi.query("inscripciones").model.find(query);
 
-    return {entries, entriesFind};
+    return {query, entries, entriesFind};
   },
 
 };

@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/inscripcionesByTime",
-      "handler": "inscripciones.findByTime",
+      "handler": "inscripciones.findByPaymentTime",
       "config": {
         "policies": []
       }

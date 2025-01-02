@@ -82,22 +82,14 @@ module.exports = {
     }
   },
   async findByTime(ctx) {
-    const { time } = ctx.query;
-  
-    // Construct the query object properly
-    const query = {
-      'payment.time': { $eq: time }, // Use dot notation for nested fields
-      status: { $eq: "Finalizado" }, // Add other filters as needed
-    };
-  
-    // Fetch all entries (for debugging purposes)
-    const entriesFind = await strapi.query("inscripciones").model.find();
-  
-    // Fetch filtered entries
-    const entries = await strapi.query("inscripciones").model.find(query);
-  
-    // Return results for debugging
-    return { query, entries, entriesFind };
+    let entities;
+    if (ctx.query._q) {
+      entities = await strapi.services.inscripciones.search(ctx.query);
+    } else {
+      entities = await strapi.services.inscripciones.find(ctx.query);
+    }
+
+    return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones }));
   },
   
 };

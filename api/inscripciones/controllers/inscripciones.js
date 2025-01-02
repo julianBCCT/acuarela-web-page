@@ -85,9 +85,10 @@ module.exports = {
   async findByTime(ctx) {
     const { time } = ctx.query;
 
-    let query = {
-      payment:{time: time},status: "Finalizado"
-    };
+    let query = {};
+
+    query.payment.time = { $eq: time };
+    query.status = { $eq: "Finalizado" };
 
 
     // Fetch filtered results

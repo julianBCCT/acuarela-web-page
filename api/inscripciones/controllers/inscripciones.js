@@ -86,7 +86,7 @@ module.exports = {
     const { time } = ctx.query;
 
     let query = {
-      payment:{time},status: "Finalizado"
+      payment:{time: time},status: "Finalizado"
     };
 
     // Fetch filtered results

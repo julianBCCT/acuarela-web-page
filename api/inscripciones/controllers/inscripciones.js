@@ -81,21 +81,23 @@ module.exports = {
       return sanitizeEntity(entity, { model: strapi.models.inscripciones });
     }
   },
-
   async findByTime(ctx) {
     const { time } = ctx.query;
-
-    let query = {};
-
-    query.payment.time = { $eq: time };
-    query.status = { $eq: "Finalizado" };
-
-
-    // Fetch filtered results
+  
+    // Construct the query object properly
+    const query = {
+      'payment.time': { $eq: time }, // Use dot notation for nested fields
+      status: { $eq: "Finalizado" }, // Add other filters as needed
+    };
+  
+    // Fetch all entries (for debugging purposes)
     const entriesFind = await strapi.query("inscripciones").model.find();
+  
+    // Fetch filtered entries
     const entries = await strapi.query("inscripciones").model.find(query);
-
-    return {query, entries, entriesFind};
+  
+    // Return results for debugging
+    return { query, entries, entriesFind };
   },
-
+  
 };

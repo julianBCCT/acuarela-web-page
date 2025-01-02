@@ -93,7 +93,7 @@ module.exports = {
     }
 
     // Fetch filtered results
-    const entries = await strapi.query('inscripciones').find(filters);
+    const entries = await strapi.services.inscripciones.find(filters);
 
     return entries;
   },

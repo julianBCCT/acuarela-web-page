@@ -81,25 +81,23 @@ module.exports = {
       return sanitizeEntity(entity, { model: strapi.models.inscripciones });
     }
   },
-  async findByTime(ctx) {
-    let { query } = ctx; // Get the query parameters
-    const { status, 'payment.time': paymentTime } = query;
+  async findByPaymentTime(ctx) {
+    const { status, 'payment.time': paymentTime } = ctx.query;
 
-    // Build the filters dynamically
+    // Step 1: Fetch all entities with optional `status` filter
     const filters = {};
     if (status) filters.status = status;
-    if (paymentTime) filters['payment.time'] = paymentTime;
 
-    let entities;
-    if (ctx.query._q) {
-      // If a search query is present, use search
-      entities = await strapi.services.inscripciones.search({ ...query, ...filters });
-    } else {
-      // Find entities based on the filters
-      entities = await strapi.services.inscripciones.find(filters);
+    let entities = await strapi.services.inscripciones.find(filters);
+
+    // Step 2: Filter entities manually based on `payment.time`
+    if (paymentTime) {
+      entities = entities.filter(
+        entity => entity.payment && entity.payment.time === paymentTime
+      );
     }
 
-    // Sanitize the entities before returning them
+    // Step 3: Sanitize and return the result
     return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones }));
   },
   

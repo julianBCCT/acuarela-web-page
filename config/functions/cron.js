@@ -2,7 +2,7 @@
 
 module.exports = {
   // Ejecutar cada día a la medianoche (cambia según tus necesidades)
-  '* * * * *': async () => {
+  '0 0 * * *': async () => {
     strapi.log.info('Ejecutando Cron Job para procesar pagos');
 
     try {

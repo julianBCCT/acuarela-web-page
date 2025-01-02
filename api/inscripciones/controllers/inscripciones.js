@@ -90,9 +90,10 @@ module.exports = {
     };
 
     // Fetch filtered results
+    const entriesFind = await strapi.query("inscripciones").model.find();
     const entries = await strapi.query("inscripciones").model.find(query);
 
-    return entries;
+    return {entries, entriesFind};
   },
 
 };

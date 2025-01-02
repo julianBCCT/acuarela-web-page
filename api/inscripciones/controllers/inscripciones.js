@@ -85,15 +85,12 @@ module.exports = {
   async findByTime(ctx) {
     const { time } = ctx.query;
 
-    let filters = {};
-
-    // Add filtering for the nested field if provided
-    if (time) {
-      filters['payment.time'] = time;
-    }
+    let query = {
+      payment:{time},status: "Finalizado"
+    };
 
     // Fetch filtered results
-    const entries = await strapi.services.inscripciones.find(filters);
+    const entries = await strapi.services.inscripciones.find(query);
 
     return entries;
   },

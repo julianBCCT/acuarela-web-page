@@ -82,13 +82,24 @@ module.exports = {
     }
   },
   async findByTime(ctx) {
+    let { query } = ctx; // Get the query parameters
+    const { status, 'payment.time': paymentTime } = query;
+
+    // Build the filters dynamically
+    const filters = {};
+    if (status) filters.status = status;
+    if (paymentTime) filters['payment.time'] = paymentTime;
+
     let entities;
     if (ctx.query._q) {
-      entities = await strapi.services.inscripciones.search(ctx.query);
+      // If a search query is present, use search
+      entities = await strapi.services.inscripciones.search({ ...query, ...filters });
     } else {
-      entities = await strapi.services.inscripciones.find(ctx.query);
+      // Find entities based on the filters
+      entities = await strapi.services.inscripciones.find(filters);
     }
 
+    // Sanitize the entities before returning them
     return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones }));
   },
   

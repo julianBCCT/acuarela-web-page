@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/inscripcionesByTime",
-      "handler": "findByTime.find",
+      "handler": "inscripciones.findByTime",
       "config": {
         "policies": []
       }

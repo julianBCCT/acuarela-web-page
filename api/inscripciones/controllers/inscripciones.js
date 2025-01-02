@@ -90,7 +90,7 @@ module.exports = {
     };
 
     // Fetch filtered results
-    const entries = await strapi.services.inscripciones.find(query);
+    const entries = await strapi.query("inscripciones").model.find(query);
 
     return entries;
   },

@@ -81,4 +81,21 @@ module.exports = {
       return sanitizeEntity(entity, { model: strapi.models.inscripciones });
     }
   },
+
+  async findByTime(ctx) {
+    const { time } = ctx.query;
+
+    let filters = {};
+
+    // Add filtering for the nested field if provided
+    if (time) {
+      filters['payment.time'] = time;
+    }
+
+    // Fetch filtered results
+    const entries = await strapi.query('inscripciones').find(filters);
+
+    return entries;
+  },
+
 };

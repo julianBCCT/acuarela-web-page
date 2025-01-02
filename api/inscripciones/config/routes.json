@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/inscripcionesByTime",
+      "handler": "findByTime.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/inscripciones/:id",
       "handler": "inscripciones.findOne",
       "config": {

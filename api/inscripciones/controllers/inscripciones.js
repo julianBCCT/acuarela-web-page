@@ -88,7 +88,7 @@ module.exports = {
     const filters = {};
     if (status) filters.status = status;
 
-    let entities = await strapi.query("inscripciones").find(filters, ["child", ["movements"]]);
+    let entities = await strapi.query("inscripciones").find(filters, ["child", "child.movements"]);
     
     
 

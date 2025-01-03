@@ -165,11 +165,7 @@ module.exports = {
   
             if (diffDays >= frequencyDays) {
               // Tiempo excedido, enviar correo de notificación
-              await strapi.plugins['email'].services.email.send({
-                to: inscription.payer.email,
-                subject: 'Pago atrasado',
-                text: `El último pago registrado fue el ${lastDate.toISOString().split('T')[0]}. Por favor realice su pago.`,
-              });
+
             }
           } else {
             // No tiene movimientos registrados, crear el primero en estado pendiente
@@ -182,13 +178,7 @@ module.exports = {
               payer: inscription.payer.id,
               daycare: inscription.daycare.id,
             });
-  
-            // Enviar correo de notificación para el primer movimiento
-            await strapi.plugins['email'].services.email.send({
-              to: inscription.payer.email,
-              subject: 'Primer pago pendiente',
-              text: `Se ha generado el primer movimiento para el niño/a ${inscription.child.name}. Por favor realice su pago.`,
-            });
+
           }
         }
   

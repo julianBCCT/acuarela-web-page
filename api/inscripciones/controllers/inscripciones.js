@@ -1,5 +1,6 @@
 "use strict";
 const { sanitizeEntity } = require("strapi-utils");
+const FormData = require('form-data');
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -104,8 +105,8 @@ module.exports = {
         Cookie: "PHPSESSID=bd15560aab91a99b3aaccd6fbcecb91b",
       };
       
-  
       const formdata = new FormData();
+      
       formdata.append("email", correo);
       formdata.append("link", linkDePago);
   

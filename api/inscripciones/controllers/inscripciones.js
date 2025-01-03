@@ -84,30 +84,59 @@ module.exports = {
   async findByPaymentTime(ctx) {
     const { status, 'payment.time': paymentTime } = ctx.query;
 
-    // Step 1: Fetch all entities with optional `status` filter
+    // Step 1: Build filters
     const filters = {};
     if (status) filters.status = status;
 
-    let entities = await strapi.query("inscripciones").find(filters, ["child", "child.movements"]);
-    
-    
+    // Step 2: Fetch all entities with relations populated
+    let entities = await strapi.services.inscripciones.find(filters);
 
-    // Step 2: Filter entities manually based on `payment.time`
+    // Populate `child` and their `movements` manually
+    entities = await Promise.all(
+      entities.map(async (entity) => {
+        if (entity.child) {
+          // Populate child movements
+          const childWithMovements = await strapi.services.child.findOne({
+            id: entity.child.id,
+          });
+          entity.child = childWithMovements;
+        }
+        return entity;
+      })
+    );
+
+    // Step 3: Filter entities manually based on `payment.time`
     if (paymentTime) {
       entities = entities.filter(
-        entity => entity.payment && entity.payment.time === paymentTime
+        (entity) => entity.payment && entity.payment.time === paymentTime
       );
     }
-    const semanal = entities.filter(entity => entity.payment && entity.payment.time === "Semanal");
-    const mensual = entities.filter(entity => entity.payment && entity.payment.time === "Mensual");
-    const diario = entities.filter(entity => entity.payment && entity.payment.time === "Diario");
 
-    // Step 3: Sanitize and return the result
+    // Categorize by payment time
+    const semanal = entities.filter(
+      (entity) => entity.payment && entity.payment.time === "Semanal"
+    );
+    const mensual = entities.filter(
+      (entity) => entity.payment && entity.payment.time === "Mensual"
+    );
+    const diario = entities.filter(
+      (entity) => entity.payment && entity.payment.time === "Diario"
+    );
+
+    // Step 4: Sanitize and return the result
     return {
-      entities: entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
-      semanal:semanal.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
-mensual:mensual.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
-diario:diario.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
+      entities: entities.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.inscripciones })
+      ),
+      semanal: semanal.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.inscripciones })
+      ),
+      mensual: mensual.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.inscripciones })
+      ),
+      diario: diario.map((entity) =>
+        sanitizeEntity(entity, { model: strapi.models.inscripciones })
+      ),
     };
   },
   

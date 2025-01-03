@@ -10,21 +10,21 @@
     },
     {
       "method": "GET",
-      "path": "/inscripciones/check-and-notify",
-      "handler": "inscripciones.checkAndNotify",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
       "path": "/inscripciones/count",
       "handler": "inscripciones.count",
       "config": {
         "policies": []
       }
     },
-   
+    {
+      "method": "GET",
+      "path": "/inscripcionesByTime",
+      "handler": "inscripciones.findByPaymentTime",
+      "config": {
+        "policies": []
+      }
+    },
+
     {
       "method": "GET",
       "path": "/inscripciones/:id",

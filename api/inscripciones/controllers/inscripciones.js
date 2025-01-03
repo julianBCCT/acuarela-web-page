@@ -143,14 +143,14 @@ module.exports = {
         const inscriptions = await strapi.query('inscription').find();
   
         const frequencyMap = {
-          daily: 1,
-          weekly: 7,
-          monthly: 30,
+          Diaro: 1,
+          Semanal: 7,
+          Mensual: 30,
         };
   
         for (const inscription of inscriptions) {
-          const frequency = inscription.frequency; // 'daily', 'weekly', 'monthly'
-          const frequencyDays = frequencyMap[frequency.toLowerCase()];
+          const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
+          const frequencyDays = frequencyMap[frequency];
           const lastMovement = await strapi.query('movements').findOne({
             child: inscription.child.id,
             _sort: 'date:desc',
@@ -170,12 +170,12 @@ module.exports = {
           } else {
             // No tiene movimientos registrados, crear el primero en estado pendiente
             await strapi.query('movements').create({
-              amount: inscription.amount,
+              amount: inscription.payment.price,
               date: now,
               name: `Primer movimiento para ${inscription.child.name}`,
-              status: false, // Estado pendiente
+              status: "2", // Estado pendiente
               child: inscription.child.id,
-              payer: inscription.payer.id,
+              payer: inscription.parents.find(parent => parent.is_principal).id,
               daycare: inscription.daycare.id,
             });
 

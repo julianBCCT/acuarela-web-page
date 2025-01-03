@@ -88,54 +88,33 @@ module.exports = {
     const filters = {};
     if (status) filters.status = status;
 
-    // Step 2: Fetch all entities with relations populated
-    let entities = await strapi.services.inscripciones.find(filters);
+    // Step 2: Fetch all inscriptions
+    let inscriptions = await strapi.services.inscripciones.find(filters);
 
-    // Populate `child` and their `movements` manually
-    entities = await Promise.all(
-      entities.map(async (entity) => {
-        if (entity.child) {
-          // Populate child movements
-          const childWithMovements = await strapi.services.children.findOne({
-            id: entity.child.id,
-          });
-          entity.child = childWithMovements;
+    // Step 3: Extract and populate `child.movements` for each inscription
+    let movements = [];
+    for (const inscription of inscriptions) {
+      if (inscription.child) {
+        const childWithMovements = await strapi.services.children.findOne({
+          id: inscription.child.id,
+        });
+        if (childWithMovements && childWithMovements.movements) {
+          movements = movements.concat(childWithMovements.movements);
         }
-        return entity;
-      })
-    );
+      }
+    }
 
-    // Step 3: Filter entities manually based on `payment.time`
+    // Optional: Filter by `payment.time` if needed
     if (paymentTime) {
-      entities = entities.filter(
+      inscriptions = inscriptions.filter(
         (entity) => entity.payment && entity.payment.time === paymentTime
       );
     }
 
-    // Categorize by payment time
-    const semanal = entities.filter(
-      (entity) => entity.payment && entity.payment.time === "Semanal"
-    );
-    const mensual = entities.filter(
-      (entity) => entity.payment && entity.payment.time === "Mensual"
-    );
-    const diario = entities.filter(
-      (entity) => entity.payment && entity.payment.time === "Diario"
-    );
-
-    // Step 4: Sanitize and return the result
+    // Step 4: Return only the `movements` array
     return {
-      entities: entities.map((entity) =>
-        sanitizeEntity(entity, { model: strapi.models.inscripciones })
-      ),
-      semanal: semanal.map((entity) =>
-        sanitizeEntity(entity, { model: strapi.models.inscripciones })
-      ),
-      mensual: mensual.map((entity) =>
-        sanitizeEntity(entity, { model: strapi.models.inscripciones })
-      ),
-      diario: diario.map((entity) =>
-        sanitizeEntity(entity, { model: strapi.models.inscripciones })
+      movements: movements.map((movement) =>
+        sanitizeEntity(movement, { model: strapi.models.movements }) // Replace with your `movements` model
       ),
     };
   },

@@ -139,8 +139,10 @@ module.exports = {
 
     async checkAndNotify(ctx) {
       try {
+        const filters = {};
+        filters.status = "Finalizado";
         // Obtener todas las inscripciones
-        const inscriptions = await strapi.query('inscription').find();
+        const inscriptions = await strapi.query('inscription').find(filters);
   
         const frequencyMap = {
           Diaro: 1,
@@ -183,9 +185,9 @@ module.exports = {
         }
   
         ctx.send({ message: 'Verificación y notificaciones completadas.' });
+        return inscriptions;
       } catch (error) {
         strapi.log.error('Error en checkAndNotify:', error);
-        ctx.throw(500, 'Error al verificar y notificar.');
       }
     },
   

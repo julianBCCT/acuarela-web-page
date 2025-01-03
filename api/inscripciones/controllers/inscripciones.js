@@ -131,7 +131,7 @@ module.exports = {
         }
     }else{
        // No tiene movimientos registrados, crear el primero en estado pendiente
-       await strapi.query('movements').create({
+       await strapi.query('movement').create({
         amount: inscription.payment.price,
         date: now,
         name: `Primer movimiento para ${inscription.child.name}`,

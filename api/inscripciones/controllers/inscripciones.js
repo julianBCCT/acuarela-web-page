@@ -150,41 +150,41 @@ module.exports = {
           Mensual: 30,
         };
   
-        for (const inscription of inscriptions) {
-          const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
-          const frequencyDays = frequencyMap[frequency];
-          const lastMovement = await strapi.query('movements').findOne({
-            child: inscription.child.id,
-            _sort: 'date:desc',
-          });
+        // for (const inscription of inscriptions) {
+        //   const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
+        //   const frequencyDays = frequencyMap[frequency];
+        //   const lastMovement = await strapi.query('movements').findOne({
+        //     child: inscription.child.id,
+        //     _sort: 'date:desc',
+        //   });
   
-          const now = new Date();
-          if (lastMovement) {
-            const lastDate = new Date(lastMovement.date);
-            const diffDays = Math.floor(
-              (now - lastDate) / (1000 * 60 * 60 * 24)
-            );
+        //   const now = new Date();
+        //   if (lastMovement) {
+        //     const lastDate = new Date(lastMovement.date);
+        //     const diffDays = Math.floor(
+        //       (now - lastDate) / (1000 * 60 * 60 * 24)
+        //     );
   
-            if (diffDays >= frequencyDays) {
-              // Tiempo excedido, enviar correo de notificación
+        //     if (diffDays >= frequencyDays) {
+        //       // Tiempo excedido, enviar correo de notificación
 
-            }
-          } else {
-            // No tiene movimientos registrados, crear el primero en estado pendiente
-            await strapi.query('movements').create({
-              amount: inscription.payment.price,
-              date: now,
-              name: `Primer movimiento para ${inscription.child.name}`,
-              status: "2", // Estado pendiente
-              child: inscription.child.id,
-              payer: inscription.parents.find(parent => parent.is_principal).id,
-              daycare: inscription.daycare.id,
-            });
+        //     }
+        //   } else {
+        //     // No tiene movimientos registrados, crear el primero en estado pendiente
+        //     await strapi.query('movements').create({
+        //       amount: inscription.payment.price,
+        //       date: now,
+        //       name: `Primer movimiento para ${inscription.child.name}`,
+        //       status: "2", // Estado pendiente
+        //       child: inscription.child.id,
+        //       payer: inscription.parents.find(parent => parent.is_principal).id,
+        //       daycare: inscription.daycare.id,
+        //     });
 
-          }
-        }
+        //   }
+        // }
   
-        ctx.send({ message: 'Verificación y notificaciones completadas.' });
+        // ctx.send({ message: 'Verificación y notificaciones completadas.' });
         return inscriptions;
       } catch (error) {
         strapi.log.error('Error en checkAndNotify:', error);

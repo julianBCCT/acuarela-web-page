@@ -111,37 +111,39 @@ module.exports = {
     );
 
     for (const inscription of entities) {
-      const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
-      const frequencyDays = frequencyMap[frequency];
-      const lastMovement = await strapi.query('movement').findOne({
-        child: inscription.child.id,
-        _sort: 'date:desc',
-      });
-
-      const now = new Date();
-      if (lastMovement) {
-        const lastDate = new Date(lastMovement.date);
-        const diffDays = Math.floor(
-          (now - lastDate) / (1000 * 60 * 60 * 24)
-        );
-
-        if (diffDays >= frequencyDays) {
-          // Tiempo excedido, enviar correo de notificación
-
-        }
-    }else{
-       // No tiene movimientos registrados, crear el primero en estado pendiente
-       await strapi.query('movement').create({
-        amount: inscription.payment.price,
-        date: now,
-        name: `Primer movimiento para ${inscription.child.name}`,
-        status: true, // Estado pendiente
-        type: "2",
-        child: inscription.child.id,
-        payer: inscription.parents.find(parent => parent.is_principal).id,
-        daycare: inscription.daycare.id,
-      });
-    }
+      if(inscription.child){
+        const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
+        const frequencyDays = frequencyMap[frequency];
+        const lastMovement = await strapi.query('movement').findOne({
+          child: inscription.child.id,
+          _sort: 'date:desc',
+        });
+  
+        const now = new Date();
+        if (lastMovement) {
+          const lastDate = new Date(lastMovement.date);
+          const diffDays = Math.floor(
+            (now - lastDate) / (1000 * 60 * 60 * 24)
+          );
+  
+          if (diffDays >= frequencyDays) {
+            // Tiempo excedido, enviar correo de notificación
+  
+          }
+      }else{
+         // No tiene movimientos registrados, crear el primero en estado pendiente
+         await strapi.query('movement').create({
+          amount: inscription.payment.price,
+          date: now,
+          name: `Primer movimiento para ${inscription.child.name}`,
+          status: true, // Estado pendiente
+          type: "2",
+          child: inscription.child.id,
+          payer: inscription.parents.find(parent => parent.is_principal).id,
+          daycare: inscription.daycare.id,
+        });
+      }
+      }
   }
 
     // Step 3: Filter entities manually based on `payment.time`

@@ -89,13 +89,7 @@ module.exports = {
     if (status) filters.status = status;
 
     let entities = await strapi.query("inscripciones").find(filters, {
-      populate: {
-        child: {
-          populate: {
-            movements: true, // Populate 'movements'
-          },
-        }
-      },
+      populate: ["child", ["movements"]]
     });
     
     

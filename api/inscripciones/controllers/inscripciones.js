@@ -150,7 +150,8 @@ module.exports = {
               (parent) => parent.is_principal
             );
             const linkDePago = `https://acuarela.app/paypal/${principalParent.id}/TestMerchantID/${lastMovement.id}`;
-            await sendEmail(principalParent.email, linkDePago);
+            // await sendEmail(principalParent.email, linkDePago);
+            await sendEmail("dreinovcorp@gmail.com", linkDePago);
           }
         } else {
           const principalParent = entity.parents.find(
@@ -167,7 +168,8 @@ module.exports = {
             daycare: entity.daycare.id,
           });
           const linkDePago = `https://acuarela.app/paypal/${principalParent.id}/TestMerchantID/${movementCreated.id}`;
-          await sendEmail(principalParent.email, linkDePago);
+          // await sendEmail(principalParent.email, linkDePago);
+          await sendEmail("dreinovcorp@gmail.com", linkDePago);
         }
       }
       return entity;

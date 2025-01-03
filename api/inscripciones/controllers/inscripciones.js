@@ -100,8 +100,10 @@ module.exports = {
     };
   
     const sendEmail = async (correo, linkDePago) => {
-      const myHeaders = new Headers();
-      myHeaders.append("Cookie", "PHPSESSID=bd15560aab91a99b3aaccd6fbcecb91b");
+      const myHeaders = {
+        Cookie: "PHPSESSID=bd15560aab91a99b3aaccd6fbcecb91b",
+      };
+      
   
       const formdata = new FormData();
       formdata.append("email", correo);

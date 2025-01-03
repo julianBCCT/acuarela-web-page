@@ -114,13 +114,13 @@ module.exports = {
 
     // Categorize by payment time
     const semanal = entities.filter(
-      (entity) => entity.child && entity.payment && entity.payment.time === "Semanal"
+      (entity) => entity.child && entity.child.movements &&  entity.payment && entity.payment.time === "Semanal"
     );
     const mensual = entities.filter(
-      (entity) => entity.child && entity.payment && entity.payment.time === "Mensual"
+      (entity) => entity.child &&  entity.child.movements && entity.payment && entity.payment.time === "Mensual"
     );
     const diario = entities.filter(
-      (entity) => entity.child && entity.payment && entity.payment.time === "Diario"
+      (entity) => entity.child && entity.child.movements &&  entity.payment && entity.payment.time === "Diario"
     );
 
     // Step 4: Sanitize and return the result

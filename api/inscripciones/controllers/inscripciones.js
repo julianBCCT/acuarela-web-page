@@ -135,7 +135,8 @@ module.exports = {
         amount: inscription.payment.price,
         date: now,
         name: `Primer movimiento para ${inscription.child.name}`,
-        status: "2", // Estado pendiente
+        status: true, // Estado pendiente
+        type: "2",
         child: inscription.child.id,
         payer: inscription.parents.find(parent => parent.is_principal).id,
         daycare: inscription.daycare.id,

@@ -142,7 +142,7 @@ module.exports = {
         const filters = {};
         filters.status = "Finalizado";
         // Obtener todas las inscripciones
-        const inscriptions = await strapi.query('inscription').find(filters);
+        const inscriptions = await strapi.query('inscription').find();
   
         const frequencyMap = {
           Diaro: 1,

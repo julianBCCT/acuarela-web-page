@@ -24,7 +24,14 @@
         "policies": []
       }
     },
-
+    {
+      "method": "GET",
+      "path": "/inscripciones/check-and-notify",
+      "handler": "inscripciones.checkAndNotify",
+      "config": {
+        "policies": []
+      }
+    },
     {
       "method": "GET",
       "path": "/inscripciones/:id",

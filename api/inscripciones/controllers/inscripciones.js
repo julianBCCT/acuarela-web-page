@@ -136,5 +136,67 @@ module.exports = {
       ),
     };
   },
+
+    async checkAndNotify(ctx) {
+      try {
+        // Obtener todas las inscripciones
+        const inscriptions = await strapi.query('inscription').find();
+  
+        const frequencyMap = {
+          daily: 1,
+          weekly: 7,
+          monthly: 30,
+        };
+  
+        for (const inscription of inscriptions) {
+          const frequency = inscription.frequency; // 'daily', 'weekly', 'monthly'
+          const frequencyDays = frequencyMap[frequency.toLowerCase()];
+          const lastMovement = await strapi.query('movements').findOne({
+            child: inscription.child.id,
+            _sort: 'date:desc',
+          });
+  
+          const now = new Date();
+          if (lastMovement) {
+            const lastDate = new Date(lastMovement.date);
+            const diffDays = Math.floor(
+              (now - lastDate) / (1000 * 60 * 60 * 24)
+            );
+  
+            if (diffDays >= frequencyDays) {
+              // Tiempo excedido, enviar correo de notificación
+              await strapi.plugins['email'].services.email.send({
+                to: inscription.payer.email,
+                subject: 'Pago atrasado',
+                text: `El último pago registrado fue el ${lastDate.toISOString().split('T')[0]}. Por favor realice su pago.`,
+              });
+            }
+          } else {
+            // No tiene movimientos registrados, crear el primero en estado pendiente
+            await strapi.query('movements').create({
+              amount: inscription.amount,
+              date: now,
+              name: `Primer movimiento para ${inscription.child.name}`,
+              status: false, // Estado pendiente
+              child: inscription.child.id,
+              payer: inscription.payer.id,
+              daycare: inscription.daycare.id,
+            });
+  
+            // Enviar correo de notificación para el primer movimiento
+            await strapi.plugins['email'].services.email.send({
+              to: inscription.payer.email,
+              subject: 'Primer pago pendiente',
+              text: `Se ha generado el primer movimiento para el niño/a ${inscription.child.name}. Por favor realice su pago.`,
+            });
+          }
+        }
+  
+        ctx.send({ message: 'Verificación y notificaciones completadas.' });
+      } catch (error) {
+        strapi.log.error('Error en checkAndNotify:', error);
+        ctx.throw(500, 'Error al verificar y notificar.');
+      }
+    },
   
 };

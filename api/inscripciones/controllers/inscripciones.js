@@ -96,9 +96,17 @@ module.exports = {
         entity => entity.payment && entity.payment.time === paymentTime
       );
     }
+    const semanal = entities.filter(entity => entity.payment && entity.payment.time === "Semanal");
+    const mensual = entities.filter(entity => entity.payment && entity.payment.time === "Mensual");
+    const diario = entities.filter(entity => entity.payment && entity.payment.time === "Diario");
 
     // Step 3: Sanitize and return the result
-    return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones }));
+    return {
+      entities: entities.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
+      semanal:semanal.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
+mensual:mensual.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
+diario:diario.map(entity => sanitizeEntity(entity, { model: strapi.models.inscripciones })),
+    };
   },
   
 };

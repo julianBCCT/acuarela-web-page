@@ -20,9 +20,7 @@ module.exports = {
 
       
       // Procesar los registros (ejemplo: loguear cantidades)
-      strapi.log.info(`Registros Semanales: ${semanal.length}`);
-      strapi.log.info(`Registros Mensuales: ${mensual.length}`);
-      strapi.log.info(`Registros Diarios: ${diario.length}`);
+      strapi.log.info(`Registros:`, {semanal,mensual, diario});
 
       // Aquí puedes agregar cualquier lógica adicional que necesites,
       // como enviar recordatorios o actualizaciones de estado.

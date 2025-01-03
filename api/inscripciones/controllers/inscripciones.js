@@ -113,7 +113,7 @@ module.exports = {
     for (const inscription of entities) {
       const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
       const frequencyDays = frequencyMap[frequency];
-      const lastMovement = await strapi.query('movements').findOne({
+      const lastMovement = await strapi.query('movement').findOne({
         child: inscription.child.id,
         _sort: 'date:desc',
       });

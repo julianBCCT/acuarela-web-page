@@ -83,101 +83,125 @@ module.exports = {
   },
   async findByPaymentTime(ctx) {
     const { status, 'payment.time': paymentTime } = ctx.query;
-
-    // Step 1: Build filters
-    const filters = {};
-    if (status) filters.status = status;
-
-    // Step 2: Fetch all entities with relations populated
-    let entities = await strapi.services.inscripciones.find(filters);
+  
     const frequencyMap = {
-      Diaro: 1,
+      Diario: 1,
       Semanal: 7,
       Mensual: 30,
     };
-
-    // Populate `child` and their `movements` manually
-    entities = await Promise.all(
-      entities.map(async (entity) => {
-        if (entity.child) {
-          // Populate child movements
-          const childWithMovements = await strapi.services.children.findOne({
-            id: entity.child.id,
-          });
-          entity.child = childWithMovements;
-        }
-        return entity;
-      })
-    );
-
-    for (const inscription of entities) {
-      if(inscription.child){
-        const frequency = inscription.payment.time; // 'daily', 'weekly', 'monthly'
-        const frequencyDays = frequencyMap[frequency];
-        const lastMovement = await strapi.query('movement').findOne({
-          child: inscription.child.id,
-          _sort: 'date:desc',
+  
+    const now = new Date();
+  
+    // Helper functions
+    const buildFilters = (status) => {
+      const filters = {};
+      if (status) filters.status = status;
+      return filters;
+    };
+  
+    const sendEmail = async (correo, linkDePago) => {
+      const myHeaders = new Headers();
+      myHeaders.append("Cookie", "PHPSESSID=bd15560aab91a99b3aaccd6fbcecb91b");
+  
+      const formdata = new FormData();
+      formdata.append("email", correo);
+      formdata.append("link", linkDePago);
+  
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+  
+      try {
+        const response = await fetch(
+          "https://bilingualchildcaretraining.com/s/pendingMovementsEmail/",
+          requestOptions
+        );
+        return response.json();
+      } catch (error) {
+        console.error("Email sending error:", error);
+        return false;
+      }
+    };
+  
+    const processEntity = async (entity) => {
+      if (entity.child) {
+        const childWithMovements = await strapi.services.children.findOne({
+          id: entity.child.id,
+        });
+        entity.child = childWithMovements;
+  
+        const frequency = frequencyMap[entity.payment.time];
+        const lastMovement = await strapi.query("movement").findOne({
+          child: entity.child.id,
+          _sort: "date:desc",
         });
   
-        const now = new Date();
         if (lastMovement) {
           const lastDate = new Date(lastMovement.date);
           const diffDays = Math.floor(
             (now - lastDate) / (1000 * 60 * 60 * 24)
           );
   
-          if (diffDays >= frequencyDays) {
-            // Tiempo excedido, enviar correo de notificación
-  
+          if (diffDays >= frequency) {
+            const principalParent = entity.parents.find(
+              (parent) => parent.is_principal
+            );
+            const linkDePago = `https://acuarela.app/paypal/${principalParent.id}/TestMerchantID/${lastMovement.id}`;
+            await sendEmail(principalParent.email, linkDePago);
           }
-      }else{
-         // No tiene movimientos registrados, crear el primero en estado pendiente
-         await strapi.query('movement').create({
-          amount: inscription.payment.price,
-          date: now,
-          name: `Primer movimiento para ${inscription.child.name}`,
-          status: true, // Estado pendiente
-          type: "2",
-          child: inscription.child.id,
-          payer: inscription.parents.find(parent => parent.is_principal).id,
-          daycare: inscription.daycare.id,
-        });
+        } else {
+          const principalParent = entity.parents.find(
+            (parent) => parent.is_principal
+          );
+          const movementCreated = await strapi.query("movement").create({
+            amount: entity.payment.price,
+            date: now,
+            name: `Primer movimiento para ${entity.child.name}`,
+            status: true,
+            type: "2",
+            child: entity.child.id,
+            payer: principalParent.id,
+            daycare: entity.daycare.id,
+          });
+          const linkDePago = `https://acuarela.app/paypal/${principalParent.id}/TestMerchantID/${movementCreated.id}`;
+          await sendEmail(principalParent.email, linkDePago);
+        }
       }
-      }
-  }
-
-    // Step 3: Filter entities manually based on `payment.time`
+      return entity;
+    };
+  
+    // Step 1: Fetch and process entities
+    const filters = buildFilters(status);
+    let entities = await strapi.services.inscripciones.find(filters);
+    entities = await Promise.all(entities.map(processEntity));
+  
+    // Step 2: Filter by payment time if provided
     if (paymentTime) {
       entities = entities.filter(
         (entity) => entity.payment && entity.payment.time === paymentTime
       );
     }
-
-    // Categorize by payment time
-    const semanal = entities.filter(
-      (entity) => entity.child && entity.child.movements &&  entity.payment && entity.payment.time === "Semanal"
-    );
-    const mensual = entities.filter(
-      (entity) => entity.child &&  entity.child.movements && entity.payment && entity.payment.time === "Mensual"
-    );
-    const diario = entities.filter(
-      (entity) => entity.child && entity.child.movements &&  entity.payment && entity.payment.time === "Diario"
-    );
-
-    // Step 4: Sanitize and return the result
+  
+    // Step 3: Categorize entities
+    const categorizeEntities = (time) =>
+      entities.filter(
+        (entity) =>
+          entity.child &&
+          entity.child.movements &&
+          entity.payment &&
+          entity.payment.time === time
+      );
+  
     return {
-      semanal: semanal.map((entity) =>
-        entity.child.movements
-      ),
-      mensual: mensual.map((entity) =>
-        entity.child.movements
-      ),
-      diario: diario.map((entity) =>
-        entity.child.movements
-      ),
+      semanal: categorizeEntities("Semanal").map((entity) => entity.child.movements),
+      mensual: categorizeEntities("Mensual").map((entity) => entity.child.movements),
+      diario: categorizeEntities("Diario").map((entity) => entity.child.movements),
     };
-  },
-
+  }
+,
     async checkAndNotify(ctx) {
       try {
         const filters = {};

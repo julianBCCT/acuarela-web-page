@@ -88,7 +88,7 @@ module.exports = {
     const filters = {};
     if (status) filters.status = status;
 
-    let entities = await strapi.services.inscripciones.find(filters);
+    let entities = await strapi.services.inscripciones.find(filters).populate("child", ["movements"]);
 
     // Step 2: Filter entities manually based on `payment.time`
     if (paymentTime) {

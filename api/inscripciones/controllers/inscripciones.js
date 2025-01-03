@@ -91,10 +91,13 @@ module.exports = {
     let entities = await strapi.query("inscripciones").find(filters, {
       populate: {
         child: {
-          populate: ["movements"], // Populate the 'movements' field of the 'child' relation
-        },
+          populate: {
+            movements: true, // Populate 'movements'
+          },
+        }
       },
     });
+    
     
 
     // Step 2: Filter entities manually based on `payment.time`

@@ -96,7 +96,7 @@ module.exports = {
       entities.map(async (entity) => {
         if (entity.child) {
           // Populate child movements
-          const childWithMovements = await strapi.services.child.findOne({
+          const childWithMovements = await strapi.services.children.findOne({
             id: entity.child.id,
           });
           entity.child = childWithMovements;

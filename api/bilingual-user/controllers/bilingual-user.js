@@ -54,10 +54,29 @@ module.exports = {
   },
   async login(ctx) {
     const { email, password } = ctx.request.body;
+    const productToCheck = "6346e319e2d31bfeadddbd47";
     let entity;
     entity = await strapi.services["bilingual-user"].findOne({ email });
-    console.log(entity.suscriptions);
-    
+  
+    // Validación de la fecha de creación
+    const createdAt = new Date(entity.createdAt);
+    const comparisonDate = new Date('2025-01-01'); // 01/01/2025
+    if (createdAt < comparisonDate) {
+      // Si la fecha de creación es menor al 01/01/2025, no importa si tiene suscripción existente
+      return ctx.send(await verification.generate_token(entity));
+    }
+  
+    // Si no tiene suscripción activa con el producto
+    const exist = entity.suscriptions.some(subscription => subscription.product === productToCheck);
+    if (!exist) {
+      return ctx.send({
+        ok: false,
+        status: 400,
+        msg: "El usuario no tiene una suscripción activa con el producto requerido.",
+      });
+    }
+  
+    // Si tiene suscripción activa, continua con la validación de la contraseña
     if (entity) {
       if (password == "acu4rel4789654") {
         return ctx.send(await verification.generate_token(entity));
@@ -77,7 +96,7 @@ module.exports = {
       return ctx.send({
         ok: false,
         status: 400,
-        msg: "No se encontro un usuario registrado con este correo.",
+        msg: "No se encontró un usuario registrado con este correo.",
       });
     }
   },

@@ -31,6 +31,9 @@
     },
     "stripe_response": {
       "type": "json"
+    },
+    "ref": {
+      "type": "string"
     }
   }
 }

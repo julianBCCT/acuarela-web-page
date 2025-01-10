@@ -15,8 +15,8 @@
       "type": "string"
     },
     "calificacion_curricula": {
-      "collection": "calificacion-curriculum",
-      "via": "curriculum"
+      "via": "curriculum",
+      "collection": "calificacion-curriculum"
     },
     "actividades": {
       "via": "curricula",

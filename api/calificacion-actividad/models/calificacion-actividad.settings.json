@@ -18,12 +18,27 @@
       "type": "integer"
     },
     "actividad": {
-      "via": "calificacion_actividads",
-      "model": "actividades"
+      "model": "actividades",
+      "via": "calificacion_actividads"
     },
     "bilingual_user": {
-      "via": "calificacion_actividads",
-      "model": "bilingual-user"
+      "model": "bilingual-user",
+      "via": "calificacion_actividads"
+    },
+    "tema": {
+      "type": "string"
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "resolucion": {
+      "type": "string"
+    },
+    "navegador": {
+      "type": "string"
+    },
+    "ip": {
+      "type": "string"
     }
   }
 }

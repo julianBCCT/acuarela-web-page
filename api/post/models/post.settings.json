@@ -26,8 +26,8 @@
       "required": false
     },
     "acuarelauser": {
-      "via": "posts",
-      "model": "acuarelauser"
+      "model": "acuarelauser",
+      "via": "posts"
     },
     "date": {
       "type": "datetime"
@@ -46,6 +46,9 @@
     "classactivity": {
       "model": "classactivity",
       "via": "posts"
+    },
+    "daycare": {
+      "model": "daycare"
     }
   }
 }

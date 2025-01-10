@@ -73,11 +73,13 @@ module.exports = {
     
     // Si acuarela es true, valida la suscripción con el producto
     if (acuarela) {
+      
       const hasValidSubscription = entity.suscriptions.some(
         (subscription) =>
           subscription.product === productToCheck &&
-          new Date(subscription.suscription_expiration) > new Date()
+        new Date(subscription.suscription_expiration) > new Date()
       );
+      console.log({subs:entity.suscriptions, hasValidSubscription});
   
       if (!(createdAt < comparisonDate || hasValidSubscription)) {
         return ctx.send({

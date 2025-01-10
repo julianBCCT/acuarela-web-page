@@ -27,8 +27,8 @@
       "default": 0
     },
     "calificacion_actividads": {
-      "collection": "calificacion-actividad",
-      "via": "actividad"
+      "via": "actividad",
+      "collection": "calificacion-actividad"
     },
     "dia_especifico": {
       "type": "date"
@@ -155,16 +155,6 @@
     "dominios_uc": {
       "type": "richtext"
     },
-    "enfoque_general": {
-      "type": "enumeration",
-      "enum": [
-        "cognitivo",
-        "espiritual",
-        "emocional",
-        "fisico",
-        "social"
-      ]
-    },
     "tiempo_en_minutos": {
       "type": "integer"
     },
@@ -183,17 +173,6 @@
     "link_cuento": {
       "type": "string"
     },
-    "enfoque_pedagogico": {
-      "type": "enumeration",
-      "enum": [
-        "pedagogia",
-        "reggioemilia",
-        "waldorf",
-        "pikleriana",
-        "tradicional",
-        "montessori"
-      ]
-    },
     "lenguaje": {
       "type": "enumeration",
       "enum": [
@@ -202,6 +181,12 @@
       ]
     },
     "semana": {
+      "type": "string"
+    },
+    "enfoque_general": {
+      "type": "string"
+    },
+    "enfoque_pedagogico": {
       "type": "string"
     }
   }

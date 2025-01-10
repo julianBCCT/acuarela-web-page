@@ -39,8 +39,8 @@
       "type": "string"
     },
     "cursos": {
-      "via": "classes",
-      "collection": "cursos"
+      "collection": "cursos",
+      "via": "classes"
     },
     "estudiantes": {
       "collection": "estudiantes"
@@ -48,6 +48,9 @@
     "asistencia_cdas": {
       "collection": "asistencia-cda",
       "via": "class"
+    },
+    "precio": {
+      "type": "integer"
     }
   }
 }

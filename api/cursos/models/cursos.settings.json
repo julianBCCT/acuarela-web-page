@@ -45,8 +45,8 @@
       ]
     },
     "classes": {
-      "collection": "classes",
       "via": "cursos",
+      "collection": "classes",
       "dominant": true
     }
   }

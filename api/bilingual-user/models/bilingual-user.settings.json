@@ -61,12 +61,12 @@
       "type": "string"
     },
     "calificacion_actividads": {
-      "collection": "calificacion-actividad",
-      "via": "bilingual_user"
+      "via": "bilingual_user",
+      "collection": "calificacion-actividad"
     },
     "calificacion_curricula": {
-      "collection": "calificacion-curriculum",
-      "via": "bilingual_user"
+      "via": "bilingual_user",
+      "collection": "calificacion-curriculum"
     },
     "have_daycare": {
       "type": "boolean"

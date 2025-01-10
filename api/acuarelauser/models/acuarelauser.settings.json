@@ -78,8 +78,8 @@
       "type": "json"
     },
     "posts": {
-      "collection": "post",
-      "via": "acuarelauser"
+      "via": "acuarelauser",
+      "collection": "post"
     },
     "phone": {
       "type": "string"

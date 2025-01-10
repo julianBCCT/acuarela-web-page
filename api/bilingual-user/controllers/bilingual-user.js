@@ -76,7 +76,7 @@ module.exports = {
       
       const hasValidSubscription = entity.suscriptions.some(
         (subscription) =>
-          subscription.product === productToCheck &&
+          subscription.product == productToCheck &&
         new Date(subscription.suscription_expiration) > new Date()
       );
       console.log({subs:entity.suscriptions, hasValidSubscription});

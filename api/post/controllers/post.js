@@ -27,7 +27,10 @@ module.exports = {
       .populate("classactivity");
     if (daycareId) {
       const filterEntities = entities.filter((entity) => {
-        if (entity.acuarelauser) {
+        if(entity.daycare){
+          return entity.daycare == daycareId;
+        }
+        else if (entity.acuarelauser) {
           return entity.acuarelauser.daycares.includes(daycareId);
         }
       });

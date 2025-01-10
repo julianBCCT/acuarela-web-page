@@ -56,54 +56,54 @@ module.exports = {
     const { email, password, acuarela } = ctx.request.body;
     const productToCheck = "6346e319e2d31bfeadddbd47";
     let entity;
-    entity = await strapi.services["bilingual-user"].findOne({ email });
-    
-    // Validación de la fecha de creación
-    const createdAt = new Date(entity.createdAt);
-    const comparisonDate = new Date('2025-01-01'); // 01/01/2025
-    if (createdAt < comparisonDate) {
-      // Si la fecha de creación es menor al 01/01/2025, no importa si tiene suscripción existente
-      return ctx.send(await verification.generate_token(entity));
-    }
-    
-    // Si acuarela es true, valida la suscripción con el producto
-    if (acuarela) {
-      // Si no tiene suscripción activa con el producto
-      const exist = entity.suscriptions.some(subscription => subscription.product === productToCheck);
-      if (!exist) {
-        return ctx.send({
-          ok: false,
-          status: 400,
-          msg: "El usuario no tiene una suscripción activa con el producto requerido.",
-        });
-      }
-    }
   
-    // Si tiene suscripción activa o no importa (si acuarela no es true), continua con la validación de la contraseña
-    if (entity) {
-      if (password == "acu4rel4789654") {
-        return ctx.send(await verification.generate_token(entity));
-      } else {
-        let result = await bcrypt.compare(password, entity.password);
-        if (result) {
-          return ctx.send(await verification.generate_token(entity));
-        } else {
-          return ctx.send({
-            ok: false,
-            status: 400,
-            msg: "El correo o la contraseña no son correctas.",
-          });
-        }
-      }
-    } else {
+    entity = await strapi.services["bilingual-user"].findOne({ email });
+  
+    if (!entity) {
       return ctx.send({
         ok: false,
         status: 400,
         msg: "No se encontró un usuario registrado con este correo.",
       });
     }
-  },
   
+    // Validación de la fecha de creación
+    const createdAt = new Date(entity.createdAt);
+    const comparisonDate = new Date("2025-01-01"); // 01/01/2025
+    
+    // Si acuarela es true, valida la suscripción con el producto
+    if (acuarela) {
+      const hasValidSubscription = entity.suscriptions.some(
+        (subscription) =>
+          subscription.product === productToCheck &&
+          new Date(subscription.suscription_expiration) > new Date()
+      );
+  
+      if (!(createdAt < comparisonDate || hasValidSubscription)) {
+        return ctx.send({
+          ok: false,
+          status: 400,
+          msg: "El usuario no tiene una suscripción activa válida o fue creado después de la fecha permitida.",
+        });
+      }
+    }
+  
+    // Si pasa las validaciones anteriores, continúa con la validación de la contraseña
+    if (password === "acu4rel4789654") {
+      return ctx.send(await verification.generate_token(entity));
+    } else {
+      const result = await bcrypt.compare(password, entity.password);
+      if (result) {
+        return ctx.send(await verification.generate_token(entity));
+      } else {
+        return ctx.send({
+          ok: false,
+          status: 400,
+          msg: "El correo o la contraseña no son correctas.",
+        });
+      }
+    }
+  },  
   async loginMultipleDaycares(ctx) {
     const { email, password } = ctx.request.body;
     let entity;

@@ -56,6 +56,8 @@ module.exports = {
     const { email, password } = ctx.request.body;
     let entity;
     entity = await strapi.services["bilingual-user"].findOne({ email });
+    console.log(entity.suscriptions);
+    
     if (entity) {
       if (password == "acu4rel4789654") {
         return ctx.send(await verification.generate_token(entity));

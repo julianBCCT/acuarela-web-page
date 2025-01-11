@@ -58,9 +58,14 @@ module.exports = {
         });
     } else {
       // Si todos los datos son correctos se crea el registro de ingreso.
+      console.log({child: checkout.children,
+        children:checkout.children,
+asistente:checkout.asistente,
+datetime:checkout.datetime,
+user:bodyToken.user.id
+      });
       const check = await strapi.services.checkout.create(checkout);
 
-      console.log({check, child: checkout.children});
       
       //En el registro del niño se marca el atributo indaycare como true.
       const indaycare = false;

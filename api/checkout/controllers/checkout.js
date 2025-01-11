@@ -10,80 +10,93 @@ const verification = require("../../../middlewares/authJwt");
 module.exports = {
   // Crea un nuevo registro de checkout.
   async create(ctx) {
-    const { token } = ctx.request.header;
-    const checkout = ctx.request.body;
-    if (checkout.token) {
-      // Valida el token.
-      let validToken = await verification.renew(token);
-      let bodyToken = await verification.get_data(checkout.token);
-console.log(validToken,bodyToken,checkout.token);
-
-      if (validToken.ok && bodyToken.ok) {
-        // Valida que los datos hayan sido ingresados.
-        if (!checkout.children)
-          return ctx.send({
-            ok: false,
-            status: 400,
-            code: 5,
-            msg: "The childs id is required.",
-          });
-        if (!checkout.asistente)
-          return ctx.send({
-            ok: false,
-            status: 400,
-            code: 5,
-            msg: "The assistant is required.",
-          });
-        if (!bodyToken.user.id)
-          return ctx.send({
-            ok: false,
-            status: 400,
-            code: 5,
-            msg: "The guardian is required.",
-          });
-        if (!checkout.datetime)
-          return ctx.send({
-            ok: false,
-            status: 400,
-            code: 5,
-            msg: "The check-in datetime is required.",
-          });
-      } else
-        return ctx.send({
-          ok: false,
-          status: 400,
-          code: 1,
-          msg: "token errors",
-          validToken,
-          bodyToken,
-        });
-    } else {
-      // Si todos los datos son correctos se crea el registro de ingreso.
-      console.log({child: checkout.children,
-        children:checkout.children,
-asistente:checkout.asistente,
-datetime:checkout.datetime,
-user:bodyToken.user.id
-      });
-      const check = await strapi.services.checkout.create(checkout);
-
-      
-      //En el registro del niño se marca el atributo indaycare como true.
-      const indaycare = false;
-      await strapi.services.children.update(
-        { _id: checkout.children },
-        { indaycare }
-      );
-
-      return ctx.send({
-        ok: true,
-        status: 200,
-        code: 0,
-        msg: "Check-out successful.",
-        user: validToken.user,
-      });
-    }
-  },
+     const { token } = ctx.request.header;
+     const checkout = ctx.request.body;
+     if (checkout.token) {
+       // Valida el token.
+       let validToken = await verification.renew(token);
+       let bodyToken = await verification.get_data(checkout.token);
+ 
+       if (validToken.ok && bodyToken.ok) {
+         // Valida que los datos hayan sido ingresados.
+         if (!checkout.children)
+           return ctx.send({
+             ok: false,
+             status: 400,
+             code: 5,
+             msg: "The childs id is required.",
+           });
+         if (!checkout.asistente)
+           return ctx.send({
+             ok: false,
+             status: 400,
+             code: 5,
+             msg: "The assistant is required.",
+           });
+         if (!bodyToken.user.id /*checkout.acudiente*/)
+           return ctx.send({
+             ok: false,
+             status: 400,
+             code: 5,
+             msg: "The guardian is required.",
+           });
+         if (!checkout.datetime)
+           return ctx.send({
+             ok: false,
+             status: 400,
+             code: 5,
+             msg: "The check-in datetime is required.",
+           });
+         else {
+           // Si todos los datos son correctos se crea el registro de ingreso.
+           checkout.acudiente = [checkout.acudiente];
+           await strapi.services.checkout.create(checkout);
+ 
+           //En el registro del niño se marca el atributo indaycare como true.
+           const indaycare = false;
+           await strapi.services.children.update(
+             { _id: checkout.children },
+             { indaycare }
+           );
+ 
+           return ctx.send({
+             ok: true,
+             status: 200,
+             code: 0,
+             msg: "Check-in successful.",
+             user: validToken.user,
+             acudiente: checkout.acudiente,
+           });
+         }
+       } else
+         return ctx.send({
+           ok: false,
+           status: 400,
+           code: 1,
+           msg: "token errors",
+           validToken,
+           bodyToken,
+         });
+     } else {
+       // Si todos los datos son correctos se crea el registro de ingreso.
+       await strapi.services.checkin.create(checkin);
+ 
+       //En el registro del niño se marca el atributo indaycare como true.
+       const indaycare = true;
+       await strapi.services.children.update(
+         { _id: checkin.children },
+         { indaycare }
+       );
+ 
+       return ctx.send({
+         ok: true,
+         status: 200,
+         code: 0,
+         msg: "Check-in successful.",
+         user: validToken.user,
+       });
+     }
+   },
 
   // Retorna todos los checkin realizados el día actual.
   async find_today(ctx) {

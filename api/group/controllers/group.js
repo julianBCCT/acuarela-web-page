@@ -65,9 +65,7 @@ module.exports = {
           msg: "Groups not found.",
         });
       else {
-        validToken.msg = "Query completed successfully!";
-        validToken.response = entity;
-        return ctx.send(validToken);
+        return ctx.send({response: entity});
       }
 
   },

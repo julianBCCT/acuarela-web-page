@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/groupsNew",
+      "handler": "group.findNew",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/groups/count",
       "handler": "group.count",
       "config": {

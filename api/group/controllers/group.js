@@ -46,6 +46,34 @@ module.exports = {
       }
     } else return ctx.send(validToken);
   },
+  async findNew(ctx) {
+    const { token } = ctx.request.header;
+    let validToken = await verification.renew(token);
+
+    if (validToken.ok) {
+      let query = { status: true };
+      const { daycareId } = ctx.params;
+        query.daycare = { $eq: daycareId };
+      let entity = await strapi
+        .query("group")
+        .model.find(query)
+        .populate("activities")
+        .populate("acuarelauser", ["name", "lastname", "photo"]);
+
+      if (!entity)
+        return ctx.send({
+          ok: true,
+          status: 200,
+          code: 0,
+          msg: "Groups not found.",
+        });
+      else {
+        validToken.msg = "Query completed successfully!";
+        validToken.response = entity;
+        return ctx.send(validToken);
+      }
+    } else return ctx.send(validToken);
+  },
   // Trae todos los grupos, el usuario asociado a ellos y los niños del grupo
   async find_child_group(ctx) {
     const { token } = ctx.request.header;

@@ -47,12 +47,9 @@ module.exports = {
     } else return ctx.send(validToken);
   },
   async findNew(ctx) {
-    const { token } = ctx.request.header;
-    let validToken = await verification.renew(token);
-
-    if (validToken.ok) {
       let query = { status: true };
       const { daycareId } = ctx.params;
+        console.log("🚀 ~ findNew ~ ctx.params:", ctx.params)
         query.daycare = { $eq: daycareId };
       let entity = await strapi
         .query("group")
@@ -72,7 +69,7 @@ module.exports = {
         validToken.response = entity;
         return ctx.send(validToken);
       }
-    } else return ctx.send(validToken);
+
   },
   // Trae todos los grupos, el usuario asociado a ellos y los niños del grupo
   async find_child_group(ctx) {

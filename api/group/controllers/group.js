@@ -18,7 +18,14 @@ module.exports = {
 
     if (validToken.ok) {
       let query = { status: true };
-      query.daycare = { $eq: validToken.user.organization };
+      const { daycareId } = ctx.params;
+      if(daycareId){
+        query.daycare = { $eq: daycareId };
+
+      }else{
+        query.daycare = { $eq: validToken.user.organization };
+
+      }
       let entity = await strapi
         .query("group")
         .model.find(query)

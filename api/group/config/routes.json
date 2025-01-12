@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/groupsNew",
+      "path": "/groupsNew/:daycareId",
       "handler": "group.findNew",
       "config": {
         "policies": []

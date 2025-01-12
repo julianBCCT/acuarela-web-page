@@ -49,7 +49,7 @@ module.exports = {
   async findNew(ctx) {
       let query = { status: true };
       const { daycareId } = ctx.params;
-        console.log("🚀 ~ findNew ~ ctx.params:", ctx.params)
+        console.log("🚀 ~ findNew ~ ctx.params:", ctx)
         query.daycare = { $eq: daycareId };
       let entity = await strapi
         .query("group")

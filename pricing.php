@@ -1,4 +1,9 @@
-<?php include 'includes/header.php'; $prices = $a->getPrices(); ?>
+<?php include 'includes/header.php';
+$prices = $a->getPrices();
+echo "<script>console.log(" . json_encode($prices) . ");</script>";
+?>
+
+
 <main class="container">
   <!-- BANNER -->
   <section class="banner banner--center banner--short">
@@ -12,20 +17,40 @@
 
   <!-- PRICING -->
 
-  <section class="pricing">
-    <?php for ($i=0; $i < count($prices); $i++) { $price = $prices[$i]; ?>
+  <!-- <section class="pricing" id="acuarela-services"> -->
+
+  <section class="acuarela-services" id="acuarela-services">
+    <div id="curriculums-slide-planes-acuarela">
+      <div class="desc">
+        <?= $service->acf->{$template}->desc_plan ?>
+      </div>
+      <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="frequencySwitch" onchange="toggleFrequencyAcuarela()">
+          <span class="slider round"></span>
+        </label>
+        <span id="frequencyLabelAcuarela">Anual</span>
+      </div>
+      <section class="acuarela-slide">
+        <!-- <ul class="bussines-slide" id="prices"> </ul> -->
+        <table class="acuarela-bussines-slide" id="services"></table>
+      </section>
+    </div>
+
+    <!-- <?php for ($i = 0; $i < count($prices); $i++) {
+            $price = $prices[$i]; ?>
       <div class="pricing-plan">
-        <b class="pricing-plan__name"><?=$price->title->rendered?></b>
-        <h1 class="launch__price"><?=$price->acf->precio?></h1>
+        <b class="pricing-plan__name"><?= $price->title->rendered ?></b>
+        <h1 class="launch__price"><?= $price->acf->precio ?></h1>
         <h1 class="pricing-plan__price"></h1>
         <hr />
-        <?=$price->content->rendered?>
-        <a href="<?=$price->acf->link_de_pago?>" class="btn btn--primary btn--small">
-          <span class="btn__text"><?=$price->acf->texto_boton?></span>
+        <?= $price->content->rendered ?>
+        <a href="<?= $price->acf->link_de_pago ?>" class="btn btn--primary btn--small">
+          <span class="btn__text"><?= $price->acf->texto_boton ?></span>
         </a>
       </div>
-    <?php } ?>
-    <!-- <?php if(!isset($_GET["free"])){ ?>
+    <?php } ?> -->
+    <!-- <?php if (!isset($_GET["free"])) { ?>
       <div class="pricing-plan">
         <b class="pricing-plan__name">Suscripción Gratuita</b>
         <h1 class="launch__price">FREE TRIAL</h1>
@@ -123,5 +148,6 @@
       </button>
     </div> -->
   </section>
+
 </main>
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php' ?>

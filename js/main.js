@@ -1,6 +1,9 @@
+
 // $( document ).ready() {
 //     console.log("READY")
 // };
+console.log("main.js cargado bien");
+
 
 // General toggle
 function toggleTarget(target) {
@@ -94,36 +97,36 @@ function TrackDemo({ name, email, daycare, phone, city }) {
   });
 }
 
-document.querySelector("#western-new-york").addEventListener("click", () => {
-  setCondado("Western New York");
-});
-document.querySelector("#finger-lakes").addEventListener("click", () => {
-  setCondado("Finger Lakes");
-});
-document.querySelector("#southern-tier").addEventListener("click", () => {
-  setCondado("Southern Tier");
-});
-document.querySelector("#central-new-york").addEventListener("click", () => {
-  setCondado("Central New York");
-});
-document.querySelector("#north-country").addEventListener("click", () => {
-  setCondado("North Country");
-});
-document.querySelector("#capital-region").addEventListener("click", () => {
-  setCondado("Capital Region");
-});
-document.querySelector("#mohawk-valley").addEventListener("click", () => {
-  setCondado("Mohawk Valley");
-});
-document.querySelector("#hudson-valley").addEventListener("click", () => {
-  setCondado("Hudson Valley");
-});
-document.querySelector("#new-york-city").addEventListener("click", () => {
-  setCondado("New York City");
-});
-document.querySelector("#long-island").addEventListener("click", () => {
-  setCondado("Long Island");
-});
+// document.querySelector("#western-new-york").addEventListener("click", () => {
+//   setCondado("Western New York");
+// });
+// document.querySelector("#finger-lakes").addEventListener("click", () => {
+//   setCondado("Finger Lakes");
+// });
+// document.querySelector("#southern-tier").addEventListener("click", () => {
+//   setCondado("Southern Tier");
+// });
+// document.querySelector("#central-new-york").addEventListener("click", () => {
+//   setCondado("Central New York");
+// });
+// document.querySelector("#north-country").addEventListener("click", () => {
+//   setCondado("North Country");
+// });
+// document.querySelector("#capital-region").addEventListener("click", () => {
+//   setCondado("Capital Region");
+// });
+// document.querySelector("#mohawk-valley").addEventListener("click", () => {
+//   setCondado("Mohawk Valley");
+// });
+// document.querySelector("#hudson-valley").addEventListener("click", () => {
+//   setCondado("Hudson Valley");
+// });
+// document.querySelector("#new-york-city").addEventListener("click", () => {
+//   setCondado("New York City");
+// });
+// document.querySelector("#long-island").addEventListener("click", () => {
+//   setCondado("Long Island");
+// });
 
 function setCondado(name) {
   Fancybox.show([{ src: "#dialog-content", type: "inline" }], {
@@ -198,4 +201,164 @@ function unMutedVideo() {
     document.querySelector("#unmutedBtn img").src = "img/volOff.svg";
     video.muted = true;
   }
+}
+
+
+//Parte para manejar la tabla de acuarela lite y pro
+
+let monthlyAcuarela = false;
+let acuarelaService = false;
+
+console.log(monthlyAcuarela);
+
+function toggleFrequencyAcuarela() {
+  // console.log(monthlyAcuarela);
+  console.log("Hola");
+  monthlyAcuarela = !monthlyAcuarela;
+  document.getElementById("frequencyLabelAcuarela").textContent = monthlyAcuarela
+    ? "Mensual"
+    : "Anual";
+  updateAcuarelaServices();
+  // updatePricesIndiUni();
+}
+getAllAcuarela();
+
+function getAllAcuarela() {
+  console.log("Holaaaa");
+  if (!acuarelaService) {
+    return fetch("/g/getAcuarelaServices/")
+      .then((res) => res.json())
+      .then((data) => {
+        acuarelaService = data;
+        console.log("Mostrar acuarela: ", JSON.stringify(data, null, 2));
+        return data;
+      });
+  } else {
+    return Promise.resolve(acuarelaService);
+  }
+}
+
+function updateAcuarelaServices() {
+  getAllAcuarela() // Obtener los datos de los currículos
+    .then((data) => {
+      const tableContainer = document.querySelector(".acuarela-bussines-slide#services");
+      tableContainer.innerHTML = ""; // Limpiar la tabla anterior
+      let tableHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Características</th>
+      `;
+
+      data.forEach((acuarela) => {
+        console.log(acuarela);
+        const featuresData = parseFeatures(acuarela.content.rendered);
+        console.log("esta es la data: ", featuresData);
+
+        // Seleccionar el precio según el estado de monthlyAcuarela
+        const price = monthlyAcuarela
+          ? acuarela.acf.precio_mensual
+          : acuarela.acf.presio_anual;
+
+        tableHTML += `
+          <th class="th-acuarela">${acuarela.title.rendered} <br/> <span>${price}</span></th>
+        `;
+      });
+
+      tableHTML += `
+      </tr>
+    </thead>
+    <tbody>
+  `;
+
+      // Obtener las características únicas de todos los servicios
+      const allFeatures = {};
+
+      data.forEach((acuarela) => {
+        const featuresData = parseFeatures(acuarela.content.rendered);
+        Object.keys(featuresData).forEach((feature) => {
+          allFeatures[feature] = true; // Guardar la característica como clave única
+        });
+      });
+
+      // Construir las filas para cada característica
+      Object.keys(allFeatures).forEach((feature) => {
+        tableHTML += `
+      <tr>
+        <td>● ${feature}</td>
+    `;
+
+        // Agregar check, "X", o el valor según el servicio
+        data.forEach((acuarela) => {
+          const featuresData = parseFeatures(acuarela.content.rendered);
+          const value = featuresData[feature];
+          let displayValue;
+
+          // Determinar qué mostrar según el valor
+          if (value === true) {
+            displayValue = "✔";
+          } else if (value === false) {
+            displayValue = "✖";
+          } else {
+            displayValue = value; // Mostrar valores no booleanos tal cual
+          }
+
+          tableHTML += `
+        <td style="text-align: center;">
+          ${displayValue}
+        </td>
+      `;
+        });
+
+        tableHTML += `</tr>`;
+      });
+
+      // Agregar la fila con botones al final de las columnas
+      tableHTML += `
+      <tr>
+        <td style="text-align: center; font-weight: bold;"></td>
+    `;
+      data.forEach((acuarela) => {
+        tableHTML += `
+        <td style="text-align: center;">
+          
+          <button class="btn-acuarela">
+            ${acuarela.acf.texto_boton}
+          </button>
+        </td>
+      `;
+      });
+      tableHTML += `
+      </tr>
+    </tbody>
+  </table>
+  `;
+
+      tableContainer.innerHTML = tableHTML; // Agregar la tabla al contenedor
+    })
+    .catch((error) => {
+      console.error("Error al obtener los datos de los currículos:", error);
+    });
+}
+
+function parseFeatures(featuresString) {
+  // Limpiar el contenido de etiquetas HTML y comillas especiales
+  const cleanedData = featuresString
+    .replace(/<p>|<\/p>/g, '') // Eliminar etiquetas <p>
+    .replace(/<br\s*\/?>/g, '') // Eliminar saltos de línea
+    .replace(/«|»/g, '"'); // Reemplazar comillas angulares por comillas estándar
+
+  try {
+    // Intentar parsear el contenido como JSON
+    const features = JSON.parse(cleanedData);
+    return features.features;
+  } catch (error) {
+    console.error("Error al parsear el JSON de características:", error);
+    return null; // Retorna null si hay error en el parseo
+  }
+}
+
+if (document.querySelector(".acuarela-services")) {
+  console.log("Desde acuarela");
+  getAllAcuarela().then(updateAcuarelaServices);
 }

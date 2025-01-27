@@ -1,6 +1,5 @@
 <?php include 'includes/header.php';
 $prices = $a->getPrices();
-echo "<script>console.log(" . json_encode($prices) . ");</script>";
 ?>
 
 

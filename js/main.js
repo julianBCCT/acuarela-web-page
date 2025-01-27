@@ -2,7 +2,7 @@
 // $( document ).ready() {
 //     console.log("READY")
 // };
-console.log("main.js cargado bien");
+
 
 
 // General toggle
@@ -209,11 +209,7 @@ function unMutedVideo() {
 let monthlyAcuarela = false;
 let acuarelaService = false;
 
-console.log(monthlyAcuarela);
-
 function toggleFrequencyAcuarela() {
-  // console.log(monthlyAcuarela);
-  console.log("Hola");
   monthlyAcuarela = !monthlyAcuarela;
   document.getElementById("frequencyLabelAcuarela").textContent = monthlyAcuarela
     ? "Mensual"
@@ -224,13 +220,11 @@ function toggleFrequencyAcuarela() {
 getAllAcuarela();
 
 function getAllAcuarela() {
-  console.log("Holaaaa");
   if (!acuarelaService) {
     return fetch("/g/getAcuarelaServices/")
       .then((res) => res.json())
       .then((data) => {
         acuarelaService = data;
-        console.log("Mostrar acuarela: ", JSON.stringify(data, null, 2));
         return data;
       });
   } else {
@@ -251,11 +245,6 @@ function updateAcuarelaServices() {
       `;
 
       data.forEach((acuarela) => {
-        console.log(acuarela);
-        const featuresData = parseFeatures(acuarela.content.rendered);
-        console.log("esta es la data: ", featuresData);
-
-        // Seleccionar el precio según el estado de monthlyAcuarela
         const price = monthlyAcuarela
           ? acuarela.acf.precio_mensual
           : acuarela.acf.presio_anual;
@@ -271,7 +260,6 @@ function updateAcuarelaServices() {
     <tbody>
   `;
 
-      // Obtener las características únicas de todos los servicios
       const allFeatures = {};
 
       data.forEach((acuarela) => {
@@ -281,31 +269,17 @@ function updateAcuarelaServices() {
         });
       });
 
-      // Construir las filas para cada característica
       Object.keys(allFeatures).forEach((feature) => {
         tableHTML += `
       <tr>
         <td>● ${feature}</td>
     `;
 
-        // Agregar check, "X", o el valor según el servicio
         data.forEach((acuarela) => {
           const featuresData = parseFeatures(acuarela.content.rendered);
-          const value = featuresData[feature];
-          let displayValue;
-
-          // Determinar qué mostrar según el valor
-          if (value === true) {
-            displayValue = "✔";
-          } else if (value === false) {
-            displayValue = "✖";
-          } else {
-            displayValue = value; // Mostrar valores no booleanos tal cual
-          }
-
           tableHTML += `
         <td style="text-align: center;">
-          ${displayValue}
+          ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
         </td>
       `;
         });
@@ -313,28 +287,37 @@ function updateAcuarelaServices() {
         tableHTML += `</tr>`;
       });
 
-      // Agregar la fila con botones al final de las columnas
       tableHTML += `
       <tr>
         <td style="text-align: center; font-weight: bold;"></td>
     `;
       data.forEach((acuarela) => {
+        // Seleccionar el enlace según el estado de monthlyAcuarela
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+
         tableHTML += `
+        
         <td style="text-align: center;">
-          
-          <button class="btn-acuarela">
+          <button
+            class="btn-acuarela"
+            onclick="window.open('${redirectLink || "#"}', '_blank')"
+            target="_blank"
+          >
             ${acuarela.acf.texto_boton}
           </button>
         </td>
       `;
       });
+
       tableHTML += `
       </tr>
     </tbody>
   </table>
   `;
 
-      tableContainer.innerHTML = tableHTML; // Agregar la tabla al contenedor
+      tableContainer.innerHTML = tableHTML;
     })
     .catch((error) => {
       console.error("Error al obtener los datos de los currículos:", error);
@@ -359,6 +342,5 @@ function parseFeatures(featuresString) {
 }
 
 if (document.querySelector(".acuarela-services")) {
-  console.log("Desde acuarela");
   getAllAcuarela().then(updateAcuarelaServices);
 }

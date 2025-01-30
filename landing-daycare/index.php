@@ -172,7 +172,7 @@ $titulos = [
 
 <?php else: ?>
 
-    <body id="activo">
+    <body id="activo" class="secondary-body">
         <header>
             <div class="logo">
                 <img src=" <?= $info->acf->logo ?>" alt="logo" class="logo" />

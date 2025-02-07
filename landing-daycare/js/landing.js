@@ -522,25 +522,30 @@ document.addEventListener("DOMContentLoaded", () => {
   let isDragging = false;
   let startX, scrollLeft;
 
-  // Establecer la misma altura para todas las tarjetas
+  // Función para establecer la misma altura para todas las tarjetas solo una vez
   const setEqualHeight = () => {
     let maxHeight = 0;
+    const cards = document.querySelectorAll(".card");
 
     cards.forEach((card) => {
-      card.style.height = "auto";
-      maxHeight = Math.max(maxHeight, card.offsetHeight); 
+      card.style.height = "auto"; // Restablecer altura para obtener la altura natural
+      maxHeight = Math.max(maxHeight, card.offsetHeight);
     });
 
+    // Ajuste de margen opcional
     maxHeight += 10;
 
+    // Aplicar la altura máxima a todas las tarjetas
     cards.forEach((card) => {
       card.style.height = `${maxHeight}px`;
     });
+
+    // Desactivar futuros cambios al cambiar el tamaño de la pantalla
+    window.removeEventListener("resize", setEqualHeight);
   };
 
   // Llamar a la función para ajustar alturas al cargar la página y al redimensionar
   setEqualHeight();
-  window.addEventListener("resize", setEqualHeight);
 
   // Slider dragging functionality
   slider.addEventListener("mousedown", (e) => {

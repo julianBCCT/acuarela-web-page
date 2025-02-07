@@ -395,7 +395,8 @@ $uib-color: var(--color-botones);
       display: none;
     }
 
-    .success, .error {
+    .success,
+    .error {
       color: var(--color-primario);
     }
 
@@ -721,6 +722,9 @@ $uib-color: var(--color-botones);
         h2 {
           color: var(--color-botones);
           margin-bottom: 20px;
+          @media screen and (max-width: 768px) {
+            margin-top: 20px;
+          }
         }
         .read-more-btn {
           border: 2px solid var(--color-botones);
@@ -766,6 +770,9 @@ $uib-color: var(--color-botones);
         h2 {
           color: #3e3e43;
           margin-bottom: 20px;
+          @media screen and (max-width: 768px) {
+            margin-top: 20px;
+          }
         }
       }
       svg {
@@ -816,7 +823,7 @@ $uib-color: var(--color-botones);
         @media screen and (max-width: 768px) {
           position: relative;
           top: 20px;
-          right: -35%;
+          right: 0;
           height: auto;
         }
         img {
@@ -1076,6 +1083,10 @@ $uib-color: var(--color-botones);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           scroll-snap-align: center;
           position: relative;
+
+          @media screen and (max-width: 768px) {
+            flex: 0 0 100%;
+          }
 
           &__icon {
             fill: var(--color-secundario-claro);

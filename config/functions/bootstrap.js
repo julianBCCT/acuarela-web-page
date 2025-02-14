@@ -116,6 +116,26 @@ module.exports = () => {
         });
       }
     );
+    socket.on(
+      "createChat",
+      async ({ roomId, senderId, receiverId, participants, group_name }) => {
+        // Buscar el chat correspondiente a la sala
+        let chat = await strapi.services.chats.findOne({ room: roomId });
+
+        // Si no existe, crearlo
+        if (!chat) {
+          chat = await strapi.services.chats.create({
+            sender: senderId,
+            receiver: receiverId,
+            isRead: false,
+            room: roomId,
+            messages: {},
+            participants,
+            group_name,
+          });
+        }
+      }
+    );
     socket.on("newMessageNotification", (data) => {
       const { message, roomId, sender } = data;
       // Mostrar notificación, por ejemplo en un badge de notificaciones

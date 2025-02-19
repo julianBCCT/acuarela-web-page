@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_incidents_incidents",
+  "info": {
+    "name": "incidents",
+    "icon": "ambulance"
+  },
+  "options": {},
+  "attributes": {
+    "gravedad": {
+      "type": "string"
+    },
+    "actions_taken": {
+      "type": "text"
+    },
+    "statehealth": {
+      "type": "text"
+    },
+    "reported_enf": {
+      "type": "date"
+    },
+    "reported_enh": {
+      "type": "time"
+    },
+    "temperature": {
+      "type": "string"
+    },
+    "actions_expected": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "reported_for": {
+      "type": "text"
+    }
+  }
+}

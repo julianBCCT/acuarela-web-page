@@ -135,8 +135,8 @@
       "component": "files.files"
     },
     "acuarelausers": {
-      "via": "children",
-      "collection": "acuarelauser"
+      "collection": "acuarelauser",
+      "via": "children"
     },
     "guardians": {
       "type": "component",
@@ -158,6 +158,10 @@
     "attendance_logs": {
       "collection": "attendance-logs",
       "via": "children"
+    },
+    "healthinfo": {
+      "via": "child",
+      "model": "healthinfo"
     }
   }
 }

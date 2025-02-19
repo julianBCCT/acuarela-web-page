@@ -28,6 +28,14 @@
     },
     "messages": {
       "type": "json"
+    },
+    "group_name": {
+      "type": "string"
+    },
+    "participants": {
+      "collection": "acuarelauser",
+      "via": "chats",
+      "dominant": true
     }
   }
 }

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_healthcheck_healthchecks",
+  "info": {
+    "name": "Healthcheck",
+    "icon": "plus-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "temperature": {
+      "type": "string"
+    },
+    "report": {
+      "type": "string"
+    },
+    "bodychild": {
+      "type": "string"
+    },
+    "daily_fecha": {
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "preinscripciones",
+  "info": {
+    "name": "Preinscripciones"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre_acudiente": {
+      "type": "string"
+    },
+    "correo_acudiente": {
+      "type": "email"
+    },
+    "nombre_nino": {
+      "type": "string"
+    },
+    "edad_nino": {
+      "type": "integer"
+    },
+    "website": {
+      "model": "websites",
+      "via": "preinscripcione"
+    }
+  }
+}

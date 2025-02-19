@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "name": "Tasks",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "acuarelauser": {
+      "model": "acuarelauser",
+      "via": "tasks"
+    },
+    "date": {
+      "type": "date"
+    },
+    "comentarios": {
+      "type": "text"
+    },
+    "completed": {
+      "type": "boolean"
+    },
+    "daycare": {
+      "model": "daycare"
+    }
+  }
+}

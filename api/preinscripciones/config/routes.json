@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/preinscripciones",
+      "handler": "preinscripciones.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/preinscripciones/count",
+      "handler": "preinscripciones.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/preinscripciones/:id",
+      "handler": "preinscripciones.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/preinscripciones",
+      "handler": "preinscripciones.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/preinscripciones/:id",
+      "handler": "preinscripciones.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/preinscripciones/:id",
+      "handler": "preinscripciones.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

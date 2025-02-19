@@ -116,8 +116,8 @@
       "type": "boolean"
     },
     "children": {
-      "collection": "children",
       "via": "acuarelausers",
+      "collection": "children",
       "dominant": true
     },
     "certificates": {
@@ -168,6 +168,14 @@
     },
     "socketId": {
       "type": "string"
+    },
+    "tasks": {
+      "via": "acuarelauser",
+      "collection": "tasks"
+    },
+    "chats": {
+      "via": "participants",
+      "collection": "chats"
     }
   }
 }

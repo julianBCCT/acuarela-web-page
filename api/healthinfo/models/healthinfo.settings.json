@@ -32,12 +32,6 @@
     "emergency_relationship": {
       "type": "string"
     },
-    "vacination": {
-      "type": "text"
-    },
-    "accidents": {
-      "type": "text"
-    },
     "physical_health": {
       "type": "text"
     },
@@ -46,6 +40,41 @@
     },
     "suspected_abuse": {
       "type": "text"
+    },
+    "child": {
+      "model": "children",
+      "via": "healthinfo"
+    },
+    "asthma": {
+      "type": "string"
+    },
+    "pediatrician_email": {
+      "type": "email"
+    },
+    "allergies": {
+      "type": "json"
+    },
+    "medicines": {
+      "type": "json"
+    },
+    "vacination": {
+      "type": "json"
+    },
+    "accidents": {
+      "type": "json"
+    },
+    "ointments": {
+      "type": "json"
+    },
+    "incidents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "incidents.incidentes"
+    },
+    "healthcheck": {
+      "type": "component",
+      "repeatable": true,
+      "component": "healthcheck.healthcheck"
     }
   }
 }

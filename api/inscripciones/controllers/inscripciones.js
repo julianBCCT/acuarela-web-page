@@ -18,12 +18,31 @@ module.exports = {
       child.attitudes = [];
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash("123456", 10);
+      if (child.parents_rel) {
+        if (child.parents_rel.length > 0) {
+          const kidEdited = await strapi.services.children.update(
+            { _id: kid.id },
+            {
+              acuarelausers: child.parents_rel,
+            }
+          );
+          return ctx.send(
+            {
+              ok: true,
+              status: 200,
+              code: 1,
+              kid: kidEdited,
+            },
+            200
+          );
+        }
+      } 
       return ctx.send(
         {
           ok: true,
           status: 200,
-          code: 1,kid,
-          hashedPassword
+          code: 1,
+          kid,
         },
         200
       );

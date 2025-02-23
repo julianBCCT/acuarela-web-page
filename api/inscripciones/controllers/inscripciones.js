@@ -14,12 +14,16 @@ module.exports = {
     const child = ctx.request.body;
     let validToken = await verification.renew(token);
     if (validToken.ok) {
+      child.status = true;
+      child.attitudes = [];
+      const kid = await strapi.services.children.create(child);
+      const hashedPassword = await bcrypt.hash("123456", 10);
       return ctx.send(
         {
           ok: true,
           status: 200,
-          code: 1,
-          child,
+          code: 1,kid,
+          hashedPassword
         },
         200
       );

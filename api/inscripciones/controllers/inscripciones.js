@@ -13,15 +13,16 @@ module.exports = {
     const { token } = ctx.request.header;
     const child = ctx.request.body;
     let validToken = await verification.renew(token);
-    console.log("🚀 ~ completeInsc ~ validToken.ok:", validToken.ok)
     if (validToken.ok) {
-      child.status = true;
-      child.attitudes = [];
-      const kid = await strapi.services.children.create(child);
-      console.log("🚀 ~ completeInsc ~ kid:", kid)
-      const hashedPassword = await bcrypt.hash("123456", 10);
-      console.log("🚀 ~ completeInsc ~ hashedPassword:", hashedPassword)
-
+      return ctx.send(
+        {
+          ok: true,
+          status: 200,
+          code: 1,
+          child,
+        },
+        200
+      );
     } else return ctx.send(validToken);
   },
   async findByPaymentTime(ctx) {

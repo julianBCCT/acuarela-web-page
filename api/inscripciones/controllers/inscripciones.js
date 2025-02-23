@@ -10,14 +10,19 @@ const verification = require("../../../middlewares/authJwt");
 
 module.exports = {
   async completeInsc(ctx) {
-    return ctx.send(
-      {
-        ok: true,
-        status: 200,
-        code: 1,
-      },
-      200
-    );
+    const { token } = ctx.request.header;
+    const child = ctx.request.body;
+    let validToken = await verification.renew(token);
+    console.log("🚀 ~ completeInsc ~ validToken.ok:", validToken.ok)
+    if (validToken.ok) {
+      child.status = true;
+      child.attitudes = [];
+      const kid = await strapi.services.children.create(child);
+      console.log("🚀 ~ completeInsc ~ kid:", kid)
+      const hashedPassword = await bcrypt.hash("123456", 10);
+      console.log("🚀 ~ completeInsc ~ hashedPassword:", hashedPassword)
+
+    } else return ctx.send(validToken);
   },
   async findByPaymentTime(ctx) {
     const { status, 'payment.time': paymentTime } = ctx.query;

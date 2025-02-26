@@ -287,15 +287,13 @@ module.exports = {
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
-console.log(entity);
 
     if (entity) {
       // Se cifra la contraseña del usuario para ser almacenada en la base de datos.
       const hashedPassword = await bcrypt.hash(pass, 10);
-      entity.password = hashedPassword;
       entity = await strapi.services.acuarelauser.update(
-        { _id: entity._id },
-        entity
+        { id: entity.id },
+        {password: hashedPassword}
       );
       return ctx.send({
         ok: true,

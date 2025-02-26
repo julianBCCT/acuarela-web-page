@@ -21,7 +21,7 @@ module.exports = {
       let parents = [];
         for (const parent of child.parents) {
           parent.password = hashedPassword;
-          parent.status = true;
+          parent.status = false;
           parent.rols = ["5ff790045d6f2e272cfd7394"];
           parent.children = [kid.id];
           parent.mail = parent.email;

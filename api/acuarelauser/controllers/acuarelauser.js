@@ -287,6 +287,7 @@ module.exports = {
     if (mail != "-1")
       entity = await strapi.services.acuarelauser.findOne({ mail });
     else entity = await strapi.services.acuarelauser.findOne({ phone });
+console.log(entity);
 
     if (entity) {
       // Se cifra la contraseña del usuario para ser almacenada en la base de datos.

@@ -71,6 +71,12 @@ module.exports = () => {
 
         // Si no existe, crearlo
         if (!chat) {
+           // Notificar al destinatario
+        io.to(receiverId).emit("newMessageNotification", {
+          message: newMessage,
+          roomId,
+          sender: user,
+        });
           chat = await strapi.services.chats.create({
             sender: senderId,
             receiver: receiverId,
@@ -112,12 +118,7 @@ module.exports = () => {
 
         // Emitir el mensaje solo a la sala correspondiente
         io.to(roomId).emit("receiveMessage", newMessage);
-        // Notificar al destinatario
-        io.to(receiverId).emit("newMessageNotification", {
-          message: newMessage,
-          roomId,
-          sender: user,
-        });
+       
       }
     );
     socket.on(

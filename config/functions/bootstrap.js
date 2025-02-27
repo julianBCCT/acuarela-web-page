@@ -73,6 +73,8 @@ module.exports = () => {
         // Si no existe, crearlo
         if (!chat) {
            // Notificar al destinatario
+           console.log(socketid);
+           
         io.to(socketid).emit("newMessageNotification", {
           message: newMessage,
           roomId,

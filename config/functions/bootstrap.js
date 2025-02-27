@@ -62,6 +62,7 @@ module.exports = () => {
         roomId,
         senderId,
         text,
+        socketid,
         user }) => {
         // Obtener la fecha actual y formatear el mes (YYYY-MM)
         const currentMonth = new Date().toISOString().slice(0, 7); // Obtiene 'YYYY-MM'
@@ -72,7 +73,7 @@ module.exports = () => {
         // Si no existe, crearlo
         if (!chat) {
            // Notificar al destinatario
-        io.to(receiverId).emit("newMessageNotification", {
+        io.to(socketid).emit("newMessageNotification", {
           message: newMessage,
           roomId,
           sender: user,

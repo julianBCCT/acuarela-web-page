@@ -75,11 +75,7 @@ module.exports = () => {
            // Notificar al destinatario
            console.log(socketid);
            
-        io.to(socketid).emit("newMessageNotification", {
-          message: newMessage,
-          roomId,
-          sender: user,
-        });
+        
           chat = await strapi.services.chats.create({
             sender: senderId,
             receiver: receiverId,
@@ -121,7 +117,21 @@ module.exports = () => {
 
         // Emitir el mensaje solo a la sala correspondiente
         io.to(roomId).emit("receiveMessage", newMessage);
-       
+        io.to(receiverId).emit("newMessageNotification", {
+          message: newMessage,
+          roomId,
+          sender: user,
+        });
+        io.to(roomId).emit("newMessageNotification", {
+          message: newMessage,
+          roomId,
+          sender: user,
+        });
+        io.to(socketid).emit("newMessageNotification", {
+          message: newMessage,
+          roomId,
+          sender: user,
+        });
       }
     );
     socket.on(
@@ -147,7 +157,7 @@ module.exports = () => {
     socket.on("newMessageNotification", (data) => {
       const { message, roomId, sender } = data;
       // Mostrar notificación, por ejemplo en un badge de notificaciones
-      showNotification(`Nuevo mensaje de ${sender}: ${message.content}`);
+
     });
     socket.on("getMessagesByMonth", async ({ roomId, month }) => {
       // Buscar el chat de la sala

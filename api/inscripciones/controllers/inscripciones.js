@@ -32,7 +32,7 @@ module.exports = {
           parent.daycare = child.daycare;
           
           // Crear código dinámico y guardarlo en Strapi
-          let code = await strapi.services.["codigo-dinamico"].create({ code: generateRandomCode() });
+          let code = await strapi.services["codigo-dinamico"].create({ code: generateRandomCode() });
 
           parent.codigo_dinamico = code.id; // Asignar el ID del código dinámico al usuario
           if (parent.name != "") {

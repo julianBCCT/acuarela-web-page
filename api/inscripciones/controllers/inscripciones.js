@@ -7,6 +7,10 @@ const FormData = require('form-data');
  */
 const bcrypt = require("bcryptjs");
 const verification = require("../../../middlewares/authJwt");
+const generateRandomCode = () => {
+  return Math.floor(100000 + Math.random() * 900000); // Número aleatorio de 6 dígitos
+};
+
 
 module.exports = {
   async completeInsc(ctx) {
@@ -26,6 +30,11 @@ module.exports = {
           parent.children = [kid.id];
           parent.mail = parent.email;
           parent.daycare = child.daycare;
+          
+          // Crear código dinámico y guardarlo en Strapi
+          let code = await strapi.services.codigo_dinamico.create({ code: generateRandomCode() });
+
+          parent.codigo_dinamico = code.id; // Asignar el ID del código dinámico al usuario
           if (parent.name != "") {
             let entity = await strapi.services.acuarelauser.create(parent);
             parents.push(entity);

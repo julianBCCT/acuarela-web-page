@@ -219,7 +219,6 @@ module.exports = {
             quantity: 0,
           },
         ];
-        group.daycare = validToken.user.organization;
         let entity = await strapi.services.group.create(group);
         return ctx.send({
           ok: true,

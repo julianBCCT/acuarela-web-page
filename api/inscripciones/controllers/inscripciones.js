@@ -28,16 +28,15 @@ module.exports = {
         for (const parent of child.parents) {
             if (parent.name !== "") {
                 parent.status = false;
-                parent.children = [kid.id];
                 parent.mail = parent.email;
                 parent.daycare = child.daycare;
-                
+
                 // Buscar si ya existe un usuario con ese email
                 let existingUser = await strapi.services.acuarelauser.findOne({ email: parent.email });
 
                 if (existingUser) {
                     // No actualizar la contraseña si ya existe
-                    const { password, rols, ...parentData } = parent;
+                    const { password, rols, children, ...parentData } = parent;
 
                     // Mantener los roles existentes y agregar el nuevo solo si no está
                     const newRol = "5ff790045d6f2e272cfd7394";
@@ -45,9 +44,14 @@ module.exports = {
                         ? existingUser.rols 
                         : [...existingUser.rols, newRol];
 
+                    // Mantener los children existentes y agregar el nuevo solo si no está
+                    const updatedChildren = existingUser.children.includes(kid.id)
+                        ? existingUser.children
+                        : [...existingUser.children, kid.id];
+
                     let updatedUser = await strapi.services.acuarelauser.update(
                         { id: existingUser.id },
-                        { ...parentData, rols: updatedRols }
+                        { ...parentData, rols: updatedRols, children: updatedChildren }
                     );
                     parents.push(updatedUser);
                 } else {
@@ -56,6 +60,7 @@ module.exports = {
                     parent.codigo_dinamico = code.id;
                     parent.password = hashedPassword; // Solo asignar password al crear
                     parent.rols = ["5ff790045d6f2e272cfd7394"]; // Asignar rol solo al crear
+                    parent.children = [kid.id]; // Asignar primer hijo solo al crear
 
                     let newUser = await strapi.services.acuarelauser.create(parent);
                     parents.push(newUser);
@@ -81,7 +86,8 @@ module.exports = {
     } else {
         return ctx.send(validToken);
     }
-},
+}
+,
   async findByPaymentTime(ctx) {
     const { status, 'payment.time': paymentTime } = ctx.query;
   

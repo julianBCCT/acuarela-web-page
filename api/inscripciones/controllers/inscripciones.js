@@ -28,21 +28,26 @@ module.exports = {
         for (const parent of child.parents) {
             if (parent.name !== "") {
                 parent.status = false;
-                parent.rols = ["5ff790045d6f2e272cfd7394"];
                 parent.children = [kid.id];
                 parent.mail = parent.email;
                 parent.daycare = child.daycare;
-
+                
                 // Buscar si ya existe un usuario con ese email
                 let existingUser = await strapi.services.acuarelauser.findOne({ email: parent.email });
 
                 if (existingUser) {
                     // No actualizar la contraseña si ya existe
-                    const { password, ...parentData } = parent;
+                    const { password, rols, ...parentData } = parent;
+
+                    // Mantener los roles existentes y agregar el nuevo solo si no está
+                    const newRol = "5ff790045d6f2e272cfd7394";
+                    const updatedRols = existingUser.rols.includes(newRol) 
+                        ? existingUser.rols 
+                        : [...existingUser.rols, newRol];
 
                     let updatedUser = await strapi.services.acuarelauser.update(
                         { id: existingUser.id },
-                        parentData
+                        { ...parentData, rols: updatedRols }
                     );
                     parents.push(updatedUser);
                 } else {
@@ -50,6 +55,7 @@ module.exports = {
                     let code = await strapi.services["codigo-dinamico"].create({ Codigo: generateRandomCode() });
                     parent.codigo_dinamico = code.id;
                     parent.password = hashedPassword; // Solo asignar password al crear
+                    parent.rols = ["5ff790045d6f2e272cfd7394"]; // Asignar rol solo al crear
 
                     let newUser = await strapi.services.acuarelauser.create(parent);
                     parents.push(newUser);

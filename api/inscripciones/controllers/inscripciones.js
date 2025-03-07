@@ -17,48 +17,65 @@ module.exports = {
     const { token } = ctx.request.header;
     const child = ctx.request.body;
     let validToken = await verification.renew(token);
-    if (validToken.ok) {
-      child.status = true;
-      child.attitudes = [];
-      const kid = await strapi.services.children.create(child);
-      const hashedPassword = await bcrypt.hash("123456", 10);
-      let parents = [];
-        for (const parent of child.parents) {
-          parent.password = hashedPassword;
-          parent.status = false;
-          parent.rols = ["5ff790045d6f2e272cfd7394"];
-          parent.children = [kid.id];
-          parent.mail = parent.email;
-          parent.daycare = child.daycare;
-          
-          // Crear código dinámico y guardarlo en Strapi
-          let code = await strapi.services["codigo-dinamico"].create({ codigo: generateRandomCode() });
 
-          parent.codigo_dinamico = code.id; // Asignar el ID del código dinámico al usuario
-          if (parent.name != "") {
-            let entity = await strapi.services.acuarelauser.create(parent);
-            parents.push(entity);
-          }
+    if (validToken.ok) {
+        child.status = true;
+        child.attitudes = [];
+        const kid = await strapi.services.children.create(child);
+        const hashedPassword = await bcrypt.hash("123456", 10);
+        let parents = [];
+
+        for (const parent of child.parents) {
+            if (parent.name !== "") {
+                parent.status = false;
+                parent.rols = ["5ff790045d6f2e272cfd7394"];
+                parent.children = [kid.id];
+                parent.mail = parent.email;
+                parent.daycare = child.daycare;
+
+                // Buscar si ya existe un usuario con ese email
+                let existingUser = await strapi.services.acuarelauser.findOne({ email: parent.email });
+
+                if (existingUser) {
+                    // No actualizar la contraseña si ya existe
+                    const { password, ...parentData } = parent;
+
+                    let updatedUser = await strapi.services.acuarelauser.update(
+                        { id: existingUser.id },
+                        parentData
+                    );
+                    parents.push(updatedUser);
+                } else {
+                    // Crear código dinámico y asignarlo al nuevo usuario
+                    let code = await strapi.services["codigo-dinamico"].create({ Codigo: generateRandomCode() });
+                    parent.codigo_dinamico = code.id;
+                    parent.password = hashedPassword; // Solo asignar password al crear
+
+                    let newUser = await strapi.services.acuarelauser.create(parent);
+                    parents.push(newUser);
+                }
+            }
         }
 
         const kidEdited = await strapi.services.children.update(
-          { _id: kid.id },
-          {
-            acuarelausers: parents.map((parent) => parent.id),
-          }
+            { _id: kid.id },
+            { acuarelausers: parents.map((parent) => parent.id) }
         );
+
         return ctx.send(
-          {
-            ok: true,
-            status: 200,
-            code: 1,
-            kid: kidEdited,
-            parents,
-          },
-          200
+            {
+                ok: true,
+                status: 200,
+                code: 1,
+                kid: kidEdited,
+                parents,
+            },
+            200
         );
-    } else return ctx.send(validToken);
-  },
+    } else {
+        return ctx.send(validToken);
+    }
+},
   async findByPaymentTime(ctx) {
     const { status, 'payment.time': paymentTime } = ctx.query;
   

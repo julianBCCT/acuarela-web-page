@@ -73,6 +73,7 @@ module.exports = {
         { _id: kid.id },
         { parents_rel: parents.map((parent) => parent.id) }
       );
+      console.log("🚀 ~ completeInsc ~ kidEdited:", kidEdited);
 
       return ctx.send(
         {

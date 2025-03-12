@@ -17,6 +17,7 @@ module.exports = {
     if (validToken.ok) {
       child.status = true;
       child.attitudes = [];
+      child.birthday = child.birthdate;
       const kid = await strapi.services.children.create(child);
       const hashedPassword = await bcrypt.hash("123456", 10);
       let parents = [];

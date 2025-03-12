@@ -7,9 +7,6 @@ const FormData = require("form-data");
  */
 const bcrypt = require("bcryptjs");
 const verification = require("../../../middlewares/authJwt");
-const generateRandomCode = () => {
-  return Math.floor(100000 + Math.random() * 900000); // Número aleatorio de 6 dígitos
-};
 
 module.exports = {
   async completeInsc(ctx) {
@@ -58,7 +55,7 @@ module.exports = {
           } else {
             // Crear código dinámico y asignarlo al nuevo usuario
             let code = await strapi.services["codigo-dinamico"].create({
-              Codigo: generateRandomCode(),
+              Codigo: Math.floor(100000 + Math.random() * 900000),
             });
             parent.codigo_dinamico = code.id;
             parent.password = hashedPassword; // Solo asignar password al crear

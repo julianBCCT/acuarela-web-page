@@ -32,6 +32,7 @@ module.exports = {
           let existingUser = await strapi.services.acuarelauser.findOne({
             email: parent.email,
           });
+          console.log("🚀 ~ completeInsc ~ existingUser:", existingUser);
 
           if (existingUser) {
             // No actualizar la contraseña si ya existe
@@ -52,12 +53,14 @@ module.exports = {
               { id: existingUser.id },
               { ...parentData, rols: updatedRols, children: updatedChildren }
             );
+            console.log("🚀 ~ completeInsc ~ updatedUser:", updatedUser);
             parents.push(updatedUser);
           } else {
             // Crear código dinámico y asignarlo al nuevo usuario
             let code = await strapi.services["codigo-dinamico"].create({
-              Codigo: Math.floor(100000 + Math.random() * 900000),
+              Codigo: "234234",
             });
+            console.log("🚀 ~ completeInsc ~ code:", code);
             parent.codigo_dinamico = code.id;
             parent.password = hashedPassword; // Solo asignar password al crear
             parent.rols = ["5ff790045d6f2e272cfd7394"]; // Asignar rol solo al crear

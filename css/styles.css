@@ -2697,6 +2697,7 @@ main.invitation section.invitation-final a {
   button {
   background: #00c6d1;
   color: white;
+  cursor: pointer;
   padding: 10px;
   border-radius: 8px;
   font-weight: bold;
@@ -2706,6 +2707,23 @@ main.invitation section.invitation-final a {
   min-width: 100px;
   width: 95%;
   height: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  tbody
+  tr
+  td
+  button:disabled {
+  background: #ccc;
+  color: #666;
+  border: 1px solid #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 .acuarela-services

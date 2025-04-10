@@ -139,6 +139,19 @@ $titulos = [
             --color-pasos: #131727;
         }
     </style>
+
+    <?php if($nameUrl[0] == 'mi-arcoiris-estrellita'){ ?>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9HP042B4X">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-V9HP042B4X');
+    </script>
+    <?php } ?>
 </head>
 
 <?php if ($info->acf->activacion == "no"): ?>

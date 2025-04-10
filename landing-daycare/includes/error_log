@@ -1,0 +1,5 @@
+[07-Dec-2024 01:42:33 UTC] PHP Warning:  include(includes/config.php): failed to open stream: No such file or directory in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/queryToUpdate.php on line 1
+[07-Dec-2024 01:42:33 UTC] PHP Warning:  include(includes/config.php): failed to open stream: No such file or directory in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/queryToUpdate.php on line 1
+[07-Dec-2024 01:42:33 UTC] PHP Warning:  include(): Failed opening 'includes/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/queryToUpdate.php on line 1
+[07-Dec-2024 01:42:33 UTC] PHP Notice:  Undefined variable: webInfo in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/queryToUpdate.php on line 7
+[07-Dec-2024 01:42:33 UTC] PHP Notice:  Trying to get property 'id' of non-object in /home/tiendasantuario/public_html/host/acuarela/landing-daycare/includes/queryToUpdate.php on line 7

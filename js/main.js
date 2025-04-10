@@ -1,6 +1,9 @@
+
 // $( document ).ready() {
 //     console.log("READY")
 // };
+
+
 
 // General toggle
 function toggleTarget(target) {
@@ -94,36 +97,36 @@ function TrackDemo({ name, email, daycare, phone, city }) {
   });
 }
 
-document.querySelector("#western-new-york").addEventListener("click", () => {
-  setCondado("Western New York");
-});
-document.querySelector("#finger-lakes").addEventListener("click", () => {
-  setCondado("Finger Lakes");
-});
-document.querySelector("#southern-tier").addEventListener("click", () => {
-  setCondado("Southern Tier");
-});
-document.querySelector("#central-new-york").addEventListener("click", () => {
-  setCondado("Central New York");
-});
-document.querySelector("#north-country").addEventListener("click", () => {
-  setCondado("North Country");
-});
-document.querySelector("#capital-region").addEventListener("click", () => {
-  setCondado("Capital Region");
-});
-document.querySelector("#mohawk-valley").addEventListener("click", () => {
-  setCondado("Mohawk Valley");
-});
-document.querySelector("#hudson-valley").addEventListener("click", () => {
-  setCondado("Hudson Valley");
-});
-document.querySelector("#new-york-city").addEventListener("click", () => {
-  setCondado("New York City");
-});
-document.querySelector("#long-island").addEventListener("click", () => {
-  setCondado("Long Island");
-});
+// document.querySelector("#western-new-york").addEventListener("click", () => {
+//   setCondado("Western New York");
+// });
+// document.querySelector("#finger-lakes").addEventListener("click", () => {
+//   setCondado("Finger Lakes");
+// });
+// document.querySelector("#southern-tier").addEventListener("click", () => {
+//   setCondado("Southern Tier");
+// });
+// document.querySelector("#central-new-york").addEventListener("click", () => {
+//   setCondado("Central New York");
+// });
+// document.querySelector("#north-country").addEventListener("click", () => {
+//   setCondado("North Country");
+// });
+// document.querySelector("#capital-region").addEventListener("click", () => {
+//   setCondado("Capital Region");
+// });
+// document.querySelector("#mohawk-valley").addEventListener("click", () => {
+//   setCondado("Mohawk Valley");
+// });
+// document.querySelector("#hudson-valley").addEventListener("click", () => {
+//   setCondado("Hudson Valley");
+// });
+// document.querySelector("#new-york-city").addEventListener("click", () => {
+//   setCondado("New York City");
+// });
+// document.querySelector("#long-island").addEventListener("click", () => {
+//   setCondado("Long Island");
+// });
 
 function setCondado(name) {
   Fancybox.show([{ src: "#dialog-content", type: "inline" }], {
@@ -198,4 +201,152 @@ function unMutedVideo() {
     document.querySelector("#unmutedBtn img").src = "img/volOff.svg";
     video.muted = true;
   }
+}
+
+
+//Parte para manejar la tabla de acuarela lite y pro
+
+let monthlyAcuarela = false;
+let acuarelaService = false;
+
+function toggleFrequencyAcuarela() {
+  monthlyAcuarela = !monthlyAcuarela;
+  document.getElementById("frequencyLabelAcuarela").textContent = monthlyAcuarela
+    ? "Mensual"
+    : "Anual";
+  updateAcuarelaServices();
+  // updatePricesIndiUni();
+}
+getAllAcuarela();
+
+function getAllAcuarela() {
+  if (!acuarelaService) {
+    return fetch("/g/getAcuarelaServices/")
+      .then((res) => res.json())
+      .then((data) => {
+        acuarelaService = data;
+        return data;
+      });
+  } else {
+    return Promise.resolve(acuarelaService);
+  }
+}
+
+function updateAcuarelaServices() {
+  getAllAcuarela() // Obtener los datos de los currículos
+    .then((data) => {
+      const tableContainer = document.querySelector(".acuarela-bussines-slide#services");
+      tableContainer.innerHTML = ""; // Limpiar la tabla anterior
+      let tableHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Características</th>
+      `;
+
+      data.forEach((acuarela) => {
+        const price = monthlyAcuarela
+          ? acuarela.acf.precio_mensual
+          : acuarela.acf.presio_anual;
+
+        tableHTML += `
+          <th class="th-acuarela">${acuarela.title.rendered} <br/> <span>${price}</span></th>
+        `;
+      });
+
+      tableHTML += `
+      </tr>
+    </thead>
+    <tbody>
+  `;
+
+      const allFeatures = {};
+
+      data.forEach((acuarela) => {
+        const featuresData = parseFeatures(acuarela.content.rendered);
+        Object.keys(featuresData).forEach((feature) => {
+          allFeatures[feature] = true; // Guardar la característica como clave única
+        });
+      });
+
+      Object.keys(allFeatures).forEach((feature) => {
+        tableHTML += `
+      <tr>
+        <td>● ${feature}</td>
+    `;
+
+        data.forEach((acuarela) => {
+          const featuresData = parseFeatures(acuarela.content.rendered);
+          tableHTML += `
+        <td style="text-align: center;">
+          ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
+        </td>
+      `;
+        });
+
+        tableHTML += `</tr>`;
+      });
+
+      tableHTML += `
+      <tr>
+        <td style="text-align: center; font-weight: bold;"></td>
+    `;
+      data.forEach((acuarela) => {
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+      
+        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
+        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
+        const disabledAttr = isProButton ? "disabled" : "";
+        const onclickAttr = isProButton
+          ? ""
+          : `onclick="window.open('${redirectLink || "#"}', '_blank')"`; 
+      
+        tableHTML += `
+          <td style="text-align: center;">
+            <button
+              class="btn-acuarela"
+              ${disabledAttr}
+              ${onclickAttr}
+              target="_blank"
+            >
+              ${buttonText}
+            </button>
+          </td>
+        `;
+      });    
+
+      tableHTML += `
+      </tr>
+    </tbody>
+  </table>
+  `;
+
+      tableContainer.innerHTML = tableHTML;
+    })
+    .catch((error) => {
+      console.error("Error al obtener los datos de los currículos:", error);
+    });
+}
+
+function parseFeatures(featuresString) {
+  // Limpiar el contenido de etiquetas HTML y comillas especiales
+  const cleanedData = featuresString
+    .replace(/<p>|<\/p>/g, '') // Eliminar etiquetas <p>
+    .replace(/<br\s*\/?>/g, '') // Eliminar saltos de línea
+    .replace(/«|»/g, '"'); // Reemplazar comillas angulares por comillas estándar
+
+  try {
+    // Intentar parsear el contenido como JSON
+    const features = JSON.parse(cleanedData);
+    return features.features;
+  } catch (error) {
+    console.error("Error al parsear el JSON de características:", error);
+    return null; // Retorna null si hay error en el parseo
+  }
+}
+
+if (document.querySelector(".acuarela-services")) {
+  getAllAcuarela().then(updateAcuarelaServices);
 }

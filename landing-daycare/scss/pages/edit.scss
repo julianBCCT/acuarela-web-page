@@ -1,0 +1,389 @@
+.edit-btn {
+    position: absolute; // Posiciona el botón
+    top: 10px; // Distancia desde la parte superior
+    right: 10px; // Distancia desde la parte derecha
+
+    // Estilos visuales
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+
+    // Transición para efectos suaves
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    // Estilo al pasar el mouse
+    &:hover {
+        background-color: #0056b3; // Color más oscuro al hacer hover
+        transform: scale(1.05); // Ligeramente más grande
+    }
+
+    // Estilo para el botón desactivado
+    &.disabled {
+        background-color: gray;
+        cursor: not-allowed; // Cambia el cursor
+    }
+}
+
+.info-esp span,
+.location span,
+.info span {
+    display: inline-block;
+    margin-left: 15px;
+    cursor: pointer;
+    vertical-align: middle;
+
+    svg {
+        fill: #555;
+        width: 16px;
+        height: 16px;
+        transition: fill 0.3s ease;
+    }
+
+    &:hover svg {
+        fill: #007bff;
+    }
+}
+
+.services-tags .tags ul {
+    list-style: none;
+    padding: 0;
+}
+
+.services-tags .tags li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.services-tags .tags li p {
+    flex: 1;
+    margin: 0;
+    padding: 5px;
+    border: 1px dashed transparent;
+    transition: border-color 0.3s ease;
+}
+
+.services-tags .tags li .edit-icon,
+.services-tags .tags li .delete-btn {
+    cursor: pointer;
+    margin-left: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.services-tags .tags li .edit-icon:hover svg,
+.services-tags .tags li .delete-btn:hover svg {
+    fill: #007bff;
+}
+
+.services-tags #add-service-btn {
+    margin-top: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.services-tags #add-service-btn:hover {
+    background-color: #0056b3;
+}
+
+.card {
+    position: relative;
+    padding: 25px;
+
+    .edit-icon {
+        position: absolute;
+        /* Absoluto respecto al contenedor `.card` */
+        top: 10px;
+        /* Distancia desde el borde superior */
+        right: 10px;
+        /* Distancia desde el borde derecho */
+        cursor: pointer;
+        /* Mostrar el cursor de acción al pasar el mouse */
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        /* Separación entre el ícono y el texto "Editar" */
+        background-color: #ffffff;
+        /* Fondo blanco */
+        border: 1px solid #ccc;
+        /* Borde para visibilidad */
+        border-radius: 20px;
+        /* Hacer un contenedor redondeado */
+        padding: 5px 10px;
+        /* Espaciado interno */
+        font-size: 14px;
+        /* Tamaño de texto */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        /* Sombra sutil */
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .edit-icon:hover {
+        transform: scale(1.1);
+        /* Ampliar al pasar el cursor */
+        background-color: #f0f0f0;
+        /* Fondo más claro al hacer hover */
+    }
+
+    .edit-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #000;
+        /* Color del ícono */
+        transition: fill 0.3s ease;
+    }
+
+    .edit-icon:hover svg {
+        fill: #007bff;
+        /* Cambiar el color del ícono al hacer hover */
+    }
+}
+
+#edit-topbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    /* Azul por defecto */
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    /* Asegurarse de que esté encima de todo */
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .edit-mode-label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    #exit-edit-mode,
+    .home-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+        color: white;
+        background-color: #ff4d4f;
+        /* Botones en rojo */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    #exit-edit-mode:hover,
+    .home-btn:hover {
+        background-color: #d9363e;
+        /* Más oscuro al pasar el mouse */
+    }
+}
+
+/* Ocultar inputs por defecto */
+.social-media input.change_sm {
+    display: none;
+    margin-top: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+}
+
+/* Alineación del grupo de redes sociales */
+.social-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ocultar el panel de edición por defecto */
+.edit-images-panel {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.edit-images-panel ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.edit-images-panel li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-images-panel img {
+    max-width: 100px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.edit-images-panel input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.edit-images-panel .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-images-panel .save-changes-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.edit-images-panel button:hover {
+    opacity: 0.9;
+}
+
+.color-picker-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    .color-picker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="color"] {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 4px; // Botones con bordes redondeados
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra ligera
+            transition: transform 0.2s ease, box-shadow 0.2s ease; // Efecto de animación
+
+            &:hover {
+                transform: scale(1.1); // Agranda el botón al pasar el cursor
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Sombra más pronunciada al pasar el cursor
+            }
+
+            &:active {
+                transform: scale(0.95); // Reduce ligeramente el tamaño al hacer clic
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra original al hacer clic
+            }
+        }
+    }
+}
+
+.edit-images {
+    position: fixed;
+    top: 20%;
+    right: 20px;
+    width: 250px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .edit-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .edit-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input[type="file"] {
+            font-size: 12px;
+            color: #555555;
+            cursor: pointer;
+
+            &::-webkit-file-upload-button {
+                padding: 8px 12px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
+    }
+}
+
+.btn-add-image {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+        background-color: #0056b3; // Color más oscuro al pasar el cursor
+    }
+
+    &:active {
+        transform: scale(0.95); // Reduce ligeramente el tamaño al hacer clic
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); // Resaltado al enfocar
+    }
+}
+.galery-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

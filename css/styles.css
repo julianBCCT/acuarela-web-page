@@ -2460,3 +2460,317 @@ main.invitation section.invitation-final a {
     margin-bottom: 10px;
   }
 }
+
+
+
+
+#curriculums-slide-planes .switch-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 30px;
+  width: fit-content;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333b5c;
+}
+
+#curriculums-slide-planes .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+#curriculums-slide-planes .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#curriculums-slide-planes .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+#curriculums-slide-planes .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+#curriculums-slide-planes .switch input:checked + .slider {
+  background-color: #30f77e;
+}
+
+#curriculums-slide-planes .switch input:focus + .slider {
+  box-shadow: 0 0 1px #30f77e;
+}
+
+#curriculums-slide-planes .switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+#curriculums-slide-planes .slider.round {
+  border-radius: 34px;
+}
+
+#curriculums-slide-planes .slider.round:before {
+  border-radius: 50%;
+}
+
+#curriculums-slide-planes #frequencyLabel {
+  margin-left: 10px;
+}
+
+.acuarela-services {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 31px 0 65px;
+  justify-content: center;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela {
+  width: 100%;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .switch-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 30px;
+  width: fit-content;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333b5c;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .switch
+  input:checked
+  + .slider {
+  background-color: #30f77e;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .switch
+  input:focus
+  + .slider {
+  box-shadow: 0 0 1px #30f77e;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .switch
+  input:checked
+  + .slider:before {
+  transform: translateX(26px);
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .slider.round {
+  border-radius: 34px;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .slider.round:before {
+  border-radius: 50%;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela #frequencyLabel {
+  margin-left: 10px;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .acuarela-slide {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 30px;
+  margin: 10px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+.acuarela-services #curriculums-slide-planes-acuarela .acuarela-slide table {
+  width: 100%;
+  color: #333b5c;
+  font-size: 20px;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  thead {
+  font-weight: bold;
+  border-bottom: 1px solid #55637e;
+  font-size: 22px;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  thead
+  tr
+  th {
+  padding-bottom: 10px;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  thead
+  tr
+  .th-acuarela {
+  text-align: center;
+  width: 200px;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  tbody
+  tr
+  td {
+  padding: 5px 0px;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  tbody
+  tr
+  td
+  button {
+  background: #00c6d1;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 10px;
+  border: 1px solid #00c6d1;
+  max-width: 200px;
+  min-width: 100px;
+  width: 95%;
+  height: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  tbody
+  tr
+  td
+  button:disabled {
+  background: #ccc;
+  color: #666;
+  border: 1px solid #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  tbody
+  tr
+  td
+  button:hover {
+  background: white;
+  color: #00c6d1;
+  border: 1px solid #00c6d1;
+}
+
+@media (max-width: 768px) {
+  .acuarela-services
+    #curriculums-slide-planes-acuarela
+    .acuarela-slide
+    table
+    thead {
+    font-size: 17px;
+  }
+
+  .acuarela-services
+    #curriculums-slide-planes-acuarela
+    .acuarela-slide
+    table
+    tbody {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .acuarela-services
+    #curriculums-slide-planes-acuarela
+    .acuarela-slide
+    table
+    thead {
+    font-size: 15px;
+  }
+
+  .acuarela-services
+    #curriculums-slide-planes-acuarela
+    .acuarela-slide
+    table
+    tbody {
+    font-size: 12px;
+  }
+}

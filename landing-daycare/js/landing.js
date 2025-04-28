@@ -172,137 +172,137 @@ function closeNav() {
   document.getElementById("mobile-menu").style.width = "0%";
 }
 
-//Galeria
-function openImageModal(src) {
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
+// //Galeria
+// function openImageModal(src) {
+//   const modal = document.getElementById("imageModal");
+//   const modalImg = document.getElementById("modalImg");
 
-  modalImg.src = src;
-  modal.style.display = "flex"; // Muestra el modal
+//   modalImg.src = src;
+//   modal.style.display = "flex"; // Muestra el modal
+// }
+
+// // Cerrar el modal al hacer click en la "X" o fuera de la imagen
+// document.querySelector(".close-modal").addEventListener("click", function () {
+//   document.getElementById("imageModal").style.display = "none";
+// });
+
+// document.getElementById("imageModal").addEventListener("click", function (e) {
+//   if (e.target.tagName !== "IMG") {
+//     this.style.display = "none";
+//   }
+// });
+
+// Galeria 1
+
+var currentIndex1 = 0;
+var images1 = document.querySelectorAll(".image-gallery-1 li");
+var totalImages1 = images1.length;
+
+function showImage1(index1) {
+  if (index1 >= 0 && index1 < totalImages1) {
+    images1[currentIndex1].style.display = "none";
+    currentIndex1 = index1;
+    images1[currentIndex1].style.display = "block";
+  }
 }
 
-// Cerrar el modal al hacer click en la "X" o fuera de la imagen
-document.querySelector(".close-modal").addEventListener("click", function () {
-  document.getElementById("imageModal").style.display = "none";
+function nextImage1() {
+  showImage1(currentIndex1 + 1);
+}
+
+function prevImage1() {
+  showImage1(currentIndex1 - 1);
+}
+
+// document.querySelector(".next-btn-1").addEventListener("click", nextImage1);
+// document.querySelector(".prev-btn-1").addEventListener("click", prevImage1);
+
+// Mostrar la primera imagen al cargar la página
+showImage1(currentIndex1);
+
+var imagesPopup1 = document.querySelectorAll(".image-gallery-1 li img");
+var popupContainer1 = document.querySelector(".popup-container-1");
+var popupImage1 = document.querySelector(".popup-image-1");
+var closeBtn1 = document.querySelector(".close-btn-1");
+
+imagesPopup1.forEach(function (image1) {
+  image1.addEventListener("click", function () {
+    popupImage1.src = image1.src;
+    popupContainer1.style.display = "block";
+  });
 });
 
-document.getElementById("imageModal").addEventListener("click", function (e) {
-  if (e.target.tagName !== "IMG") {
-    this.style.display = "none";
+closeBtn1.addEventListener("click", function () {
+  popupContainer1.style.display = "none";
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    popupContainer1.style.display = "none";
   }
 });
 
-// // Galeria 1
+popupContainer1.addEventListener("click", function (event) {
+  if (event.target === popupContainer1) {
+    popupContainer1.style.display = "none";
+  }
+});
 
-// var currentIndex1 = 0;
-// var images1 = document.querySelectorAll(".image-gallery-1 li");
-// var totalImages1 = images1.length;
+//Galeria 2
 
-// function showImage1(index1) {
-//   if (index1 >= 0 && index1 < totalImages1) {
-//     images1[currentIndex1].style.display = "none";
-//     currentIndex1 = index1;
-//     images1[currentIndex1].style.display = "block";
-//   }
-// }
+var currentIndex = 0;
+var images = document.querySelectorAll(".image-gallery li");
+var totalImages = images.length;
 
-// function nextImage1() {
-//   showImage1(currentIndex1 + 1);
-// }
+function showImage(index) {
+  if (index >= 0 && index < totalImages) {
+    images[currentIndex].style.display = "none";
+    currentIndex = index;
+    images[currentIndex].style.display = "block";
+  }
+}
 
-// function prevImage1() {
-//   showImage1(currentIndex1 - 1);
-// }
+function nextImage() {
+  showImage(currentIndex + 1);
+}
 
-// // document.querySelector(".next-btn-1").addEventListener("click", nextImage1);
-// // document.querySelector(".prev-btn-1").addEventListener("click", prevImage1);
+function prevImage() {
+  showImage(currentIndex - 1);
+}
 
-// // Mostrar la primera imagen al cargar la página
-// showImage1(currentIndex1);
+document.querySelector(".next-btn").addEventListener("click", nextImage);
+document.querySelector(".prev-btn").addEventListener("click", prevImage);
 
-// var imagesPopup1 = document.querySelectorAll(".image-gallery-1 li img");
-// var popupContainer1 = document.querySelector(".popup-container-1");
-// var popupImage1 = document.querySelector(".popup-image-1");
-// var closeBtn1 = document.querySelector(".close-btn-1");
+// Mostrar la primera imagen al cargar la página
+showImage(currentIndex);
 
-// imagesPopup1.forEach(function (image1) {
-//   image1.addEventListener("click", function () {
-//     popupImage1.src = image1.src;
-//     popupContainer1.style.display = "block";
-//   });
-// });
+var imagesPopup = document.querySelectorAll(".image-gallery li img");
+var popupContainer = document.querySelector(".popup-container");
+var popupImage = document.querySelector(".popup-image");
+var closeBtn = document.querySelector(".close-btn");
 
-// closeBtn1.addEventListener("click", function () {
-//   popupContainer1.style.display = "none";
-// });
+imagesPopup.forEach(function (image) {
+  image.addEventListener("click", function () {
+    popupImage.src = image.src;
+    popupContainer.style.display = "block";
+  });
+});
 
-// document.addEventListener("keydown", function (event) {
-//   if (event.key === "Escape") {
-//     popupContainer1.style.display = "none";
-//   }
-// });
+closeBtn.addEventListener("click", function () {
+  popupContainer.style.display = "none";
+});
 
-// popupContainer1.addEventListener("click", function (event) {
-//   if (event.target === popupContainer1) {
-//     popupContainer1.style.display = "none";
-//   }
-// });
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    popupContainer.style.display = "none";
+  }
+});
 
-// //Galeria 2
-
-// var currentIndex = 0;
-// var images = document.querySelectorAll(".image-gallery li");
-// var totalImages = images.length;
-
-// function showImage(index) {
-//   if (index >= 0 && index < totalImages) {
-//     images[currentIndex].style.display = "none";
-//     currentIndex = index;
-//     images[currentIndex].style.display = "block";
-//   }
-// }
-
-// function nextImage() {
-//   showImage(currentIndex + 1);
-// }
-
-// function prevImage() {
-//   showImage(currentIndex - 1);
-// }
-
-// document.querySelector(".next-btn").addEventListener("click", nextImage);
-// document.querySelector(".prev-btn").addEventListener("click", prevImage);
-
-// // Mostrar la primera imagen al cargar la página
-// showImage(currentIndex);
-
-// var imagesPopup = document.querySelectorAll(".image-gallery li img");
-// var popupContainer = document.querySelector(".popup-container");
-// var popupImage = document.querySelector(".popup-image");
-// var closeBtn = document.querySelector(".close-btn");
-
-// imagesPopup.forEach(function (image) {
-//   image.addEventListener("click", function () {
-//     popupImage.src = image.src;
-//     popupContainer.style.display = "block";
-//   });
-// });
-
-// closeBtn.addEventListener("click", function () {
-//   popupContainer.style.display = "none";
-// });
-
-// document.addEventListener("keydown", function (event) {
-//   if (event.key === "Escape") {
-//     popupContainer.style.display = "none";
-//   }
-// });
-
-// popupContainer.addEventListener("click", function (event) {
-//   if (event.target === popupContainer) {
-//     popupContainer.style.display = "none";
-//   }
-// });
+popupContainer.addEventListener("click", function (event) {
+  if (event.target === popupContainer) {
+    popupContainer.style.display = "none";
+  }
+});
 
 //Funcionamiento de los titulos de los pasos al tener o no hover
 

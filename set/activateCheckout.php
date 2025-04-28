@@ -71,7 +71,8 @@
         "rols":["5ff78feb5d6f2e272cfd7393"],
         "country": "",
         "photo": "",
-        "state": "'.$state.'"
+        "state": "'.$state.'",
+        "new_account": true
     }',
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json'

@@ -292,24 +292,30 @@ function updateAcuarelaServices() {
         <td style="text-align: center; font-weight: bold;"></td>
     `;
       data.forEach((acuarela) => {
-        // Seleccionar el enlace según el estado de monthlyAcuarela
         const redirectLink = monthlyAcuarela
           ? acuarela.acf.link_de_pago_mensual
           : acuarela.acf.link_de_pago_anual;
-
+      
+        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
+        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
+        const disabledAttr = isProButton ? "disabled" : "";
+        const onclickAttr = isProButton
+          ? ""
+          : `onclick="window.open('${redirectLink || "#"}', '_blank')"`; 
+      
         tableHTML += `
-        
-        <td style="text-align: center;">
-          <button
-            class="btn-acuarela"
-            onclick="window.open('${redirectLink || "#"}', '_blank')"
-            target="_blank"
-          >
-            ${acuarela.acf.texto_boton}
-          </button>
-        </td>
-      `;
-      });
+          <td style="text-align: center;">
+            <button
+              class="btn-acuarela"
+              ${disabledAttr}
+              ${onclickAttr}
+              target="_blank"
+            >
+              ${buttonText}
+            </button>
+          </td>
+        `;
+      });    
 
       tableHTML += `
       </tr>

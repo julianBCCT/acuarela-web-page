@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<div class="home-banner">
+<!-- <div class="home-banner">
     <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg" alt="unmuted" /></button>
     <video
 
@@ -16,27 +16,69 @@
         src="<?=$a->generalInfo->acf->video_home?>"
       />
     </video>
-</div>
-<main class="container">
+</div> -->
+<main class="containerheader">
   <!-- BANNER -->
   <section class="banner">
-    <div class="banner__texts">
-      <h1 class="banner__title">
-        Entra a la era de los daycares digitalizados y haz crecer tu negocio
-      </h1>
-      <h2 class="banner__subtitle">
-        Convierte el servicio de tu daycare en una experiencia 10/10 con la
-        familia de herramientas digitales Acuarela.
-      </h2>
-      <button
-        class="btn btn--primary"
-        onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
-      >
-        <span class="btn__text"> Crea una cuenta gratis</span>
-      </button>
+    <h1 class="banner__title">
+      Administra <strong class="banner__title-strong">Tu Daycare Digitalmente</strong> Y Haz Crecer Tu Negocio.
+    </h1>
+
+    <div class="banner__content">
+      <!-- <div class="banner__media">
+        <video autoplay muted loop>
+          <source src="<?=$a->generalInfo->acf->video_home?>" type="video/mp4">
+          Tu navegador no soporta video HTML5.
+        </video>
+        <div class="red-square">
+          <img class="header__logo" src="img/Logo_AC.png" alt="Acuarela" />
+        </div>
+      </div> -->
+      <div class="banner__media">
+        <div class="video-container">
+          <video autoplay muted loop>
+            <source src="<?=$a->generalInfo->acf->video_home?>" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
+        <div class="pink-square">
+          <img class="video__logo" src="img/Logo_AC.png" alt="Acuarela" />
+        </div>
+      </div>
+
+      <div class="banner__content-info">
+        <h2 class="banner__subtitle">
+          Convierte el servicio de tu daycare en una experiencia 10/10 con la
+          familia de herramientas digitales Acuarela.
+        </h2>
+        <div class="banner__buttons">
+          <button
+            class="btn btn--primarywhite"
+            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
+          >
+          Crea una cuenta gratis
+          </button>
+          <button
+            class="btn btn--secondary"
+            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
+          >
+          Obtener un DEMO
+          </button>
+        </div>
+      </div>    
     </div>
-    <img class="banner__img" src="img/home_banner.jpg" />
   </section>
+
+  <!-- CLIENTES -->
+  <!-- <section class="clientes__daycares">
+    <p class="clientes-title">Con la confianza de</p>
+    <img class="logos-daycares" src="img/daycares/GummyBear.png" alt="Acuarela" />
+    <img class="logos-daycares" src="img/daycares/JyN.png" alt="Acuarela" />
+    <img class="logos-daycares" src="img/daycares/LittleGenius.png" alt="Acuarela" />
+    <img class="logos-daycares" src="img/daycares/ManitasFuturo.png" alt="Acuarela" />
+    <img class="logos-daycares" src="img/daycares/Nuri.png" alt="Acuarela" />
+    <img class="logos-daycares" src="img/daycares/RaisingStars.png" alt="Acuarela" />
+  </section> -->
 
   <!-- FEATURES -->
   <section class="features">

@@ -1,5 +1,5 @@
 <?php include 'head.php'; ?>
-<header class="header container">
+<header class="header container__home">
       <a href="/">
         <img class="header__logo" src="img/logo_w.svg" alt="Acuarela" />
       </a>
@@ -10,10 +10,11 @@
         onclick="toggleTarget('mobile-menu')"
       />
       <nav class="header__menu">
-      <a class="header__menu-item" href="home">Home</a>
-        <a class="header__menu-item" href="sobre-nosotros">Nosotros</a>
+        <a class="header__menu-item" href="/#top">Home</a>
+        <!-- <a class="header__menu-item" href="sobre-nosotros">Nosotros</a> -->
+        <a class="header__menu-item" href="/#nosotros">Nosotros</a>
         <a class="header__menu-item" href="planes-precios">Planes y Precios</a>
-        <a class="header__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>
+        <a class="header__menu-item" href="/#faq">Preguntas Frecuentes</a>
       </nav>
 
       <div class="header__user">
@@ -66,6 +67,7 @@
       </div>
       <div class="mobile-menu__body">
         <nav class="mobile-menu__menu">
+          <a class="mobile-menu__menu-item" href="#top">Home</a>
           <a class="mobile-menu__menu-item" href="sobre-nosotros">Nosotros</a>
           <a class="mobile-menu__menu-item" href="planes-precios">Planes y Precios</a>
           <a class="mobile-menu__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>

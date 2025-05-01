@@ -3,7 +3,7 @@ $prices = $a->getPrices();
 ?>
 
 
-<main class="container">
+<main class="container__home">
   <!-- BANNER -->
   <section class="banner banner--center banner--short">
     <div class="banner__texts">

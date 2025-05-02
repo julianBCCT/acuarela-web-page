@@ -205,54 +205,69 @@ function unMutedVideo() {
 
 
 //PARA EL MODAL DEL DEMO
-const openModalBtn = document.getElementById('openModalBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const modalOverlay = document.getElementById('modalOverlay');
+setTimeout(() => {
+  const openModalBtn = document.getElementById('openModalBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const modalOverlay = document.getElementById('modalOverlay');
 
-openModalBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('hidden');
-});
-
-closeModalBtn.addEventListener('click', () => {
-  modalOverlay.classList.add('hidden');
-});
-
-// Cerrar si se hace clic fuera del modal-box
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
-    modalOverlay.classList.add('hidden');
+  if (openModalBtn) {
+    openModalBtn.addEventListener('click', () => {
+      modalOverlay.classList.remove('hidden');
+    });
   }
-});
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+      modalOverlay.classList.add('hidden');
+    });
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.add('hidden');
+      }
+    });
+  }
+}, 100);
 
 
-//Carrusel de testimonios
-let currentIndex = 0;
 
-const sliderTrack = document.querySelector('.testimonial__slider-track');
-const slides = document.querySelectorAll('.testimonial__slide');
-const totalSlides = slides.length;
-const slidesPerView = 2;
+// //Carrusel de testimonios
+function attachSliderListeners() {
+  let currentIndex = 0;
 
-function updateSlider() {
-  const slideWidth = slides[0].offsetWidth + 20; // 20 es el gap
-  const moveX = currentIndex * slideWidth;
-  sliderTrack.style.transform = `translateX(-${moveX}px)`;
-}
+  const sliderTrack = document.querySelector('.testimonial__slider-track');
+  const slides = document.querySelectorAll('.testimonial__slide');
+  const totalSlides = slides.length;
+  const slidesPerView = 2;
 
-document.querySelector('img[alt="Desplazar testimonios a la izquierda"]').addEventListener('click', () => {
-  currentIndex = Math.max(0, currentIndex - 1);
-  updateSlider();
-});
+  function updateSlider() {
+    const slideWidth = slides[0].offsetWidth + 20; // 20 es el gap
+    const moveX = currentIndex * slideWidth;
+    sliderTrack.style.transform = `translateX(-${moveX}px)`;
+  }
 
-document.querySelector('img[alt="Desplazar testimonios a la derecha"]').addEventListener('click', () => {
-  if (currentIndex < totalSlides - slidesPerView) {
-    currentIndex++;
+  document.querySelector('img[alt="Desplazar testimonios a la izquierda"]').addEventListener('click', () => {
+    currentIndex = Math.max(0, currentIndex - 1);
     updateSlider();
-  }
-});
+  });
 
-// Opcional: Ajustar slider si cambia el tamaño
-window.addEventListener('resize', updateSlider);
+  document.querySelector('img[alt="Desplazar testimonios a la derecha"]').addEventListener('click', () => {
+    if (currentIndex < totalSlides - slidesPerView) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener('resize', updateSlider);
+  
+  updateSlider(); // Para asegurarte que el slider se ajuste en inicio
+}
+setTimeout(() => {
+  attachSliderListeners();
+}, 100);
+
 
 
 

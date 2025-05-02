@@ -28,7 +28,7 @@
         <div class="banner__buttons">
           <button
             class="btn btn--primarywhite"
-            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
+            onclick="window.location.href='https://acuarela.app/planes-precios'"
           >
           Crea una cuenta gratis
           </button>

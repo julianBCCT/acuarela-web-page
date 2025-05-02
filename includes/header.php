@@ -24,8 +24,20 @@
         </a> -->
         <!-- <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">
           <img class="header__logging" src="img/cerrarsesion.svg" alt="Acuarela" />
-        </a>
-        <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">Crea tu cuenta gratis</a> -->
+        </a> -->
+        <button
+            class="btn btn--primarywhite"
+            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/?service=acuarela&redirect_url=%2Fmiembros%2Facuarela-app-web%2Fs%2FdaycareActive%2F%3Fdaycare%3D'"
+          >
+          Iniciar sesión
+        </button>
+        <button
+            class="btn btn--primarywhite"
+            onclick="window.location.href='https://acuarela.app/planes-precios'"
+          >
+          Crear cuenta
+        </button>
+        <!-- <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">Crea tu cuenta gratis</a>  -->
       </div>
 
       <!--<div class="header__actions">

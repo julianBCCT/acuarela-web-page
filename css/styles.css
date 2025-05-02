@@ -478,6 +478,8 @@ select:focus {
   display: flex;
   align-items: center;
   height: 100%;
+  padding-right: 20px;
+  gap: 10px;
 }
 .header__user-notification {
   display: flex;
@@ -554,7 +556,7 @@ select:focus {
 main {
   padding: 0 160px;
   padding-top: 140px;
-  background-image: url(../img/body_bg.png);
+  /* background-image: url(../img/body_bg.png); */
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center 100px;
@@ -3811,6 +3813,7 @@ main.invitation section.invitation-final a {
 
 
 .service__table {
+  display: none;
   width: 100%;
   max-width: 1000px;
   margin-top: 70px;

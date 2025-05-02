@@ -150,6 +150,8 @@ $prices = $a->getPrices();
     </div> -->
   </section>
 
+
+  <!-- Tabla detallando los servicios -->
   <section class="service__table">
     <div class="service__table-header">
       <div></div>
@@ -194,12 +196,12 @@ $prices = $a->getPrices();
             <img class="img-feature" src="img/false.svg" alt="Comunicarse fácilmente con personal y padres de familia" />
           </div>
           <p>Más capacidad, más crecimiento, gestiona inscripciones de hasta 16 niños sin complicaciones.</p>
-          <button
+          <!-- <button
               class="btn btn--secondary"
               onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
             >
             ¡Conoce más!
-          </button>
+          </button> -->
         </div>
 
         <div class="feature">
@@ -207,12 +209,12 @@ $prices = $a->getPrices();
             <img class="img-feature" src="img/false.svg" alt="Comunicarse fácilmente con personal y padres de familia" />
           </div>
           <p>Más capacidad, más crecimiento, gestiona inscripciones de hasta 16 niños sin complicaciones.</p>
-          <button
+          <!-- <button
               class="btn btn--secondary"
               onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
             >
             ¡Conoce más!
-          </button>
+          </button> -->
         </div>
 
         <div class="feature">
@@ -220,12 +222,12 @@ $prices = $a->getPrices();
             <img class="img-feature" src="img/false.svg" alt="Comunicarse fácilmente con personal y padres de familia" />
           </div>
           <p>Más capacidad, más crecimiento, gestiona inscripciones de hasta 16 niños sin complicaciones.</p>
-          <button
+          <!-- <button
               class="btn btn--secondary"
               onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
             >
             ¡Conoce más!
-          </button>
+          </button> -->
         </div>
       </div>
     </div>

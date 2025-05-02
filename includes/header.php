@@ -18,13 +18,14 @@
       </nav>
 
       <div class="header__user">
-        <a class="header__user-notification" href="#">
+        <!-- <a class="header__user-notification" href="#">
           <img class="header__notification" src="img/Notificaciones.svg" alt="Acuarela" />
           Notificaciones
-        </a>
-        <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">
+        </a> -->
+        <!-- <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">
           <img class="header__logging" src="img/cerrarsesion.svg" alt="Acuarela" />
         </a>
+        <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">Crea tu cuenta gratis</a> -->
       </div>
 
       <!--<div class="header__actions">

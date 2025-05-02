@@ -1,22 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<!-- <div class="home-banner">
-    <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg" alt="unmuted" /></button>
-    <video
 
-    id="video1"
-      src="<?=$a->generalInfo->acf->video_home?>"
-      autobuffer
-      playsinline
-      preload="auto"
-      muted
-      loop
-      autoplay
-    >
-      <source
-        src="<?=$a->generalInfo->acf->video_home?>"
-      />
-    </video>
-</div> -->
 <main class="containerheader">
   <!-- BANNER -->
   <section class="banner">
@@ -27,9 +10,9 @@
     <div class="banner__content">
       <div class="banner__media">
         <div class="video-container">
-          <video autoplay muted loop>
-            <source src="<?=$a->generalInfo->acf->video_home?>" type="video/mp4">
-            Tu navegador no soporta video HTML5.
+          <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg" alt="unmuted" /></button>
+          <video id="video1" src="<?=$a->generalInfo->acf->video_home?>" playsinline preload="auto" autoplay muted loop>
+            <source src="<?=$a->generalInfo->acf->video_home?>" type="video/mp4">  
           </video>
         </div>
         <div class="pink-square">
@@ -49,12 +32,41 @@
           >
           Crea una cuenta gratis
           </button>
-          <button
-            class="btn btn--secondary"
-            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
-          >
-          Obtener un DEMO
+
+          <button class="btn btn--secondary" id="openModalBtn" >
+            Obtener un DEMO
           </button>
+          <div id="modalOverlay" class="modal-overlay hidden">
+            <div class="modal-box">
+              <img src="img/Cerrar.svg" alt="Cerrar" id="closeModalBtn" class="close-btn" />
+              <div class="modal-inner">
+                <div class="modal-left">
+                  <h3>¡Empieza ahora!</h3>
+                  <form id="demoForm" class="modal-form">
+                    <input type="text" name="nombre" placeholder="Nombre" required />
+                    <input type="text" name="apellidos" placeholder="Apellidos" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="text" name="daycare" placeholder="Daycare" required />
+                    <input type="number" name="num_ninos" placeholder="Número de niños" required />
+                    <!-- Aquí se inserta el reCAPTCHA de Google -->
+                    <div class="recaptcha-container">
+                      <!-- Reemplaza con tu clave de sitio reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="TU_CLAVE_RECAPTCHA"></div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                      Recibir <span class="bold-text">DEMO</span>
+                    </button>
+                  </form>
+                </div>
+                <div class="modal-right">
+                  <div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    <img src="img/logo_w.svg" alt="Logo Acuarela" />
+                  </div>          
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>    
     </div>
@@ -154,7 +166,7 @@
           </div>
         </div>
 
-        <div class="adds-content-info">
+        <div class="adds-content-info pri">
           <h3 class="adds-info-title">Cobros automáticos y Payrolls fáciles...</h3>
           <p class="adds-info-text">
             Nuestro sistema de pagos automáticos está listo para facilitar los cobros semanales de tu 
@@ -184,7 +196,7 @@
           </div>
         </div>
 
-        <div class="adds-content-info">
+        <div class="adds-content-info sec">
           <h3 class="adds-info-title">Llega a más clientes sin más esfuerzo...</h3>
           <p class="adds-info-text">
             Los daycares que usan Acuarela , son parte de nuestra red de Daycares, en la cual padres de 
@@ -218,7 +230,7 @@
           </div>
         </div>
 
-        <div class="adds-content-info">
+        <div class="adds-content-info pri">
           <h3 class="adds-info-title">Funciones que te permiten dedicar más tiempo a cuidar y menos a administrar…...</h3>
           <p class="adds-info-text">
             El control de eventos, contratos, documentación, asistentes, fichas de salud, gestión de ingresos / gastos, 
@@ -245,40 +257,31 @@
       <h2>Testimonios</h2>
       <div class="testimonial__content">
         <img src="img\Flecha_izquierda.png" alt="Desplazar testimonios a la izquierda" />
-        
+
         <div class="testimonial__content-view">
-          <div class="testimonial__content-testimonio">
-            <div class="testimonial__content-video"></div>
-            <div class="testimonial__content-info">
-              <div class="imgbox">
-                <img src="img\Heart.svg" alt="Like" />
+          <div class="testimonial__slider-track">
+            <?php 
+              $testimonios = $a->getTestimonios();
+              for ($i = 0; $i < count($testimonios); $i++) { 
+                  $testimonio = $testimonios[$i];
+            ?>
+            <div class="testimonial__slide">
+              <div class="testimonial__content-video">
+                <img class="testimonials-cont__avatar" src="<?=$testimonio->acf->imagen?>"/>
               </div>
-              <h3>Ana Maria Murcia</h3>
-              <h4>Daycare: Lovely</h3>
-              <p>
-                “Cuidar el medio ambiente es una de las cosas que más amo enseñarle a los niños de mi Daycare. 
-                Con Acuarela App, ahora podré también reducir el uso de papel en la gestión de mi negocio.”
-              </p>
+
+              <div class="testimonial__content-info">
+                <div class="imgbox">
+                  <img src="img\Heart.svg" alt="Like" />
+                </div>
+                <h3><?=$testimonio->title->rendered?></h3>
+                <h4><?=$testimonio->acf->cargo?></h4>
+                <p><?=$testimonio->content->rendered?></p>
+              </div>
             </div>
+            <?php } ?>
           </div>
         </div>
-
-        <!-- <div class="testimonial__content-view">
-          <div class="testimonial__content-testimonio">
-            <div class="testimonial__content-video"></div>
-            <div class="testimonial__content-info">
-              <div class="imgbox">
-                <img src="img\Heart.svg" alt="Like" />
-              </div>
-              <h3>Isabel de NWest Childcare</h3>
-              <h4>Daycare: Lovely</h3>
-              <p>
-                “Siempre he tenido inconvenientes con que los padres del Daycare paguen a tiempo. 
-                Ya quiero tener la app para hacer uso de esta función.”
-              </p>
-            </div>
-          </div>
-        </div> -->
 
         <img src="img\Flecha_derecha.png" alt="Desplazar testimonios a la derecha" />
       </div>

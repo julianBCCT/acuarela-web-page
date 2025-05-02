@@ -193,7 +193,7 @@ function doneBox() {
 }
 
 function unMutedVideo() {
-  const video = document.querySelector(".home-banner #video1");
+  const video = document.querySelector(".video-container #video1");
   if (video.muted === true) {
     document.querySelector("#unmutedBtn img").src = "img/volOn.svg";
     video.muted = false;
@@ -204,8 +204,59 @@ function unMutedVideo() {
 }
 
 
-//Parte para manejar la tabla de acuarela lite y pro
+//PARA EL MODAL DEL DEMO
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const modalOverlay = document.getElementById('modalOverlay');
 
+openModalBtn.addEventListener('click', () => {
+  modalOverlay.classList.remove('hidden');
+});
+
+closeModalBtn.addEventListener('click', () => {
+  modalOverlay.classList.add('hidden');
+});
+
+// Cerrar si se hace clic fuera del modal-box
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
+    modalOverlay.classList.add('hidden');
+  }
+});
+
+
+//Carrusel de testimonios
+let currentIndex = 0;
+
+const sliderTrack = document.querySelector('.testimonial__slider-track');
+const slides = document.querySelectorAll('.testimonial__slide');
+const totalSlides = slides.length;
+const slidesPerView = 2;
+
+function updateSlider() {
+  const slideWidth = slides[0].offsetWidth + 20; // 20 es el gap
+  const moveX = currentIndex * slideWidth;
+  sliderTrack.style.transform = `translateX(-${moveX}px)`;
+}
+
+document.querySelector('img[alt="Desplazar testimonios a la izquierda"]').addEventListener('click', () => {
+  currentIndex = Math.max(0, currentIndex - 1);
+  updateSlider();
+});
+
+document.querySelector('img[alt="Desplazar testimonios a la derecha"]').addEventListener('click', () => {
+  if (currentIndex < totalSlides - slidesPerView) {
+    currentIndex++;
+    updateSlider();
+  }
+});
+
+// Opcional: Ajustar slider si cambia el tamaño
+window.addEventListener('resize', updateSlider);
+
+
+
+//Parte para manejar la tabla de acuarela lite y pro
 let monthlyAcuarela = false;
 let acuarelaService = false;
 
@@ -218,6 +269,33 @@ function toggleFrequencyAcuarela() {
   // updatePricesIndiUni();
 }
 getAllAcuarela();
+
+
+//Parte para manejar la tabla de acuarela lite y pro, (No con el switch)
+function setFrequencyAcuarela(option) {
+  monthlyAcuarela = option === "mensual";
+  // Primero quitar "active" de ambos
+  document.getElementById("optionAnual").classList.remove("active");
+  document.getElementById("optionMensual").classList.remove("active");
+  // Luego agregar "active" solo al seleccionado
+  if (monthlyAcuarela) {
+    document.getElementById("optionMensual").classList.add("active");
+  } else {
+    document.getElementById("optionAnual").classList.add("active");
+  }
+
+  updateAcuarelaServices();
+}
+
+
+const toggleBtn = document.querySelector('.toggle-btn');
+const listDeployment = document.querySelector('.list-deployment');
+
+toggleBtn.addEventListener('click', () => {
+  listDeployment.classList.toggle('active');
+  toggleBtn.classList.toggle('rotated');
+});
+
 
 function getAllAcuarela() {
   if (!acuarelaService) {
@@ -241,7 +319,20 @@ function updateAcuarelaServices() {
       <table>
         <thead>
           <tr>
-            <th>Características</th>
+            <th>
+              <div class="boxtitle__table">
+                <img src="img/Favicon.svg" alt="Acuarela App" />
+                <div class="boxtitle__table-title">
+                  <h2> Acuarela App</h2>
+                    <p>
+                      <span id="optionAnual" class="frequency-option ${monthlyAcuarela ? '' : 'active'}" onclick="setFrequencyAcuarela('anual')">Anual</span> / 
+                      <span id="optionMensual" class="frequency-option ${monthlyAcuarela ? 'active' : ''}" onclick="setFrequencyAcuarela('mensual')">Mensual</span>
+                    </p>
+                </div>
+              </div>
+
+              <h3> Características </h3>
+            </th>
       `;
 
       data.forEach((acuarela) => {
@@ -249,16 +340,46 @@ function updateAcuarelaServices() {
           ? acuarela.acf.precio_mensual
           : acuarela.acf.presio_anual;
 
+        const isPro = acuarela.title.rendered.trim().toLowerCase() === "acuarela pro";
+
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+
+        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
+        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
+        const disabledAttr = isProButton ? "disabled" : "";
+        const buttonClassExtra = isProButton ? "btn-disable" : ""; 
+        const onclickAttr = isProButton
+          ? ""
+          : `onclick="window.open('${redirectLink || "#"}', '_blank')"`; 
+        
+        const asesorButtonClass = isPro ? "buttonth-white" : "buttonth-white btn-invisible"; // Si NO es pro, sera "invisible"
+
         tableHTML += `
-          <th class="th-acuarela">${acuarela.title.rendered} <br/> <span>${price}</span></th>
+          <th class="th-acuarela">
+            <p> 
+              <span class="title-price">
+                ${acuarela.title.rendered} 
+                ${isPro ? '<img src="img/crown_simple.svg" alt="Pro"/>' : ''}
+              </span>
+              <span class="price">${price}</span>
+            </p>
+            <button class="buttonth ${buttonClassExtra}" ${disabledAttr} ${onclickAttr} target="_blank" >
+              ${buttonText}
+            </button>
+            <button class="${asesorButtonClass}" target="_blank">
+              Hablar con asesor
+            </button>
+          </th>
         `;
       });
 
       tableHTML += `
-      </tr>
-    </thead>
-    <tbody>
-  `;
+          </tr>
+        </thead>
+        <tbody>
+      `;
 
       const allFeatures = {};
 
@@ -269,53 +390,31 @@ function updateAcuarelaServices() {
         });
       });
 
+      let index = 0;
       Object.keys(allFeatures).forEach((feature) => {
+        const rowClass = index % 2 === 0 ? 'white-bgtd' : 'menta-bgtd'; // Alternar clase con base en index par o impar
         tableHTML += `
-      <tr>
-        <td>● ${feature}</td>
-    `;
+          <tr>
+            <td class="${rowClass}">${feature}</td>
+        `;
 
         data.forEach((acuarela) => {
           const featuresData = parseFeatures(acuarela.content.rendered);
           tableHTML += `
-        <td style="text-align: center;">
-          ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
-        </td>
-      `;
+            <td style="text-align: center;">
+              ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
+            </td>
+          `;
         });
 
         tableHTML += `</tr>`;
+        index++;
       });
 
       tableHTML += `
       <tr>
         <td style="text-align: center; font-weight: bold;"></td>
-    `;
-      data.forEach((acuarela) => {
-        const redirectLink = monthlyAcuarela
-          ? acuarela.acf.link_de_pago_mensual
-          : acuarela.acf.link_de_pago_anual;
-      
-        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
-        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
-        const disabledAttr = isProButton ? "disabled" : "";
-        const onclickAttr = isProButton
-          ? ""
-          : `onclick="window.open('${redirectLink || "#"}', '_blank')"`; 
-      
-        tableHTML += `
-          <td style="text-align: center;">
-            <button
-              class="btn-acuarela"
-              ${disabledAttr}
-              ${onclickAttr}
-              target="_blank"
-            >
-              ${buttonText}
-            </button>
-          </td>
-        `;
-      });    
+      `;
 
       tableHTML += `
       </tr>

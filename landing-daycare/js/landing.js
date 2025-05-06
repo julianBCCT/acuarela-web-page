@@ -8,14 +8,43 @@ document.addEventListener("DOMContentLoaded", function () {
     .trim();
   var colorTexto = "#060606"; // Negro por defecto
 
+  // Calcular contraste con el blanco
+  var contrastePrimario = calcularContraste(colorPrimario, "#ffffff");
+
+  // Si el contraste con blanco es menor a 4.5 (o el umbral que determines)
+  if (contrastePrimario < 4.5) {
+    // Actualizar los estilos de los elementos afectados
+    const readMoreBtn = document.getElementById("btnWhy");
+    const h1Philosophy = document.querySelector(
+      ".main-body main .philosophy .main-content h1"
+    );
+    const h1Hero = document.querySelector(".main-body main .hero .main h1");
+
+    if (readMoreBtn) {
+      readMoreBtn.style.color = "var(--textos)";
+      readMoreBtn.style.borderColor = "var(--textos)";
+    }
+
+    if (h1Philosophy) {
+      h1Philosophy.style.color = "var(--textos)";
+    }
+
+    if (h1Hero) {
+      h1Hero.style.color = "var(--textos)";
+    }
+  }
+
   // Calcular contraste con el texto
   var contraste1 = calcularContraste(colorPrimario, colorTexto);
   var contraste2 = calcularContraste(colorSecundario, colorTexto);
 
+  console.log("Contraste color primario:", contraste1);
+  console.log("Contraste color secundario:", contraste2);
+
   if (contraste1 < 7) {
     document.documentElement.style.setProperty("--color-botones", "white");
   }
-  if (contraste2 < 4.5) {
+  if (contraste2 < 5.5) {
     document.documentElement.style.setProperty("--color-pasos", "white");
   }
 
@@ -37,6 +66,33 @@ document.addEventListener("DOMContentLoaded", function () {
     "--color-fondo-claro",
     colorFondoClaro
   );
+
+  //Contraste colores claros
+
+  const colorPrimarioClaroFinal = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-primario-claro")
+    .trim();
+  const colorFondoClaroFinal = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-fondo-claro")
+    .trim();
+
+  // Calcular contraste entre ellos
+  const contrasteColoresClaros = calcularContraste(
+    colorPrimarioClaroFinal,
+    colorFondoClaroFinal
+  );
+
+  // Aplicar color-secundario-claro como fondo si el contraste es menor a 1.1
+  if (contrasteColoresClaros < 1.1) {
+    const colorSecundarioClaroFinal = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-secundario-claro")
+      .trim();
+
+    const mainElement = document.querySelector(".main-body main .main");
+    if (mainElement) {
+      mainElement.style.backgroundColor = colorSecundarioClaroFinal;
+    }
+  }
 
   // Galería
   const gallery = document.querySelector(".image-gallery-1");
@@ -107,14 +163,25 @@ function calcularContraste(color1, color2) {
 }
 
 function obtenerComponentesRGB(color) {
-  var match = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-  return match
-    ? {
-        r: parseInt(match[1], 16) / 255,
-        g: parseInt(match[2], 16) / 255,
-        b: parseInt(match[3], 16) / 255,
-      }
-    : null;
+  let matchHex = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+  if (matchHex) {
+    return {
+      r: parseInt(matchHex[1], 16) / 255,
+      g: parseInt(matchHex[2], 16) / 255,
+      b: parseInt(matchHex[3], 16) / 255,
+    };
+  }
+
+  let matchRGB = color.match(/^rgb\(\s*(\d+),\s*(\d+),\s*(\d+)\s*\)$/i);
+  if (matchRGB) {
+    return {
+      r: parseInt(matchRGB[1], 10) / 255,
+      g: parseInt(matchRGB[2], 10) / 255,
+      b: parseInt(matchRGB[3], 10) / 255,
+    };
+  }
+
+  return null;
 }
 
 function calcularLuminancia(rgb) {
@@ -160,6 +227,37 @@ function mezclarConBlanco(color, porcentajeBlanco) {
   rgb.b = Math.round(rgb.b + (255 - rgb.b) * porcentajeBlanco);
 
   return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+}
+
+// Función para oscurecer un color
+function oscurecerColor(hex, porcentaje) {
+  let r = parseInt(hex.slice(1, 3), 16);
+  let g = parseInt(hex.slice(3, 5), 16);
+  let b = parseInt(hex.slice(5, 7), 16);
+
+  r = Math.floor(r * (1 - porcentaje));
+  g = Math.floor(g * (1 - porcentaje));
+  b = Math.floor(b * (1 - porcentaje));
+
+  return `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
+}
+
+// Asegura contraste mínimo con blanco
+function ajustarContrasteConBlanco(color, contrasteMinimo) {
+  let contraste = calcularContraste(color, "#ffffff");
+  if (contraste >= contrasteMinimo) {
+    return color; // Ya contrasta, no se modifica
+  }
+
+  let colorAjustado = color;
+  let intentos = 0;
+  while (contraste < contrasteMinimo && intentos < 20) {
+    colorAjustado = oscurecerColor(colorAjustado, 0.05);
+    contraste = calcularContraste(colorAjustado, "#ffffff");
+    intentos++;
+  }
+
+  return colorAjustado;
 }
 
 //Navbar

@@ -51,6 +51,12 @@
     },
     "precio": {
       "type": "integer"
+    },
+    "link_pago": {
+      "type": "string"
+    },
+    "canal": {
+      "type": "string"
     }
   }
 }

@@ -130,8 +130,20 @@
       "type": "richtext"
     },
     "preinscripcione": {
-      "via": "website",
-      "model": "preinscripciones"
+      "model": "preinscripciones",
+      "via": "website"
+    },
+    "distrito": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "string"
+    },
+    "barrio": {
+      "type": "string"
+    },
+    "zipcode": {
+      "type": "string"
     }
   }
 }

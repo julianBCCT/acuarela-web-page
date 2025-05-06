@@ -23,8 +23,8 @@
       "type": "integer"
     },
     "website": {
-      "model": "websites",
-      "via": "preinscripcione"
+      "via": "preinscripcione",
+      "model": "websites"
     }
   }
 }

@@ -1,7 +1,7 @@
 <?php include 'head.php'; ?>
-<header class="header container">
+<header class="header container__home">
       <a href="/">
-        <img class="header__logo" src="img/logo.svg" alt="Acuarela" />
+        <img class="header__logo" src="img/logo_w.svg" alt="Acuarela" />
       </a>
       <img
         class="header__toggle"
@@ -10,11 +10,36 @@
         onclick="toggleTarget('mobile-menu')"
       />
       <nav class="header__menu">
-        <a class="header__menu-item" href="sobre-nosotros">Nosotros</a>
+        <a class="header__menu-item" href="/#top">Home</a>
+        <!-- <a class="header__menu-item" href="sobre-nosotros">Nosotros</a> -->
+        <a class="header__menu-item" href="/#nosotros">Nosotros</a>
         <a class="header__menu-item" href="planes-precios">Planes y Precios</a>
-        <a class="header__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>
-        <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/?service=acuarela&redirect_url=/miembros/acuarela-app-web/s/daycareActive/?daycare=">Iniciar Sesión</a>
+        <a class="header__menu-item" href="/#faq">Preguntas Frecuentes</a>
       </nav>
+
+      <div class="header__user">
+        <!-- <a class="header__user-notification" href="#">
+          <img class="header__notification" src="img/Notificaciones.svg" alt="Acuarela" />
+          Notificaciones
+        </a> -->
+        <!-- <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">
+          <img class="header__logging" src="img/cerrarsesion.svg" alt="Acuarela" />
+        </a> -->
+        <button
+            class="btn btn--primarywhite"
+            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/?service=acuarela&redirect_url=%2Fmiembros%2Facuarela-app-web%2Fs%2FdaycareActive%2F%3Fdaycare%3D'"
+          >
+          Iniciar sesión
+        </button>
+        <button
+            class="btn btn--primarywhite"
+            onclick="window.location.href='https://acuarela.app/planes-precios'"
+          >
+          Crear cuenta
+        </button>
+        <!-- <a class="header__menu-item invitation" href="https://bilingualchildcaretraining.com/miembros/crear-cuenta">Crea tu cuenta gratis</a>  -->
+      </div>
+
       <!--<div class="header__actions">
                 <div class="lang-selector">
                     <label for="lang-select">
@@ -55,6 +80,7 @@
       </div>
       <div class="mobile-menu__body">
         <nav class="mobile-menu__menu">
+          <a class="mobile-menu__menu-item" href="#top">Home</a>
           <a class="mobile-menu__menu-item" href="sobre-nosotros">Nosotros</a>
           <a class="mobile-menu__menu-item" href="planes-precios">Planes y Precios</a>
           <a class="mobile-menu__menu-item" href="preguntas-frecuentes">Preguntas Frecuentes</a>

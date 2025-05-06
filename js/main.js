@@ -264,9 +264,6 @@ function attachSliderListeners() {
   
   updateSlider(); // Para asegurarte que el slider se ajuste en inicio
 }
-setTimeout(() => {
-  attachSliderListeners();
-}, 100);
 
 
 

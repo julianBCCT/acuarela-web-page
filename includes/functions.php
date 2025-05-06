@@ -314,6 +314,11 @@ class acuarela
 		return $gnrl;
 	}
 	function getHome() {}
+	function gHome()
+    {
+        $result = $this->query("pages/29");
+        return $result;
+    }
 	function getHomeSections()
 	{
 		$result = $this->query("promo-home");

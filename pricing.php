@@ -20,6 +20,11 @@ $prices = $a->getPrices();
 
   <!-- PRICING -->
   <!-- <section class="pricing" id="acuarela-services"> -->
+  <div class="preloader">
+    <div class="loading">
+      <img src="img/preloader.gif" alt="Cargando...">
+    </div>
+  </div>
   <section class="acuarela-services" id="acuarela-services">
     <div id="curriculums-slide-planes-acuarela">
       <div class="desc">
@@ -148,6 +153,25 @@ $prices = $a->getPrices();
         </a>
       </button>
     </div> -->
+  </section>
+  <section class="acuarela-services2" id="acuarela-services">
+    <div id="curriculums-slide-planes-acuarela">
+      <div class="desc">
+        <?= $service->acf->{$template}->desc_plan ?>
+      </div>
+      <!-- <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="frequencySwitch" onchange="toggleFrequencyAcuarela()">
+          <span class="slider round"></span>
+        </label>
+        <span id="frequencyLabelAcuarela">Anual</span>
+      </div> -->
+      <section class="acuarela-slide2">
+        <!-- <ul class="bussines-slide" id="prices"> </ul> -->
+        <div class="acuarela-bussines-slide2" id="services2"></div>
+        <div class="acuarela-bussines-slide2" id="servicesPro"></div>
+      </section>
+    </div>
   </section>
 
 

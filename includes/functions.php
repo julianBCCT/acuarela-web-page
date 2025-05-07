@@ -8,6 +8,11 @@ class acuarela
 	public $politics = array();
 	public $about = array();
 
+	public $client_id = "1000.4CBCGSPLAUZ10CRM6XQYU2Z5JQBT9L";
+	public $client_secret = "7c28db40807ee2e2459a9629f084d037ee7edc0c95";
+	public $refresh_token = "1000.ecf5734d91ad7ba8474aaac5e019ec8f.6148872828accaaf6896a2d98af189f0";
+	public $token;
+
 	function __construct()
 	{
 		$this->generalInfo = $this->getInfoGeneral();
@@ -314,11 +319,6 @@ class acuarela
 		return $gnrl;
 	}
 	function getHome() {}
-	function gHome()
-    {
-        $result = $this->query("pages/29");
-        return $result;
-    }
 	function getHomeSections()
 	{
 		$result = $this->query("promo-home");
@@ -408,4 +408,138 @@ class acuarela
 		curl_close($curl);
 		return $response;
 	}
+
+	// Token Zoho para cosultas
+	function getTokenZoho()
+	{
+		$refresh_url = "https://accounts.zoho.com/oauth/v2/token";
+
+		$data = [
+			"refresh_token" => $this->refresh_token,
+			"client_id" => $this->client_id,
+			"client_secret" => $this->client_secret,
+			"grant_type" => "refresh_token"
+		];
+
+		$curl = curl_init();
+		curl_setopt_array($curl, [
+			CURLOPT_URL => $refresh_url,
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => http_build_query($data),
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_HTTPHEADER => ["Content-Type: application/x-www-form-urlencoded"],
+		]);
+
+		$response_token = curl_exec($curl);
+		$responseDataToken = json_decode($response_token, true);
+		//var_dump($responseDataToken);
+		curl_close($curl);
+
+		return $responseDataToken['access_token'] ?? null;
+	}
+
+	public function createLead($name, $lastName, $email, $phone, $servicioInteres, $fuenteComunicacion, $daycareName)
+    {
+        $new_token = $this->getTokenZoho();
+        if ($new_token) {
+            $fechaActual = date('Y-m-d');
+
+            // // Asignar un valor predeterminado si $Name es null o está vacío
+            // if (is_null($name) || trim($name) === '') {
+            //     $name = 'No Name Provided'; // Valor predeterminado
+            // }
+
+            // if (is_null($lastName) || trim($lastName) === '') {
+            //     $lastName = 'No LastName Provided'; // Valor predeterminado
+            // }
+
+            // if (is_null($phone) || trim($phone) === '') {
+            //     $phone = '0000000000'; // Valor predeterminado
+            // }
+            // if (is_null($fuenteComunicacion) | trim($fuenteComunicacion) === '') {
+            //     $fuenteComunicacion = 'Website';
+            // }
+
+            // Definir valores predeterminados en un array asociativo
+            $defaults = [
+                'name' => 'No Name Provided',
+                'lastName' => 'No LastName Provided',
+                'phone' => '0000000000',
+                'fuenteComunicacion' => 'Website',
+                'servicioInteres' => 'Other',
+				'daycareName' => 'Daycare',
+            ];
+
+            // Recorrer cada variable y asignar el valor predeterminado si está vacía o es null
+            foreach ($defaults as $key => $default) {
+                if (!isset($$key) || trim($$key) === '') {
+                    $$key = $default;
+                }
+            }
+
+
+            $payload = [
+                'data' => [
+                    [
+                        'First_Name' => $name,
+                        'Last_Name' => $lastName,
+                        'Email' => $email,
+                        'Phone' => $phone,
+                        'Fuente_de_comunicaci_n' => $fuenteComunicacion,
+                        'Date_of_first_communication' => $fechaActual,
+                        'Service_interest' => $servicioInteres,
+						'Daycare_Name' => $daycareName,
+                        'Owner' => [
+                            'id' => '873108290',
+                        ],
+                    ]
+                ]
+            ];
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL => 'https://www.zohoapis.com/crm/v2/Leads',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => json_encode($payload),
+                CURLOPT_HTTPHEADER => [
+                    'Content-Type: application/json',
+                    "Authorization: Zoho-oauthtoken $new_token",
+                ],
+            ]);
+
+            $response = curl_exec($curl);
+
+            if (curl_errno($curl)) {
+                error_log("Error en la solicitud cURL: " . curl_error($curl));
+                curl_close($curl);
+                return false;
+            }
+
+            $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            curl_close($curl);
+
+            if ($http_status !== 201) {
+                error_log("Error HTTP: $http_status, Respuesta: $response");
+                return false;
+            }
+
+            $data = json_decode($response, true);
+
+            if (isset($data['data'][0]['code']) && $data['data'][0]['code'] === "SUCCESS") {
+                // if ($data['data'][0]['code'] === "SUCCESS") {
+                return true;
+            } else {
+                error_log("Error en la respuesta de Zoho: " . print_r($data, true));
+                return false;
+            }
+        }
+        return false;
+    }
 }

@@ -232,6 +232,98 @@ setTimeout(() => {
 }, 100);
 
 
+const alertMessage = {
+  emailTitle: {
+    es: "Correo requerido",
+    en: "Email Required",
+  },
+  emailText: {
+    es: "Por favor, ingresa tu correo electrónico para continuar.",
+    en: "Please enter your email address to continue.",
+  },
+  checkboxTitle: {
+    es: "Términos y condiciones requeridos",
+    en: "Terms and Conditions Required",
+  },
+  checkboxText: {
+    es: "Por favor, acepta los términos y condiciones para continuar.",
+    en: "Please accept the terms and conditions to proceed.",
+  },
+  successTitle: {
+    es: "¡Gracias por completar el formulario!",
+    en: "Thank you for filling out the form!",
+  },
+  successText: {
+    es: "Hemos recibido su información y uno de nuestros asesores se pondrá en contacto con usted en breve para brindarle más detalles. ¡Esté atento a su correo!",
+    en: "We have received your information, and one of our advisors will contact you shortly to provide more details. Please check your email!",
+  },
+  errorTitle: {
+    es: "¡No se pudo completar el formulario!",
+    en: "The form could not be completed!",
+  },
+  errorText: {
+    es: "Por favor, inténtelo de nuevo más tarde o contáctenos directamente para recibir asistencia.",
+    en: "Please try again later or contact us directly for assistance.",
+  },
+  buttonText: {
+    es: "Entendido",
+    en: "Understood",
+  },
+};
+
+
+const form = document.getElementById("demoForm");
+if (form) {
+  const nameInput = document.getElementById("nameInput");
+  const lastnameInput = document.getElementById("lastnameInput");
+  const emailInput = document.getElementById("emailInput");
+  const daycareInput = document.getElementById("daycareInput");
+  // const numNinosInput = document.getElementById("numNinosInput");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Evita el submit clásico
+
+    const formData = {
+      name: nameInput.value,
+      lastName: lastnameInput.value,
+      email: emailInput.value,
+      fuenteComunicacion: "web form",
+      servicioInteres: "demo acuarela",
+      daycareName: daycareInput.value,
+      // numNinos: parseInt(numNinosInput.value, 10),
+    };
+
+    fetch("/s/validatedemo/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Limpiar campos
+          nameInput.value = "";
+          lastnameInput.value = "";
+          emailInput.value = "";
+          daycareInput.value = "";
+          // numNinosInput.value = "";
+
+          alert("¡Formulario enviado con éxito!");
+        } else {
+          alert("Error al enviar el formulario. Intenta nuevamente.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Hubo un problema con el servidor. Inténtalo más tarde.");
+      });
+  });
+}
+
+
+
 
 // //Carrusel de testimonios
 function attachSliderListeners() {
@@ -264,12 +356,15 @@ function attachSliderListeners() {
   
   updateSlider(); // Para asegurarte que el slider se ajuste en inicio
 }
+setTimeout(() => {
+  attachSliderListeners();
+}, 100);
 
 
 
 
 //Parte para manejar la tabla de acuarela lite y pro
-let monthlyAcuarela = false;
+let monthlyAcuarela = true;
 let acuarelaService = false;
 
 function toggleFrequencyAcuarela() {
@@ -303,10 +398,12 @@ function setFrequencyAcuarela(option) {
 const toggleBtn = document.querySelector('.toggle-btn');
 const listDeployment = document.querySelector('.list-deployment');
 
-toggleBtn.addEventListener('click', () => {
-  listDeployment.classList.toggle('active');
-  toggleBtn.classList.toggle('rotated');
-});
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    listDeployment.classList.toggle('active');
+    toggleBtn.classList.toggle('rotated');
+  });
+}
 
 
 function getAllAcuarela() {
@@ -322,7 +419,33 @@ function getAllAcuarela() {
   }
 }
 
+var preloader = document.querySelector(".preloader");
+// Función para desvanecer gradualmente el elemento
+function fadeOut(element) {
+  var opacity = 1;
+  var interval = 50; // intervalo de tiempo en milisegundos
+  var duration = 300; // duración total del desvanecimiento en milisegundos
+
+  // Función recursiva para ajustar la opacidad en cada paso del intervalo
+  function decreaseOpacity() {
+    opacity -= interval / duration;
+    element.style.opacity = opacity;
+
+    // Si la opacidad es mayor que 0, seguir desvaneciendo
+    if (opacity > 0) {
+      setTimeout(decreaseOpacity, interval);
+    } else {
+      // Si la opacidad llega a 0, ocultar el elemento
+      element.style.display = "none";
+    }
+  }
+
+  // Iniciar el desvanecimiento
+  decreaseOpacity();
+}
+
 function updateAcuarelaServices() {
+  fadeOut(preloader);
   getAllAcuarela() // Obtener los datos de los currículos
     .then((data) => {
       const tableContainer = document.querySelector(".acuarela-bussines-slide#services");
@@ -441,6 +564,276 @@ function updateAcuarelaServices() {
     });
 }
 
+function updateAcuarelaServices2() {
+  fadeOut(preloader);
+  getAllAcuarela()
+    .then((data) => {
+      const filteredData = data.filter((acuarela) => {
+        return acuarela.title.rendered.trim().toLowerCase() !== "acuarela pro";
+      });
+
+      const container = document.querySelector("#services2");
+      container.innerHTML = "";
+
+      // Reunir todas las características únicas
+      const allFeatures = {};
+      filteredData.forEach((acuarela) => {
+        const featuresData = parseFeatures(acuarela.content.rendered);
+        Object.keys(featuresData).forEach((feature) => {
+          allFeatures[feature] = true;
+        });
+      });
+
+      // Crear encabezado (tarjetas de cada plan)
+      let headerHTML = `<div class="acuarela-plans-header">`;
+
+      filteredData.forEach((acuarela) => {
+        const price = monthlyAcuarela
+          ? acuarela.acf.precio_mensual
+          : acuarela.acf.presio_anual;
+
+        headerHTML += `
+          <div class="plan-card">
+            <img src="img/Favicon.svg" alt="${acuarela.title.rendered}" />
+            <h2>${acuarela.title.rendered}</h2>
+          </div>
+          <div class="plan-price">
+            <p class="price" data-monthly="${acuarela.acf.precio_mensual}" data-yearly="${acuarela.acf.presio_anual}">${price}</p>
+          </div>
+          <div class="plan-change">
+            <p class="page-month ${monthlyAcuarela ? 'active' : ''}" onclick="setFrequencyAcuarela2('mensual')">Pago mensual</p>
+            <p class="page-year ${!monthlyAcuarela ? 'active' : ''}" onclick="setFrequencyAcuarela2('anual')">
+              Pago Anual
+              <span>Ahorras 30%</span>
+            </p>
+          </div>
+        `;
+      });
+
+      headerHTML += `
+        <div class="feature-title-header">
+          <h3>Características</h3>
+        </div>
+      </div>`;
+      container.innerHTML += headerHTML;
+
+      // Crear filas de características
+      let featuresHTML = `<div class="acuarela-features">`;
+      let index = 0;
+
+      Object.keys(allFeatures).forEach((feature) => {
+        const rowClass = index % 2 === 0 ? 'white-bgtd' : 'menta-bgtd';
+
+        // Nuevo contenedor grid por cada fila de característica
+        featuresHTML += `<div class="feature-container" >`;
+
+        // Título
+        featuresHTML += `
+          <div class="feature-row ${rowClass}">
+            <div class="feature-title">${feature}</div>
+          </div>
+        `;
+
+        // Valores
+        featuresHTML += `<div class="feature-values" style="display: flex; gap: 20px;">`;
+        filteredData.forEach((acuarela) => {
+          const featuresData = parseFeatures(acuarela.content.rendered);
+          featuresHTML += `
+            <div class="feature-value">
+              ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
+            </div>
+          `;
+        });
+        featuresHTML += `</div>`; // cerrar feature-values
+
+        featuresHTML += `</div>`; // cerrar feature-container
+        index++;
+      });
+
+      featuresHTML += `</div>`; // cerrar acuarela-features
+      container.innerHTML += featuresHTML;
+
+      
+      // Crear botones finales (uno por cada plan)
+      let buttonsHTML = `<div class="acuarela-buttons">`;
+      filteredData.forEach((acuarela) => {
+        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
+        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
+        const disabledAttr = isProButton ? "disabled" : "";
+        const buttonClassExtra = isProButton ? "btn-disable" : "";
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+        const onclickAttr = isProButton ? "" : `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
+
+        buttonsHTML += `
+          <div class="plan-buttons">
+            <button class="buttonth ${buttonClassExtra}" ${disabledAttr} ${onclickAttr}>
+              ${buttonText}
+            </button>
+            <button class="buttonth-white btn-invisible">
+              Hablar con asesor
+            </button>
+          </div>
+        `;
+      });
+      buttonsHTML += `</div>`; // cerrar .acuarela-buttons
+      container.innerHTML += buttonsHTML;
+    })
+    .catch((error) => {
+      console.error("Error al obtener los datos de los currículos (services2):", error);
+    });
+}
+
+// Esta es la nueva función para tu vista de mobile (updateAcuarelaServices2)
+function setFrequencyAcuarela2(option) {
+  monthlyAcuarela = option === "mensual";
+  updateAcuarelaServices2();  // Volver a pintar la sección con el precio correcto
+  updateAcuarelaServicesPro();  // Volver a pintar la sección con el precio correcto
+
+  // Después de pintar, activar clases
+  setTimeout(() => {
+    // Quitar "active" de todos
+    document.querySelectorAll(".page-month").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".page-year").forEach(el => el.classList.remove("active"));
+
+    // Agregar "active" solo al seleccionado
+    if (monthlyAcuarela) {
+      document.querySelectorAll(".page-month").forEach(el => el.classList.add("active"));
+    } else {
+      document.querySelectorAll(".page-year").forEach(el => el.classList.add("active"));
+    }
+  }, 0); // Ejecuta justo después de repintar
+}
+
+
+
+function updateAcuarelaServicesPro() {
+  fadeOut(preloader);
+  getAllAcuarela()
+    .then((data) => {
+      // Filtra SOLO el plan Pro
+      const filteredData = data.filter((acuarela) => {
+        return acuarela.title.rendered.trim().toLowerCase() === "acuarela pro";
+      });
+
+      const container = document.querySelector("#servicesPro");
+      container.innerHTML = "";
+
+      // Reunir todas las características únicas
+      const allFeatures = {};
+      filteredData.forEach((acuarela) => {
+        const featuresData = parseFeatures(acuarela.content.rendered);
+        Object.keys(featuresData).forEach((feature) => {
+          allFeatures[feature] = true;
+        });
+      });
+
+      // Crear encabezado
+      let headerHTML = `<div class="acuarela-plans-header">`;
+
+      filteredData.forEach((acuarela) => {
+        const price = monthlyAcuarela
+          ? acuarela.acf.precio_mensual
+          : acuarela.acf.presio_anual;
+
+        headerHTML += `
+          <div class="plan-card">
+            <img src="img/Favicon.svg" alt="${acuarela.title.rendered}" />
+            <h2>${acuarela.title.rendered}</h2>
+            <img class="crown" src="img/crown_simple.svg" alt="Pro"/>
+          </div>
+          <div class="plan-price">
+            <p class="price">${price}</p>
+          </div>
+          <div class="plan-change">
+            <p class="page-month ${monthlyAcuarela ? 'active' : ''}" onclick="setFrequencyAcuarela2('mensual')">Pago mensual</p>
+            <p class="page-year ${!monthlyAcuarela ? 'active' : ''}" onclick="setFrequencyAcuarela2('anual')">
+              Pago Anual
+              <span>Ahorras 30%</span>
+            </p>
+          </div>
+        `;
+      });
+
+      headerHTML += `
+        <div class="feature-title-header">
+          <h3>Características</h3>
+        </div>
+      </div>`;
+      container.innerHTML += headerHTML;
+
+      // Crear filas de características
+      let featuresHTML = `<div class="acuarela-features">`;
+      let index = 0;
+
+      Object.keys(allFeatures).forEach((feature) => {
+        const rowClass = index % 2 === 0 ? 'white-bgtd' : 'menta-bgtd';
+
+        featuresHTML += `<div class="feature-container">`;
+
+        featuresHTML += `
+          <div class="feature-row ${rowClass}">
+            <div class="feature-title">${feature}</div>
+          </div>
+        `;
+
+        featuresHTML += `<div class="feature-values" style="display: flex; gap: 20px;">`;
+        filteredData.forEach((acuarela) => {
+          const featuresData = parseFeatures(acuarela.content.rendered);
+          featuresHTML += `
+            <div class="feature-value">
+              ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
+            </div>
+          `;
+        });
+        featuresHTML += `</div>`; // cerrar feature-values
+
+        featuresHTML += `</div>`; // cerrar feature-container
+        index++;
+      });
+
+      featuresHTML += `</div>`; // cerrar acuarela-features
+      container.innerHTML += featuresHTML;
+
+      // Crear botones
+      let buttonsHTML = `<div class="acuarela-buttons">`;
+      filteredData.forEach((acuarela) => {
+        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
+        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
+        const disabledAttr = isProButton ? "disabled" : "";
+        const buttonClassExtra = isProButton ? "btn-disable" : "";
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+        const onclickAttr = isProButton ? "" : `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
+
+
+        buttonsHTML += `
+          <div class="plan-buttons">
+            <button class="buttonth ${buttonClassExtra}" ${disabledAttr} ${onclickAttr}>
+              ${buttonText}
+            </button>
+            <button class="buttonth-white btn-invisible">
+              Hablar con asesor
+            </button>
+          </div>
+        `;
+      });
+      buttonsHTML += `</div>`;
+      container.innerHTML += buttonsHTML;
+    })
+    .catch((error) => {
+      console.error("Error al obtener los datos de los currículos (servicesPro):", error);
+    });
+}
+
+
+
+
+
+
+
 function parseFeatures(featuresString) {
   // Limpiar el contenido de etiquetas HTML y comillas especiales
   const cleanedData = featuresString
@@ -458,6 +851,15 @@ function parseFeatures(featuresString) {
   }
 }
 
+
 if (document.querySelector(".acuarela-services")) {
-  getAllAcuarela().then(updateAcuarelaServices);
+  getAllAcuarela().then(() => {
+    updateAcuarelaServices();
+  });
+}
+if (document.querySelector(".acuarela-services2")) {
+  getAllAcuarela().then(() => {
+    updateAcuarelaServices2();
+    updateAcuarelaServicesPro();
+  });
 }

@@ -228,7 +228,7 @@ $uib-color: var(--color-botones);
 
         a {
           font-weight: 700;
-          color: white;
+          color: var(--color-botones);
 
           &:hover {
             color: var(--color-primario-claro);
@@ -251,7 +251,7 @@ $uib-color: var(--color-botones);
         font-weight: 700;
         color: var(--color-primario);
         padding: 10px 20px;
-        background-color: white;
+        background-color: var(--color-botones);
         border: none;
         border-radius: 10px;
         cursor: pointer;
@@ -827,7 +827,8 @@ $uib-color: var(--color-botones);
           height: auto;
         }
         img {
-          height: 200px;
+          width: 100%;
+          max-height: 200px;
           background: none;
           box-shadow: none;
           padding: 0;

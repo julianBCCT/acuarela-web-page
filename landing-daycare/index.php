@@ -954,7 +954,7 @@ $servicios = [
                 <div class="main">
                     <h1><?= $titulos[$idioma_contenido]["main_phrase"] ?></h1>
                     <p><?= $info->content->rendered ?></p>
-                    <button><?= $titulos[$idioma_contenido]["more"] ?></button>
+                    <button onclick="window.location.href='#mision'"><?= $titulos[$idioma_contenido]["more"] ?></button>
                 </div>
                 <div class="img" style="background-image: url('<?= $info->acf->banner_principal ?>');"></div>
             </section>
@@ -1154,7 +1154,7 @@ $servicios = [
                 <div class="main-content">
                     <h1><?= $titulos[$idioma_contenido]["why"] ?><?= $info->title->rendered ?>?</h1>
                     <?= $info->acf->filosofia_de_educacion ?>
-                    <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>">
+                    <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>" id="btnWhy">
                         <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
                     </button>
                 </div>
@@ -1297,7 +1297,7 @@ $servicios = [
                     <button id="inscribirOtroBtn"><?= $titulos[$idioma_contenido]["register-another"] ?></button>
                 </div>
             </section>
-            <section class="faq-container">
+            <!-- <section class="faq-container">
                 <div class="faq">
                     <h1><?= $titulos[$idioma_contenido]["faq"] ?></h1>
                     <div class="faq-item">
@@ -1378,7 +1378,7 @@ $servicios = [
                         });
                     });
                 </script>
-            </section>
+            </section> -->
             <!-- <section class="testimonials">
                 <h1 class="testimonials__title"><?= $titulos[$idioma_contenido]["testimony"] ?></h1>
                 <div class="testimonials__slider">

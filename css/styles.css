@@ -439,6 +439,7 @@ select:focus {
   color: white;
   transition: all ease 0.3s;
 }
+.mobile-menu .header__menu-item.invitation,
 .header__menu .header__menu-item.invitation {
   align-items: center;
   background: #140a4c;
@@ -450,6 +451,17 @@ select:focus {
   height: 23px;
   justify-content: center;
   padding: 4px 12px;
+}
+@media screen and (max-width: 768px) {
+  .mobile-menu .header__menu-item.invitation {
+    width: 250px;
+    margin: 0 auto;
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
 }
 .header__menu .header__menu-item.invitation:hover {
   align-items: center;
@@ -3299,9 +3311,6 @@ main.invitation section.invitation-final a {
     margin-bottom: 10px;
   }
 }
-
-
-
 
 #curriculums-slide-planes .switch-container {
   display: flex;

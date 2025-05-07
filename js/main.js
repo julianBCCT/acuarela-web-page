@@ -205,16 +205,41 @@ function unMutedVideo() {
 
 
 //PARA EL MODAL DEL DEMO
+// setTimeout(() => {
+//   const openModalBtn = document.getElementById('openModalBtn');
+//   const closeModalBtn = document.getElementById('closeModalBtn');
+//   const modalOverlay = document.getElementById('modalOverlay');
+
+//   if (openModalBtn) {
+//     openModalBtn.addEventListener('click', () => {
+//       modalOverlay.classList.remove('hidden');
+//     });
+//   }
+
+//   if (closeModalBtn) {
+//     closeModalBtn.addEventListener('click', () => {
+//       modalOverlay.classList.add('hidden');
+//     });
+//   }
+
+//   if (modalOverlay) {
+//     modalOverlay.addEventListener('click', (e) => {
+//       if (e.target === modalOverlay) {
+//         modalOverlay.classList.add('hidden');
+//       }
+//     });
+//   }
+// }, 100);
 setTimeout(() => {
-  const openModalBtn = document.getElementById('openModalBtn');
+  const openModalBtns = document.querySelectorAll('.openModalBtn');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const modalOverlay = document.getElementById('modalOverlay');
 
-  if (openModalBtn) {
-    openModalBtn.addEventListener('click', () => {
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
       modalOverlay.classList.remove('hidden');
     });
-  }
+  });
 
   if (closeModalBtn) {
     closeModalBtn.addEventListener('click', () => {

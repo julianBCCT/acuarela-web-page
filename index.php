@@ -26,14 +26,10 @@
           familia de herramientas digitales Acuarela.
         </h2>
         <div class="banner__buttons">
-          <button
-            class="btn btn--primarywhite"
-            onclick="window.location.href='https://acuarela.app/planes-precios'"
-          >
-          Crea una cuenta gratis
-          </button>
-
-          <button class="btn btn--secondary" id="openModalBtn" >
+          <a class="btn btn--primarywhite" href="https://acuarela.app/planes-precios">
+            Crea una cuenta gratis
+          </a>
+          <button class="btn btn--secondary openModalBtn" >
             Obtener un DEMO
           </button>
           <div id="modalOverlay" class="modal-overlay hidden">
@@ -93,10 +89,7 @@
     <div class="features-inner">
       <div class="features-parttitle">
         <h2 class="features__title">Un Daycare 10/10 es capaz de:</h2>
-        <button
-            class="btn btn--secondary"
-            onclick="window.location.href='https://bilingualchildcaretraining.com/miembros/crear-cuenta'"
-          >
+        <button class="btn btn--secondary openModalBtn">
           Obtener un DEMO
         </button>
       </div>

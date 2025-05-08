@@ -232,6 +232,98 @@ function getAllAcuarela() {
   }
 }
 
+// function updateAcuarelaServices() {
+//   getAllAcuarela() // Obtener los datos de los currículos
+//     .then((data) => {
+//       const tableContainer = document.querySelector(".acuarela-bussines-slide#services");
+//       tableContainer.innerHTML = ""; // Limpiar la tabla anterior
+//       let tableHTML = `
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>Características</th>
+//       `;
+
+//       data.forEach((acuarela) => {
+//         const price = monthlyAcuarela
+//           ? acuarela.acf.precio_mensual
+//           : acuarela.acf.presio_anual;
+
+//         tableHTML += `
+//           <th class="th-acuarela">${acuarela.title.rendered} <br/> <span>${price}</span></th>
+//         `;
+//       });
+
+//       tableHTML += `
+//       </tr>
+//     </thead>
+//     <tbody>
+//   `;
+
+//       const allFeatures = {};
+
+//       data.forEach((acuarela) => {
+//         const featuresData = parseFeatures(acuarela.content.rendered);
+//         Object.keys(featuresData).forEach((feature) => {
+//           allFeatures[feature] = true; // Guardar la característica como clave única
+//         });
+//       });
+
+//       Object.keys(allFeatures).forEach((feature) => {
+//         tableHTML += `
+//       <tr>
+//         <td>● ${feature}</td>
+//     `;
+
+//         data.forEach((acuarela) => {
+//           const featuresData = parseFeatures(acuarela.content.rendered);
+//           tableHTML += `
+//         <td style="text-align: center;">
+//           ${featuresData[feature] === true ? "✔" : featuresData[feature] === false ? "✖" : featuresData[feature]}
+//         </td>
+//       `;
+//         });
+
+//         tableHTML += `</tr>`;
+//       });
+
+//       tableHTML += `
+//       <tr>
+//         <td style="text-align: center; font-weight: bold;"></td>
+//     `;
+//       data.forEach((acuarela) => {
+//         // Seleccionar el enlace según el estado de monthlyAcuarela
+//         const redirectLink = monthlyAcuarela
+//           ? acuarela.acf.link_de_pago_mensual
+//           : acuarela.acf.link_de_pago_anual;
+
+//         tableHTML += `
+
+//         <td style="text-align: center;">
+//           <button
+//             class="btn-acuarela"
+//             onclick="window.open('${redirectLink || "#"}', '_blank')"
+//             target="_blank"
+//           >
+//             ${acuarela.acf.texto_boton}
+//           </button>
+//         </td>
+//       `;
+//       });
+
+//       tableHTML += `
+//       </tr>
+//     </tbody>
+//   </table>
+//   `;
+
+//       tableContainer.innerHTML = tableHTML;
+//     })
+//     .catch((error) => {
+//       console.error("Error al obtener los datos de los currículos:", error);
+//     });
+// }
+
 function updateAcuarelaServices() {
   getAllAcuarela() // Obtener los datos de los currículos
     .then((data) => {
@@ -249,8 +341,23 @@ function updateAcuarelaServices() {
           ? acuarela.acf.precio_mensual
           : acuarela.acf.presio_anual;
 
+        // Seleccionar el enlace según el estado de monthlyAcuarela
+        const redirectLink = monthlyAcuarela
+          ? acuarela.acf.link_de_pago_mensual
+          : acuarela.acf.link_de_pago_anual;
+
         tableHTML += `
-          <th class="th-acuarela">${acuarela.title.rendered} <br/> <span>${price}</span></th>
+          <th class="th-acuarela">
+            <h3 class="title">${acuarela.title.rendered} </h3>
+            <p class="price">${price}</p>
+            <button
+              class="btn-acuarela"
+              onclick="window.open('${redirectLink || "#"}', '_blank')"
+              target="_blank"
+            >
+              ${acuarela.acf.texto_boton}
+            </button>
+          </th>
         `;
       });
 
@@ -288,31 +395,6 @@ function updateAcuarelaServices() {
       });
 
       tableHTML += `
-      <tr>
-        <td style="text-align: center; font-weight: bold;"></td>
-    `;
-      data.forEach((acuarela) => {
-        // Seleccionar el enlace según el estado de monthlyAcuarela
-        const redirectLink = monthlyAcuarela
-          ? acuarela.acf.link_de_pago_mensual
-          : acuarela.acf.link_de_pago_anual;
-
-        tableHTML += `
-        
-        <td style="text-align: center;">
-          <button
-            class="btn-acuarela"
-            onclick="window.open('${redirectLink || "#"}', '_blank')"
-            target="_blank"
-          >
-            ${acuarela.acf.texto_boton}
-          </button>
-        </td>
-      `;
-      });
-
-      tableHTML += `
-      </tr>
     </tbody>
   </table>
   `;

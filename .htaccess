@@ -20,6 +20,8 @@ RewriteRule ^pagos$ payments.php [L,QSA]
 RewriteRule ^paypal/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ paypal.php?idParent=$1&merchantID=$2&movement=$3 [L,QSA]
 RewriteRule ^pagos-electronicos/activar-([a-zA-Z0-9_-]+)$ automaticPayments.php?id=$1 [L,QSA]
 RewriteRule ^pago-pendiente-([a-zA-Z0-9_-]+)$ pagopendiente.php?id=$1 [L,QSA]
+RewriteRule ^eliminar-datos$ delete-request.php [L,QSA]
+RewriteRule ^validatedemo$ validatedemo.php [L,QSA]
 
 
 RewriteCond %{HTTP_HOST} ^acuarela\.app$ [NC]

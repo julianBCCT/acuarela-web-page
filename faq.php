@@ -1,21 +1,37 @@
-<?php include 'includes/header.php'; $faqs = $a->getFaq(); ?>
-<main class="container">
-    <!-- BANNER -->
-    <section class="banner banner--short">
-        <div class="banner__texts">
-            <h1 class="banner__title">Preguntas frecuentes</h1>
-        </div>
-    </section>
+<?php $faqs = $a->getFaq(); ?>
 
-    <!-- FAQ -->
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <div id="faq-container"></div> <!-- contenedor dinámico -->
+</section>
 
-    <section class="faq">
-        <?php for ($i=0; $i < count($faqs); $i++) { $faq = $faqs[$i];?>
-            <div class="faq-item" onclick="toggleAccordion('accordion-<?=$i?>')" data-toggle="accordion-<?=$i?>">
-                <b class="faq-item__title"><?=$faq->title->rendered?></b>
-                <div class="faq-item__content content"><?=$faq->content->rendered?></div>
-            </div>
-        <?php }?>
-    </section>
-</main>
-<?php include 'includes/footer.php'; ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urls = {
+            preguntas: '/g/getFaqs/',
+        };
+
+        function fetchData(url) {
+            return fetch(url)
+                .then(response => response.ok ? response.json() : Promise.reject(`Error: ${response.status}`))
+                .catch(error => {
+                    console.error(`Error loading ${url}:`, error);
+                    return [];
+                });
+        }
+
+        fetchData(urls.preguntas).then(preguntas => {
+            const container = document.getElementById("faq-container");
+
+            if (container && Array.isArray(preguntas)) {
+                container.innerHTML = preguntas.map((pregunta, index) => `
+                <div class="faq-item" onclick="toggleAccordion('accordion-${index}')" data-toggle="accordion-${index}">
+                    <b class="faq-item__title">${pregunta.title.rendered}</b>
+                    <div class="faq-item__content content">${pregunta.content.rendered}</div>
+                </div>
+                `).join('');
+            }
+        });
+    });
+</script>

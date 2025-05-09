@@ -85,6 +85,7 @@
 <script src="js/jquery.mCustomScrollbar.js"></script>
 <!-- <script src="js/main.js"></script> -->
 <script src="js/main.js?v=<?= time(); ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><!--Librería para personalizar alertas -->
 
 <!--Javascript file for carousel and burger menu settings-->
 <script src="js/app.js"></script>

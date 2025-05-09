@@ -165,6 +165,16 @@ select:focus {
   outline: none;
 }
 
+.form-group .checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.form-group .checkbox input {
+  max-width: 15px;
+  align-self: flex-start;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -1711,6 +1721,7 @@ s {
   background: #ffffff;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
+  height: fit-content;
 }
 .contact .card__title,
 .contact .card__subtitle {

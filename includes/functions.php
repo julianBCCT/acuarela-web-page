@@ -127,21 +127,18 @@ class acuarela
 					]
 				],
 				// [
-				// 	'to' => 'empleo@acuarela.app',
-				// 	'subject' => 'Nuevo contacto desde página web',
-				// 	'template' => 'obtener-demo-admin',
+				// 	'to' => 'nicolas@bilingualchildcaretraining.com',
+				// 	'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+				// 	'template' => 'data-request-received-admin',
 				// 	'mergeVars' => [
-				// 		'ADMIN' => 'Administrador',
-				// 		'NAME' => $name,
 				// 		'EMAIL' => $mail,
-				// 		'PHONE' => $phone,
-				// 		'DAYCARE' => $daycare,
-				// 		'COUNTRY' => $country,
-				// 		'CITY' => $city
+				// 		'REQUESTTYPE' => $requestType,
+				// 		'REASON' => $reason,
+
 				// 	]
 				// ],
 				[
-					'to' => 'nicolas@bilingualchildcaretraining.com',
+					'to' => 'empleo@acuarela.app',
 					'subject' => 'Nueva solicitud de gestión de datos personales recibida',
 					'template' => 'data-request-received-admin',
 					'mergeVars' => [
@@ -151,17 +148,17 @@ class acuarela
 
 					]
 				],
+				[
+					'to' => 'nestor@bilingualchildcaretraining.com',
+					'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+					'template' => 'data-request-received-admin',
+					'mergeVars' => [
+						'EMAIL' => $mail,
+						'REQUESTTYPE' => $requestType,
+						'REASON' => $reason,
 
-				// Puedes agregar más destinatarios aquí si es necesario
-				// Ejemplo:
-				/*
-            [
-                'to' => 'otro@email.com',
-                'subject' => 'Nuevo contacto',
-                'template' => 'otro-template',
-                'mergeVars' => [...]
-            ]
-            */
+					]
+				],
 			];
 
 			$responses = [];

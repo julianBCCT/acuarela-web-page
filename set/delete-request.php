@@ -47,7 +47,7 @@ function processRequest($data, $a)
 
         // Enviar email (ajusta los parámetros según lo que necesites)
         // Nota: Faltan algunos parámetros en tu ejemplo original (name, phone, etc.)
-        $emailSent = $a->sendEmailDeleteRequest("Prueba", $email, "", "", "", "");
+        $emailSent = $a->sendEmailDeleteRequest($email, $requestType, $reason);
 
         if (!$emailSent) {
             throw new Exception('Error al enviar el correo');

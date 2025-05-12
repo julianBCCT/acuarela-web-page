@@ -113,7 +113,7 @@ class acuarela
 		$this->send_notification('info@acuarela.app', $mail, $name, $this->transformMergeVars($mergeVars), $subject, 'obtener-demo', 'maRkSStgpCapJoSmwHOZDg', "Acuarela");
 		$this->send_notification('info@acuarela.app', 'empleo@acuarela.app', 'Admin', $this->transformMergeVars($mergevariables), 'Nuevo contacto desde página web', 'obtener-demo-admin', 'maRkSStgpCapJoSmwHOZDg', "Acuarela");
 	}
-	function sendEmailDeleteRequest($name, $mail, $phone, $daycare, $country, $city, $subject = 'Hemos recibido tus datos')
+	function sendEmailDeleteRequest($mail, $requestType, $reason, $subject = 'Confirmación de recepción de tu solicitud sobre datos personales')
 	{
 		try {
 			// Definir los destinatarios y sus plantillas
@@ -121,9 +121,9 @@ class acuarela
 				[
 					'to' => $mail,
 					'subject' => $subject,
-					'template' => 'obtener-demo',
+					'template' => 'data-request-received',
 					'mergeVars' => [
-						'NOMBRE' => $name
+						'REQUESTTYPE' => $requestType
 					]
 				],
 				// [
@@ -142,16 +142,13 @@ class acuarela
 				// ],
 				[
 					'to' => 'nicolas@bilingualchildcaretraining.com',
-					'subject' => 'Nueva solicitud',
-					'template' => 'obtener-demo-admin',
+					'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+					'template' => 'data-request-received-admin',
 					'mergeVars' => [
-						'ADMIN' => 'Administrador',
-						'NAME' => $name,
 						'EMAIL' => $mail,
-						'PHONE' => $phone,
-						'DAYCARE' => $daycare,
-						'COUNTRY' => $country,
-						'CITY' => $city
+						'REQUESTTYPE' => $requestType,
+						'REASON' => $reason,
+
 					]
 				],
 
@@ -175,7 +172,7 @@ class acuarela
 				$response = $this->send_notification(
 					'info@acuarela.app',
 					$emailData['to'],
-					$name,
+					$name = "",
 					$this->transformMergeVars($emailData['mergeVars']),
 					$emailData['subject'],
 					$emailData['template'],

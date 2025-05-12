@@ -42,7 +42,7 @@
           Según nuestra <a href="https://acuarela.app/politicas" target="_BLANK">Política de Privacidad</a> y conforme a principios de retención responsable,
           conservamos los datos personales únicamente durante el tiempo necesario para cumplir con
           la finalidad para la que fueron recabados y con nuestras obligaciones legales, lo cual puede
-          extenderse hasta por un período de cinco (5) años a partir de la finalización de la relación
+          extenderse hasta por un período de seis (6) meses a partir de la finalización de la relación
           con el usuario o la prestación del servicio.
           <!-- Solicita aquí la eliminación de tus datos (usuario, contraseña, teléfonos, correo, datos personales, información de tu daycare y sus integrantes) de Acuarela Apps. Recuerda que tus datos son almacenados con el único propósito de prestarte los servicios contratados y se almacenan de forma permanente mientras tu cuenta está activa y hasta por 5 años si tu suscripción a Acuarela Lite o Acuarela Pro se encuentran vencidas según <a href="https://acuarela.app/politicas" target="_BLANK">nuestra política de privacidad y tratamiento de datos.</a> -->
         </p>
@@ -57,7 +57,7 @@
       <form class="delete_request_form" id="delete_request_form">
         <div class="form-group">
           <br><br>
-          <label for="email">Escribe el e-mail asociado a tu cuenta de Acuarela Apps</label>
+          <label for="email">Escribe el e-mail asociado a tu cuenta</label>
           <div class="input-wrapper">
             <input
               required

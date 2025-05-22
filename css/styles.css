@@ -348,7 +348,7 @@ select:focus {
 }
 .btn--secondary:not(:disabled):hover {
   background-color: #55637e;
-  color: #140a4c;
+  color: white;
 }
 .btn--secondary:disabled {
   cursor: not-allowed;
@@ -3024,11 +3024,22 @@ main.invitation section.invitation-final a {
   font-weight: 700;
   line-height: 16px;
   border-radius: 8px;
-  border: none;
   border: 1px solid #00c6d1;
   margin-bottom: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  thead
+  tr
+  .th-acuarela
+  .buttonth:hover {
+  background-color: white;
+  color: #00c6d1;
 }
 .acuarela-services
   #curriculums-slide-planes-acuarela
@@ -3063,6 +3074,18 @@ main.invitation section.invitation-final a {
   border-radius: 8px;
   border: 1px solid #00c6d1;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.acuarela-services
+  #curriculums-slide-planes-acuarela
+  .acuarela-slide
+  table
+  thead
+  tr
+  .th-acuarela
+  .buttonth-white:hover {
+    background-color: #00c6d1;
+    color: white;
 }
 .acuarela-services
   #curriculums-slide-planes-acuarela
@@ -4261,6 +4284,10 @@ label span.required {
     margin-bottom: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+  }
+  .buttonth:hover {
+    background-color: white;
+    color: #00c6d1;
   }
   .buttonth-white {
     background-color: transparent;

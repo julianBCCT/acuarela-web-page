@@ -4,6 +4,8 @@ class acuarela
 {
 	public $domain = "https://acuarelaadmin.acuarela.app/wp-json/wp/v2/";
 	public $url = "https://acuarelaadmin.acuarela.app/";
+
+	public $home = array();
 	public $generalInfo = array();
 	public $politics = array();
 	public $about = array();
@@ -15,6 +17,7 @@ class acuarela
 
 	function __construct()
 	{
+		$this->home = $this->getHome();
 		$this->generalInfo = $this->getInfoGeneral();
 		$this->politics = $this->gPolitics();
 		$this->about = $this->gAbout();
@@ -55,7 +58,7 @@ class acuarela
 				'to' => array(
 					array(
 						'email' => $to,
-						'name' =>  $toname,
+						'name' => $toname,
 						'type' => 'to'
 					)
 				),
@@ -412,7 +415,17 @@ class acuarela
 		}
 		return $gnrl;
 	}
-	function getHome() {}
+	function getHome()
+	{
+		if (isset($_SESSION['gHome']) && time() - $_SESSION['gHome_time'] < 60) { // 60 segundos
+			return $_SESSION['gHome'];
+		} else {
+			$result = $this->query("pages/29");
+			$_SESSION['gHome'] = $result;
+			$_SESSION['gHome_time'] = time();
+			return $result;
+		}
+	}
 	function getHomeSections()
 	{
 		$result = $this->query("promo-home");

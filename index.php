@@ -3,16 +3,17 @@
 <main class="containerheader">
   <!-- BANNER -->
   <section class="banner">
-    <h1 class="banner__title">
-      Administra <strong class="banner__title-strong">Tu Daycare Digitalmente</strong> Y Haz Crecer Tu Negocio.
-    </h1>
+
+      <?= $a->home->acf->banner->titulo ?>
 
     <div class="banner__content">
       <div class="banner__media">
         <div class="video-container">
-          <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg" alt="unmuted" /></button>
-          <video id="video1" src="<?=$a->generalInfo->acf->video_home?>" playsinline preload="auto" autoplay muted loop>
-            <source src="<?=$a->generalInfo->acf->video_home?>" type="video/mp4">  
+          <button type="button" onclick="unMutedVideo()" id="unmutedBtn"><img src="img/volOff.svg"
+              alt="unmuted" /></button>
+          <video id="video1" src="<?= $a->generalInfo->acf->video_home ?>" playsinline preload="auto" autoplay muted
+            loop>
+            <source src="<?= $a->generalInfo->acf->video_home ?>" type="video/mp4">
           </video>
         </div>
         <div class="pink-square">
@@ -21,16 +22,13 @@
       </div>
 
       <div class="banner__content-info">
-        <h2 class="banner__subtitle">
-          Convierte el servicio de tu daycare en una experiencia 10/10 con la
-          familia de herramientas digitales Acuarela.
-        </h2>
+          <?= $a->home->acf->banner->subtitulo ?>
         <div class="banner__buttons">
           <a class="btn btn--primarywhite" href="https://acuarela.app/planes-precios">
-            Crea una cuenta gratis
+            <?= $a->home->acf->banner->texto_boton_1 ?>
           </a>
-          <button class="btn btn--secondary openModalBtn" >
-            Obtener un DEMO
+          <button class="btn btn--secondary openModalBtn">
+            <?= $a->home->acf->banner->texto_boton_2 ?>
           </button>
           <div id="modalOverlay" class="modal-overlay hidden">
             <div class="modal-box">

@@ -1,3 +1,4 @@
-[05-May-2025 20:17:04 UTC] PHP Notice:  Undefined property: stdClass::$imagen in /home/tiendasantuario/public_html/host/acuarela/index.php on line 152
-[05-May-2025 20:17:04 UTC] PHP Notice:  Undefined property: stdClass::$imagen in /home/tiendasantuario/public_html/host/acuarela/index.php on line 152
-[05-May-2025 20:17:04 UTC] PHP Notice:  Undefined property: stdClass::$imagen in /home/tiendasantuario/public_html/host/acuarela/index.php on line 152
+[27-May-2025 17:19:38 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tiendasantuario/public_html/host/acuarela/includes/config.php on line 2
+[27-May-2025 17:19:38 UTC] PHP Fatal error:  Cannot declare class acuarela, because the name is already in use in /home/tiendasantuario/public_html/host/acuarela/includes/functions.php on line 3
+[27-May-2025 17:19:45 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tiendasantuario/public_html/host/acuarela/includes/config.php on line 2
+[27-May-2025 17:19:45 UTC] PHP Fatal error:  Cannot declare class acuarela, because the name is already in use in /home/tiendasantuario/public_html/host/acuarela/includes/functions.php on line 3

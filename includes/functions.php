@@ -406,14 +406,14 @@ class acuarela
 	}
 	function gAbout()
 	{
-		if (isset($_SESSION['gAbout'])) {
-			$gnrl = $_SESSION['gAbout'];
+		if (isset($_SESSION['gAbout']) && time() - $_SESSION['gAbout_time'] < 60 ) {
+			return $_SESSION['gAbout'];
 		} else {
 			$result = $this->query("pages/54");
-			$gnrl = $result;
-			$_SESSION['gAbout'] = $gnrl;
+			$_SESSION['gAbout'] = $result;
+			$_SESSION['gAbout_time'] = time();
+			return $result;
 		}
-		return $gnrl;
 	}
 	function getHome()
 	{

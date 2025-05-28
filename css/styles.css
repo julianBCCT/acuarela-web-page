@@ -611,6 +611,17 @@ main.no-bg {
   max-width: 900px;
   margin: 0 auto;
 }
+.banner__title2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  max-width: 860px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
 .banner__titlev2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 35px;
@@ -3045,6 +3056,7 @@ main.invitation section.invitation-final a {
   .th-acuarela
   .buttonth-white {
   background-color: transparent;
+  display: inline-block;
   padding: 2px 0;
   width: 80%;
   color: #00c6d1;
@@ -3789,6 +3801,11 @@ label span.required {
     line-height: 35px;
     font-size: 36px;
   }
+  .banner__title2 {
+    margin-top: 0;
+    line-height: 35px;
+    font-size: 36px;
+  }
   .banner__content {
     width:100%;
   }
@@ -3940,6 +3957,15 @@ label span.required {
     font-weight: 700;
     line-height: 27px;
     width: 100%;
+  }
+  .banner__title2 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 27px;
+    width: 90%;
+  }
+  .add-on {
+    padding: 0 25px;
   }
   .banner__content {
     display: flex;
@@ -4094,7 +4120,7 @@ label span.required {
     padding: 25px
   }
   .banner__texts {
-    padding: 0 10px;
+    padding: 0 80px;
   }
   .banner__titlev2 {
     font-size: 21px;
@@ -4257,6 +4283,8 @@ label span.required {
   }
   .buttonth-white {
     background-color: transparent;
+    display: inline-block;
+    text-align: center;
     padding: 12px 0;
     width: 100%;
     color: #00c6d1;

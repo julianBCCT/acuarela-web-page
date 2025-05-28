@@ -956,7 +956,32 @@ $servicios = [
                     <p><?= $info->content->rendered ?></p>
                     <button onclick="window.location.href='#mision'"><?= $titulos[$idioma_contenido]["more"] ?></button>
                 </div>
-                <div class="img" style="background-image: url('<?= $info->acf->banner_principal ?>');"></div>
+                <?= in_array(strtolower(pathinfo($info->acf->banner_principal, PATHINFO_EXTENSION)), ['mp4', 'webm'])
+                    ? "<div class='img' style='position:relative;'>
+                            <video id='mainVideo' autoplay muted loop playsinline style='border-radius: 15px;box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 2px 6px 2px;width:100%;height:100%;object-fit:cover;'>
+                                <source src='{$info->acf->banner_principal}' type='video/mp4'>
+                            </video>
+                            <button id='volumeBtn' style='position:absolute; bottom:20px; right:20px; z-index:10; background:rgba(0,0,0,0.5); color:#fff; border:none; border-radius:20%; width:40px; height:40px; cursor:pointer; display:flex; align-items:center; justify-content:center;'>
+                                <img id='volumeIcon' src='https://acuarela.app/img/volOff.svg' alt='Volumen' width='20' height='20' />
+                            </button>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const video = document.getElementById('mainVideo');
+                                    const btn = document.getElementById('volumeBtn');
+                                    const icon = document.getElementById('volumeIcon');
+
+                                    const volumeOn = 'https://acuarela.app/img/volOn.svg';
+                                    const volumeOff = 'https://acuarela.app/img/volOff.svg';
+
+                                    btn.addEventListener('click', function () {
+                                        video.muted = !video.muted;
+                                        icon.src = video.muted ? volumeOff : volumeOn;
+                                    });
+                                });
+                            </script>
+                        </div>"
+                    : "<div class='img' style=\"background-image: url('{$info->acf->banner_principal}');\"></div>" ?>
+
             </section>
             <div class="wave">
                 <div style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
@@ -976,7 +1001,7 @@ $servicios = [
                         allowfullscreen>
                     </iframe>
                     <div class="info-address">
-                        <p><?= $info->acf->direccion ?></p>
+                        <p style="color:var(--color-pasos);"><?= $info->acf->direccion ?></p>
                     </div>
                 </div>
                 <div id="details_card" class="details">

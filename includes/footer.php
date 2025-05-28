@@ -36,8 +36,13 @@
         <div class="footer__info">
           <h4>Acuarela</h4>
           <ul class="footer__address">
-            <li><?= $a->generalInfo->acf->email ?></li>
-            <li><?= $a->generalInfo->acf->phone ?></li>
+            <?php if (!empty($a->generalInfo->acf->email)): ?>
+              <li><?= htmlspecialchars($a->generalInfo->acf->email) ?></li>
+            <?php endif; ?>
+
+            <?php if (!empty($a->generalInfo->acf->phone)): ?>
+              <li><?= htmlspecialchars($a->generalInfo->acf->phone) ?></li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
@@ -85,6 +90,7 @@
 <script src="js/jquery.mCustomScrollbar.js"></script>
 <!-- <script src="js/main.js"></script> -->
 <script src="js/main.js?v=<?= time(); ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><!--Librería para personalizar alertas -->
 
 <!--Javascript file for carousel and burger menu settings-->
 <script src="js/app.js"></script>

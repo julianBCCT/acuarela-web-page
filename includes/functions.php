@@ -4,6 +4,8 @@ class acuarela
 {
 	public $domain = "https://acuarelaadmin.acuarela.app/wp-json/wp/v2/";
 	public $url = "https://acuarelaadmin.acuarela.app/";
+
+	public $home = array();
 	public $generalInfo = array();
 	public $politics = array();
 	public $about = array();
@@ -15,6 +17,7 @@ class acuarela
 
 	function __construct()
 	{
+		$this->home = $this->getHome();
 		$this->generalInfo = $this->getInfoGeneral();
 		$this->politics = $this->gPolitics();
 		$this->about = $this->gAbout();
@@ -55,7 +58,7 @@ class acuarela
 				'to' => array(
 					array(
 						'email' => $to,
-						'name' =>  $toname,
+						'name' => $toname,
 						'type' => 'to'
 					)
 				),
@@ -112,6 +115,100 @@ class acuarela
 		];
 		$this->send_notification('info@acuarela.app', $mail, $name, $this->transformMergeVars($mergeVars), $subject, 'obtener-demo', 'maRkSStgpCapJoSmwHOZDg', "Acuarela");
 		$this->send_notification('info@acuarela.app', 'empleo@acuarela.app', 'Admin', $this->transformMergeVars($mergevariables), 'Nuevo contacto desde página web', 'obtener-demo-admin', 'maRkSStgpCapJoSmwHOZDg', "Acuarela");
+	}
+	function sendEmailDeleteRequest($mail, $requestType, $reason, $subject = 'Confirmación de recepción de tu solicitud sobre datos personales')
+	{
+		try {
+			// Definir los destinatarios y sus plantillas
+			$emailsToSend = [
+				[
+					'to' => $mail,
+					'subject' => $subject,
+					'template' => 'data-request-received',
+					'mergeVars' => [
+						'REQUESTTYPE' => $requestType
+					]
+				],
+				// [
+				// 	'to' => 'nicolas@bilingualchildcaretraining.com',
+				// 	'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+				// 	'template' => 'data-request-received-admin',
+				// 	'mergeVars' => [
+				// 		'EMAIL' => $mail,
+				// 		'REQUESTTYPE' => $requestType,
+				// 		'REASON' => $reason,
+
+				// 	]
+				// ],
+				[
+					'to' => 'empleo@acuarela.app',
+					'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+					'template' => 'data-request-received-admin',
+					'mergeVars' => [
+						'EMAIL' => $mail,
+						'REQUESTTYPE' => $requestType,
+						'REASON' => $reason,
+
+					]
+				],
+				[
+					'to' => 'nestor@bilingualchildcaretraining.com',
+					'subject' => 'Nueva solicitud de gestión de datos personales recibida',
+					'template' => 'data-request-received-admin',
+					'mergeVars' => [
+						'EMAIL' => $mail,
+						'REQUESTTYPE' => $requestType,
+						'REASON' => $reason,
+
+					]
+				],
+			];
+
+			$responses = [];
+			$allSuccess = true;
+			$errorMessages = [];
+
+			foreach ($emailsToSend as $emailData) {
+				$response = $this->send_notification(
+					'info@acuarela.app',
+					$emailData['to'],
+					$name = "",
+					$this->transformMergeVars($emailData['mergeVars']),
+					$emailData['subject'],
+					$emailData['template'],
+					'maRkSStgpCapJoSmwHOZDg',
+					"Acuarela"
+				);
+
+				$responses[$emailData['to']] = $response;
+
+				// Verificar si el envío fue exitoso
+				if (empty($response) || !isset($response[0]['status']) || !in_array($response[0]['status'], ['sent', 'queued'])) {
+					$allSuccess = false;
+					$errorMessages[$emailData['to']] = 'Error en el envío: ' . json_encode($response);
+				}
+			}
+
+			if ($allSuccess) {
+				return [
+					'success' => true,
+					'message' => 'Todos los correos fueron enviados correctamente',
+					'responses' => $responses
+				];
+			} else {
+				return [
+					'success' => false,
+					'message' => 'Algunos correos no se enviaron correctamente',
+					'errors' => $errorMessages,
+					'responses' => $responses
+				];
+			}
+		} catch (Exception $e) {
+			return [
+				'success' => false,
+				'message' => 'Excepción al enviar email: ' . $e->getMessage()
+			];
+		}
 	}
 	function sendEndRegisterDaycare($name, $pass, $email, $subject = 'Registro finalizado')
 	{
@@ -318,7 +415,17 @@ class acuarela
 		}
 		return $gnrl;
 	}
-	function getHome() {}
+	function getHome()
+	{
+		if (isset($_SESSION['gHome']) && time() - $_SESSION['gHome_time'] < 60) { // 60 segundos
+			return $_SESSION['gHome'];
+		} else {
+			$result = $this->query("pages/29");
+			$_SESSION['gHome'] = $result;
+			$_SESSION['gHome_time'] = time();
+			return $result;
+		}
+	}
 	function getHomeSections()
 	{
 		$result = $this->query("promo-home");
@@ -439,107 +546,107 @@ class acuarela
 	}
 
 	public function createLead($name, $lastName, $email, $phone, $servicioInteres, $fuenteComunicacion, $daycareName)
-    {
-        $new_token = $this->getTokenZoho();
-        if ($new_token) {
-            $fechaActual = date('Y-m-d');
+	{
+		$new_token = $this->getTokenZoho();
+		if ($new_token) {
+			$fechaActual = date('Y-m-d');
 
-            // // Asignar un valor predeterminado si $Name es null o está vacío
-            // if (is_null($name) || trim($name) === '') {
-            //     $name = 'No Name Provided'; // Valor predeterminado
-            // }
+			// // Asignar un valor predeterminado si $Name es null o está vacío
+			// if (is_null($name) || trim($name) === '') {
+			//     $name = 'No Name Provided'; // Valor predeterminado
+			// }
 
-            // if (is_null($lastName) || trim($lastName) === '') {
-            //     $lastName = 'No LastName Provided'; // Valor predeterminado
-            // }
+			// if (is_null($lastName) || trim($lastName) === '') {
+			//     $lastName = 'No LastName Provided'; // Valor predeterminado
+			// }
 
-            // if (is_null($phone) || trim($phone) === '') {
-            //     $phone = '0000000000'; // Valor predeterminado
-            // }
-            // if (is_null($fuenteComunicacion) | trim($fuenteComunicacion) === '') {
-            //     $fuenteComunicacion = 'Website';
-            // }
+			// if (is_null($phone) || trim($phone) === '') {
+			//     $phone = '0000000000'; // Valor predeterminado
+			// }
+			// if (is_null($fuenteComunicacion) | trim($fuenteComunicacion) === '') {
+			//     $fuenteComunicacion = 'Website';
+			// }
 
-            // Definir valores predeterminados en un array asociativo
-            $defaults = [
-                'name' => 'No Name Provided',
-                'lastName' => 'No LastName Provided',
-                'phone' => '0000000000',
-                'fuenteComunicacion' => 'Website',
-                'servicioInteres' => 'Other',
+			// Definir valores predeterminados en un array asociativo
+			$defaults = [
+				'name' => 'No Name Provided',
+				'lastName' => 'No LastName Provided',
+				'phone' => '0000000000',
+				'fuenteComunicacion' => 'Website',
+				'servicioInteres' => 'Other',
 				'daycareName' => 'Daycare',
-            ];
+			];
 
-            // Recorrer cada variable y asignar el valor predeterminado si está vacía o es null
-            foreach ($defaults as $key => $default) {
-                if (!isset($$key) || trim($$key) === '') {
-                    $$key = $default;
-                }
-            }
+			// Recorrer cada variable y asignar el valor predeterminado si está vacía o es null
+			foreach ($defaults as $key => $default) {
+				if (!isset($$key) || trim($$key) === '') {
+					$$key = $default;
+				}
+			}
 
 
-            $payload = [
-                'data' => [
-                    [
-                        'First_Name' => $name,
-                        'Last_Name' => $lastName,
-                        'Email' => $email,
-                        'Phone' => $phone,
-                        'Fuente_de_comunicaci_n' => $fuenteComunicacion,
-                        'Date_of_first_communication' => $fechaActual,
-                        'Service_interest' => $servicioInteres,
+			$payload = [
+				'data' => [
+					[
+						'First_Name' => $name,
+						'Last_Name' => $lastName,
+						'Email' => $email,
+						'Phone' => $phone,
+						'Fuente_de_comunicaci_n' => $fuenteComunicacion,
+						'Date_of_first_communication' => $fechaActual,
+						'Service_interest' => $servicioInteres,
 						'Daycare_Name' => $daycareName,
-                        'Owner' => [
-                            'id' => '873108290',
-                        ],
-                    ]
-                ]
-            ];
+						'Owner' => [
+							'id' => '873108290',
+						],
+					]
+				]
+			];
 
-            $curl = curl_init();
+			$curl = curl_init();
 
-            curl_setopt_array($curl, [
-                CURLOPT_URL => 'https://www.zohoapis.com/crm/v2/Leads',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => json_encode($payload),
-                CURLOPT_HTTPHEADER => [
-                    'Content-Type: application/json',
-                    "Authorization: Zoho-oauthtoken $new_token",
-                ],
-            ]);
+			curl_setopt_array($curl, [
+				CURLOPT_URL => 'https://www.zohoapis.com/crm/v2/Leads',
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_POSTFIELDS => json_encode($payload),
+				CURLOPT_HTTPHEADER => [
+					'Content-Type: application/json',
+					"Authorization: Zoho-oauthtoken $new_token",
+				],
+			]);
 
-            $response = curl_exec($curl);
+			$response = curl_exec($curl);
 
-            if (curl_errno($curl)) {
-                error_log("Error en la solicitud cURL: " . curl_error($curl));
-                curl_close($curl);
-                return false;
-            }
+			if (curl_errno($curl)) {
+				error_log("Error en la solicitud cURL: " . curl_error($curl));
+				curl_close($curl);
+				return false;
+			}
 
-            $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            curl_close($curl);
+			$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+			curl_close($curl);
 
-            if ($http_status !== 201) {
-                error_log("Error HTTP: $http_status, Respuesta: $response");
-                return false;
-            }
+			if ($http_status !== 201) {
+				error_log("Error HTTP: $http_status, Respuesta: $response");
+				return false;
+			}
 
-            $data = json_decode($response, true);
+			$data = json_decode($response, true);
 
-            if (isset($data['data'][0]['code']) && $data['data'][0]['code'] === "SUCCESS") {
-                // if ($data['data'][0]['code'] === "SUCCESS") {
-                return true;
-            } else {
-                error_log("Error en la respuesta de Zoho: " . print_r($data, true));
-                return false;
-            }
-        }
-        return false;
-    }
+			if (isset($data['data'][0]['code']) && $data['data'][0]['code'] === "SUCCESS") {
+				// if ($data['data'][0]['code'] === "SUCCESS") {
+				return true;
+			} else {
+				error_log("Error en la respuesta de Zoho: " . print_r($data, true));
+				return false;
+			}
+		}
+		return false;
+	}
 }

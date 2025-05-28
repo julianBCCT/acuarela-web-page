@@ -359,26 +359,38 @@ function attachSliderListeners() {
   const totalSlides = slides.length;
   const slidesPerView = 2;
 
+  if (!sliderTrack || totalSlides === 0) {
+    console.warn("Slider elements not found in the DOM.");
+    return;
+  }
+
   function updateSlider() {
     const slideWidth = slides[0].offsetWidth + 20; // 20 es el gap
     const moveX = currentIndex * slideWidth;
     sliderTrack.style.transform = `translateX(-${moveX}px)`;
   }
 
-  document.querySelector('img[alt="Desplazar testimonios a la izquierda"]').addEventListener('click', () => {
-    currentIndex = Math.max(0, currentIndex - 1);
-    updateSlider();
-  });
+  const leftArrow = document.querySelector('img[alt="Desplazar testimonios a la izquierda"]');
+  const rightArrow = document.querySelector('img[alt="Desplazar testimonios a la derecha"]');
 
-  document.querySelector('img[alt="Desplazar testimonios a la derecha"]').addEventListener('click', () => {
-    if (currentIndex < totalSlides - slidesPerView) {
-      currentIndex++;
+  if (leftArrow) {
+    leftArrow.addEventListener('click', () => {
+      currentIndex = Math.max(0, currentIndex - 1);
       updateSlider();
-    }
-  });
+    });
+  }
+
+  if (rightArrow) {
+    rightArrow.addEventListener('click', () => {
+      if (currentIndex < totalSlides - slidesPerView) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+  }
 
   window.addEventListener('resize', updateSlider);
-  
+
   updateSlider(); // Para asegurarte que el slider se ajuste en inicio
 }
 setTimeout(() => {
@@ -507,14 +519,12 @@ function updateAcuarelaServices() {
           : acuarela.acf.link_de_pago_anual;
 
         const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
-        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
-        const disabledAttr = isProButton ? "disabled" : "";
-        const buttonClassExtra = isProButton ? "btn-disable" : ""; 
-        const onclickAttr = isProButton
-          ? ""
-          : `onclick="window.open('${redirectLink || "#"}', '_blank')"`; 
-        
-        const asesorButtonClass = isPro ? "buttonth-white" : "buttonth-white btn-invisible"; // Si NO es pro, sera "invisible"
+        const buttonText = acuarela.acf.texto_boton; 
+        const disabledAttr = "";
+        const buttonClassExtra = ""; 
+        const onclickAttr = `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
+
+        const asesorButtonClass = isPro ? "buttonth-white" : "buttonth-white btn-invisible";
 
         tableHTML += `
           <th class="th-acuarela">
@@ -525,7 +535,7 @@ function updateAcuarelaServices() {
               </span>
               <span class="price">${price}</span>
             </p>
-            <button class="buttonth ${buttonClassExtra}" ${disabledAttr} ${onclickAttr} target="_blank" >
+            <button class="buttonth ${buttonClassExtra}" ${disabledAttr} ${onclickAttr} target="_blank">
               ${buttonText}
             </button>
             <a href="https://wa.me/17184155207?text=%2AHola%20visite%20su%20pagina%20web%2C%20estoy%20interesado%20en%20el%20servicio%20de%20acuarela%2C%20necesito%20mas%20informacion." 
@@ -681,18 +691,18 @@ function updateAcuarelaServices2() {
       featuresHTML += `</div>`; // cerrar acuarela-features
       container.innerHTML += featuresHTML;
 
-      
+
       // Crear botones finales (uno por cada plan)
       let buttonsHTML = `<div class="acuarela-buttons">`;
       filteredData.forEach((acuarela) => {
-        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
-        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
-        const disabledAttr = isProButton ? "disabled" : "";
-        const buttonClassExtra = isProButton ? "btn-disable" : "";
         const redirectLink = monthlyAcuarela
           ? acuarela.acf.link_de_pago_mensual
           : acuarela.acf.link_de_pago_anual;
-        const onclickAttr = isProButton ? "" : `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
+
+        const buttonText = acuarela.acf.texto_boton; 
+        const disabledAttr = ""; 
+        const buttonClassExtra = ""; 
+        const onclickAttr = `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
 
         buttonsHTML += `
           <div class="plan-buttons">
@@ -830,15 +840,14 @@ function updateAcuarelaServicesPro() {
       // Crear botones
       let buttonsHTML = `<div class="acuarela-buttons">`;
       filteredData.forEach((acuarela) => {
-        const isProButton = acuarela.acf.texto_boton === "Quiero ser Pro";
-        const buttonText = isProButton ? "¡Próximamente!" : acuarela.acf.texto_boton;
-        const disabledAttr = isProButton ? "disabled" : "";
-        const buttonClassExtra = isProButton ? "btn-disable" : "";
         const redirectLink = monthlyAcuarela
           ? acuarela.acf.link_de_pago_mensual
           : acuarela.acf.link_de_pago_anual;
-        const onclickAttr = isProButton ? "" : `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
 
+        const buttonText = acuarela.acf.texto_boton; 
+        const disabledAttr = "";
+        const buttonClassExtra = ""; 
+        const onclickAttr = `onclick="window.open('${redirectLink || "#"}', '_blank')"`;
 
         buttonsHTML += `
           <div class="plan-buttons">

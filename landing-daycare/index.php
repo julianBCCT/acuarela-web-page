@@ -783,6 +783,9 @@ $servicios = [
         href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/themes/splide-default.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css?v=<?= time() ?>" />
+
+    <link rel="icon" href="<?= $info->acf->logo ?>" type="image/png" />
+
     <link rel="canonical" href="url" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -958,7 +961,7 @@ $servicios = [
                 </div>
                 <?= in_array(strtolower(pathinfo($info->acf->banner_principal, PATHINFO_EXTENSION)), ['mp4', 'webm'])
                     ? "<div class='img' style='position:relative;'>
-                            <video id='mainVideo' autoplay muted loop playsinline style='border-radius: 15px;box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 2px 6px 2px;width:100%;height:100%;object-fit:cover;'>
+                            <video id='mainVideo' autoplay muted loop style='border-radius: 15px;box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 2px 6px 2px;width:100%;height:100%;object-fit:cover;'>
                                 <source src='{$info->acf->banner_principal}' type='video/mp4'>
                             </video>
                             <button id='volumeBtn' style='position:absolute; bottom:20px; right:20px; z-index:10; background:rgba(0,0,0,0.5); color:#fff; border:none; border-radius:20%; width:40px; height:40px; cursor:pointer; display:flex; align-items:center; justify-content:center;'>
@@ -1028,7 +1031,10 @@ $servicios = [
                             <p><?= $info->acf->horario ?></p>
                         </div>
                     </div>
-                    <button><?= $titulos[$idioma_contenido]["visit_btn"] ?></button>
+                    <button onclick="window.open('https://wa.me/+1<?= $info->acf->telefono ?>', '_blank')">
+                        <?= $titulos[$idioma_contenido]["visit_btn"] ?>
+                    </button>
+
                 </div>
             </section>
             <section class="galeria">
@@ -1058,33 +1064,35 @@ $servicios = [
                 <span class="close-modal">&times;</span>
                 <img id="modalImg" src="" alt="Imagen ampliada" />
             </div>
-            <section class="mision" id="mision" style="background-color: var(--color-primario);">
-                <div class="main-content">
-                    <h2><?= $titulos[$idioma_contenido]["mision_text"] ?></h2>
-                    <div class="text-container">
-                        <?= $info->acf->mision ?>
+            <?php if (!empty($info->acf->mision)): ?>
+                <section class="mision" id="mision" style="background-color: var(--color-primario);">
+                    <div class="main-content">
+                        <h2><?= $titulos[$idioma_contenido]["mision_text"] ?></h2>
+                        <div class="text-container">
+                            <?= $info->acf->mision ?>
+                        </div>
+                        <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>">
+                            <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
+                        </button>
                     </div>
-                    <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>">
-                        <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
-                    </button>
-                </div>
-                <svg width="303" height="238" viewBox="0 0 303 238" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M140.278 66.3292L57 232H245L161.722 66.3292C157.291 57.5152 144.709 57.5152 140.278 66.3292Z"
-                        stroke="white" stroke-width="10" />
-                    <path
-                        d="M156 5.5C156 2.73858 153.761 0.5 151 0.5C148.239 0.5 146 2.73858 146 5.5H156ZM156 57V5.5H146V57H156Z"
-                        fill="var(--color-botones)" />
-                    <path
-                        d="M106.839 10.836C129.493 14.7807 142.96 9.88262 148.535 5.75493C149.275 5.20709 150.5 5.71901 150.5 6.6397V34.7341C150.5 35.186 150.187 35.5856 149.749 35.6953C126.205 41.5854 111.151 23.4874 105.758 12.1906C105.414 11.4712 106.054 10.6993 106.839 10.836Z"
-                        stroke="white" stroke-width="10" />
-                    <path
-                        d="M79 132.068L94 158.068L57 232.068H9C23.1667 204.068 53.2 144.868 60 132.068C66.8 119.268 75.5 126.734 79 132.068Z"
-                        stroke="white" stroke-width="10" />
-                    <path
-                        d="M224 132.068L209 158.068L246 232.068H294C279.833 204.068 249.8 144.868 243 132.068C236.2 119.268 227.5 126.734 224 132.068Z"
-                        stroke="white" stroke-width="10" />
-                </svg>
-            </section>
+                    <svg width="303" height="238" viewBox="0 0 303 238" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M140.278 66.3292L57 232H245L161.722 66.3292C157.291 57.5152 144.709 57.5152 140.278 66.3292Z"
+                            stroke="white" stroke-width="10" />
+                        <path
+                            d="M156 5.5C156 2.73858 153.761 0.5 151 0.5C148.239 0.5 146 2.73858 146 5.5H156ZM156 57V5.5H146V57H156Z"
+                            fill="var(--color-botones)" />
+                        <path
+                            d="M106.839 10.836C129.493 14.7807 142.96 9.88262 148.535 5.75493C149.275 5.20709 150.5 5.71901 150.5 6.6397V34.7341C150.5 35.186 150.187 35.5856 149.749 35.6953C126.205 41.5854 111.151 23.4874 105.758 12.1906C105.414 11.4712 106.054 10.6993 106.839 10.836Z"
+                            stroke="white" stroke-width="10" />
+                        <path
+                            d="M79 132.068L94 158.068L57 232.068H9C23.1667 204.068 53.2 144.868 60 132.068C66.8 119.268 75.5 126.734 79 132.068Z"
+                            stroke="white" stroke-width="10" />
+                        <path
+                            d="M224 132.068L209 158.068L246 232.068H294C279.833 204.068 249.8 144.868 243 132.068C236.2 119.268 227.5 126.734 224 132.068Z"
+                            stroke="white" stroke-width="10" />
+                    </svg>
+                </section>
+            <?php endif; ?>
             <div class="triangles" style="overflow:hidden;position: relative;top: -14px;">
                 <svg width="1934" height="14" viewBox="0 0 1934 14" xmlns="http://www.w3.org/2000/svg">
                     <path d="M265.5 0L250.5 14H280L265.5 0Z" fill="var(--color-primario-claro)" />
@@ -1158,74 +1166,80 @@ $servicios = [
                     <path d="M1719.5 0L1704.5 14H1734L1719.5 0Z" fill="var(--color-primario-claro)" />
                 </svg>
             </div>
-            <section class="vision" style="background-color: var(--color-primario-claro);">
-                <svg width="316" height="324" viewBox="0 0 316 324" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M279.148 71.2813L99.6525 87.3338C98.7612 87.4135 98.4152 88.534 99.1065 89.1023L255.959 218.049C256.557 218.54 257.463 218.195 257.582 217.431L280.225 72.4316C280.325 71.7892 279.796 71.2234 279.148 71.2813Z"
-                        stroke="#E68972" stroke-width="8" />
-                    <path
-                        d="M153.461 188.059L153.855 136.562C153.858 136.188 154.07 135.846 154.404 135.677L272.485 75.8812C273.521 75.3564 274.468 76.7228 273.614 77.5092L153.461 188.059ZM153.461 188.059L205.502 179.301M124.726 211.373C69.8165 257.015 18.6825 206.119 42.6952 187.074C71.21 164.458 98.6137 259.163 4.00004 250.491"
-                        stroke="#E68972" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <div class="main-content">
-                    <h2><?= $titulos[$idioma_contenido]["vision_text"] ?></h2>
-                    <?= $info->acf->vision ?>
-                    <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>">
-                        <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
-                    </button>
-                </div>
-            </section>
-            <section class="philosophy">
-                <div class="main-content">
-                    <h1><?= $titulos[$idioma_contenido]["why"] ?><?= $info->title->rendered ?>?</h1>
-                    <?= $info->acf->filosofia_de_educacion ?>
-                    <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>" id="btnWhy">
-                        <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
-                    </button>
-                </div>
-                <div class="logo">
-                    <img src=" <?= $info->acf->logo ?>" alt="logo" />
-                </div>
-            </section>
-            <?php
-            if ($info->acf->servicios != "") {
-                ?>
-                <section class="services" id="services">
-                    <div class="services-tags">
-                        <div class="tags">
-                            <ul>
-                                <?php
-                                // $info->acf->servicios es el HTML de la lista <ul>
-                                $dom = new DOMDocument();
-                                libxml_use_internal_errors(true); // Evitar errores por HTML mal formado
-                                $dom->loadHTML($info->acf->servicios);
-                                libxml_clear_errors();
-
-                                // Extraer todos los elementos <li>
-                                $liElements = $dom->getElementsByTagName('li');
-
-                                foreach ($liElements as $li) {
-                                    $servicio = trim($li->textContent); // Obtener el texto de cada <li>
-                        
-                                    // Comprobar si el servicio existe en la lista
-                                    if (array_key_exists($servicio, $servicios)) {
-                                        $tituloServicio = $servicios[$servicio][$idioma_contenido]['title'];
-                                        $svgServicio = $servicios[$servicio][$idioma_contenido]['svg'];
-                                        ?>
-                                        <li>
-                                            <span><?= $tituloServicio ?></span>
-                                            <?= $svgServicio ?>
-                                        </li>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
+            <?php if (!empty($info->acf->vision)): ?>
+                <section class="vision" style="background-color: var(--color-primario-claro);">
+                    <svg width="316" height="324" viewBox="0 0 316 324" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M279.148 71.2813L99.6525 87.3338C98.7612 87.4135 98.4152 88.534 99.1065 89.1023L255.959 218.049C256.557 218.54 257.463 218.195 257.582 217.431L280.225 72.4316C280.325 71.7892 279.796 71.2234 279.148 71.2813Z"
+                            stroke="#E68972" stroke-width="8" />
+                        <path
+                            d="M153.461 188.059L153.855 136.562C153.858 136.188 154.07 135.846 154.404 135.677L272.485 75.8812C273.521 75.3564 274.468 76.7228 273.614 77.5092L153.461 188.059ZM153.461 188.059L205.502 179.301M124.726 211.373C69.8165 257.015 18.6825 206.119 42.6952 187.074C71.21 164.458 98.6137 259.163 4.00004 250.491"
+                            stroke="#E68972" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="main-content">
+                        <h2><?= $titulos[$idioma_contenido]["vision_text"] ?></h2>
+                        <?= $info->acf->vision ?>
+                        <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>">
+                            <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
+                        </button>
                     </div>
-                    <button style="margin-top: 30px;"><?= $titulos[$idioma_contenido]["preinscription"] ?></button>
                 </section>
-                <?php
+            <?php endif; ?>
+            <?php if (!empty($info->acf->filosofia_de_educacion)): ?>
+                <section class="philosophy">
+                    <div class="main-content">
+                        <h1><?= $titulos[$idioma_contenido]["why"] ?><?= $info->title->rendered ?>?</h1>
+                        <?= $info->acf->filosofia_de_educacion ?>
+                        <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>" id="btnWhy">
+                            <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
+                        </button>
+                    </div>
+                    <div class="logo">
+                        <img src="<?= $info->acf->logo ?>" alt="logo" />
+                    </div>
+                </section>
+            <?php endif; ?>
+            <?php
+            // Verificar si hay contenido en el campo servicios
+            if (!empty($info->acf->servicios)) {
+                $dom = new DOMDocument();
+                libxml_use_internal_errors(true); // Evitar errores por HTML mal formado
+                $dom->loadHTML($info->acf->servicios);
+                libxml_clear_errors();
+
+                $liElements = $dom->getElementsByTagName('li');
+                $serviciosValidos = [];
+
+                foreach ($liElements as $li) {
+                    $servicio = trim($li->textContent);
+                    if (array_key_exists($servicio, $servicios)) {
+                        $serviciosValidos[] = [
+                            'titulo' => $servicios[$servicio][$idioma_contenido]['title'],
+                            'svg' => $servicios[$servicio][$idioma_contenido]['svg']
+                        ];
+                    }
+                }
+
+                // Si hay al menos un servicio válido, mostrar la sección
+                if (!empty($serviciosValidos)) {
+                    ?>
+                    <section class="services" id="services">
+                        <div class="services-tags">
+                            <div class="tags">
+                                <ul>
+                                    <?php foreach ($serviciosValidos as $item): ?>
+                                        <li>
+                                            <span><?= $item['titulo'] ?></span>
+                                            <?= $item['svg'] ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <button style="margin-top: 30px;"><?= $titulos[$idioma_contenido]["preinscription"] ?></button>
+                    </section>
+                    <?php
+                }
             }
             ?>
             <section class="admission">

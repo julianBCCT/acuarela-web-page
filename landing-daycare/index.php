@@ -882,7 +882,19 @@ $servicios = [
                     <li><a href="#contact"><?= $titulos[$idioma_contenido]["contact-us"] ?></a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/+1<?= $info->acf->telefono ?>" target="_blank" class="btn">
+            <?php
+            $telefonoRaw = $info->acf->telefono;
+
+            // Eliminar espacios, paréntesis, guiones, signos + y cualquier carácter no numérico
+            $telefonoLimpio = preg_replace('/\D+/', '', $telefonoRaw);
+
+            // Si el número tiene más de 10 dígitos y comienza con '1', eliminar ese '1'
+            if (strlen($telefonoLimpio) > 10 && str_starts_with($telefonoLimpio, '1')) {
+                $telefonoLimpio = substr($telefonoLimpio, 1);
+            }
+            ?>
+
+            <a href="https://wa.me/+1<?= $telefonoLimpio ?>" target="_blank" class="btn">
                 <button><i class="acuarela acuarela-Evento"></i><?= $titulos[$idioma_contenido]["visit"] ?></button>
             </a>
 

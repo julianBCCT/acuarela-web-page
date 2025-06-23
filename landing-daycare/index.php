@@ -873,7 +873,8 @@ $servicios = [
     <body id="activo" class="main-body">
         <header>
             <div class="logo">
-                <img src=" <?= $info->acf->logo ?>" alt="logo" class="logo" />
+                <img src="<?= !empty($info->acf->isologo) ? $info->acf->isologo : $info->acf->logo ?>" alt="logo"
+                    class="logo" />
             </div>
             <nav>
                 <ul class="nav-links">
@@ -1201,7 +1202,7 @@ $servicios = [
                 <section class="philosophy">
                     <div class="main-content">
                         <h1><?= $titulos[$idioma_contenido]["why"] ?><?= $info->title->rendered ?>?</h1>
-                        <?= $info->acf->filosofia_de_educacion ?>
+                        <p><?= strip_tags($info->acf->filosofia_de_educacion) ?></p>
                         <button class="read-more-btn" data-lang="<?= $idioma_contenido ?>" id="btnWhy">
                             <?= $idioma_contenido == 'es' ? 'Ver más <i class="acuarela acuarela-Flecha_abajo"></i>' : 'Read more <i class="acuarela acuarela-Flecha_abajo"></i>' ?>
                         </button>

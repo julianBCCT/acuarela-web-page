@@ -203,7 +203,7 @@ $uib-color: var(--color-botones);
       padding: 0px 5px;
       img {
         padding: 0 0;
-        max-height: 60px;
+        max-height: 50px;
         width: auto;
       }
     }
@@ -441,14 +441,14 @@ $uib-color: var(--color-botones);
       }
       .logo {
         background-color: white;
-        border-radius: 50%;
-        padding: 15px;
+        border-radius: 15px;
+        padding: 5px 15px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         @media screen and (max-width: 768px) {
           display: none;
         }
         img {
-          height: 120px;
+          height: 150px;
           background: none;
           box-shadow: none;
           padding: 0;
@@ -817,8 +817,8 @@ $uib-color: var(--color-botones);
       }
       .logo {
         background-color: white;
-        border-radius: 50%;
-        padding: 15px;
+        border-radius: 15px;
+        padding: 5px 15px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         @media screen and (max-width: 768px) {
           position: relative;
